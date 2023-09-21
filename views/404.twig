@@ -1,0 +1,18 @@
+{% extends "base-clean.twig" %}
+
+{% block content %}
+
+<section class="block404Wrapper">
+    <div class="block404">
+        {{ general_fields.page_404.image | picture }}
+        <h1 class="title">{{ general_fields.page_404.title }}</h1>
+        <div class="typo">{{ general_fields.page_404.text }}</div>
+        <p class="overallButton green inline">
+            <a href="{{ general_fields.page_404.button.url }}" target="{{ general_fields.page_404.button.target }}">
+                <span>{{ general_fields.page_404.button.title }}</span>
+            </a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}

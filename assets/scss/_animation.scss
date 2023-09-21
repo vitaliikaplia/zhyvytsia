@@ -1,0 +1,21 @@
+/* Animations
+-------------------------------------------------------------- */
+
+@include keyframe(mouseButton){
+	from{
+		@include opacity(0);
+		@include transform(translateY(0px));
+	}
+	35%{
+		@include opacity(1);
+		@include transform(translateY(0px));
+	}
+	65%{
+		@include opacity(1);
+		@include transform(translateY(5px));
+	}
+	to{
+		@include opacity(0);
+		@include transform(translateY(5px));
+	}
+}

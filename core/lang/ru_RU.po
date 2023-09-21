@@ -1,0 +1,432 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zhyvytsia\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 11:15+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
+"Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-SearchPath-0: core/lang\n"
+"X-Poedit-SearchPath-1: core\n"
+"X-Poedit-SearchPath-2: .\n"
+"X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: core/gutenberg.php:14
+msgid "Main"
+msgstr "Главный"
+
+#: core/gutenberg.php:25
+msgid "First screen"
+msgstr "Первый экран"
+
+#: core/gutenberg.php:32
+msgid "Second screen"
+msgstr "Второй экран"
+
+#: core/includes/back/custom-dashboard-options-widget.php:7
+msgid "System tweaks"
+msgstr "Настройки системы"
+
+#: core/includes/back/custom-dashboard-options-widget.php:17
+#: core/includes/front/custom-localization.php:12
+msgid "Maintenance mode"
+msgstr "Режим технического обслуживания"
+
+#: core/includes/back/custom-dashboard-options-widget.php:22
+#: core/includes/front/custom-localization.php:13
+msgid "Enable maintenance mode for anonymous users"
+msgstr "Режим обслуживания для анонимных пользователей"
+
+#: core/includes/back/custom-dashboard-options-widget.php:27
+msgid "Maintenance mode title"
+msgstr "Режим технического обслуживания"
+
+#: core/includes/back/custom-dashboard-options-widget.php:32
+msgid "Maintenance mode text"
+msgstr "Текст режима технического обслуживания"
+
+#: core/includes/back/custom-dashboard-options-widget.php:42
+#: core/includes/front/custom-localization.php:34
+msgid "Resize at upload"
+msgstr "Изменить размер при загрузке"
+
+#: core/includes/back/custom-dashboard-options-widget.php:47
+msgid "Enable resizing media while upload"
+msgstr "Разрешить изменение размера медиафайлов при загрузке"
+
+#: core/includes/back/custom-dashboard-options-widget.php:58
+msgid "Resize at upload formats"
+msgstr "Форматы изменяемых изображений при загрузке"
+
+#: core/includes/back/custom-dashboard-options-widget.php:64
+msgid "Resize upload width"
+msgstr "Максимальная ширина загружаемого изображения"
+
+#: core/includes/back/custom-dashboard-options-widget.php:70
+msgid "Resize upload height"
+msgstr "Максимальная высота загружаемого изображения"
+
+#: core/includes/back/custom-dashboard-options-widget.php:76
+msgid "Resize upload quality"
+msgstr "Максимальная качество для ресайза"
+
+#: core/includes/back/custom-dashboard-options-widget.php:87
+msgid "SMTP options"
+msgstr "Параметры SMTP"
+
+#: core/includes/back/custom-dashboard-options-widget.php:92
+msgid "Enable custom SMTP server"
+msgstr "Активировать пользовательский SMTP сервер"
+
+#: core/includes/back/custom-dashboard-options-widget.php:97
+msgid "SMTP host"
+msgstr "SMTP хост"
+
+#: core/includes/back/custom-dashboard-options-widget.php:102
+msgid "SMTP port"
+msgstr "SMTP порт"
+
+#: core/includes/back/custom-dashboard-options-widget.php:107
+msgid "SMTP username"
+msgstr "SMTP пользователь"
+
+#: core/includes/back/custom-dashboard-options-widget.php:112
+msgid "SMTP password"
+msgstr "SMTP пароль"
+
+#: core/includes/back/custom-dashboard-options-widget.php:117
+msgid "SMTP from name"
+msgstr "SMTP имя отправителя"
+
+#: core/includes/back/custom-dashboard-options-widget.php:122
+msgid "Secure SMTP connection"
+msgstr "Безопасное SMTP-соединение"
+
+#: core/includes/back/custom-dashboard-options-widget.php:132
+#: core/includes/front/custom-localization.php:40
+msgid "Custom code"
+msgstr "Пользовательский код"
+
+#: core/includes/back/custom-dashboard-options-widget.php:137
+#: core/includes/front/custom-localization.php:41
+msgid "Header custom code"
+msgstr "Код в шапку"
+
+#: core/includes/back/custom-dashboard-options-widget.php:142
+#: core/includes/front/custom-localization.php:42
+msgid "Footer custom code"
+msgstr "Код в подвал"
+
+#: core/includes/back/custom-dashboard-options-widget.php:152
+msgid "Other options"
+msgstr "Прочие параметры"
+
+#: core/includes/back/custom-dashboard-options-widget.php:157
+#: core/includes/front/custom-localization.php:33
+msgid "Google maps API key"
+msgstr "Ключ Google maps API"
+
+#: core/includes/back/custom-dashboard-options-widget.php:162
+#: core/includes/front/custom-localization.php:15
+msgid "Disable all updates"
+msgstr "Отключить все обновления"
+
+#: core/includes/back/custom-dashboard-options-widget.php:167
+#: core/includes/front/custom-localization.php:16
+msgid "Disable customizer"
+msgstr "Отключить кастомайзер"
+
+#: core/includes/back/custom-dashboard-options-widget.php:172
+#: core/includes/front/custom-localization.php:17
+msgid "Disable src set"
+msgstr "Отключить src set"
+
+#: core/includes/back/custom-dashboard-options-widget.php:177
+#: core/includes/front/custom-localization.php:18
+msgid "Remove default image sizes"
+msgstr "Отключить стандартные размеры изображений"
+
+#: core/includes/back/custom-dashboard-options-widget.php:182
+#: core/includes/front/custom-localization.php:19
+msgid "Disable core privacy tools"
+msgstr "Отключить инструменты конфиденциальности"
+
+#: core/includes/back/custom-dashboard-options-widget.php:187
+#: core/includes/front/custom-localization.php:20
+msgid "Enable CYR3LAT"
+msgstr "Активировать CYR3LAT"
+
+#: core/includes/back/custom-dashboard-options-widget.php:192
+#: core/includes/front/custom-localization.php:21
+msgid "Disable DNS prefetch"
+msgstr "Скрыть DNS prefetch"
+
+#: core/includes/back/custom-dashboard-options-widget.php:197
+msgid "Disable Rest API for anonymous users"
+msgstr "Отключить Rest API для анонимных пользователей"
+
+#: core/includes/back/custom-dashboard-options-widget.php:202
+#: core/includes/front/custom-localization.php:23
+msgid "Disable Emojis"
+msgstr "Отключить Emoji"
+
+#: core/includes/back/custom-dashboard-options-widget.php:207
+#: core/includes/front/custom-localization.php:24
+msgid "Disable Embeds"
+msgstr "Отключить Embeds"
+
+#: core/includes/back/custom-dashboard-options-widget.php:212
+#: core/includes/front/custom-localization.php:25
+msgid "Disable dashboard widgets"
+msgstr "Скрыть стандартные виджеты консоли"
+
+#: core/includes/back/custom-dashboard-options-widget.php:217
+#: core/includes/front/custom-localization.php:26
+msgid "Hide admin top bar"
+msgstr "Отключить панель администратора"
+
+#: core/includes/back/custom-dashboard-options-widget.php:222
+#: core/includes/front/custom-localization.php:27
+msgid "Disable admin email verification"
+msgstr "Отключить E-mail верификацию админов"
+
+#: core/includes/back/custom-dashboard-options-widget.php:227
+#: core/includes/front/custom-localization.php:28
+msgid "Disable comments"
+msgstr "Отключить комментарии"
+
+#: core/includes/back/custom-dashboard-options-widget.php:232
+#: core/includes/front/custom-localization.php:29
+msgid "Delete child media"
+msgstr "Удалять вложения"
+
+#: core/includes/back/custom-dashboard-options-widget.php:237
+#: core/includes/front/custom-localization.php:30
+msgid "Enable HTML cache"
+msgstr "Включить HTML кеширование"
+
+#: core/includes/back/custom-dashboard-options-widget.php:242
+#: core/includes/front/custom-localization.php:31
+msgid "Enable minify"
+msgstr "Включить минификацию"
+
+#: core/includes/back/custom-dashboard-options-widget.php:247
+#: core/includes/front/custom-localization.php:32
+msgid "Inline scripts and styles"
+msgstr "Онлайновые скрипты и стили"
+
+#: core/includes/back/custom-dashboard-options-widget.php:252
+msgid "Hide ACF"
+msgstr "Скрыть ACF"
+
+#: core/includes/back/custom-dashboard-options-widget.php:257
+msgid "Disable Gutenberg editor everywhere"
+msgstr "Отключите редактор Gutenberg везде"
+
+#: core/includes/back/custom-dashboard-options-widget.php:262
+msgid "Disable Gutenberg editor for Blog"
+msgstr "Отключите редактор Gutenberg для блога"
+
+#: core/includes/back/dashboard-footer.php:12
+msgid "Powered by"
+msgstr "Работает на"
+
+#: core/includes/back/dashboard-update-assets-version.php:16
+msgid "Update theme version"
+msgstr "Обновить версию темы"
+
+#: core/includes/back/system-disable-customizer.php:109
+msgid "The Customizer is currently disabled."
+msgstr "Customizer в настоящий момент отключен."
+
+#: core/includes/back/system-thumbnails.php:13
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: core/includes/back/system-thumbnails.php:27
+msgid "None"
+msgstr "Нет"
+
+#: core/includes/front/custom-localization.php:8
+msgid "Your Email"
+msgstr "Ваш Email"
+
+#: core/includes/front/custom-localization.php:9
+msgid "Your password"
+msgstr "Ваш пароль"
+
+#: core/includes/front/custom-localization.php:10
+msgid "Title"
+msgstr "Заголовок"
+
+#: core/includes/front/custom-localization.php:11
+msgid "Text"
+msgstr "Текст"
+
+#: core/includes/front/custom-localization.php:14
+msgid "Website options"
+msgstr "Настройки сайта"
+
+#: core/includes/front/custom-localization.php:22
+msgid "Disable Rest API"
+msgstr "Отключить Rest API"
+
+#: core/includes/front/custom-localization.php:35
+msgid "Enable"
+msgstr "Включить"
+
+#: core/includes/front/custom-localization.php:36
+msgid "Width"
+msgstr "Ширина"
+
+#: core/includes/front/custom-localization.php:37
+msgid "Height"
+msgstr "Высота"
+
+#: core/includes/front/custom-localization.php:38
+msgid "Quality"
+msgstr "Качество"
+
+#: core/includes/front/custom-localization.php:39
+msgid "Formats"
+msgstr "Форматы"
+
+#: core/includes/front/custom-localization.php:43
+msgid "SMTP"
+msgstr "SMTP"
+
+#: core/includes/front/custom-localization.php:44
+msgid "Host"
+msgstr "Хост"
+
+#: core/includes/front/custom-localization.php:45
+msgid "Port"
+msgstr "Порт"
+
+#: core/includes/front/custom-localization.php:46
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: core/includes/front/custom-localization.php:47
+msgid "Password"
+msgstr "Пароль"
+
+#: core/includes/front/custom-localization.php:48
+msgid "From name"
+msgstr "Имя отправителя"
+
+#: core/includes/front/custom-localization.php:49
+msgid "Secure"
+msgstr "Безопасность"
+
+#: core/init.php:56
+msgid "Website under Maintenance"
+msgstr "Веб-сайт на техническом обслуживании"
+
+#: core/init.php:57
+msgid ""
+"We are performing scheduled maintenance. We will be back online shortly."
+msgstr ""
+"Мы проводим плановое техническое обслуживание. Мы вернемся онлайн в "
+"ближайшее время."
+
+#: core/init.php:197
+msgid "Please, install Advanced Custom Fields PRO version"
+msgstr "Пожалуйста, установите PRO версию Advanced Custom Fields"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:25
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:25
+msgid "Nav Menu"
+msgstr "Навигационное меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:26
+msgid "Relational"
+msgstr "Реляционный"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:49
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:44
+msgid "Return Value"
+msgstr "Возвращаемое значение"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:59
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:50
+msgid "Nav Menu Object"
+msgstr "Объект меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:60
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:51
+msgid "Nav Menu HTML"
+msgstr "HTML меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:61
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:52
+msgid "Nav Menu ID"
+msgstr "ID меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:69
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:59
+msgid "Menu Container"
+msgstr "Контейнер меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:70
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:60
+msgid "What to wrap the Menu's ul with (when returning HTML only)"
+msgstr "Обертка для меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:85
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:68
+msgid "Allow Null?"
+msgstr "Разрешить пустое значение?"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:95
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:73
+msgid "Yes"
+msgstr "Да"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:96
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:74
+msgid "No"
+msgstr "Нет"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:45
+msgid "Specify the returned value on front end"
+msgstr "Укажите возвращаемое значение"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
+msgid "All"
+msgstr "Все"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:134
+msgid "Choose one"
+msgstr "Выберите"
+
+#~ msgid "Main options"
+#~ msgstr "Главные параметры"
+
+#~ msgid "Update"
+#~ msgstr "Обновить"
+
+#~ msgid "Settings updated"
+#~ msgstr "Настройки обновлены"
+
+#~ msgid "User additional fields"
+#~ msgstr "Дополнительные поля пользователя"
+
+#~ msgid "Additional system options"
+#~ msgstr "Дополнительные параметры системы"
+
+#~ msgid "Your Phone"
+#~ msgstr "Ваш Телефон"
+
+#~ msgid "Options"
+#~ msgstr "Опции"

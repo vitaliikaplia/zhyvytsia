@@ -1,0 +1,677 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zhyvytsia\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-15 14:21+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
+"Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-SearchPath-0: core/lang\n"
+"X-Poedit-SearchPath-1: core\n"
+"X-Poedit-SearchPath-2: .\n"
+"X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: core/gutenberg.php:12
+msgid "Main"
+msgstr "Головний"
+
+#: core/gutenberg.php:23
+msgid "Hero"
+msgstr "Герой"
+
+#: core/gutenberg.php:30
+msgid "Banner"
+msgstr "Банер"
+
+#: core/gutenberg.php:37 core/includes/back/custom-post-types.php:9
+#: core/includes/back/custom-post-types.php:25
+#: core/includes/back/custom-post-types.php:26
+#: core/includes/back/custom-post-types.php:27
+msgid "Catalog"
+msgstr "Каталог"
+
+#: core/gutenberg.php:44
+msgid "Columns"
+msgstr "Колонки"
+
+#: core/gutenberg.php:51
+msgid "About"
+msgstr "Про нас"
+
+#: core/gutenberg.php:58 core/includes/back/custom-post-types.php:89
+#: core/includes/back/custom-post-types.php:105
+#: core/includes/back/custom-post-types.php:106
+#: core/includes/back/custom-post-types.php:107
+msgid "Feedback"
+msgstr "Відгуки"
+
+#: core/gutenberg.php:65
+msgid "Form"
+msgstr "Форма"
+
+#: core/includes/back/custom-dashboard-options-widget.php:9
+msgid "System tweaks"
+msgstr "Системні налаштування"
+
+#: core/includes/back/custom-dashboard-options-widget.php:20
+#: core/includes/front/custom-localization.php:12
+msgid "Maintenance mode"
+msgstr "Режим обслуговування"
+
+#: core/includes/back/custom-dashboard-options-widget.php:25
+#: core/includes/front/custom-localization.php:13
+msgid "Enable maintenance mode for anonymous users"
+msgstr "Режим обслуговування для анонімних користувачів"
+
+#: core/includes/back/custom-dashboard-options-widget.php:30
+msgid "Maintenance mode title"
+msgstr "Заголовок режиму обслуговування"
+
+#: core/includes/back/custom-dashboard-options-widget.php:35
+msgid "Maintenance mode text"
+msgstr "Текст режиму обслуговування"
+
+#: core/includes/back/custom-dashboard-options-widget.php:45
+#: core/includes/front/custom-localization.php:34
+msgid "Resize at upload"
+msgstr "Змінити розмір під час завантаження"
+
+#: core/includes/back/custom-dashboard-options-widget.php:50
+msgid "Enable resizing media while upload"
+msgstr "Увімкнути зміну розміру медіа під час завантаження"
+
+#: core/includes/back/custom-dashboard-options-widget.php:61
+msgid "Resize at upload formats"
+msgstr "Формати змінюваних зображень під час завантаження"
+
+#: core/includes/back/custom-dashboard-options-widget.php:67
+msgid "Resize upload width"
+msgstr "Максимальна ширина завантаженого зображення"
+
+#: core/includes/back/custom-dashboard-options-widget.php:73
+msgid "Resize upload height"
+msgstr "Максимальна висота завантаженого зображення"
+
+#: core/includes/back/custom-dashboard-options-widget.php:79
+msgid "Resize upload quality"
+msgstr "Максимальна якість для ресайзу"
+
+#: core/includes/back/custom-dashboard-options-widget.php:90
+msgid "SMTP options"
+msgstr "SMTP options"
+
+#: core/includes/back/custom-dashboard-options-widget.php:95
+msgid "Enable custom SMTP server"
+msgstr "Увімкнути власний сервер SMTP"
+
+#: core/includes/back/custom-dashboard-options-widget.php:100
+msgid "SMTP host"
+msgstr "SMTP хост"
+
+#: core/includes/back/custom-dashboard-options-widget.php:105
+msgid "SMTP port"
+msgstr "SMTP порт"
+
+#: core/includes/back/custom-dashboard-options-widget.php:110
+msgid "SMTP username"
+msgstr "SMTP користувач"
+
+#: core/includes/back/custom-dashboard-options-widget.php:115
+msgid "SMTP password"
+msgstr "SMTP пароль"
+
+#: core/includes/back/custom-dashboard-options-widget.php:120
+msgid "SMTP from name"
+msgstr "SMTP імʼя користувача"
+
+#: core/includes/back/custom-dashboard-options-widget.php:125
+msgid "Secure SMTP connection"
+msgstr "Безпечне з’єднання SMTP"
+
+#: core/includes/back/custom-dashboard-options-widget.php:135
+#: core/includes/front/custom-localization.php:40
+msgid "Custom code"
+msgstr "Власний код"
+
+#: core/includes/back/custom-dashboard-options-widget.php:140
+#: core/includes/front/custom-localization.php:41
+msgid "Header custom code"
+msgstr "Код в шапку"
+
+#: core/includes/back/custom-dashboard-options-widget.php:145
+#: core/includes/front/custom-localization.php:42
+msgid "Footer custom code"
+msgstr "Код в підвал"
+
+#: core/includes/back/custom-dashboard-options-widget.php:155
+msgid "Other options"
+msgstr "Інші параметри"
+
+#: core/includes/back/custom-dashboard-options-widget.php:160
+#: core/includes/front/custom-localization.php:33
+msgid "Google maps API key"
+msgstr "Ключ Google maps API"
+
+#: core/includes/back/custom-dashboard-options-widget.php:165
+#: core/includes/front/custom-localization.php:15
+msgid "Disable all updates"
+msgstr "Вимкнути всі оновлення"
+
+#: core/includes/back/custom-dashboard-options-widget.php:170
+#: core/includes/front/custom-localization.php:16
+msgid "Disable customizer"
+msgstr "Вимкнути кастомайзер"
+
+#: core/includes/back/custom-dashboard-options-widget.php:175
+#: core/includes/front/custom-localization.php:17
+msgid "Disable src set"
+msgstr "Вимкнути src set"
+
+#: core/includes/back/custom-dashboard-options-widget.php:180
+#: core/includes/front/custom-localization.php:18
+msgid "Remove default image sizes"
+msgstr "Вимкнути стандартні розміри зображень"
+
+#: core/includes/back/custom-dashboard-options-widget.php:185
+#: core/includes/front/custom-localization.php:19
+msgid "Disable core privacy tools"
+msgstr "Вимкнути інструменти конфіденціальності"
+
+#: core/includes/back/custom-dashboard-options-widget.php:190
+#: core/includes/front/custom-localization.php:20
+msgid "Enable CYR3LAT"
+msgstr "Активувати CYR3LAT"
+
+#: core/includes/back/custom-dashboard-options-widget.php:195
+#: core/includes/front/custom-localization.php:21
+msgid "Disable DNS prefetch"
+msgstr "Приховати DNS prefetch"
+
+#: core/includes/back/custom-dashboard-options-widget.php:200
+msgid "Disable Rest API for anonymous users"
+msgstr "Вимкнути Rest API для анонімних користувачів"
+
+#: core/includes/back/custom-dashboard-options-widget.php:205
+#: core/includes/front/custom-localization.php:23
+msgid "Disable Emojis"
+msgstr "Вимкнути Emoji"
+
+#: core/includes/back/custom-dashboard-options-widget.php:210
+#: core/includes/front/custom-localization.php:24
+msgid "Disable Embeds"
+msgstr "Вимкнути Embeds"
+
+#: core/includes/back/custom-dashboard-options-widget.php:215
+#: core/includes/front/custom-localization.php:25
+msgid "Disable dashboard widgets"
+msgstr "Приховати системні віджети консолі"
+
+#: core/includes/back/custom-dashboard-options-widget.php:220
+#: core/includes/front/custom-localization.php:26
+msgid "Hide admin top bar"
+msgstr "Вимкнути панель адміністратора"
+
+#: core/includes/back/custom-dashboard-options-widget.php:225
+#: core/includes/front/custom-localization.php:27
+msgid "Disable admin email verification"
+msgstr "Вимкнути E-mail верифікацію для адмінів"
+
+#: core/includes/back/custom-dashboard-options-widget.php:230
+#: core/includes/front/custom-localization.php:28
+msgid "Disable comments"
+msgstr "Вимкнути коментарі"
+
+#: core/includes/back/custom-dashboard-options-widget.php:235
+#: core/includes/front/custom-localization.php:29
+msgid "Delete child media"
+msgstr "Видаляти вкладення"
+
+#: core/includes/back/custom-dashboard-options-widget.php:240
+#: core/includes/front/custom-localization.php:30
+msgid "Enable HTML cache"
+msgstr "Увімкнути HTML кешування"
+
+#: core/includes/back/custom-dashboard-options-widget.php:245
+#: core/includes/front/custom-localization.php:31
+msgid "Enable minify"
+msgstr "Увімкнути мініфікацію"
+
+#: core/includes/back/custom-dashboard-options-widget.php:250
+#: core/includes/front/custom-localization.php:32
+msgid "Inline scripts and styles"
+msgstr "Інлайнові скрипти та стилі"
+
+#: core/includes/back/custom-dashboard-options-widget.php:255
+msgid "Hide ACF"
+msgstr "Приховати ACF"
+
+#: core/includes/back/custom-post-types.php:28
+msgid "Add item"
+msgstr "Додати позицію"
+
+#: core/includes/back/custom-post-types.php:29
+msgid "Add new item"
+msgstr "Додати нову позицію"
+
+#: core/includes/back/custom-post-types.php:30
+#: core/includes/back/custom-post-types.php:72
+#: core/includes/back/custom-post-types.php:73
+#: core/includes/back/custom-post-types.php:110
+#: core/includes/back/custom-post-types.php:152
+#: core/includes/back/custom-post-types.php:153
+msgid "Edit"
+msgstr "Редагувати"
+
+#: core/includes/back/custom-post-types.php:31
+msgid "Edit item"
+msgstr "Редагувати позицію"
+
+#: core/includes/back/custom-post-types.php:32
+msgid "New item"
+msgstr "Нова позиція"
+
+#: core/includes/back/custom-post-types.php:33
+#: core/includes/back/custom-post-types.php:75
+#: core/includes/back/custom-post-types.php:76
+#: core/includes/back/custom-post-types.php:113
+#: core/includes/back/custom-post-types.php:155
+#: core/includes/back/custom-post-types.php:156
+msgid "View"
+msgstr "Переглянути"
+
+#: core/includes/back/custom-post-types.php:34
+msgid "View item"
+msgstr "Переглянути позицію"
+
+#: core/includes/back/custom-post-types.php:35
+msgid "Search for items"
+msgstr "Пошук позицій"
+
+#: core/includes/back/custom-post-types.php:36
+msgid "No items found"
+msgstr "Позиції не знайдені"
+
+#: core/includes/back/custom-post-types.php:37
+msgid "No items found in trash"
+msgstr "Позицій в кошиику не знайдено"
+
+#: core/includes/back/custom-post-types.php:38
+msgid "Parent item"
+msgstr "Батьківська позииція"
+
+#: core/includes/back/custom-post-types.php:47
+#: core/includes/back/custom-post-types.php:67
+#: core/includes/back/custom-post-types.php:69
+msgid "Orders"
+msgstr "Замовлення"
+
+#: core/includes/back/custom-post-types.php:68
+msgid "Order"
+msgstr "Замовлення"
+
+#: core/includes/back/custom-post-types.php:70
+#: core/includes/back/custom-post-types.php:71
+#: core/includes/back/custom-post-types.php:150
+#: core/includes/back/custom-post-types.php:151
+msgid "Add"
+msgstr "Додати"
+
+#: core/includes/back/custom-post-types.php:74
+#: core/includes/back/custom-post-types.php:154
+msgid "New"
+msgstr "Нове"
+
+#: core/includes/back/custom-post-types.php:77
+msgid "Search for orders"
+msgstr "Пошук замовлень"
+
+#: core/includes/back/custom-post-types.php:78
+msgid "No orders found"
+msgstr "Замовлення не знайдені"
+
+#: core/includes/back/custom-post-types.php:79
+msgid "No orders found in trash"
+msgstr "Замовлення не знайдені"
+
+#: core/includes/back/custom-post-types.php:80
+#: core/includes/back/custom-post-types.php:160
+msgid "Parent"
+msgstr "Батьківське"
+
+#: core/includes/back/custom-post-types.php:108
+msgid "Add feedback"
+msgstr "Додати відгук"
+
+#: core/includes/back/custom-post-types.php:109
+msgid "Add new feedback"
+msgstr "Додати новий відгук"
+
+#: core/includes/back/custom-post-types.php:111
+msgid "Edit feedback"
+msgstr "Реедагувати відгук"
+
+#: core/includes/back/custom-post-types.php:112
+msgid "New feedback"
+msgstr "Новий відгук"
+
+#: core/includes/back/custom-post-types.php:114
+msgid "View feedback"
+msgstr "Переглянути відгук"
+
+#: core/includes/back/custom-post-types.php:115
+msgid "Search for feedback"
+msgstr "Пошук відгугків"
+
+#: core/includes/back/custom-post-types.php:116
+msgid "No feedback found"
+msgstr "Відгуки не знайдені"
+
+#: core/includes/back/custom-post-types.php:117
+msgid "No feedback found in trash"
+msgstr "Відгуки не знайдені"
+
+#: core/includes/back/custom-post-types.php:118
+msgid "Parent feedback"
+msgstr "Бітьківський відгук"
+
+#: core/includes/back/custom-post-types.php:127
+#: core/includes/back/custom-post-types.php:147
+#: core/includes/back/custom-post-types.php:148
+#: core/includes/back/custom-post-types.php:149
+msgid "Mail log"
+msgstr "Надсилання"
+
+#: core/includes/back/custom-post-types.php:157
+msgid "Search for mail logs"
+msgstr "Пошук надсилань"
+
+#: core/includes/back/custom-post-types.php:158
+msgid "No mail logs found"
+msgstr "Надслань не знайдено"
+
+#: core/includes/back/custom-post-types.php:159
+msgid "No mail logs found in trash"
+msgstr "Надслань не знайдено"
+
+#: core/includes/back/dashboard-footer.php:12
+msgid "Powered by"
+msgstr "Працює на"
+
+#: core/includes/back/dashboard-menu.php:51
+#: core/includes/back/dashboard-menu.php:52
+msgid "Blog"
+msgstr "Блоґ"
+
+#: core/includes/back/dashboard-menu.php:53
+msgid "Add new post"
+msgstr "Додати новий пост"
+
+#: core/includes/back/dashboard-update-assets-version.php:16
+msgid "Update theme version"
+msgstr "Оновити версію теми"
+
+#: core/includes/back/system-disable-customizer.php:109
+msgid "The Customizer is currently disabled."
+msgstr "Кастомайзер наразі вимкнено."
+
+#: core/includes/back/system-static-pages.php:8
+msgid "Sign up"
+msgstr "Реєстрація"
+
+#: core/includes/back/system-static-pages.php:12
+msgid "Login"
+msgstr "Вхід"
+
+#: core/includes/back/system-static-pages.php:16
+msgid "Email verify"
+msgstr "Верифікація Email"
+
+#: core/includes/back/system-static-pages.php:20
+msgid "Forgot password page"
+msgstr "Сторінка “Забув пароль”."
+
+#: core/includes/back/system-static-pages.php:24
+msgid "Profile page"
+msgstr "Сторінка профілю"
+
+#: core/includes/back/system-static-pages.php:28
+msgid "Reset your password page"
+msgstr "Сторінка скидання пароля"
+
+#: core/includes/back/system-static-pages.php:83
+msgid "Select"
+msgstr "Обрати"
+
+#: core/includes/back/system-thumbnails.php:13
+msgid "Thumbnail"
+msgstr "Мініатюра"
+
+#: core/includes/back/system-thumbnails.php:27
+msgid "None"
+msgstr "Немає"
+
+#: core/includes/back/system-users.php:8
+msgid "Client"
+msgstr "Клієнт"
+
+#: core/includes/front/custom-localization.php:8
+msgid "Your Email"
+msgstr "Ваш Email"
+
+#: core/includes/front/custom-localization.php:9
+msgid "Your password"
+msgstr "Ваш пароль"
+
+#: core/includes/front/custom-localization.php:10
+msgid "Title"
+msgstr "Заголовок"
+
+#: core/includes/front/custom-localization.php:11
+msgid "Text"
+msgstr "Текст"
+
+#: core/includes/front/custom-localization.php:14
+msgid "Website options"
+msgstr "Налаштування сайту"
+
+#: core/includes/front/custom-localization.php:22
+msgid "Disable Rest API"
+msgstr "Вимкнути Rest API"
+
+#: core/includes/front/custom-localization.php:35
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: core/includes/front/custom-localization.php:36
+msgid "Width"
+msgstr "Ширина"
+
+#: core/includes/front/custom-localization.php:37
+msgid "Height"
+msgstr "Висота"
+
+#: core/includes/front/custom-localization.php:38
+msgid "Quality"
+msgstr "Якість"
+
+#: core/includes/front/custom-localization.php:39
+msgid "Formats"
+msgstr "Формати"
+
+#: core/includes/front/custom-localization.php:43
+msgid "SMTP"
+msgstr "SMTP"
+
+#: core/includes/front/custom-localization.php:44
+msgid "Host"
+msgstr "Хост"
+
+#: core/includes/front/custom-localization.php:45
+msgid "Port"
+msgstr "Порт"
+
+#: core/includes/front/custom-localization.php:46
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: core/includes/front/custom-localization.php:47
+msgid "Password"
+msgstr "Пароль"
+
+#: core/includes/front/custom-localization.php:48
+msgid "From name"
+msgstr "Ім'я Від кого"
+
+#: core/includes/front/custom-localization.php:49
+msgid "Secure"
+msgstr "Захищено"
+
+#: core/init.php:56
+msgid "Website under Maintenance"
+msgstr "Веб-сайт на технічному обслуговуванні"
+
+#: core/init.php:57
+msgid ""
+"We are performing scheduled maintenance. We will be back online shortly."
+msgstr ""
+"Ми проводимо планове технічне обслуговування. Незабаром ми знову будемо "
+"онлайн."
+
+#: core/init.php:197
+msgid "Please, install Advanced Custom Fields PRO version"
+msgstr "Будь ласка, встановіть PRO версію Advanced Custom Fields"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:25
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:25
+msgid "Nav Menu"
+msgstr "Навігаційне меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:26
+msgid "Relational"
+msgstr "Реляційний"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:49
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:44
+msgid "Return Value"
+msgstr "Значення, що повертається"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:59
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:50
+msgid "Nav Menu Object"
+msgstr "Об'єкт меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:60
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:51
+msgid "Nav Menu HTML"
+msgstr "HTML меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:61
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:52
+msgid "Nav Menu ID"
+msgstr "ID меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:69
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:59
+msgid "Menu Container"
+msgstr "Контейнер меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:70
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:60
+msgid "What to wrap the Menu's ul with (when returning HTML only)"
+msgstr "Обгортка для меню"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:85
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:68
+msgid "Allow Null?"
+msgstr "Дозволити порожнє значення?"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:95
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:73
+msgid "Yes"
+msgstr "Так"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v4.php:96
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:74
+msgid "No"
+msgstr "Ні"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:45
+msgid "Specify the returned value on front end"
+msgstr "Вкажіть значення, що повертається"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
+msgid "All"
+msgstr "Усі"
+
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:134
+msgid "Choose one"
+msgstr "Виберіть"
+
+#: core/libs/libraries.php:30 core/libs/libraries.php:37
+#: core/libs/libraries.php:38
+msgid "Options"
+msgstr "Опції"
+
+#: page-login.php.php:50
+msgid "Your secret 2FA code"
+msgstr "Ваш код двохфакторної автентифікації"
+
+#: page-login.php.php:56 page-login.php.php:60
+msgid "2FA Code"
+msgstr "Код двохфакторної автентифікації"
+
+#: page-login.php.php:107 page-login.php.php:115
+msgid "Email address/password do not match."
+msgstr "Адреса електронної пошти/пароль не збігаються."
+
+#: page-login.php.php:111
+msgid "Password is not valid!"
+msgstr "Пароль недійсний!"
+
+#: page-login.php.php:119
+msgid "Email is not valid!"
+msgstr "Email is not valid!"
+
+#: page-login.php.php:123
+msgid "Hacker?"
+msgstr "Хакер?"
+
+#~ msgid "First screen"
+#~ msgstr "Перший екран"
+
+#~ msgid "Second screen"
+#~ msgstr "Другий екран"
+
+#~ msgid "Disable Gutenberg editor everywhere"
+#~ msgstr "Вимкніть редактор Gutenberg всюди"
+
+#~ msgid "Disable Gutenberg editor for Blog"
+#~ msgstr "Вимкнути редактор Gutenberg для блогу"
+
+#~ msgid "Main options"
+#~ msgstr "Налаштування сайту"
+
+#~ msgid "Update"
+#~ msgstr "Оновити"
+
+#~ msgid "Settings updated"
+#~ msgstr "Налаштування оновлено"
+
+#~ msgid "User additional fields"
+#~ msgstr "Додаткові поля користувача"
+
+#~ msgid "Additional system options"
+#~ msgstr "Додаткові параметри системи"
+
+#~ msgid "Your Phone"
+#~ msgstr "Ваш Телефон"

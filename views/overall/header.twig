@@ -1,0 +1,59 @@
+<header>
+    <div class="inner">
+        <div class="left">
+            {% if general_fields.header.logo_label %}
+            <p class="logo">
+                {% if not fn('is_front_page') %}
+                <a href="{{ site.url }}">
+                    {% endif %}
+                    {{ general_fields.header.logo_label }}
+                    {% if not fn('is_front_page') %}
+                </a>
+                {% endif %}
+            </p>
+            {% endif %}
+        </div>
+        <div class="right">
+            {% if general_fields.header.menu.html %}
+            <nav>
+                <ul>
+                    {{ general_fields.header.menu.html }}
+                </ul>
+            </nav>
+            {% endif %}
+            {% if general_fields.header.phones is iterable %}
+            <div class="phones">
+                <svg>
+                    <use href="{{ svg_sprite }}#iconCall"></use>
+                </svg>
+                <p>
+                    <a href="tel:{{ general_fields.header.phones[0].phone | fix_phone }}">
+                        {{ general_fields.header.phones[0].phone | nice_phone }}
+                    </a>
+                </p>
+                <ul>
+                {% for key,val in general_fields.header.phones %}
+                {% if key > 0 %}
+                <li>
+                    <a href="tel:{{ val.phone | fix_phone }}">
+                        {{ val.phone | nice_phone }}
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <button class="cart">
+                <svg>
+                    <use href="{{ svg_sprite }}#iconCart"></use>
+                </svg>
+            </button>
+            <button class="account">
+                <svg>
+                    <use href="{{ svg_sprite }}#{% if user %}iconAccount{% else %}iconLogin{% endif %}"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>

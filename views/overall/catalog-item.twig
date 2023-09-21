@@ -1,0 +1,30 @@
+{% set post = Post(val) %}
+{% set rating = fn('get_catalog_item_rating', val) %}
+{% set price = post.meta('price') %}
+<div class="item">
+    <a href="{{ post.link }}">
+    {{ post.meta('photo') | picture }}
+    </a>
+    <p class="title">
+        <a href="{{ post.link }}">
+            {{ post.title }}
+        </a>
+    </p>
+    {% include 'overall/rating.twig' %}
+    <div class="columns">
+        <div class="col">
+            <p class="price">
+                <span>{{ price }}</span>
+                <span>₴</span>
+            </p>
+        </div>
+        <div class="col">
+            <button>
+                <svg>
+                    <use href="{{ svg_sprite }}#iconCart"></use>
+                </svg>
+                <span>Купити</span>
+            </button>
+        </div>
+    </div>
+</div>

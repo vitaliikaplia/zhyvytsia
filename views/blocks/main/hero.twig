@@ -1,0 +1,44 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <h1 class="title scroll-show" data-greetings="{{ fields.suffix | greetings }}">
+            <span class="origin">{{ fields.title }}</span>
+            <span class="suffix"></span>
+        </h1>
+        {% endif %}
+        {% if fields.text %}
+        <h1 class="text typo scroll-show">{{ fields.text }}</h1>
+        {% endif %}
+        {% if fields.buttons is iterable %}
+        <div class="buttons">
+            {% for key,val in fields.buttons %}
+            {% if val.button.title and val.button.url %}
+            <p class="overallButton {{ val.type }} scroll-show">
+                <a href="{{ val.button.url }}" target="{{ val.button.target }}">
+                    <span>{{ val.button.title }}</span>
+                    {% if val.icon %}
+                    <svg class="icon-{{ val.icon }}">
+                        <use href="{{ svg_sprite }}#buttonIcon-{{ val.icon }}"></use>
+                    </svg>
+                    {% endif %}
+                </a>
+            </p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <video autoplay loop muted playsinline>
+        {% if fields.video.mp4.url %}<source src="{{ fields.video.mp4.url }}" type="video/mp4">{% endif %}
+        {% if fields.video.webm.url %}<source src="{{ fields.video.webm.url }}" type="video/webm">{% endif %}
+        {% if fields.video.ogv.url %}<source src="{{ fields.video.ogv.url }}" type="video/ogv">{% endif %}
+        {% if fields.video.m3u8.url and fields.video.ts.url %}<source src="{{ fields.video.m3u8.url }}" type="application/x-mpegURL">{% endif %}
+    </video>
+    <span class="mouseScrollDown"></span>
+</div>
+
+{% endblock %}

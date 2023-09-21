@@ -1,0 +1,21 @@
+<div class="ratingWrapper">
+    <div class="rating">
+        <span class="layer gray" style="width: {{ 100-(rating.rate*10) }}%;">
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+        </span>
+            <span class="layer yellow" style="width: {{ rating.rate*10 }}%;">
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+        </span>
+    </div>
+    <div class="count">
+        <p><a href="{{ rating.link }}">{{ rating.label }}</a></p>
+    </div>
+</div>

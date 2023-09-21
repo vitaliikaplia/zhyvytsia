@@ -1,0 +1,11 @@
+<label for="{{ label }}">
+    <span class="label">{{ description }}</span>
+{#    <input type="text" class="widget-options-text" name="{{ label }}" id="{{ label }}" value="{{ value }}" autocomplete="off" />#}
+    {% if val.options is iterable %}
+    <select class="widget-options-select-multiple" name="{{ label }}" id="{{ label }}" multiple>
+        {% for o_key,o_val in val.options %}
+        <option value="{{ o_key }}"{% if o_key in value %} selected="selected"{% endif %}>{{ o_val }}</option>
+        {% endfor %}
+    </select>
+    {% endif %}
+</label>

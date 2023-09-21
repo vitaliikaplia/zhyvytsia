@@ -1,0 +1,25 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.short_catalog_desc %}
+        <div class="typo">
+            {{ fields.short_catalog_desc }}
+        </div>
+        {% endif %}
+        {% if fields.goods is iterable %}
+        <div class="goods columns-{{ fields.columns }}">
+            {% for key,val in fields.goods %}
+            {% include 'overall/catalog-item.twig' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

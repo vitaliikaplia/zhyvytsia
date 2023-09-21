@@ -1,0 +1,139 @@
+{% if general_fields.cookie_popup.title and general_fields.cookie_popup.message and general_fields.cookie_popup.button %}
+    <div class="cookiePopupWrapper">
+        <div class="cookiePopupInner">
+            <div class="cookiePopup">
+                {% if general_fields.cookie_popup.title %}
+                    <p class="title">{{ general_fields.cookie_popup.title }}</p>
+                {% endif %}
+                {% if general_fields.cookie_popup.message %}
+                    <div class="message typo">{{ general_fields.cookie_popup.message }}</div>
+                {% endif %}
+                {% if general_fields.cookie_popup.button %}
+                    <p class="overallButton primary">
+                        <a href="#close" class="close">
+                            <span>{{ general_fields.cookie_popup.button }}</span>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+<footer>
+    <div class="inner">
+        <div class="line c4">
+            <div class="col">
+                {% if general_fields.header.logo_label %}
+                <p class="logo">
+                    {% if not fn('is_front_page') %}
+                    <a href="{{ site.url }}">
+                        {% endif %}
+                        {{ general_fields.footer.logo_label }}
+                        {% if not fn('is_front_page') %}
+                    </a>
+                    {% endif %}
+                </p>
+                {% endif %}
+                {% if general_fields.footer.socials_text %}
+                <div class="typo socialsText">
+                    {{ general_fields.footer.socials_text }}
+                </div>
+                {% endif %}
+                {% if general_fields.footer.socials is iterable %}
+                <ul class="socials">
+                    {% for key,val in general_fields.footer.socials %}
+                    <li class="{{ val.type }}">
+                        <a href="{{ val.link }}" target="_blank">
+                            <svg>
+                                <use href="{{ svg_sprite }}#iconSoc-{{ val.type }}"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if general_fields.footer.column_2_title %}
+                <p class="menuTitle">
+                    {{ general_fields.footer.column_2_title }}
+                </p>
+                {% endif %}
+                {% if general_fields.footer.menu_2.html %}
+                <ul class="menu">
+                    {{ general_fields.footer.menu_2.html }}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if general_fields.footer.column_3_title %}
+                <p class="menuTitle">
+                    {{ general_fields.footer.column_3_title }}
+                </p>
+                {% endif %}
+                {% if general_fields.footer.menu_3.html %}
+                <ul class="menu">
+                    {{ general_fields.footer.menu_3.html }}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if general_fields.footer.column_4_title %}
+                <p class="menuTitle">
+                    {{ general_fields.footer.column_4_title }}
+                </p>
+                {% endif %}
+                {% if general_fields.footer.email %}
+                <p class="email">
+                    <svg>
+                        <use href="{{ svg_sprite }}#iconEmail"></use>
+                    </svg>
+                    <a href="mailto:{{ general_fields.footer.email }}" target="_blank">
+                        {{ general_fields.footer.email }}
+                    </a>
+                </p>
+                {% endif %}
+                {% if general_fields.footer.address %}
+                <div class="address">
+                    <svg>
+                        <use href="{{ svg_sprite }}#iconAddress"></use>
+                    </svg>
+                    <div class="typo">
+                        {{ general_fields.footer.address }}
+                    </div>
+                </div>
+                {% endif %}
+                {% if general_fields.footer.phones is iterable %}
+                <div class="phones">
+                    <svg>
+                        <use href="{{ svg_sprite }}#iconCall"></use>
+                    </svg>
+                    <ul>
+                    {% for key,val in general_fields.footer.phones %}
+                    <li>
+                        <a href="tel:{{ val.phone | fix_phone }}" target="_blank">
+                            {{ val.phone | nice_phone }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="line">
+            <div class="col">
+                <p class="copy">
+                    {{ general_fields.footer.copy | shortcodes }}
+                </p>
+            </div>
+            <div class="col">
+                <p class="developer">
+                    <a href="https://vitaliikaplia.com/" target="_blank">
+                        Розробка сайту
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

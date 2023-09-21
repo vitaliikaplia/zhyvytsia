@@ -1,0 +1,24 @@
+{% if tweaks is iterable %}
+<div class="widget-options-inner">
+    <ul class="tweakTabs">
+    {% for key,val in tweaks %}
+    {% if val.type == 'tab_start' %}
+    <li class="{% if key == 0 %}active{% endif %}"><a href="#{{ val.label }}">{{ val.description }}</a></li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    <div class="tweakGroups">
+        {% for key,val in tweaks %}
+            {% if val.type == 'tab_start' %}
+            <div class="group{% if key == 0 %} active{% endif %}">
+            {% endif %}
+            {% if val.type != 'tab_start' and val.type != 'tab_end' %}
+            {% include 'dashboard/tweaks/field-' ~ val.type ~ '.twig' with {'label': val.label, 'description': val.description, 'value': fn('get_option', val.label)} %}
+            {% endif %}
+            {% if val.type == 'tab_end' %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

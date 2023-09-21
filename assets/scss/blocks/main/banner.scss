@@ -1,0 +1,70 @@
+/* banner
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-banner{
+  background-color: #f2aa3c;
+  overflow: hidden;
+  
+  .customBlock{
+    padding: 60px 120px;
+
+    .typo{
+      text-align: center;
+      max-width: 1140px;
+      margin: 0 auto;
+      color: #264034;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      filter: drop-shadow(0px 1px 0px rgba(white,.5));
+
+      @include transition(all,1s);
+      @include opacity(0);
+      @include transform(scale(.75));
+    }
+  }
+
+  &:before,
+  &:after{
+    content: '🎉';
+    font-size: 88px;
+    line-height: 1;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    margin-top: -44px;
+    pointer-events: none;
+    filter: drop-shadow(0px 1px 0px rgba(white,.5));
+    @include transition(all,1s);
+    @include opacity(0);
+  }
+  &:before{
+    @include transform(translateX(100px) translateZ(2px));
+    right: 40px;
+  }
+  &:after{
+    @include transform(translateX(-100px) translateZ(2px));
+    left: 40px;
+  }
+
+  &.show,
+  .wp-admin &,
+  .wp-embed-responsive &{
+    .customBlock{
+      .typo{
+        @include opacity(1);
+        @include transform(scale(1));
+      }
+    }
+    &:before{
+      @include transform(translateX(0) translateZ(2px));
+      @include opacity(1);
+    }
+    &:after{
+      @include transform(translateX(0) translateZ(2px));
+      @include opacity(1);
+    }
+  }
+}

@@ -1,0 +1,155 @@
+/* hero
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-hero{
+  .customBlock{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 740px;
+    color: #fff;
+    min-height: calc(100vh - 102px);
+    text-align: center;
+    padding-bottom: 120px;
+
+    .title{
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 28px;
+      filter: drop-shadow(0px 2px 0px rgba(black,.5));
+      min-height: 116px;
+      max-width: 680px;
+
+      @include transition(all,.35s);
+      @include opacity(0);
+      @include transform(translateY(30px));
+
+      &.show,
+      .wp-admin &,
+      .wp-embed-responsive &{
+        @include opacity(1);
+        @include transform(translateY(0px));
+      }
+
+      .origin{
+        display: block;
+      }
+
+      .suffix{
+        font-size: 42px;
+      }
+    }
+
+    .text{
+      font-size: 18px;
+      margin-bottom: 48px;
+      filter: drop-shadow(0px 2px 0px rgba(black,.15));
+
+      @include transition(all,.35s);
+      @include opacity(0);
+      @include transform(translateY(30px));
+
+      &.show,
+      .wp-admin &,
+      .wp-embed-responsive &{
+        @include opacity(1);
+        @include transform(translateY(0px));
+      }
+    }
+
+    .buttons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .overallButton{
+        margin-right: 20px;
+
+        @include transition(all,.35s);
+        @include opacity(0);
+        @include transform(translateY(30px));
+
+        &.show,
+        .wp-admin &,
+        .wp-embed-responsive &{
+          @include opacity(1);
+          @include transform(translateY(0px));
+        }
+
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 8;
+    @include transform(translateZ(8px));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#000,.4);
+  }
+
+  video{
+    display: block;
+    position: absolute;
+    z-index: 6;
+    @include transform(translateZ(6px));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mouseScrollDown{
+    position: absolute;
+    z-index: 10;
+    @include transform(translateZ(10px));
+    bottom: 34px;
+    left: 50%;
+    height: 42px;
+    width: 28px;
+    margin-left: -14px;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      border-width: 2px;
+      border-style: solid;
+      box-sizing: border-box;
+      border-color: white;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      margin-left: -2px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      box-sizing: border-box;
+      opacity: 0;
+      animation: mouseButton 1.2s ease-in-out infinite;
+      background-color: white;
+    }
+  }
+}
