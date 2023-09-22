@@ -1,7 +1,7 @@
 {% set post = Post(val) %}
 {% set rating = fn('get_catalog_item_rating', val) %}
 {% set price = post.meta('price') %}
-<div class="item">
+<div class="item scroll-show">
     <a href="{{ post.link }}">
     {{ post.meta('photo') | picture }}
     </a>
@@ -10,7 +10,9 @@
             {{ post.title }}
         </a>
     </p>
+    {% if general_fields.shop.show_rating %}
     {% include 'overall/rating.twig' %}
+    {% endif %}
     <div class="columns">
         <div class="col">
             <p class="price">

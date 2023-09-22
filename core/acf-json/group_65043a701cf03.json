@@ -676,6 +676,61 @@
             ]
         },
         {
+            "key": "field_650d0883ec018",
+            "label": "Магазин",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_650d0897ec019",
+            "label": "",
+            "name": "shop",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "no_label",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_650d08c6ec01d",
+                    "label": "Відображати рейтинг в карточці товару",
+                    "name": "show_rating",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                }
+            ]
+        },
+        {
             "key": "field_65043c919c27b",
             "label": "Кукі поп-ап",
             "name": "",
@@ -982,5 +1037,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1694911913
+    "modified": 1695353166
 }

@@ -4,8 +4,20 @@
 
 <div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
     <div class="customBlock">
-        {{ block.name }}
+        {% if fields.title %}
+        <p class="title scroll-show">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.feedback is iterable %}
+        <div class="feedbackWrapper">
+            <div class="feedback swiper">
+                <div class="swiper-wrapper">
+                    {% for key,val in fields.feedback %}
+                    {% include 'overall/feedback-item.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
-
 {% endblock %}

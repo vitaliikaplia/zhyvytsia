@@ -4,7 +4,122 @@
 @import "../../mixins";
 
 .main-feedback{
+  padding: 0;
 
   .customBlock{
+    padding: 60px 0;
+    max-width: 100%;
+
+    & > .title{
+      font-size: 38px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+      max-width: 1140px;
+      margin: 0 auto 62px;
+      padding: 0 40px;
+
+      @include transition(all,.35s);
+      @include opacity(0);
+      @include transform(translateY(30px));
+
+      &.show,
+      .wp-admin &,
+      .wp-embed-responsive &{
+        @include opacity(1);
+        @include transform(translateY(0px));
+      }
+    }
+
+    .feedbackWrapper{
+      .feedback{
+        padding: 0 40px;
+
+        .item{
+          text-align: center;
+
+          picture{
+            display: block;
+            font-size: 0;
+            margin-bottom: 18px;
+
+            img{
+              width: 168px;
+              height: 168px;
+              border-radius: 50%;
+              object-fit: cover;
+              margin: 0;
+              padding: 0;
+            }
+          }
+
+          .title{
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 4px;
+          }
+
+          .rating{
+            display: block;
+            position: relative;
+            width: 88px;
+            height: 16px;
+            margin: 0 auto 20px;
+
+            .layer{
+              display: block;
+              position: absolute;
+              top: 0;
+              font-size: 0;
+              overflow: hidden;
+              white-space: nowrap;
+
+              svg{
+                display: inline-block;
+                vertical-align: top;
+                width: 16px;
+                height: 16px;
+                margin: 0 1px;
+
+                &:first-child{
+                  margin-left: 0;
+                }
+                &:last-child{
+                  margin-right: 0;
+                }
+              }
+
+              &.white{
+                right: 0;
+                text-align: right;
+                direction: rtl;
+                z-index: 2;
+                @include transform(translateZ(2px));
+
+                svg{
+                  fill: #fff;
+                }
+              }
+
+              &.yellow{
+                left: 0;
+                text-align: left;
+                z-index: 4;
+                @include transform(translateZ(4px));
+
+                svg{
+                  fill: #F1C40F;
+                }
+              }
+            }
+          }
+
+          .typo{
+            font-size: 15px;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
   }
 }

@@ -2,6 +2,7 @@
 -------------------------------------------------------------- */
 
 @import "mixins";
+@import "plugins/swiper.min";
 @import "fonts";
 @import "extend";
 
@@ -12,6 +13,8 @@
   margin: 0;
   box-sizing: border-box;
   width: 100%;
+  background-color: #224A30;
+  color: #fff;
 
   /* title area */
   & > .edit-post-visual-editor__post-title-wrapper{

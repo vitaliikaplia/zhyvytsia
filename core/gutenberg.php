@@ -66,6 +66,13 @@ $blocks = array(
         "category" => "main",
         'icon' => 'URL',
         'defaults' => ''
+    ),
+    array(
+        "name" => "blog",
+        "label" => __( "Blog", TEXTDOMAIN ),
+        "category" => "main",
+        'icon' => 'URL',
+        'defaults' => ''
     )
 );
 

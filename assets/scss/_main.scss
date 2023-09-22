@@ -38,6 +38,7 @@ header{
 	padding: 0 40px;
 	background-color: #224A30;
 	@include transition(all, .2s);
+	box-shadow: 0 0 8px rgba(#000,.25);
 
 	.inner{
 		position: relative;

@@ -33,3 +33,21 @@
 
     });
 })(jQuery);
+
+/**
+ * JS inside blocks
+ */
+if( window.acf ) {
+
+    window.acf.addAction( 'render_block_preview', function( elem, blockDetails ) {
+
+        if(blockDetails.name == 'acf/main-feedback'){
+            run_feedback_slider(elem.get(0).querySelector('.feedbackWrapper .feedback'));
+        }
+
+        elem.find('a,button').click(function(){
+            return false;
+        });
+
+    } );
+}

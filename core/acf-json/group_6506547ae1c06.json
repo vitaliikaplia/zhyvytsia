@@ -139,8 +139,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "primary": "Головна",
-                        "secondary": "Другорядна"
+                        "white": "Біла",
+                        "green": "Зелена",
+                        "orange": "Помаранчева"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -195,11 +196,11 @@
             "layout": "vertical"
         },
         {
-            "key": "field_65065919b2595",
-            "label": "Колір фону",
-            "name": "color_bg",
+            "key": "field_650d09b44d544",
+            "label": "Тема",
+            "name": "theme",
             "aria-label": "",
-            "type": "color_picker",
+            "type": "button_group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -208,27 +209,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "#224A30",
-            "enable_opacity": 0,
-            "return_format": "string"
-        },
-        {
-            "key": "field_6506593db2596",
-            "label": "Колір тексту",
-            "name": "color_text",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
+            "choices": {
+                "gr": "Зелений",
+                "wh": "Білий"
             },
-            "default_value": "#FFFFFF",
-            "enable_opacity": 0,
-            "return_format": "string"
+            "default_value": "gr",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "vertical"
         }
     ],
     "location": [
@@ -249,5 +237,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1694915009
+    "modified": 1695353322
 }

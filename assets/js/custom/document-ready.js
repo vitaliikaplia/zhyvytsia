@@ -37,5 +37,11 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** expert areas */
+        const feedbackAllSliders = document.querySelectorAll('.feedbackWrapper .feedback');
+        feedbackAllSliders.forEach(function (slider) {
+            run_feedback_slider(slider);
+        });
+
     });
 })(jQuery);

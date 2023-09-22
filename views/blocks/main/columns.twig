@@ -2,9 +2,41 @@
 
 {% block content %}
 
-<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+<div class="customBlockWrapper {{ block_class }} scheme-{{ fields.scheme }} theme-{{ fields.theme }}" id="{{ block.id }}">
     <div class="customBlock">
-        {{ block.name }}
+        <div class="col">
+            {% if fields.image %}
+            {{ fields.image|picture }}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if fields.title %}
+            <p class="title scroll-show">{{ fields.title }}</p>
+            {% endif %}
+            {% if fields.text %}
+            <div class="text typo scroll-show">
+                {{ fields.text }}
+            </div>
+            {% endif %}
+            {% if fields.buttons is iterable %}
+            <div class="buttons">
+                {% for key,val in fields.buttons %}
+                {% if val.button.title and val.button.url %}
+                    <p class="overallButton {{ val.type }} inline scroll-show">
+                        <a href="{{ val.button.url }}" target="{{ val.button.target }}">
+                            <span>{{ val.button.title }}</span>
+                            {% if val.icon %}
+                            <svg class="icon-{{ val.icon }}">
+                                <use href="{{ svg_sprite }}#buttonIcon-{{ val.icon }}"></use>
+                            </svg>
+                            {% endif %}
+                        </a>
+                    </p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 

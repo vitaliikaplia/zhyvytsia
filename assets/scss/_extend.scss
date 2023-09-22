@@ -100,7 +100,7 @@
 				top: 11px;
 				left: 2px;
 				box-sizing: border-box;
-				background-color: black;
+				background-color: currentColor;
 				width: 6px;
 				height: 6px;
 				@include border-radius(50%);
@@ -136,7 +136,7 @@
 				left: 0;
 				background-color: transparent;
 				box-sizing: border-box;
-				color: #000;
+				color: currentColor;
 				font-weight: 600;
 			}
 

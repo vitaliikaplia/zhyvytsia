@@ -1,0 +1,27 @@
+{% set post = Post(val) %}
+{% set rating = post.meta('rate') %}
+<div class="swiper-slide">
+    <div class="item">
+        {{ post.meta('photo') | picture }}
+        <p class="title">{{ post.title }}</p>
+        <div class="rating">
+        <span class="layer white" style="width: {{ 100-(rating*10) }}%;">
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+        </span>
+            <span class="layer yellow" style="width: {{ rating*10 }}%;">
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+            <svg><use xlink:href="{{ svg_sprite }}#iconStar"></use></svg>
+        </span>
+        </div>
+        <div class="typo">
+            {{ post.meta('feedback') }}
+        </div>
+    </div>
+</div>

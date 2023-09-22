@@ -17,6 +17,17 @@
       text-align: center;
       line-height: 1.2;
       margin-bottom: 28px;
+
+      @include transition(all,.35s);
+      @include opacity(0);
+      @include transform(translateY(30px));
+
+      &.show,
+      .wp-admin &,
+      .wp-embed-responsive &{
+        @include opacity(1);
+        @include transform(translateY(0px));
+      }
     }
 
     .typo{
@@ -24,6 +35,17 @@
       max-width: 640px;
       margin: 0 auto 54px;
       line-height: 1.6;
+
+      @include transition(all,.35s);
+      @include opacity(0);
+      @include transform(translateY(30px));
+
+      &.show,
+      .wp-admin &,
+      .wp-embed-responsive &{
+        @include opacity(1);
+        @include transform(translateY(0px));
+      }
     }
 
     .goods{
@@ -38,6 +60,17 @@
         border-radius: 8px;
         padding: 12px;
         transition: all,.35s;
+
+        @include transition(all,.35s);
+        @include opacity(0);
+        @include transform(translateY(30px));
+
+        &.show,
+        .wp-admin &,
+        .wp-embed-responsive &{
+          @include opacity(1);
+          @include transform(translateY(0px));
+        }
 
         picture{
           font-size: 0;
