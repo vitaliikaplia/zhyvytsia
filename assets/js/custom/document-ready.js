@@ -43,5 +43,18 @@ window.addEventListener("DOMContentLoaded", function (){
             run_feedback_slider(slider);
         });
 
+        /** about */
+        const aboutAllSliders = document.querySelectorAll('.aboutGalleryWrapper .aboutGallery');
+        aboutAllSliders.forEach(function (slider) {
+            run_about_slider(slider);
+        });
+
+        /** custom form */
+        if($('.main-form .customBlock form').length){
+            $('.main-form .customBlock form').each(function(){
+                custom_form_submit($(this));
+            });
+        }
+
     });
 })(jQuery);

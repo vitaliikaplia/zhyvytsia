@@ -4,7 +4,76 @@
 
 <div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
     <div class="customBlock">
-        {{ block.name }}
+        {% if fields.title %}
+        <p class="title scroll-show">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.text %}
+        <div class="typo scroll-show">
+        {{ fields.text }}
+        </div>
+        {% endif %}
+        <form>
+            <input type="hidden" name="action" value="custom_form_submit">
+            <input type="hidden" name="form_name" id="form_name" value="">
+            <input type="hidden" name="form_url" id="form_url" value="">
+            {% set secret = [] %}
+            {% set secret = secret | merge([{ send_success_title: fields.send_success_title }]) %}
+            {% set secret = secret | merge([{ send_success_text: fields.send_success_text }]) %}
+            {% set secret = secret | merge([{ email_recipients: fields.email_recipients }]) %}
+            {% if secret is iterable %}
+            <input type="hidden" name="secret" value="{{ fn('custom_form_secret', secret) }}">
+            {% endif %}
+            {% if fields.form is iterable %}
+            <div class="fields">
+                {% for key,val in fields.form %}
+
+                    {% if val.acf_fc_layout == 'text' %}
+                    <label>
+                        <p>{{ val.label }}</p>
+                        <input type="text" name="{{ val.label }}" placeholder="{{ val.label }}" value="" class="{% if val.mandatory_field %}required{% endif %}">
+                    </label>
+                    {% endif %}
+
+                    {% if val.acf_fc_layout == 'email' %}
+                    <label>
+                        <p>{{ val.label }}</p>
+                        <input type="email" name="{{ val.label }}" placeholder="{{ val.label }}" value="" class="email {% if val.mandatory_field %}required{% endif %}">
+                    </label>
+                    {% endif %}
+
+                    {% if val.acf_fc_layout == 'message' %}
+                    <label>
+                        <p>{{ val.label }}</p>
+                        <textarea name="{{ val.label }}" placeholder="{{ val.label }}" class="{% if val.mandatory_field %}required{% endif %}"></textarea>
+                    </label>
+                    {% endif %}
+
+                    {% if val.acf_fc_layout == 'select' %}
+                    <label>
+                        <p>{{ val.label }}</p>
+                        <select name="{{ val.label }}" class="{% if val.mandatory_field %}required{% endif %}">
+                            <option value="null" style="color: #9d9d9d;" disabled selected>{{ val.label }}</option>
+                            {{ val.select | to_options }}
+                        </select>
+                    </label>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if fields.send_button_label %}
+            <div class="submitWrapper">
+                <button class="submit">
+                    <span>{{ fields.send_button_label }}</span>
+                    <svg class="icon-mail">
+                        <use href="{{ svg_sprite }}#buttonIcon-contact"></use>
+                    </svg>
+                </button>
+            </div>
+            {% endif %}
+            <input type="submit" style="display: none;">
+        </form>
     </div>
 </div>
 

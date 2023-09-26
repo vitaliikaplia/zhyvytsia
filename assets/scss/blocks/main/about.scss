@@ -6,9 +6,140 @@
 .main-about{
   background-color: white;
   color: black;
+  padding: 0 !important;
 
   .customBlock{
-    padding: 60px 0;
-    max-width: 1140px;
+    padding: 60px 0 0;
+
+    .topWrapper{
+      padding: 0 40px;
+      margin-bottom: 40px;
+
+      .top{
+        display: flex;
+        margin: 0 auto 32px;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1140px;
+
+        .col{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .title{
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 1.2;
+
+        @include transition(all,.35s);
+        @include opacity(0);
+        @include transform(translateY(30px));
+
+        &.show,
+        .wp-admin &,
+        .wp-embed-responsive &{
+          @include opacity(1);
+          @include transform(translateY(0px));
+        }
+      }
+
+      .socTitle{
+        font-size: 20px;
+        font-weight: 500;
+        margin-right: 18px;
+
+        @include transition(all,.35s);
+        @include opacity(0);
+        @include transform(translateY(30px));
+
+        &.show,
+        .wp-admin &,
+        .wp-embed-responsive &{
+          @include opacity(1);
+          @include transform(translateY(0px));
+        }
+      }
+
+      .socials{
+        display: flex;
+        list-style: none;
+
+        @include transition(all,.35s);
+        @include opacity(0);
+        @include transform(translateY(30px));
+
+        &.show,
+        .wp-admin &,
+        .wp-embed-responsive &{
+          @include opacity(1);
+          @include transform(translateY(0px));
+        }
+
+        li{
+          margin-right: 20px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+
+          a{
+            display: block;
+            font-size: 0;
+
+            svg{
+              width: 28px;
+              height: 28px;
+              fill: #224A30;
+              transition: all,.2s;
+            }
+
+            &:hover{
+              svg{
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .textWrapper{
+      padding: 0 40px;
+      margin-bottom: 38px;
+
+      .text{
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 1140px;
+      }
+    }
+
+    .aboutGalleryWrapper{
+      .aboutGallery{
+        .item{
+          a{
+            width: 100%;
+            height: auto;
+            display: block;
+            font-size: 0;
+
+            picture{
+              img{
+                display: block;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

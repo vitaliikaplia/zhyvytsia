@@ -4,10 +4,10 @@
 @import "../../mixins";
 
 .main-feedback{
-  padding: 0;
+  padding: 0 !important;
 
   .customBlock{
-    padding: 60px 0;
+    padding: 60px 0 40px;
     max-width: 100%;
 
     & > .title{
@@ -35,7 +35,7 @@
       user-select: none;
 
       .feedback{
-        padding: 0 40px;
+        padding: 0 40px 80px;
 
         .item{
           text-align: left;
@@ -135,6 +135,16 @@
             font-size: 15px;
             line-height: 1.5;
           }
+        }
+      }
+
+      .swiper-pagination-bullet{
+        width: 12px;
+        height: 12px;
+        margin: 0 9px;
+
+        &-active{
+          background-color: #fff;
         }
       }
     }

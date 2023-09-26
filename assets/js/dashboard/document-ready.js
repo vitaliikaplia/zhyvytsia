@@ -45,6 +45,10 @@ if( window.acf ) {
             run_feedback_slider(elem.get(0).querySelector('.feedbackWrapper .feedback'));
         }
 
+        if(blockDetails.name == 'acf/main-about'){
+            run_about_slider(elem.get(0).querySelector('.aboutGalleryWrapper .aboutGallery'));
+        }
+
         elem.find('a,button').click(function(){
             return false;
         });

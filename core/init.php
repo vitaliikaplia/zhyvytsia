@@ -195,6 +195,8 @@ class BlankSite extends TimberSite {
         $twig->addFilter( new Twig_SimpleFilter( 'short_phone', 'short_phone_format' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'fix_phone', 'fix_phone_format' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'greetings', 'greetings' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'to_options', 'to_options' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'recent_posts', 'timber_recent_posts' ) );
 		return $twig;
 	}
 

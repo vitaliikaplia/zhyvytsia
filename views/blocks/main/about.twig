@@ -4,7 +4,59 @@
 
 <div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
     <div class="customBlock">
-        {{ block.name }}
+        <div class="topWrapper">
+            <div class="top">
+                <div class="col">
+                    {% if fields.title %}
+                    <p class="title scroll-show">{{ fields.title }}</p>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {% if fields.socials_title %}
+                    <p class="socTitle scroll-show">{{ fields.socials_title }}</p>
+                    {% endif %}
+                    {% if fields.socials is iterable %}
+                    <ul class="socials scroll-show">
+                        {% for key,val in fields.socials %}
+                        <li class="{{ val.type }}">
+                            <a href="{{ val.link }}" target="_blank">
+                                <svg>
+                                    <use href="{{ svg_sprite }}#iconSoc-{{ val.type }}"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="textWrapper">
+            <div class="text typo">
+                {{ fields.text }}
+            </div>
+        </div>
+        {% if fields.about_gallery is iterable %}
+        <div class="aboutGalleryWrapper">
+            <div class="aboutGallery swiper">
+                <div class="swiper-wrapper">
+                    {% for key,val in fields.about_gallery %}
+                    <div class="swiper-slide">
+                        <div class="item">
+                            <a
+                                href="{{ val.url }}"
+                                class="fancybox"
+                                data-fancybox="gallery-{{ block.id }}"
+                                data-buttons="false">
+                                {{ val | picture }}
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 

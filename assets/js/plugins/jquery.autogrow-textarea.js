@@ -1,0 +1,6 @@
+/**
+ * jquery.autogrow-textarea
+ * https://github.com/jaz303/jquery-grab-bag/tree/master/javascripts
+ * http://stackoverflow.com/questions/2948230/auto-expand-a-textarea-using-jquery
+ **/
+(function(e){e.fn.autogrow=function(t){return this.filter("textarea").each(function(){var n=this;var r=e(n);var i=r.height();var s=r.hasClass("autogrow-short")?0:parseInt(r.css("lineHeight"))||0;var o=e.extend({preGrowCallback:null,postGrowCallback:null},t);var u=e("<div></div>").css({position:"absolute",top:-1e4,left:-1e4,width:r.width(),fontSize:r.css("fontSize"),fontFamily:r.css("fontFamily"),fontWeight:r.css("fontWeight"),lineHeight:r.css("lineHeight"),resize:"none","word-wrap":"break-word"}).appendTo(document.body);var a=function(e){var t=function(e,t){for(var n=0,r="";n<t;n++)r+=e;return r};var a=n.value.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/&/g,"&").replace(/\n$/,"<br/>&nbsp;").replace(/\n/g,"<br/>").replace(/ {2,}/g,function(e){return t("&nbsp;",e.length-1)+" "});if(e&&e.data&&e.data.event==="keydown"&&e.keyCode===13){a+="<br />"}u.css("width",r.width());u.html(a+(s===0?"...":""));var f=Math.max(u.height()+s,i);if(o.preGrowCallback!=null){f=o.preGrowCallback(r,u,f,i)}r.height(f);if(o.postGrowCallback!=null){o.postGrowCallback(r)}};r.change(a).keyup(a).keydown({event:"keydown"},a);e(window).resize(a);a()})}})(jQuery);

@@ -284,12 +284,12 @@
 		-moz-appearance: none;
 		@include transition(all, .2s);
 		text-decoration: none;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		font-size: 17px;
 		font-weight: 600;
 		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		span{
 			line-height: 1.2;
@@ -380,5 +380,12 @@
 
 	&.inline{
 		display: inline-flex;
+	}
+
+	&.small{
+		a{
+			padding: 10px 22px;
+			font-size: 16px;
+		}
 	}
 }

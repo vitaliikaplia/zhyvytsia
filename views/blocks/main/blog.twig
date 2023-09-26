@@ -4,7 +4,37 @@
 
 <div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
     <div class="customBlock">
-        {{ block.name }}
+        {% if fields.title %}
+        <p class="title scroll-show">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.amount_of_recent_posts %}
+        {% set recent_posts = fields.amount_of_recent_posts | recent_posts %}
+        {% if recent_posts is iterable %}
+        <div class="recentPosts">
+            {% for key,post in recent_posts %}
+            <div class="item">
+                {% if post.thumbnail %}
+                <a href="{{ post.link }}" class="thumbnailLink">
+                    {{ post.thumbnail | picture }}
+                </a>
+                {% endif %}
+                <p class="title">
+                    <a href="{{ post.link }}">{{ post.title }}</a>
+                </p>
+                <div class="meta">
+                    <p class="author">{{ post.author.name }}</p>
+                    <p class="date">{{ post.post_date | date('F d, Y') }}</p>
+                </div>
+                <p class="overallButton green inline small">
+                    <a href="{{ post.link }}">
+                        <span>Читатии далі</span>
+                    </a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
     </div>
 </div>
 
