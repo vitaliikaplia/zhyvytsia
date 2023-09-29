@@ -3,6 +3,23 @@
     "title": "Відгук",
     "fields": [
         {
+            "key": "field_651615137e6a8",
+            "label": "Відгук",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_650baeba87505",
             "label": "",
             "name": "feedback",
@@ -21,6 +38,60 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_651616488e226",
+            "label": "Відповідь на відгук",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_651616558e227",
+            "label": "",
+            "name": "answer",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "no_label",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_651615467e6a9",
+            "label": "Фото та налаштування",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_650baea387504",
@@ -70,7 +141,7 @@
         },
         {
             "key": "field_650cb90d23296",
-            "label": "Відгук до товару",
+            "label": "Товар, до якого було залишино відгук",
             "name": "catalog_item_feedback",
             "aria-label": "",
             "type": "post_object",
@@ -108,12 +179,12 @@
     ],
     "menu_order": 201,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695332838
+    "modified": 1695946355
 }

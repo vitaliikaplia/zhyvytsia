@@ -3,49 +3,11 @@
     "title": "Позиція каталогу",
     "fields": [
         {
-            "key": "field_650bb5821600e",
-            "label": "Опис",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 1,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
-            "key": "field_650bb5a61600f",
-            "label": "",
-            "name": "description",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "no_label",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "visual",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_650bb5d216010",
             "label": "Фото та галерея",
             "name": "",
             "aria-label": "",
-            "type": "accordion",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -54,8 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "open": 0,
-            "multi_expand": 0,
+            "placement": "top",
             "endpoint": 0
         },
         {
@@ -112,11 +73,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_650bb67322448",
-            "label": "Ціна та інші налаштування",
+            "key": "field_650bb5821600e",
+            "label": "Опис",
             "name": "",
             "aria-label": "",
-            "type": "accordion",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -125,8 +86,44 @@
                 "class": "",
                 "id": ""
             },
-            "open": 0,
-            "multi_expand": 0,
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_650bb5a61600f",
+            "label": "",
+            "name": "description",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "no_label",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_650bb67322448",
+            "label": "Ціна та інші налаштування",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
             "endpoint": 0
         },
         {
@@ -191,7 +188,7 @@
                 "out_of_stock": "Закінчився"
             },
             "default_value": "in_stock",
-            "return_format": "value",
+            "return_format": "array",
             "multiple": 0,
             "allow_null": 0,
             "ui": 0,
@@ -217,5 +214,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695332996
+    "modified": 1695947095
 }

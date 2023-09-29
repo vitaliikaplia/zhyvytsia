@@ -22,8 +22,9 @@ function add_feedback_photo_value($column_name, $post_id) {
     }
     if ( 'feedback_rate' == $column_name ) {
         if ( $rate = get_field('rate', $post_id) ) {
+            $rating['rate'] = $rate;
             echo Timber::compile( 'overall/rating.twig', array(
-                'rating' => $rate,
+                'rating' => $rating,
                 'svg_sprite' => SVG_SPRITE_URL
             ));
         } else {

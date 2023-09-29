@@ -51,7 +51,7 @@ function add_catalog_photo_value($column_name, $post_id) {
         if(is_array($choices)){
             $raw .= '<select class="status_select" data-post-id="'.$post_id.'">';
             foreach($choices as $key => $value){
-                if($key == $status){
+                if($key == $status['value']){
                     $raw .= '<option value="'.$key.'" selected>'.$value.'</option>';
                 } else {
                     $raw .= '<option value="'.$key.'">'.$value.'</option>';

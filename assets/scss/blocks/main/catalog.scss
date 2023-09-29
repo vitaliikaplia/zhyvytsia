@@ -72,6 +72,31 @@
           @include transform(translateY(0px));
         }
 
+        .status{
+          display: block;
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          border-radius: 6px;
+          font-size: 12px;
+          line-height: 1;
+          padding: 6px 8px;
+          pointer-events: none;
+
+          &.in_stock{
+            background-color: #224A30;
+            color: white;
+          }
+          &.to_order{
+            background-color: #F8A618;
+            color: black;
+          }
+          &.out_of_stock{
+            background-color: red;
+            color: white;
+          }
+        }
+
         picture{
           font-size: 0;
           margin-bottom: 16px;
@@ -109,8 +134,8 @@
           .rating{
             display: block;
             position: relative;
-            width: 88px;
-            height: 16px;
+            width: 89px;
+            height: 17px;
             margin-right: 8px;
 
             .layer{
@@ -243,6 +268,7 @@
 
         &:hover{
           box-shadow: 0 0 8px rgba(black,.1);
+          transform: scale(1.025);
         }
       }
 

@@ -56,5 +56,47 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        let frameSingle,
+            thumbnailsSingle;
+
+        if($('.singleCatalogItem .thumbnails').length){
+            thumbnailsSingle = new Swiper(".singleCatalogItem .thumbnails", {
+                loop: true,
+                spaceBetween: 10,
+                slidesPerView: 4,
+                freeMode: true,
+                watchSlidesProgress: true
+            });
+        }
+
+        if($('.singleCatalogItem .frame').length){
+            frameSingle = new Swiper(".singleCatalogItem .frame", {
+                loop: true,
+                spaceBetween: 10,
+                autoHeight: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                thumbs: {
+                    swiper: thumbnailsSingle,
+                },
+            });
+        }
+
+        if($('.descriptionWrapper button').length){
+            $('.descriptionWrapper button').click(function(){
+                let thisEl = $(this),
+                    prevEl = thisEl.prev();
+                if(prevEl.hasClass('short')){
+                    prevEl.removeClass('short');
+                    thisEl.text('Показати менше');
+                } else {
+                    prevEl.addClass('short');
+                    thisEl.text('Показати більше');
+                }
+            });
+        }
+
     });
 })(jQuery);

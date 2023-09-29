@@ -1,0 +1,23 @@
+<div class="feedbackColumns">
+    <div class="col">
+        {{ post.meta('photo') | picture }}
+    </div>
+    <div class="col">
+        <h5 class="name">{{ post.name }}</h5>
+        <div class="feedbackText typo">
+            {{ post.meta('feedback') }}
+        </div>
+        {% if post.meta('answer') %}
+        <div class="answerWrapper feedbackColumns">
+            <div class="col">
+                <div class="zhAvatar">Ж</div>
+            </div>
+            <div class="col">
+                <div class="answerText typo">
+                    {{ post.meta('answer') }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,125 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{% set rating = fn('get_catalog_item_rating', post.id) %}
+{% set feedback = fn('get_catalog_item_feedback', post.id) %}
+{% set goods = fn('get_catalog_item_goods', post.id) %}
+
+<div class="singleCatalogItemWrapper">
+    <div class="singleCatalogItem">
+        <div class="columns">
+            <div class="col">
+                <div class="swiper frame">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a
+                                href="{{ fields.photo.url }}"
+                                class="fancybox"
+                                data-fancybox="gallery"
+                                data-buttons="false">
+                                {{ fields.photo | picture }}
+                            </a>
+                        </div>
+                        {% if fields.gallery is iterable %}
+                            {% for key,val in fields.gallery %}
+                                <div class="swiper-slide">
+                                    <a
+                                        href="{{ val.url }}"
+                                        class="fancybox"
+                                        data-fancybox="gallery"
+                                        data-buttons="false">
+                                        {{ val | picture }}
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                {% if fields.gallery is iterable %}
+                    <div thumbsSlider="" class="swiper thumbnails">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                {{ fields.photo | picture }}
+                            </div>
+                            {% for key,val in fields.gallery %}
+                                <div class="swiper-slide">
+                                    {{ val | picture }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col">
+                <div class="head">
+                    <h1 class="title">{{ post.title }}</h1>
+                    <p class="status {{ fields.status.value }}">{{ fields.status.label }}</p>
+                </div>
+                <div class="subHeadBack">
+                    <p><a href="{{ site.url }}">← Повернутися на головну</a></p>
+                </div>
+                {% if general_fields.shop.show_rating %}
+                    {% include 'overall/rating.twig' %}
+                {% endif %}
+                <div class="priceAndCart">
+                    <div class="col">
+                        <p class="price">
+                            <span>{{ fields.price }}</span>
+                            <span>₴</span>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <button>
+                            <svg>
+                                <use href="{{ svg_sprite }}#iconCart"></use>
+                            </svg>
+                            <span>Купити</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="reminderWrapper">
+                    <div class="reminder typo">
+                        <p>При замовленні від 5 пляшок квасу, ціна за одну – 60 гривень 🎉</p>
+                    </div>
+                </div>
+                {% if fields.description %}
+                <div class="descriptionWrapper">
+                    <div class="description short typo">
+                        {{ fields.description }}
+                    </div>
+                    <button>Показати більше</button>
+                </div>
+                {% endif %}
+                {% if goods and goods is iterable %}
+                <div class="otherItemsWrapper">
+                    <h2 class="otherItemsTitle">Інші смаки</h2>
+                    <div class="goods">
+                        {% for key,val in goods %}
+                        {% include 'overall/catalog-item-simple.twig' %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="feedbackWrapper">
+                    <h3 class="feedbackTitle">Ваші відгуки</h3>
+                    {% if feedback and feedback is iterable %}
+                    <div class="feedbackItems">
+                        {% for key,post in feedback %}
+                        <div class="feedbackItem">
+                            {% include 'overall/feedback-single-item.twig' %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>Відгуків поки що немає, але ваш може стати першим! 😉</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
