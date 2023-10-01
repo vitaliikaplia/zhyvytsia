@@ -9,7 +9,7 @@
                     <div class="message typo">{{ general_fields.cookie_popup.message }}</div>
                 {% endif %}
                 {% if general_fields.cookie_popup.button %}
-                    <p class="overallButton primary">
+                    <p class="overallButton green">
                         <a href="#close" class="close">
                             <span>{{ general_fields.cookie_popup.button }}</span>
                         </a>
@@ -23,12 +23,12 @@
     <div class="inner">
         <div class="line c4">
             <div class="col">
-                {% if general_fields.header.logo_label %}
+                {% if general_fields.overall.logo_label %}
                 <p class="logo">
                     {% if not fn('is_front_page') %}
                     <a href="{{ site.url }}">
                         {% endif %}
-                        {{ general_fields.footer.logo_label }}
+                        {{ general_fields.overall.logo_label }}
                         {% if not fn('is_front_page') %}
                     </a>
                     {% endif %}

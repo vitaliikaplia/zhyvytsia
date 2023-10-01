@@ -160,6 +160,7 @@ class BlankSite extends TimberSite {
 		$context['svg_sprite'] = SVG_SPRITE_URL;
         $context['general_fields'] = cache_general_fields();
         $context['localization'] = custom_localization();
+        $context['TEXTDOMAIN'] = TEXTDOMAIN;
 
         /** redirect rules */
         if(is_array($context['general_fields']['redirects']) && !empty($context['general_fields']['redirects'])){
@@ -197,6 +198,7 @@ class BlankSite extends TimberSite {
         $twig->addFilter( new Twig_SimpleFilter( 'greetings', 'greetings' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'to_options', 'to_options' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'recent_posts', 'timber_recent_posts' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'link', 'get_page_link_by_page_option_name' ) );
 		return $twig;
 	}
 

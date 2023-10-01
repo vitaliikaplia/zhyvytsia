@@ -1,0 +1,32 @@
+{% block html_head_container %}
+{% include 'overall/html-header.twig' %}
+{% endblock %}
+<body class="{{body_class}}">
+<main>
+    <video autoplay loop muted playsinline>
+        {% if general_fields.auth.video.mp4.url %}<source src="{{ general_fields.auth.video.mp4.url }}" type="video/mp4">{% endif %}
+        {% if general_fields.auth.video.webm.url %}<source src="{{ general_fields.auth.video.webm.url }}" type="video/webm">{% endif %}
+        {% if general_fields.auth.video.ogv.url %}<source src="{{ general_fields.auth.video.ogv.url }}" type="video/ogv">{% endif %}
+        {% if general_fields.auth.video.m3u8.url and general_fields.auth.video.ts.url %}<source src="{{ general_fields.auth.video.m3u8.url }}" type="application/x-mpegURL">{% endif %}
+    </video>
+    <div class="formBoxWrapper">
+        <div class="formBox">
+            {% if general_fields.overall.logo_label %}
+                <p class="logo">
+                    {{ general_fields.overall.logo_label }}
+                </p>
+            {% endif %}
+            {% include 'overall/notify.twig' %}
+            {% block content %}{% endblock %}
+            {% if fields.links and fields.links is iterable %}
+            <ul class="options">
+                {% for key,val in fields.links %}
+                <li><a href="{{ val.link.url }}" target="{{ val.link.target }}">{{ val.link.title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{{ function('wp_footer') }}</body>
+</html>

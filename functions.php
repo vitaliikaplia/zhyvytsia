@@ -53,3 +53,15 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //}
 //
 //add_action( 'after_setup_theme', 'disable_gutenberg_word_block_count' );
+
+//echo Timber::compile( 'mail/sign-up.twig', array(
+//    'TEXTDOMAIN' => TEXTDOMAIN,
+//    'BLOGINFO_NAME' => BLOGINFO_NAME,
+//    'title' => __("Welcome to Zhyvytsia", TEXTDOMAIN),
+//    'preheader' => __("Your verification code", TEXTDOMAIN),
+//    'user_email_verification_code' => emoji_numbers(1234567890),
+//    'verification_link' => get_page_link_by_page_option_name('profile_page') . "?data="
+//));
+//exit;
+
+//pr(BLOGINFO_URL . "/?data=123");

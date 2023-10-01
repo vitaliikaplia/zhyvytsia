@@ -91,22 +91,10 @@ foreach($blocks as $block){
         wp_register_style($style_name, $style_url, '', ASSETS_VERSION);
     }
 
-    if($block['icon'] == 'URL'){
-        $url = TEMPLATE_DIRECTORY_URL . 'assets/svg/blocks/'.$block['category'].'/'.$block['name'].'.svg';
-        if(filter_var($url, FILTER_VALIDATE_URL)){
-            $icon = cache_svg_icon(TEMPLATE_DIRECTORY_URL . 'assets/svg/blocks/'.$block['category'].'/'.$block['name'].'.svg');
-        } else {
-            $icon = $block['icon'];
-        }
-    } else {
-        $icon = $block['icon'];
-    }
-
     $custom_gutenberg_blocks[] = array(
         'name'            => $block['category'] . '-' . $block['name'],
         'title'           => $block['label'],
         'render_callback' => 'block_render_callback',
-        'icon'            => $icon,
         'style'           => $style_name,
         'mode' 			  => 'preview',
         'category'        => $block['category'],
@@ -185,12 +173,12 @@ remove_theme_support( 'core-block-patterns' );
 //    remove_theme_support( 'core-block-outline' );
 
 /** remove custom gutenberg css */
-//    add_filter( 'block_editor_settings_all' , 'remove_guten_wrapper_styles' );
-//    function remove_guten_wrapper_styles( $settings ) {
-//        unset($settings['styles'][0]);
-//        unset($settings['styles'][1]);
-//        return $settings;
-//    }
+//add_filter( 'block_editor_settings_all' , 'remove_guten_wrapper_styles' );
+//function remove_guten_wrapper_styles( $settings ) {
+//    unset($settings['styles'][0]);
+//    unset($settings['styles'][1]);
+//    return $settings;
+//}
 
 /**
  * Enqueue WordPress theme styles within Gutenberg.

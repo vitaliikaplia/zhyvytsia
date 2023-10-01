@@ -1,0 +1,5 @@
+{% if notify.type and notify.message %}
+<div class="notify {{ notify.type }}">
+    <p>{{ notify.message }}</p>
+</div>
+{% endif %}

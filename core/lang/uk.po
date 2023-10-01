@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 14:21+0300\n"
+"POT-Creation-Date: 2023-10-01 03:27+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -58,6 +58,31 @@ msgstr "Відгуки"
 #: core/gutenberg.php:65
 msgid "Form"
 msgstr "Форма"
+
+#: core/gutenberg.php:72 core/includes/back/dashboard-menu.php:51
+#: core/includes/back/dashboard-menu.php:52
+msgid "Blog"
+msgstr "Блоґ"
+
+#: core/includes/back/check-password-strength.php:15
+msgid "Password should be at least 8 characters long."
+msgstr "Пароль має бути не менше 8 символів."
+
+#: core/includes/back/check-password-strength.php:20
+msgid "Password should contain at least one lowercase letter."
+msgstr "Пароль має містити принаймні одну малу літеру."
+
+#: core/includes/back/check-password-strength.php:25
+msgid "Password should contain at least one uppercase letter."
+msgstr "Пароль має містити принаймні одну велику літеру."
+
+#: core/includes/back/check-password-strength.php:31
+msgid "Password should contain at least one digit."
+msgstr "Password should contain at least one digit."
+
+#: core/includes/back/check-password-strength.php:37
+msgid "Password should contain at least one special character."
+msgstr "Пароль повинен містити хоча б один спеціальний символ."
 
 #: core/includes/back/custom-dashboard-options-widget.php:9
 msgid "System tweaks"
@@ -255,6 +280,22 @@ msgstr "Інлайнові скрипти та стилі"
 msgid "Hide ACF"
 msgstr "Приховати ACF"
 
+#: core/includes/back/custom-post-type-change-title-text.php:8
+msgid "Enter post name here"
+msgstr "Введіть назву публікації тут"
+
+#: core/includes/back/custom-post-type-change-title-text.php:11
+msgid "Enter page name here"
+msgstr "Введіть тут назву сторінки"
+
+#: core/includes/back/custom-post-type-change-title-text.php:14
+msgid "Enter catalog item name here"
+msgstr "Введіть тут назву одиниці каталогу"
+
+#: core/includes/back/custom-post-type-change-title-text.php:17
+msgid "Enter first and second name here"
+msgstr "Введіть тут повне ім’я"
+
 #: core/includes/back/custom-post-types.php:28
 msgid "Add item"
 msgstr "Додати позицію"
@@ -403,14 +444,53 @@ msgstr "Надслань не знайдено"
 msgid "No mail logs found in trash"
 msgstr "Надслань не знайдено"
 
+#: core/includes/back/dashboard-columns-catalog.php:9
+#: core/includes/back/dashboard-columns-feedback.php:9
+msgid "Photo"
+msgstr "Фото"
+
+#: core/includes/back/dashboard-columns-catalog.php:10
+msgid "Price"
+msgstr "Ціна"
+
+#: core/includes/back/dashboard-columns-catalog.php:11
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: core/includes/back/dashboard-columns-catalog.php:12
+msgid "SKU"
+msgstr "Ідентифікатор"
+
+#: core/includes/back/dashboard-columns-catalog.php:13
+msgid "Status"
+msgstr "Статус"
+
+#: core/includes/back/dashboard-columns-catalog.php:22
+#: core/includes/back/dashboard-columns-catalog.php:29
+#: core/includes/back/dashboard-columns-catalog.php:43
+#: core/includes/back/dashboard-columns-catalog.php:62
+#: core/includes/back/dashboard-columns-feedback.php:20
+#: core/includes/back/dashboard-columns-feedback.php:31
+#: core/includes/back/dashboard-columns-feedback.php:38
+#: core/includes/back/system-thumbnails.php:30
+msgid "None"
+msgstr "Немає"
+
+#: core/includes/back/dashboard-columns-feedback.php:10
+msgid "Rate"
+msgstr "Оцінка"
+
+#: core/includes/back/dashboard-columns-feedback.php:11
+msgid "Catalog item"
+msgstr "Одиниця каталогу"
+
 #: core/includes/back/dashboard-footer.php:12
 msgid "Powered by"
 msgstr "Працює на"
 
-#: core/includes/back/dashboard-menu.php:51
-#: core/includes/back/dashboard-menu.php:52
-msgid "Blog"
-msgstr "Блоґ"
+#: core/includes/back/dashboard-mail-log-meta.php:8
+msgid "Form fields"
+msgstr "Поля форми"
 
 #: core/includes/back/dashboard-menu.php:53
 msgid "Add new post"
@@ -425,40 +505,28 @@ msgid "The Customizer is currently disabled."
 msgstr "Кастомайзер наразі вимкнено."
 
 #: core/includes/back/system-static-pages.php:8
-msgid "Sign up"
-msgstr "Реєстрація"
-
-#: core/includes/back/system-static-pages.php:12
 msgid "Login"
 msgstr "Вхід"
 
+#: core/includes/back/system-static-pages.php:12
+msgid "Sign up"
+msgstr "Реєстрація"
+
 #: core/includes/back/system-static-pages.php:16
-msgid "Email verify"
-msgstr "Верифікація Email"
+msgid "Profile page"
+msgstr "Сторінка профілю"
 
 #: core/includes/back/system-static-pages.php:20
 msgid "Forgot password page"
 msgstr "Сторінка “Забув пароль”."
 
-#: core/includes/back/system-static-pages.php:24
-msgid "Profile page"
-msgstr "Сторінка профілю"
-
-#: core/includes/back/system-static-pages.php:28
-msgid "Reset your password page"
-msgstr "Сторінка скидання пароля"
-
-#: core/includes/back/system-static-pages.php:83
+#: core/includes/back/system-static-pages.php:75
 msgid "Select"
 msgstr "Обрати"
 
-#: core/includes/back/system-thumbnails.php:13
+#: core/includes/back/system-thumbnails.php:15
 msgid "Thumbnail"
 msgstr "Мініатюра"
-
-#: core/includes/back/system-thumbnails.php:27
-msgid "None"
-msgstr "Немає"
 
 #: core/includes/back/system-users.php:8
 msgid "Client"
@@ -524,7 +592,8 @@ msgstr "Порт"
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: core/includes/front/custom-localization.php:47
+#: core/includes/front/custom-localization.php:47 views/page-login.twig:12
+#: views/page-sign-up.twig:12
 msgid "Password"
 msgstr "Пароль"
 
@@ -547,7 +616,7 @@ msgstr ""
 "Ми проводимо планове технічне обслуговування. Незабаром ми знову будемо "
 "онлайн."
 
-#: core/init.php:197
+#: core/init.php:229
 msgid "Please, install Advanced Custom Fields PRO version"
 msgstr "Будь ласка, встановіть PRO версію Advanced Custom Fields"
 
@@ -622,29 +691,118 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: page-login.php.php:50
-msgid "Your secret 2FA code"
-msgstr "Ваш код двохфакторної автентифікації"
-
-#: page-login.php.php:56 page-login.php.php:60
-msgid "2FA Code"
-msgstr "Код двохфакторної автентифікації"
-
-#: page-login.php.php:107 page-login.php.php:115
+#: page-login.php:47 page-login.php:55
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: page-login.php.php:111
+#: page-login.php:51 page-sign-up.php:96
 msgid "Password is not valid!"
 msgstr "Пароль недійсний!"
 
-#: page-login.php.php:119
-msgid "Email is not valid!"
-msgstr "Email is not valid!"
+#: page-sign-up.php:69
+msgid "Welcome to Zhyvytsia"
+msgstr "Ласкаво просимо до Живиці"
 
-#: page-login.php.php:123
-msgid "Hacker?"
-msgstr "Хакер?"
+#: page-sign-up.php:70
+msgid "Your verification code"
+msgstr "Ваш код підтвердження"
+
+#: page-sign-up.php:74
+msgid "Welcome to Zhyvytsia!"
+msgstr "Ласкаво просимо до Живиці!"
+
+#: page-sign-up.php:100
+msgid "This email address is already taken!"
+msgstr "Ця електронна адреса вже зайнята!"
+
+#: views/dashboard/user.twig:2
+msgid "Extra profile data"
+msgstr "Додаткові дані профілю"
+
+#: views/dashboard/user.twig:5
+msgid "Confirmed Email?"
+msgstr "Підтверджена електронна адреса?"
+
+#: views/dashboard/user.twig:11
+msgid "Phone"
+msgstr "Телефон"
+
+#: views/dashboard/user.twig:17
+msgid "Confirmed phone?"
+msgstr "Підтверджений телефон?"
+
+#: views/dashboard/user.twig:24
+msgid "Technical data"
+msgstr "Технічна інформація"
+
+#: views/dashboard/user.twig:27
+msgid "User email verification code"
+msgstr "User email verification code"
+
+#: views/dashboard/user.twig:33
+msgid "User email verification code for link"
+msgstr "User email verification code for link"
+
+#: views/mail/email.twig:404
+msgid "Made with love"
+msgstr "Зроблено з любов’ю"
+
+#: views/mail/sign-up.twig:6
+msgid "Let`s verify your email"
+msgstr "Давайте підтвердимо вашу електронну адресу"
+
+#: views/mail/sign-up.twig:14
+msgid "Confirm my Email"
+msgstr "Підтвердити мій Email"
+
+#: views/mail/sign-up.twig:22
+msgid "Or you can use this code to manually verify your email"
+msgstr ""
+"Або ви можете використати цей код, щоб вручну підтвердити свою "
+"електронну адресу"
+
+#: views/page-forgot-password.twig:8 views/page-login.twig:8
+#: views/page-sign-up.twig:8
+msgid "Email"
+msgstr "Email"
+
+#: views/page-forgot-password.twig:18
+msgid "Submit"
+msgstr "Надіслати"
+
+#: views/page-login.twig:13 views/page-sign-up.twig:13
+msgid "Hide"
+msgstr "Приховати"
+
+#: views/page-login.twig:13 views/page-sign-up.twig:13
+msgid "Show"
+msgstr "Показати"
+
+#: views/page-login.twig:23
+msgid "Log in"
+msgstr "Увійти"
+
+#: views/page-sign-up.twig:23
+msgid "Sign Up"
+msgstr "Реєстрація"
+
+#~ msgid "Email verify"
+#~ msgstr "Верифікація Email"
+
+#~ msgid "Reset your password page"
+#~ msgstr "Сторінка скидання пароля"
+
+#~ msgid "Your secret 2FA code"
+#~ msgstr "Ваш код двохфакторної автентифікації"
+
+#~ msgid "2FA Code"
+#~ msgstr "Код двохфакторної автентифікації"
+
+#~ msgid "Email is not valid!"
+#~ msgstr "Email is not valid!"
+
+#~ msgid "Hacker?"
+#~ msgstr "Хакер?"
 
 #~ msgid "First screen"
 #~ msgstr "Перший екран"
@@ -672,6 +830,3 @@ msgstr "Хакер?"
 
 #~ msgid "Additional system options"
 #~ msgstr "Додаткові параметри системи"
-
-#~ msgid "Your Phone"
-#~ msgstr "Ваш Телефон"

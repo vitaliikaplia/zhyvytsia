@@ -4,28 +4,20 @@ if(!defined('ABSPATH')){exit;}
 
 $static_pages_options = array(
     array(
-        "key" => "sign_up_page",
-        "label" => __('Sign up', TEXTDOMAIN)
-    ),
-    array(
         "key" => "login_page",
         "label" => __('Login', TEXTDOMAIN)
     ),
     array(
-        "key" => "email_verify_page",
-        "label" => __('Email verify', TEXTDOMAIN)
-    ),
-    array(
-        "key" => "forgot_password_page",
-        "label" => __('Forgot password page', TEXTDOMAIN)
+        "key" => "sign_up_page",
+        "label" => __('Sign up', TEXTDOMAIN)
     ),
     array(
         "key" => "profile_page",
         "label" => __('Profile page', TEXTDOMAIN)
     ),
     array(
-        "key" => "reset_password_page",
-        "label" => __('Reset your password page', TEXTDOMAIN)
+        "key" => "forgot_password_page",
+        "label" => __('Forgot password page', TEXTDOMAIN)
     )
 );
 

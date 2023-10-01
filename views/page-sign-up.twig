@@ -1,0 +1,27 @@
+{% extends "base-auth.twig" %}
+
+{% block content %}
+
+<form method="post">
+    <p class="title">{{ post.title }}</p>
+    <label>
+        <p>{{ __('Email', TEXTDOMAIN) }}</p>
+        <input type="email" required name="uEmail" value="{{ request.post.uEmail }}">
+    </label>
+    <label>
+        <p>{{ __('Password', TEXTDOMAIN) }}</p>
+        <span class="showHide show" data-hide="{{ __('Hide', TEXTDOMAIN) }}">{{ __('Show', TEXTDOMAIN) }}</span>
+        <input type="password" required name="uPassword" id="password">
+    </label>
+    <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'sign-up') }}">
+    {% if fields.text %}
+    <div class="agree typo">
+        {{ fields.text }}
+    </div>
+    {% endif %}
+    <div class="submitCenter">
+        <input type="submit" value="{{ __('Sign Up', TEXTDOMAIN) }}">
+    </div>
+</form>
+
+{% endblock %}

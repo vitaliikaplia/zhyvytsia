@@ -98,5 +98,29 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** show / hide password */
+        const showHideElements = document.querySelectorAll('form .showHide');
+        if (showHideElements) {
+            showHideElements.forEach(function(showHideElement) {
+                const passwordField = showHideElement.nextElementSibling;
+                if(passwordField) {
+                    showHideElement.addEventListener('click', function() {
+                        if (passwordField.type == 'password') {
+                            passwordField.type = "text";
+                            this.setAttribute('data-show', this.textContent);
+                            this.textContent = this.getAttribute('data-hide');
+                            this.classList.remove('show');
+                            this.classList.add('hide');
+                        } else {
+                            passwordField.type = "password";
+                            this.textContent = this.getAttribute('data-show');
+                            this.classList.remove('hide');
+                            this.classList.add('show');
+                        }
+                    });
+                }
+            });
+        }
+
     });
 })(jQuery);

@@ -1,12 +1,12 @@
 <header>
     <div class="inner">
         <div class="left">
-            {% if general_fields.header.logo_label %}
+            {% if general_fields.overall.logo_label %}
             <p class="logo">
                 {% if not fn('is_front_page') %}
                 <a href="{{ site.url }}">
                     {% endif %}
-                    {{ general_fields.header.logo_label }}
+                    {{ general_fields.overall.logo_label }}
                     {% if not fn('is_front_page') %}
                 </a>
                 {% endif %}
