@@ -63,15 +63,29 @@ if(is_user_logged_in()){
                                 $json_for_link = json_encode($arr_for_link);
                                 $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
 
-                                $content = Timber::compile( 'mail/sign-up.twig', array(
+                                $emails = get_field('emails', 'options');
+                                $search = array(
+                                    '[button]',
+                                    '[code]',
+                                    '[session]'
+                                );
+                                $replace = array(
+                                    get_email_part('button', array(
+                                        'link' => BLOGINFO_URL . "/?data=".$encrypted_for_link,
+                                        'title' => __('Confirm my Email', TEXTDOMAIN)
+                                    )),
+                                    emoji_numbers($user_email_verification_code),
+                                    get_session_info($_SERVER['REMOTE_ADDR'])
+                                );
+
+                                $content = Timber::compile( 'email/email.twig', array(
                                     'TEXTDOMAIN' => TEXTDOMAIN,
                                     'BLOGINFO_NAME' => BLOGINFO_NAME,
-                                    'title' => __("Welcome to Zhyvytsia", TEXTDOMAIN),
-                                    'preheader' => __("Your verification code", TEXTDOMAIN),
-                                    'user_email_verification_code' => emoji_numbers($user_email_verification_code),
-                                    'verification_link' => BLOGINFO_URL . "/?data=".$encrypted_for_link
+                                    'BLOGINFO_URL' => BLOGINFO_URL,
+                                    'subject' => $emails['auth']['sign_up_subject'],
+                                    'text' => str_replace($search, $replace, $emails['auth']['sign_up_text'])
                                 ));
-                                send_email($uEmail_secure, __("Welcome to Zhyvytsia!", TEXTDOMAIN), $content);
+                                send_email($uEmail_secure, $emails['auth']['sign_up_subject'], $content);
 
                                 $new_user = get_user_by('id', $new_user_id);
                                 wp_set_current_user( $new_user->ID, $new_user->user_login );

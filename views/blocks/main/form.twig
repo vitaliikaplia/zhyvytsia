@@ -20,6 +20,7 @@
             {% set secret = secret | merge([{ send_success_title: fields.send_success_title }]) %}
             {% set secret = secret | merge([{ send_success_text: fields.send_success_text }]) %}
             {% set secret = secret | merge([{ email_recipients: fields.email_recipients }]) %}
+            {% set secret = secret | merge([{ send_mail_to_sender: fields.send_mail_to_sender }]) %}
             {% if secret is iterable %}
             <input type="hidden" name="secret" value="{{ fn('custom_form_secret', secret) }}">
             {% endif %}

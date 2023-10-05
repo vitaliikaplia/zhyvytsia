@@ -64,4 +64,7 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //));
 //exit;
 
-//pr(BLOGINFO_URL . "/?data=123");
+//pr(get_session_info('::1'));
+//pr(get_option('admin_email'));
+//$auth = get_field('auth', 'options');
+//pr($auth['mail_templates']['sign_up_subject']);

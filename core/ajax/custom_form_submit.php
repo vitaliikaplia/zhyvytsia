@@ -15,6 +15,8 @@ function custom_form_submit_action() {
             }
         }
 
+        $text_content = '';
+        $sEmails = array();
         foreach($_POST as $key => $value){
             if($key != 'action' && $key != 'secret'){
                 if($value){
@@ -24,24 +26,65 @@ function custom_form_submit_action() {
                         $form_url = $value;
                     } else {
                         $form_fields[str_replace('_',' ',$key)] = $value;
+                        $text_content .= '<p><b><span>' . str_replace('_',' ',$key) . ':</span></b> ' .  '<span>' . $value . '</span></p>';
+                        if($form_options['send_mail_to_sender'] && filter_var($value, FILTER_VALIDATE_EMAIL) && strlen($value) < 60){
+                            $sEmails[] = $value;
+                        }
                     }
                 }
             }
         }
 
+        $text_content .= '<p><b><span>Назва сторінки:</span></b> ' .  '<span>' . $form_name . '</span></p>';
+        $text_content .= '<p><b><span>URL сторінки:</span></b> ' .  '<span>' . $form_url . '</span></p>';
+        $text_content .= '<p><b><span>Сесія:</span></b> ' .  '<span>' . get_session_info($_SERVER['REMOTE_ADDR']) . '</span></p>';
         $form_fields['Назва сторінки'] = $form_name;
         $form_fields['URL сторінки'] = $form_url;
+        $form_fields['Сесія'] = get_session_info($_SERVER['REMOTE_ADDR']);
 
         $mail_post = array(
             'post_type' => 'mail-log',
             'post_title' => $form_name . ' (' . implode(", ", array_slice($form_fields, 0, 3)) . ')',
-            'post_content' => json_encode($form_fields, JSON_UNESCAPED_UNICODE),
+            'post_content' => $text_content,
             'post_status' => 'publish'
         );
         wp_insert_post( $mail_post );
 
-        $toJson['form_options'] = $form_options;
-        $toJson['form_fields'] = $form_fields;
+        $emails = get_field('emails', 'options');
+
+        $search = array(
+            '[mail]'
+        );
+        $replace = array(
+            $text_content
+        );
+
+        $contentToAdmin = Timber::compile( 'email/email.twig', array(
+            'TEXTDOMAIN' => TEXTDOMAIN,
+            'BLOGINFO_NAME' => BLOGINFO_NAME,
+            'BLOGINFO_URL' => BLOGINFO_URL,
+            'subject' => $emails['contact']['adm_form_subject'],
+            'text' => str_replace($search, $replace, $emails['contact']['adm_form_text'])
+        ));
+
+        if(!empty($form_options['email_recipients'])){
+            foreach ($form_options['email_recipients'] as $email){
+                send_email($email['email'], $emails['contact']['adm_form_subject'], $contentToAdmin);
+            }
+        }
+
+        if($form_options['send_mail_to_sender'] && !empty($emails)){
+            $contentToSender = Timber::compile( 'email/email.twig', array(
+                'TEXTDOMAIN' => TEXTDOMAIN,
+                'BLOGINFO_NAME' => BLOGINFO_NAME,
+                'BLOGINFO_URL' => BLOGINFO_URL,
+                'subject' => $emails['contact']['sender_form_subject'],
+                'text' => str_replace($search, $replace, $emails['contact']['sender_form_text'])
+            ));
+            foreach ($sEmails as $sEmail){
+                send_email($sEmail, $emails['contact']['sender_form_subject'], $contentToSender);
+            }
+        }
 
         $toJson['status'] = "ok";
     }

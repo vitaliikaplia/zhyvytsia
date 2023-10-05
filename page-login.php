@@ -40,6 +40,26 @@ if(is_user_logged_in()){
                             wp_set_auth_cookie( $user->ID, true );
                             do_action( 'wp_login', $user->user_login );
 
+                            $emails = get_field('emails', 'options');
+
+                            if($emails['send_authorization_security_letters']){
+                                $search = array(
+                                    '[session]'
+                                );
+                                $replace = array(
+                                    get_session_info($_SERVER['REMOTE_ADDR'])
+                                );
+
+                                $content = Timber::compile( 'email/email.twig', array(
+                                    'TEXTDOMAIN' => TEXTDOMAIN,
+                                    'BLOGINFO_NAME' => BLOGINFO_NAME,
+                                    'BLOGINFO_URL' => BLOGINFO_URL,
+                                    'subject' => $emails['auth']['login_subject'],
+                                    'text' => str_replace($search, $replace, $emails['auth']['login_text'])
+                                ));
+                                send_email($uEmail_secure, $emails['auth']['login_subject'], $content);
+                            }
+
                             wp_redirect( get_the_permalink(get_option('profile_page')) );
                             exit;
 

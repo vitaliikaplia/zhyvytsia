@@ -319,6 +319,24 @@
             "button_label": "Додати поле"
         },
         {
+            "key": "field_651e014d95402",
+            "label": "Налаштування",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "key": "field_651318c60cc9b",
             "label": "Кнопка відправки",
             "name": "send_button_label",
@@ -383,6 +401,26 @@
             ]
         },
         {
+            "key": "field_651e018b13694",
+            "label": "Надсилати також Email відправнику",
+            "name": "send_mail_to_sender",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "У формі має бути, як мінімум, одне Email поле",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_651319f6bea70",
             "label": "Заголовок успіху відправки",
             "name": "send_success_title",
@@ -441,5 +479,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695752549
+    "modified": 1696467348
 }

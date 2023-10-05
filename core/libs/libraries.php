@@ -46,6 +46,31 @@ if (function_exists('get_fields')) {
 //    ));
 }
 
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Decoder.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'InvalidDatabaseException.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Metadata.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Util.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'ProviderInterface.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Exception' . DS . 'GeoIp2Exception.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Exception' . DS . 'AddressNotFoundException.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Model' . DS . 'AbstractModel.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Model' . DS . 'Country.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Model' . DS . 'City.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'AbstractRecord.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'AbstractPlaceRecord.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'MaxMind.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Continent.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Country.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'RepresentedCountry.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Traits.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'City.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Location.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Postal.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Subdivision.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Database' . DS . 'Reader.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Util.php';
+
 /** timber */
 require_once CORE_PATH . DS . 'libs' . DS . 'timber' . DS . 'timber.php';
 Timber::$dirname = TIMBER_VIEWS;

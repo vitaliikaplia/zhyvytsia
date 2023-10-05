@@ -9,7 +9,7 @@
         {% endif %}
         {% if fields.feedback is iterable %}
         <div class="feedbackWrapper">
-            <div class="feedback swiper">
+            <div class="feedback swiper"{% if fields.interval %} data-interval="{{ fields.interval }}"{% endif %}>
                 <div class="swiper-wrapper">
                     {% for key,val in fields.feedback %}
                     {% include 'overall/feedback-item.twig' %}

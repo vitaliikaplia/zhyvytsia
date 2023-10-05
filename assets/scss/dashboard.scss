@@ -431,7 +431,7 @@ body.mce-fullscreen{
 	}
 }
 
-.log-data-fields{
+#custom-fields-meta-box .inside{
 	display: flex;
 	flex-direction: column;
 
@@ -440,7 +440,8 @@ body.mce-fullscreen{
 		margin: 2px 0;
 		padding: 2px 0;
 
-		span{
+		span,
+		b{
 			display: block;
 			width: 50%;
 			padding: 0 1px;

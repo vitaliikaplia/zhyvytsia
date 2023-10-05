@@ -20,21 +20,23 @@ function run_greetings(element){
 
 /** відгуки */
 function run_feedback_slider(element){
+    let autoplay = {};
+    if(element.dataset.interval){
+        autoplay = {
+            delay: parseInt(element.dataset.interval),
+            disableOnInteraction: false
+        };
+    }
     let swiperSlider = new Swiper(element, {
-        // Optional parameters
         direction: 'horizontal',
         slidesPerView: 4,
         spaceBetween: 40,
         loop: true,
+        autoplay,
         pagination: {
             el: ".feedback-swiper-pagination",
             clickable: true
         },
-        // Navigation arrows
-        // navigation: {
-        //     nextEl: '.areas-swiper-button-next',
-        //     prevEl: '.areas-swiper-button-prev',
-        // },
         grabCursor: true
     });
 }
@@ -42,16 +44,10 @@ function run_feedback_slider(element){
 /** про нас */
 function run_about_slider(element){
     let swiperSlider = new Swiper(element, {
-        // Optional parameters
         direction: 'horizontal',
         slidesPerView: 8,
         spaceBetween: 0,
         loop: true,
-        // Navigation arrows
-        // navigation: {
-        //     nextEl: '.areas-swiper-button-next',
-        //     prevEl: '.areas-swiper-button-prev',
-        // },
         grabCursor: true
     });
 
@@ -177,6 +173,7 @@ function custom_form_submit(thisFormEl){
                     success : function (out) {
                         console.log(out);
                         if(out.status == "ok"){
+                            thisFormEl.find('select').addClass('required').removeClass('selected');
                             thisFormEl.removeClass("busy");
                             thisFormEl.trigger("reset");
                         }
