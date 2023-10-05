@@ -12,6 +12,13 @@
         <p>{{ __('Password', TEXTDOMAIN) }}</p>
         <span class="showHide show" data-hide="{{ __('Hide', TEXTDOMAIN) }}">{{ __('Show', TEXTDOMAIN) }}</span>
         <input type="password" required name="uPassword" id="password">
+        <ul class="recommendations">
+            <li class="length">{{ __('Password should be at least 8 characters long.', TEXTDOMAIN) }}</li>
+            <li class="lowercase">{{ __('Password should contain at least one lowercase letter.', TEXTDOMAIN) }}</li>
+            <li class="uppercase">{{ __('Password should contain at least one uppercase letter.', TEXTDOMAIN) }}</li>
+            <li class="digits">{{ __('Password should contain at least one digit.', TEXTDOMAIN) }}</li>
+            <li class="special">{{ __('Password should contain at least one special character.', TEXTDOMAIN) }}</li>
+        </ul>
     </label>
     <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'sign-up') }}">
     {% if fields.text %}

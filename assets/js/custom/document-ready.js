@@ -122,5 +122,24 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        if($('.page-template-page-sign-up input[type="password"]').length){
+            $('.page-template-page-sign-up input[type="password"]').on('change keyup', function(){
+                let thisEl = $(this),
+                    recEl = thisEl.next(),
+                    thisVal = thisEl.val()?.trim(),
+                    passResult = check_password_strength(thisVal);
+                if(!Object.values(passResult).some(value => value === false)){
+                    recEl.removeClass('show');
+                } else {
+                    recEl.addClass('show');
+                    recEl.find('.length').toggleClass('show', !passResult.p_length);
+                    recEl.find('.lowercase').toggleClass('show', !passResult.lowercase);
+                    recEl.find('.uppercase').toggleClass('show', !passResult.uppercase);
+                    recEl.find('.digits').toggleClass('show', !passResult.digits);
+                    recEl.find('.special').toggleClass('show', !passResult.special);
+                }
+            });
+        }
+
     });
 })(jQuery);

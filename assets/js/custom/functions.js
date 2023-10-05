@@ -187,3 +187,52 @@ function custom_form_submit(thisFormEl){
     });
 
 }
+
+/** перевірка паролю */
+function check_password_strength(password) {
+    let result = new Array();
+
+    // Regular expressions for different password requirements
+    const regexLowercase = /[a-z]/;
+    const regexUppercase = /[A-Z]/;
+    const regexDigit = /[0-9]/;
+    const regexSpecialChar = /[^a-zA-Z0-9]/;
+
+    // Check password length
+    if (password.length < 8) {
+        result['p_length'] = false;
+    } else {
+        result['p_length'] = true;
+    }
+
+    // Check lowercase letters
+    if (!regexLowercase.test(password)) {
+        result['lowercase'] = false;
+    } else {
+        result['lowercase'] = true;
+    }
+
+    // Check uppercase letters
+    if (!regexUppercase.test(password)) {
+        result['uppercase'] = false;
+    } else {
+        result['uppercase'] = true;
+    }
+
+    // Check digits
+    if (!regexDigit.test(password)) {
+        result['digits'] = false;
+    } else {
+        result['digits'] = true;
+    }
+
+    // Check special characters
+    if (!regexSpecialChar.test(password)) {
+        result['special'] = false;
+    } else {
+        result['special'] = true;
+    }
+
+    // Password meets all requirements
+    return result;
+}

@@ -15,6 +15,7 @@ define( 'CORE_URL', TEMPLATE_DIRECTORY_URL . 'core' );
 define( 'ADMIN_AJAX_URL', admin_url('admin-ajax.php') );
 define( 'BLOGINFO_NAME', get_bloginfo('name') );
 define( 'BLOGINFO_URL', get_bloginfo('url') );
+define( 'DO_URL', BLOGINFO_URL . '/do/' );
 define( 'TIMBER_VIEWS', 'views' );
 define( 'IMG_TEMPLATE_DIRECTORY_URL', TEMPLATE_DIRECTORY_URL . 'assets/img' );
 define( 'ASSETS_VERSION', get_option('assets_version') );

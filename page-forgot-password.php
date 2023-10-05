@@ -66,7 +66,7 @@ if(is_user_logged_in()){
                     ));
                     send_email($uEmail_secure, $emails['auth']['reset_password_request_subject'], $content);
 
-                    $context['notify'] = add_notify('success', __('Verify code sent!', TEXTDOMAIN), true);
+                    $context['notify'] = add_notify('success', __('Verification code sent', TEXTDOMAIN), true);
                 } else {
                     $context['notify'] = add_notify('error', __('No account found for this email', TEXTDOMAIN), true);
                 }

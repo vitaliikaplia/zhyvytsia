@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 03:27+0300\n"
+"POT-Creation-Date: 2023-10-05 05:33+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -64,23 +64,23 @@ msgstr "Форма"
 msgid "Blog"
 msgstr "Блоґ"
 
-#: core/includes/back/check-password-strength.php:15
+#: core/includes/back/check-password-strength.php:15 views/page-sign-up.twig:16
 msgid "Password should be at least 8 characters long."
 msgstr "Пароль має бути не менше 8 символів."
 
-#: core/includes/back/check-password-strength.php:20
+#: core/includes/back/check-password-strength.php:20 views/page-sign-up.twig:17
 msgid "Password should contain at least one lowercase letter."
 msgstr "Пароль має містити принаймні одну малу літеру."
 
-#: core/includes/back/check-password-strength.php:25
+#: core/includes/back/check-password-strength.php:25 views/page-sign-up.twig:18
 msgid "Password should contain at least one uppercase letter."
 msgstr "Пароль має містити принаймні одну велику літеру."
 
-#: core/includes/back/check-password-strength.php:31
+#: core/includes/back/check-password-strength.php:31 views/page-sign-up.twig:19
 msgid "Password should contain at least one digit."
-msgstr "Password should contain at least one digit."
+msgstr "Пароль має містити хоча б одну цифру."
 
-#: core/includes/back/check-password-strength.php:37
+#: core/includes/back/check-password-strength.php:37 views/page-sign-up.twig:20
 msgid "Password should contain at least one special character."
 msgstr "Пароль повинен містити хоча б один спеціальний символ."
 
@@ -605,18 +605,18 @@ msgstr "Ім'я Від кого"
 msgid "Secure"
 msgstr "Захищено"
 
-#: core/init.php:56
+#: core/init.php:57
 msgid "Website under Maintenance"
 msgstr "Веб-сайт на технічному обслуговуванні"
 
-#: core/init.php:57
+#: core/init.php:58
 msgid ""
 "We are performing scheduled maintenance. We will be back online shortly."
 msgstr ""
 "Ми проводимо планове технічне обслуговування. Незабаром ми знову будемо "
 "онлайн."
 
-#: core/init.php:229
+#: core/init.php:230
 msgid "Please, install Advanced Custom Fields PRO version"
 msgstr "Будь ласка, встановіть PRO версію Advanced Custom Fields"
 
@@ -691,27 +691,31 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: page-login.php:47 page-login.php:55
+#: page-forgot-password.php:54
+msgid "Change my password"
+msgstr "Змінити мій пароль"
+
+#: page-forgot-password.php:69
+msgid "Verification code sent"
+msgstr "Код підтвердження надіслано"
+
+#: page-forgot-password.php:71
+msgid "No account found for this email"
+msgstr "Для цьогоEmail не знайдено жодного облікового запису"
+
+#: page-login.php:67 page-login.php:75
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: page-login.php:51 page-sign-up.php:96
+#: page-login.php:71 page-sign-up.php:110
 msgid "Password is not valid!"
 msgstr "Пароль недійсний!"
 
-#: page-sign-up.php:69
-msgid "Welcome to Zhyvytsia"
-msgstr "Ласкаво просимо до Живиці"
+#: page-sign-up.php:75
+msgid "Confirm my Email"
+msgstr "Підтвердити мій Email"
 
-#: page-sign-up.php:70
-msgid "Your verification code"
-msgstr "Ваш код підтвердження"
-
-#: page-sign-up.php:74
-msgid "Welcome to Zhyvytsia!"
-msgstr "Ласкаво просимо до Живиці!"
-
-#: page-sign-up.php:100
+#: page-sign-up.php:114
 msgid "This email address is already taken!"
 msgstr "Ця електронна адреса вже зайнята!"
 
@@ -743,23 +747,9 @@ msgstr "User email verification code"
 msgid "User email verification code for link"
 msgstr "User email verification code for link"
 
-#: views/mail/email.twig:404
+#: views/email/base.twig:403
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
-
-#: views/mail/sign-up.twig:6
-msgid "Let`s verify your email"
-msgstr "Давайте підтвердимо вашу електронну адресу"
-
-#: views/mail/sign-up.twig:14
-msgid "Confirm my Email"
-msgstr "Підтвердити мій Email"
-
-#: views/mail/sign-up.twig:22
-msgid "Or you can use this code to manually verify your email"
-msgstr ""
-"Або ви можете використати цей код, щоб вручну підтвердити свою "
-"електронну адресу"
 
 #: views/page-forgot-password.twig:8 views/page-login.twig:8
 #: views/page-sign-up.twig:8
@@ -782,9 +772,23 @@ msgstr "Показати"
 msgid "Log in"
 msgstr "Увійти"
 
-#: views/page-sign-up.twig:23
+#: views/page-sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
+
+#~ msgid "Welcome to Zhyvytsia"
+#~ msgstr "Ласкаво просимо до Живиці"
+
+#~ msgid "Welcome to Zhyvytsia!"
+#~ msgstr "Ласкаво просимо до Живиці!"
+
+#~ msgid "Let`s verify your email"
+#~ msgstr "Давайте підтвердимо вашу електронну адресу"
+
+#~ msgid "Or you can use this code to manually verify your email"
+#~ msgstr ""
+#~ "Або ви можете використати цей код, щоб вручну підтвердити свою електронну "
+#~ "адресу"
 
 #~ msgid "Email verify"
 #~ msgstr "Верифікація Email"
