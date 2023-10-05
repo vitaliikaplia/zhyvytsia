@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 05:33+0300\n"
+"POT-Creation-Date: 2023-10-05 08:23+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -20,6 +20,50 @@ msgstr ""
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: ----forgot-password.php:56
+msgid "Change my password"
+msgstr "Змінити мій пароль"
+
+#: ----forgot-password.php:70
+msgid "Verification code sent"
+msgstr "Код підтвердження надіслано"
+
+#: ----forgot-password.php:72
+msgid "No account found for this email"
+msgstr "Для цьогоEmail не знайдено жодного облікового запису"
+
+#: ----login.php:67 ----login.php:75
+msgid "Email address/password do not match."
+msgstr "Адреса електронної пошти/пароль не збігаються."
+
+#: ----login.php:71 ----sign-up.php:106
+msgid "Password is not valid!"
+msgstr "Пароль недійсний!"
+
+#: ----sign-up.php:72
+msgid "Confirm my Email"
+msgstr "Підтвердити мій Email"
+
+#: ----sign-up.php:110
+msgid "This email address is already taken!"
+msgstr "Ця електронна адреса вже зайнята!"
+
+#: core/auth.php:25 core/auth.php:43
+msgid "Login"
+msgstr "Вхід"
+
+#: core/auth.php:29 core/auth.php:48 views/auth/sign-up.twig:30
+msgid "Sign Up"
+msgstr "Реєстрація"
+
+#: core/auth.php:33 core/auth.php:53
+msgid "Forgot Password"
+msgstr "Забули пароль"
+
+#: core/auth.php:37
+msgid "Home page"
+msgstr "Домашня сторінка"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -64,23 +108,23 @@ msgstr "Форма"
 msgid "Blog"
 msgstr "Блоґ"
 
-#: core/includes/back/check-password-strength.php:15 views/page-sign-up.twig:16
+#: core/includes/back/check-password-strength.php:15 views/auth/sign-up.twig:16
 msgid "Password should be at least 8 characters long."
 msgstr "Пароль має бути не менше 8 символів."
 
-#: core/includes/back/check-password-strength.php:20 views/page-sign-up.twig:17
+#: core/includes/back/check-password-strength.php:20 views/auth/sign-up.twig:17
 msgid "Password should contain at least one lowercase letter."
 msgstr "Пароль має містити принаймні одну малу літеру."
 
-#: core/includes/back/check-password-strength.php:25 views/page-sign-up.twig:18
+#: core/includes/back/check-password-strength.php:25 views/auth/sign-up.twig:18
 msgid "Password should contain at least one uppercase letter."
 msgstr "Пароль має містити принаймні одну велику літеру."
 
-#: core/includes/back/check-password-strength.php:31 views/page-sign-up.twig:19
+#: core/includes/back/check-password-strength.php:31 views/auth/sign-up.twig:19
 msgid "Password should contain at least one digit."
 msgstr "Пароль має містити хоча б одну цифру."
 
-#: core/includes/back/check-password-strength.php:37 views/page-sign-up.twig:20
+#: core/includes/back/check-password-strength.php:37 views/auth/sign-up.twig:20
 msgid "Password should contain at least one special character."
 msgstr "Пароль повинен містити хоча б один спеціальний символ."
 
@@ -504,23 +548,15 @@ msgstr "Оновити версію теми"
 msgid "The Customizer is currently disabled."
 msgstr "Кастомайзер наразі вимкнено."
 
+#: core/includes/back/system-do-page.php:41
+msgid "Go to my profile"
+msgstr "Go to my profile"
+
 #: core/includes/back/system-static-pages.php:8
-msgid "Login"
-msgstr "Вхід"
-
-#: core/includes/back/system-static-pages.php:12
-msgid "Sign up"
-msgstr "Реєстрація"
-
-#: core/includes/back/system-static-pages.php:16
 msgid "Profile page"
 msgstr "Сторінка профілю"
 
-#: core/includes/back/system-static-pages.php:20
-msgid "Forgot password page"
-msgstr "Сторінка “Забув пароль”."
-
-#: core/includes/back/system-static-pages.php:75
+#: core/includes/back/system-static-pages.php:63
 msgid "Select"
 msgstr "Обрати"
 
@@ -592,8 +628,8 @@ msgstr "Порт"
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: core/includes/front/custom-localization.php:47 views/page-login.twig:12
-#: views/page-sign-up.twig:12
+#: core/includes/front/custom-localization.php:47 views/auth/login.twig:12
+#: views/auth/sign-up.twig:12
 msgid "Password"
 msgstr "Пароль"
 
@@ -616,7 +652,7 @@ msgstr ""
 "Ми проводимо планове технічне обслуговування. Незабаром ми знову будемо "
 "онлайн."
 
-#: core/init.php:230
+#: core/init.php:233
 msgid "Please, install Advanced Custom Fields PRO version"
 msgstr "Будь ласка, встановіть PRO версію Advanced Custom Fields"
 
@@ -691,33 +727,26 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: page-forgot-password.php:54
-msgid "Change my password"
-msgstr "Змінити мій пароль"
+#: views/auth/forgot-password.twig:8 views/auth/login.twig:8
+#: views/auth/sign-up.twig:8
+msgid "Email"
+msgstr "Email"
 
-#: page-forgot-password.php:69
-msgid "Verification code sent"
-msgstr "Код підтвердження надіслано"
+#: views/auth/forgot-password.twig:18
+msgid "Submit"
+msgstr "Надіслати"
 
-#: page-forgot-password.php:71
-msgid "No account found for this email"
-msgstr "Для цьогоEmail не знайдено жодного облікового запису"
+#: views/auth/login.twig:13 views/auth/sign-up.twig:13
+msgid "Hide"
+msgstr "Приховати"
 
-#: page-login.php:67 page-login.php:75
-msgid "Email address/password do not match."
-msgstr "Адреса електронної пошти/пароль не збігаються."
+#: views/auth/login.twig:13 views/auth/sign-up.twig:13
+msgid "Show"
+msgstr "Показати"
 
-#: page-login.php:71 page-sign-up.php:110
-msgid "Password is not valid!"
-msgstr "Пароль недійсний!"
-
-#: page-sign-up.php:75
-msgid "Confirm my Email"
-msgstr "Підтвердити мій Email"
-
-#: page-sign-up.php:114
-msgid "This email address is already taken!"
-msgstr "Ця електронна адреса вже зайнята!"
+#: views/auth/login.twig:23
+msgid "Log in"
+msgstr "Увійти"
 
 #: views/dashboard/user.twig:2
 msgid "Extra profile data"
@@ -740,41 +769,22 @@ msgid "Technical data"
 msgstr "Технічна інформація"
 
 #: views/dashboard/user.twig:27
-msgid "User email verification code"
-msgstr "User email verification code"
+msgid "User email verification code for link"
+msgstr "Код підтвердження електронної пошти користувача для посилання"
 
 #: views/dashboard/user.twig:33
-msgid "User email verification code for link"
-msgstr "User email verification code for link"
+msgid "Password recovery code for link"
+msgstr "Код відновлення пароля для посилання"
 
 #: views/email/base.twig:403
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
-#: views/page-forgot-password.twig:8 views/page-login.twig:8
-#: views/page-sign-up.twig:8
-msgid "Email"
-msgstr "Email"
+#~ msgid "Sign up"
+#~ msgstr "Реєстрація"
 
-#: views/page-forgot-password.twig:18
-msgid "Submit"
-msgstr "Надіслати"
-
-#: views/page-login.twig:13 views/page-sign-up.twig:13
-msgid "Hide"
-msgstr "Приховати"
-
-#: views/page-login.twig:13 views/page-sign-up.twig:13
-msgid "Show"
-msgstr "Показати"
-
-#: views/page-login.twig:23
-msgid "Log in"
-msgstr "Увійти"
-
-#: views/page-sign-up.twig:30
-msgid "Sign Up"
-msgstr "Реєстрація"
+#~ msgid "User email verification code"
+#~ msgstr "User email verification code"
 
 #~ msgid "Welcome to Zhyvytsia"
 #~ msgstr "Ласкаво просимо до Живиці"

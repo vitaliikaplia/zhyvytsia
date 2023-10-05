@@ -122,8 +122,8 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
-        if($('.page-template-page-sign-up input[type="password"]').length){
-            $('.page-template-page-sign-up input[type="password"]').on('change keyup', function(){
+        if($('.sign-up input[type="password"]').length){
+            $('.sign-up input[type="password"]').on('change keyup', function(){
                 let thisEl = $(this),
                     recEl = thisEl.next(),
                     thisVal = thisEl.val()?.trim(),

@@ -2,7 +2,7 @@
 
 if(!defined('ABSPATH')){exit;}
 
-$context = Timber::get_context();
+$context = Timber::context();
 $post = new TimberPost();
 $context['post'] = $post;
 $context['custom_fields'] = cache_fields($post->ID);

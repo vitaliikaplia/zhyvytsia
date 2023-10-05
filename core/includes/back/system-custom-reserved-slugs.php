@@ -4,7 +4,12 @@ if(!defined('ABSPATH')){exit;}
 
 /** Reserve Slugs in WordPress */
 function custom_reserved_slugs($slug, $post_ID, $post_status, $post_type) {
+
+    $options = get_field('auth', 'options');
     $reserved_slugs = array('do');  // Add any other slugs you want to reserve in this array
+    $reserved_slugs[] = $options['login']['url'];
+    $reserved_slugs[] = $options['sign_up']['url'];
+    $reserved_slugs[] = $options['forgot_password']['url'];
 
     if (in_array($slug, $reserved_slugs)) {
         $original_slug = $slug;

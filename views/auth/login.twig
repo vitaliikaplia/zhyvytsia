@@ -3,7 +3,7 @@
 {% block content %}
 
 <form method="post">
-    <p class="title">{{ post.title }}</p>
+    <p class="title">{{ title }}</p>
     <label>
         <p>{{ __('Email', TEXTDOMAIN) }}</p>
         <input type="email" required name="uEmail" value="{{ request.post.uEmail }}">
@@ -14,9 +14,9 @@
         <input type="password" required name="uPassword" id="password">
     </label>
     <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'login') }}">
-    {% if fields.text %}
+    {% if text %}
     <div class="agree typo">
-        {{ fields.text }}
+        {{ text }}
     </div>
     {% endif %}
     <div class="submitCenter">

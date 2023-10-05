@@ -20,13 +20,15 @@ if(is_admin() && current_user_can('client') && empty($_SERVER['HTTP_X_REQUESTED_
 }
 
 /** disable default WordPress login */
-add_action('login_head', function() {
+function custom_login_page() {
     global $pagenow;
+    pr($pagenow);
     if( 'wp-login.php' == $pagenow && !isset($_REQUEST['usewplogin']) ) {
         wp_redirect(BLOGINFO_URL);
-        return;
+        exit;
     }
-});
+}
+add_action('login_head', 'custom_login_page');
 
 /** custom user meta html */
 function extra_user_profile_fields( $user ) {

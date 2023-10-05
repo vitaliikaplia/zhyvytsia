@@ -11,18 +11,6 @@ function disable_gutenberg_for_blog($current_status, $post_type){
         ||
         get_post_type($post->ID) == 'post'
         ||
-        $post->ID == get_option('sign_up_page')
-        ||
-        $post->ID == get_option('login_page')
-        ||
-        $post->ID == get_option('login_page')
-        ||
-        $post->ID == get_option('email_verify_page')
-        ||
-        $post->ID == get_option('forgot_password_page')
-        ||
-        $post->ID == get_option('forgot_password_page')
-        ||
         $post->ID == get_option('profile_page')
         ||
         $post->ID == get_option('reset_password_page')

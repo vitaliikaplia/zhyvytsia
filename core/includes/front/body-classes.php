@@ -12,8 +12,15 @@ function app_body_classes($classes) {
         $classes[] = 'logged-out';
     }
 
-    if( is_page_template('page-login.php') || is_page_template('page-sign-up.php') || is_page_template('page-forgot-password.php') ) {
+    $parsed_url = parse_url($_SERVER['REQUEST_URI']);
+    $path_segments = explode('/', trim($parsed_url['path'], '/'));
+    $options = get_field('auth', 'options');
+
+    if ($path_segments[0] == $options['login']['url'] || $path_segments[0] == $options['sign_up']['url'] || $path_segments[0] == $options['forgot_password']['url']) {
         $classes[] = 'auth';
+    }
+    if ($path_segments[0] == $options['sign_up']['url']) {
+        $classes[] = 'sign-up';
     }
 
     return $classes;

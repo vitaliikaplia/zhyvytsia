@@ -142,6 +142,9 @@ if(is_array($includedAjax) && $includedAjax){
 	}
 }
 
+/** custom auth pages */
+require_once CORE_PATH . DS . 'auth.php';
+
 /** timber */
 class BlankSite extends TimberSite {
 

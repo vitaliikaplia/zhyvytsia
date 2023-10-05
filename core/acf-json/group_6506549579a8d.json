@@ -178,6 +178,46 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_651e321760992",
+            "label": "Налаштування",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_651e321a60993",
+            "label": "Інтервал",
+            "name": "interval",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2500,
+            "min": 100,
+            "max": 10000,
+            "placeholder": "",
+            "step": 100,
+            "prepend": "",
+            "append": "мс"
         }
     ],
     "location": [
@@ -198,5 +238,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695749859
+    "modified": 1696477759
 }

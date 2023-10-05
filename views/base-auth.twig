@@ -12,16 +12,16 @@
     <div class="formBoxWrapper">
         <div class="formBox">
             {% if general_fields.overall.logo_label %}
-                <p class="logo">
-                    {{ general_fields.overall.logo_label }}
-                </p>
+            <p class="logo">
+                {{ general_fields.overall.logo_label }}
+            </p>
             {% endif %}
             {% include 'overall/notify.twig' %}
             {% block content %}{% endblock %}
-            {% if fields.links and fields.links is iterable %}
+            {% if links and links is iterable %}
             <ul class="options">
-                {% for key,val in fields.links %}
-                <li><a href="{{ val.link.url }}" target="{{ val.link.target }}">{{ val.link.title }}</a></li>
+                {% for key,val in links %}
+                <li><a href="{{ val.url }}">{{ val.title }}</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
