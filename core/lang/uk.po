@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 08:23+0300\n"
+"POT-Creation-Date: 2023-10-06 13:05+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -20,50 +20,6 @@ msgstr ""
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
-
-#: ----forgot-password.php:56
-msgid "Change my password"
-msgstr "Змінити мій пароль"
-
-#: ----forgot-password.php:70
-msgid "Verification code sent"
-msgstr "Код підтвердження надіслано"
-
-#: ----forgot-password.php:72
-msgid "No account found for this email"
-msgstr "Для цьогоEmail не знайдено жодного облікового запису"
-
-#: ----login.php:67 ----login.php:75
-msgid "Email address/password do not match."
-msgstr "Адреса електронної пошти/пароль не збігаються."
-
-#: ----login.php:71 ----sign-up.php:106
-msgid "Password is not valid!"
-msgstr "Пароль недійсний!"
-
-#: ----sign-up.php:72
-msgid "Confirm my Email"
-msgstr "Підтвердити мій Email"
-
-#: ----sign-up.php:110
-msgid "This email address is already taken!"
-msgstr "Ця електронна адреса вже зайнята!"
-
-#: core/auth.php:25 core/auth.php:43
-msgid "Login"
-msgstr "Вхід"
-
-#: core/auth.php:29 core/auth.php:48 views/auth/sign-up.twig:30
-msgid "Sign Up"
-msgstr "Реєстрація"
-
-#: core/auth.php:33 core/auth.php:53
-msgid "Forgot Password"
-msgstr "Забули пароль"
-
-#: core/auth.php:37
-msgid "Home page"
-msgstr "Домашня сторінка"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -552,14 +508,6 @@ msgstr "Кастомайзер наразі вимкнено."
 msgid "Go to my profile"
 msgstr "Go to my profile"
 
-#: core/includes/back/system-static-pages.php:8
-msgid "Profile page"
-msgstr "Сторінка профілю"
-
-#: core/includes/back/system-static-pages.php:63
-msgid "Select"
-msgstr "Обрати"
-
 #: core/includes/back/system-thumbnails.php:15
 msgid "Thumbnail"
 msgstr "Мініатюра"
@@ -727,6 +675,55 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
+#: core/pages.php:42 core/pages.php:62 core/pages.php:353
+msgid "Login"
+msgstr "Вхід"
+
+#: core/pages.php:46 core/pages.php:141 core/pages.php:355
+#: views/auth/sign-up.twig:30
+msgid "Sign Up"
+msgstr "Реєстрація"
+
+#: core/pages.php:50 core/pages.php:259 core/pages.php:357
+msgid "Forgot Password"
+msgstr "Забули пароль"
+
+#: core/pages.php:54
+msgid "Home page"
+msgstr "Головна сторінка"
+
+#: core/pages.php:115 core/pages.php:123
+msgid "Email address/password do not match."
+msgstr "Адреса електронної пошти/пароль не збігаються."
+
+#: core/pages.php:119 core/pages.php:233
+msgid "Password is not valid!"
+msgstr "Пароль недійсний!"
+
+#: core/pages.php:199
+msgid "Confirm my Email"
+msgstr "Підтвердити мій Email"
+
+#: core/pages.php:237
+msgid "This email address is already taken!"
+msgstr "Ця електронна адреса вже зайнята!"
+
+#: core/pages.php:301
+msgid "Change my password"
+msgstr "Змінити мій пароль"
+
+#: core/pages.php:315
+msgid "Verification code sent"
+msgstr "Код підтвердження надіслано"
+
+#: core/pages.php:317
+msgid "No account found for this email"
+msgstr "Для цьогоEmail не знайдено жодного облікового запису"
+
+#: core/pages.php:333 core/pages.php:359
+msgid "Profile"
+msgstr "Профіль"
+
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
 #: views/auth/sign-up.twig:8
 msgid "Email"
@@ -779,6 +776,33 @@ msgstr "Код відновлення пароля для посилання"
 #: views/email/base.twig:403
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
+
+#: views/shop/profile.twig:10
+msgid "Hello"
+msgstr "Вітаємо"
+
+#: views/shop/profile.twig:12 views/shop/profile.twig:26
+msgid "Are you sure you want to log out?"
+msgstr "Ви впевнені, що бажаєте вийти?"
+
+#: views/shop/profile.twig:13 views/shop/profile.twig:26
+msgid "Log Out"
+msgstr "Вийти"
+
+#: views/shop/profile.twig:23
+msgid "My orders"
+msgstr "Мої замовлення"
+
+#: views/shop/profile.twig:24
+msgid "Edit profile"
+msgstr "Редагувати профіль"
+
+#: views/shop/profile.twig:25
+msgid "Change password"
+msgstr "Змінити пароль"
+
+#~ msgid "Select"
+#~ msgstr "Обрати"
 
 #~ msgid "Sign up"
 #~ msgstr "Реєстрація"

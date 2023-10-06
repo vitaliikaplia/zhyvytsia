@@ -1655,6 +1655,61 @@
             ]
         },
         {
+            "key": "field_651fe31e3df8b",
+            "label": "Профіль",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_651fe32d3df8c",
+            "label": "",
+            "name": "profile",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "no_label",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_651fe32d3df90",
+                    "label": "URL сторінки (slug)",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
             "key": "field_65043c919c27b",
             "label": "Кукі поп-ап",
             "name": "",
@@ -1961,5 +2016,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696479268
+    "modified": 1696588978
 }

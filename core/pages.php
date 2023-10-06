@@ -2,16 +2,27 @@
 
 if(!defined('ABSPATH')){exit;}
 
-/** Custom auth pages */
+/** system pages */
 function custom_system_auth_pages_callback() {
 
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
-    $options = get_field('auth', 'options');
+    $auth = get_field('auth', 'options');
+    $profile = get_field('profile', 'options');
 
-    if ($path_segments[0] == $options['login']['url'] || $path_segments[0] == $options['sign_up']['url'] || $path_segments[0] == $options['forgot_password']['url']) {
+    if (
+        $path_segments[0] == $auth['login']['url'] ||
+        $path_segments[0] == $auth['sign_up']['url'] ||
+        $path_segments[0] == $auth['forgot_password']['url'] ||
+        $path_segments[0] == $profile['url']
+    ) {
 
-        if(is_user_logged_in()){
+        if(is_user_logged_in() && $path_segments[0] != $profile['url']){
+            wp_redirect( BLOGINFO_URL . '/' . $profile['url'] . '/' );
+            exit;
+        }
+
+        if(!is_user_logged_in() && $path_segments[0] == $profile['url']){
             wp_redirect( BLOGINFO_URL );
             exit;
         }
@@ -24,30 +35,37 @@ function custom_system_auth_pages_callback() {
         add_action('wp', function(){ status_header( 200 ); });
 
         $context = Timber::context();
-        $context['links'] = array(
-            array(
-                'url' => BLOGINFO_URL . '/' . $options['login']['url'] . '/',
-                'title' => __('Login', TEXTDOMAIN)
-            ),
-            array(
-                'url' => BLOGINFO_URL . '/' . $options['sign_up']['url'] . '/',
-                'title' => __('Sign Up', TEXTDOMAIN)
-            ),
-            array(
-                'url' => BLOGINFO_URL . '/' . $options['forgot_password']['url'] . '/',
-                'title' => __('Forgot Password', TEXTDOMAIN)
-            ),
-            array(
-                'url' => BLOGINFO_URL,
-                'title' => __('Home page', TEXTDOMAIN)
-            )
-        );
 
-        if($path_segments[0] == $options['login']['url']){
+        if (
+            $path_segments[0] == $auth['login']['url'] ||
+            $path_segments[0] == $auth['sign_up']['url'] ||
+            $path_segments[0] == $auth['forgot_password']['url']
+        ){
+            $context['links'] = array(
+                array(
+                    'url' => BLOGINFO_URL . '/' . $auth['login']['url'] . '/',
+                    'title' => __('Login', TEXTDOMAIN)
+                ),
+                array(
+                    'url' => BLOGINFO_URL . '/' . $auth['sign_up']['url'] . '/',
+                    'title' => __('Sign Up', TEXTDOMAIN)
+                ),
+                array(
+                    'url' => BLOGINFO_URL . '/' . $auth['forgot_password']['url'] . '/',
+                    'title' => __('Forgot Password', TEXTDOMAIN)
+                ),
+                array(
+                    'url' => BLOGINFO_URL,
+                    'title' => __('Home page', TEXTDOMAIN)
+                )
+            );
+        }
 
-            $template = 'login.twig';
+        if($path_segments[0] == $auth['login']['url']) {
+
+            $template = 'auth/login.twig';
             $title = __('Login', TEXTDOMAIN);
-            $text = $options['login']['text'];
+            $text = $auth['login']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['uPassword']) && isset($_POST['nonce'])) {
@@ -122,11 +140,11 @@ function custom_system_auth_pages_callback() {
 
             }
 
-        } elseif ($path_segments[0] == $options['sign_up']['url']){
+        } elseif ($path_segments[0] == $auth['sign_up']['url']){
 
-            $template = 'sign-up.twig';
+            $template = 'auth/sign-up.twig';
             $title = __('Sign Up', TEXTDOMAIN);
-            $text = $options['sign_up']['text'];
+            $text = $auth['sign_up']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['uPassword']) && isset($_POST['nonce'])) {
@@ -240,11 +258,11 @@ function custom_system_auth_pages_callback() {
 
             }
 
-        } elseif ($path_segments[0] == $options['forgot_password']['url']){
+        } elseif ($path_segments[0] == $auth['forgot_password']['url']){
 
-            $template = 'forgot-password.twig';
+            $template = 'auth/forgot-password.twig';
             $title = __('Forgot Password', TEXTDOMAIN);
-            $text = $options['forgot_password']['text'];
+            $text = $auth['forgot_password']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['nonce'])) {
@@ -314,13 +332,59 @@ function custom_system_auth_pages_callback() {
 
             }
 
+        } elseif ($path_segments[0] == $profile['url']){
+
+            if(!isset($path_segments[1])){
+
+                $template = 'profile/orders.twig';
+                $title = __('Orders', TEXTDOMAIN);
+
+            } elseif ( $path_segments[1] == 'edit'){
+
+                $template = 'profile/edit.twig';
+                $title = __('Edit profile', TEXTDOMAIN);
+
+            } elseif ( $path_segments[1] == 'change-password'){
+
+                $template = 'profile/change-password.twig';
+                $title = __('Change password', TEXTDOMAIN);
+
+            } elseif ($path_segments[1]){
+                wp_redirect( BLOGINFO_URL . '/' . $profile['url'] . '/' );
+                exit;
+            }
+
         }
 
         $context['title'] = $title;
         $context['text'] = $text;
-        Timber::render( 'auth/' . $template, $context );
+        Timber::render( $template, $context );
         exit;
     }
 
 }
 add_action( 'init', 'custom_system_auth_pages_callback' );
+
+/** system pages titles */
+add_filter( 'document_title_parts', function( $title_parts_array ) {
+    $parsed_url = parse_url($_SERVER['REQUEST_URI']);
+    $path_segments = explode('/', trim($parsed_url['path'], '/'));
+    $auth = get_field('auth', 'options');
+    $profile = get_field('profile', 'options');
+    if($path_segments[0] == $auth['login']['url']){
+        $title_parts_array['title'] = __('Login', TEXTDOMAIN);
+    } elseif($path_segments[0] == $auth['sign_up']['url']){
+        $title_parts_array['title'] = __('Sign Up', TEXTDOMAIN);
+    } elseif($path_segments[0] == $auth['forgot_password']['url']){
+        $title_parts_array['title'] = __('Forgot Password', TEXTDOMAIN);
+    } elseif($path_segments[0] == $profile['url']){
+        if(!isset($path_segments[1])){
+            $title_parts_array['title'] = __('Orders', TEXTDOMAIN);
+        } elseif ( $path_segments[1] == 'edit'){
+            $title_parts_array['title'] = __('Edit profile', TEXTDOMAIN);
+        } elseif ( $path_segments[1] == 'change-password'){
+            $title_parts_array['title'] = __('Change password', TEXTDOMAIN);
+        }
+    }
+    return $title_parts_array;
+});

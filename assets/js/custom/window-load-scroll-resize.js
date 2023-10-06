@@ -4,7 +4,7 @@
 (function ($) {
     $(window).on("load scroll resize", function () {
 
-        if(footerEl){
+        if(footerEl && !$('body').hasClass('profile')){
             if (isInViewport(footerEl)) {
                 if (!bodyEl.classList.contains('footer-in-viewport')) {
                     bodyEl.classList.add('footer-in-viewport');

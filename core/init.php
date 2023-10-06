@@ -143,7 +143,7 @@ if(is_array($includedAjax) && $includedAjax){
 }
 
 /** custom auth pages */
-require_once CORE_PATH . DS . 'auth.php';
+require_once CORE_PATH . DS . 'pages.php';
 
 /** timber */
 class BlankSite extends TimberSite {

@@ -1,0 +1,39 @@
+{% block html_head_container %}
+{% include 'overall/html-header.twig' %}
+{% endblock %}
+<body class="{{body_class}}">
+{% include 'overall/header.twig' %}
+{% set account_url = site.url~'/'~general_fields.profile.url~'/' %}
+<main>
+    <div class="profileWrapper">
+        <div class="profile">
+            <div class="topHead">
+                <p class="greetings">{{ __('Hello', TEXTDOMAIN) }}, {{ user.name }}!</p>
+                <p class="logOut">
+                    <a href="{{ fn('wp_logout_url') }}" onclick="return confirm('{{ __('Are you sure you want to log out?', TEXTDOMAIN) }}')">
+                        <span class="title">{{ __('Log Out', TEXTDOMAIN) }}</span>
+                        <svg>
+                            <use href="{{ svg_sprite }}#iconLogout"></use>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <ul>
+                        <li><a href="{{ account_url }}">{{ __('My orders', TEXTDOMAIN) }}</a></li>
+                        <li><a href="{{ account_url~'edit/' }}">{{ __('Edit profile', TEXTDOMAIN) }}</a></li>
+                        <li><a href="{{ account_url~'change-password/' }}">{{ __('Change password', TEXTDOMAIN) }}</a></li>
+                        <li><a href="{{ fn('wp_logout_url') }}" onclick="return confirm('{{ __('Are you sure you want to log out?', TEXTDOMAIN) }}')">{{ __('Log Out', TEXTDOMAIN) }}</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'overall/footer.twig' %}
+{{ function('wp_footer') }}</body>
+</html>

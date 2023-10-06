@@ -19,7 +19,8 @@ body{
 	}
 
 	&.error404,
-	&.single-catalog{
+	&.single-catalog,
+	&.profile{
 		background-color: #fff;
 		color: #000;
 	}
@@ -534,6 +535,41 @@ header{
 
 				span{
 					color: #224A30;
+				}
+			}
+		}
+
+		.account,
+		.wp{
+			line-height: 1;
+			width: 40px;
+			height: 40px;
+			border-radius: 32px;
+			transition: all, .25s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 10px;
+
+			&.wp{
+				margin-right: 8px;
+			}
+
+			svg{
+				display: block;
+				width: 22px;
+				height: 22px;
+				fill: white;
+				margin: 0;
+				padding: 0;
+				transition: inherit;
+			}
+
+			&:hover{
+				background-color: white;
+
+				svg{
+					fill: #224A30;
 				}
 			}
 		}
@@ -1481,6 +1517,106 @@ footer{
 			line-height: 1.6;
 			max-width: 520px;
 			margin: 0 auto 38px;
+		}
+	}
+}
+
+.profileWrapper{
+	position: relative;
+	padding: 0 40px;
+
+	.profile{
+		position: relative;
+		padding: 32px 0;
+		max-width: 1140px;
+		margin: 0 auto;
+
+		.topHead{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 32px;
+
+			.greetings{
+				color: #000;
+				font-size: 24px;
+				font-weight: 700;
+			}
+
+			.logOut{
+				font-weight: 600;
+				font-size: 15px;
+
+				a{
+					color: #224A30;
+					text-decoration: none;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					svg{
+						width: 16px;
+						height: 16px;
+						fill: #224A30;
+					}
+
+					span{
+						margin-right: 6px;
+						//border-bottom: dashed 1px #224A30;
+					}
+				}
+			}
+		}
+
+		.columns{
+			display: flex;
+
+			.column{
+				padding: 16px 18px;
+				border: solid 1px lightgrey;
+				border-radius: 8px;
+				transition: all,.35s;
+
+				&:hover{
+					box-shadow: 0 0 8px rgba(black,.1);
+				}
+
+				&:first-child{
+					width: 260px;
+					margin-right: 40px;
+
+					ul{
+						font-size: 15px;
+						font-weight: 500;
+
+						li{
+							line-height: 1;
+							margin-bottom: 12px;
+
+							&:last-child{
+								margin-bottom: 0;
+							}
+
+							a{
+								color: #224A30;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+
+				&:last-child{
+					width: calc(100% - 300px);
+
+					.title{
+						color: #000;
+						font-size: 18px;
+						font-weight: 500;
+						margin-bottom: 12px;
+						line-height: 1;
+					}
+				}
+			}
 		}
 	}
 }

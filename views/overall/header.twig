@@ -49,11 +49,21 @@
                     <use href="{{ svg_sprite }}#iconCart"></use>
                 </svg>
             </button>
-            <button class="account">
+            {% if fn('current_user_can', 'administrator') or fn('current_user_can', 'editor') %}
+            <a href="/wp-admin/" class="wp">
+                <svg><use xlink:href="{{ svg_sprite }}#wp"></use></svg>
+            </a>
+            {% endif %}
+            {% if user %}
+                {% set account_url = site.url~'/'~general_fields.profile.url~'/' %}
+            {% else %}
+                {% set account_url = site.url~'/'~general_fields.auth.login.url~'/' %}
+            {% endif %}
+            <a href="{{ account_url }}" class="account">
                 <svg>
-                    <use href="{{ svg_sprite }}#{% if user %}iconAccount{% else %}iconLogin{% endif %}"></use>
+                    <use href="{{ svg_sprite }}#iconAccount"></use>
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 </header>
