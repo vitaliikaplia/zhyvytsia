@@ -27,8 +27,8 @@ function custom_system_auth_pages_callback() {
             exit;
         }
 
-        if (substr($_SERVER['REQUEST_URI'], -1) !== '/') {
-            wp_redirect(BLOGINFO_URL . '/' . str_replace('/','',stripslashes($_SERVER['REQUEST_URI'])) . '/');
+        if (empty($_GET) && substr($_SERVER['REQUEST_URI'], -1) !== '/') {
+            wp_redirect(BLOGINFO_URL . '/' . trim($_SERVER['REQUEST_URI'], '/') . '/');
             exit();
         }
 
@@ -338,16 +338,25 @@ function custom_system_auth_pages_callback() {
 
                 $template = 'profile/orders.twig';
                 $title = __('Orders', TEXTDOMAIN);
+                $context['current_page'] = 'orders';
 
             } elseif ( $path_segments[1] == 'edit'){
 
                 $template = 'profile/edit.twig';
                 $title = __('Edit profile', TEXTDOMAIN);
+                $context['current_page'] = 'edit';
 
             } elseif ( $path_segments[1] == 'change-password'){
 
                 $template = 'profile/change-password.twig';
                 $title = __('Change password', TEXTDOMAIN);
+                $context['current_page'] = 'change-password';
+
+            } elseif ( $path_segments[1] == 'change-email'){
+
+                $template = 'profile/change-email.twig';
+                $title = __('Change email', TEXTDOMAIN);
+                $context['current_page'] = 'change-email';
 
             } elseif ($path_segments[1]){
                 wp_redirect( BLOGINFO_URL . '/' . $profile['url'] . '/' );

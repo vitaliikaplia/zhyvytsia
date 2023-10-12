@@ -56,9 +56,9 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** shop item slider */
         let frameSingle,
             thumbnailsSingle;
-
         if($('.singleCatalogItem .thumbnails').length){
             thumbnailsSingle = new Swiper(".singleCatalogItem .thumbnails", {
                 loop: true,
@@ -68,7 +68,6 @@ window.addEventListener("DOMContentLoaded", function (){
                 watchSlidesProgress: true
             });
         }
-
         if($('.singleCatalogItem .frame').length){
             frameSingle = new Swiper(".singleCatalogItem .frame", {
                 loop: true,
@@ -84,6 +83,7 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** shop item description */
         if($('.descriptionWrapper button').length){
             $('.descriptionWrapper button').click(function(){
                 let thisEl = $(this),
@@ -98,7 +98,7 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
-        /** show / hide password */
+        /** auth show / hide password */
         const showHideElements = document.querySelectorAll('form .showHide');
         if (showHideElements) {
             showHideElements.forEach(function(showHideElement) {
@@ -122,6 +122,7 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** auth password strength */
         if($('.sign-up input[type="password"]').length){
             $('.sign-up input[type="password"]').on('change keyup', function(){
                 let thisEl = $(this),
@@ -140,6 +141,13 @@ window.addEventListener("DOMContentLoaded", function (){
                 }
             });
         }
+
+        /** profile phone mask */
+        if($(".profile input.user_phone").length){
+            $(".profile input.user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
+        }
+
+
 
     });
 })(jQuery);

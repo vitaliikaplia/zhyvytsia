@@ -4,6 +4,28 @@
 
 <h3 class="title">{{ __('Edit profile', TEXTDOMAIN) }}</h3>
 
+<form>
+    <label>
+        <p class="label">{{ __('First Name', TEXTDOMAIN) }}:</p>
+        <input type="text" name="f_name" value="{{ user.first_name }}">
+    </label>
+    <label>
+        <p class="label">{{ __('Last Name', TEXTDOMAIN) }}:</p>
+        <input type="text" name="l_name" value="{{ user.last_name }}">
+    </label>
+    <label>
+        <p class="label">{{ __('Phone', TEXTDOMAIN) }}:</p>
+        <input type="text" name="phone" value="{{ user.user_phone }}" class="user_phone">
+        <p class="additional">{% if user.user_phone_confirmed %}{{ __('Confirmed', TEXTDOMAIN) }}{% else %} {{ __('Phone not confirmed', TEXTDOMAIN) }}, <a href="#confirm-phone">{{ __('confirm', TEXTDOMAIN) }}</a>{% endif %}</p>
+    </label>
+    <label>
+        <p class="label">{{ __('Email', TEXTDOMAIN) }}:</p>
+        <input type="email" disabled readonly value="{{ user.user_email }}">
+        <p class="additional">{% if user.user_email_confirmed %}{{ __('Confirmed', TEXTDOMAIN) }}{% else %} {{ __('Email not confirmed', TEXTDOMAIN) }}, <a href="#confirm-email">{{ __('confirm', TEXTDOMAIN) }}</a>{% endif %}</p>
+    </label>
+    <input type="submit" style="display: none;">
+</form>
 
+{#{{user|pr}}#}
 
 {% endblock %}
