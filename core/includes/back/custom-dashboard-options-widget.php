@@ -60,7 +60,6 @@ if( current_user_can('edit_dashboard') ) {
                 'label'         => 'resize_at_upload_formats',
                 'description'   => __("Resize at upload formats", TEXTDOMAIN)
             ),
-
             array (
                 'type'          => 'number',
                 'label'          => 'resize_upload_width',
@@ -123,6 +122,31 @@ if( current_user_can('edit_dashboard') ) {
                 'type'          => 'checkbox',
                 'label'          => 'smtp_secure',
                 'description'   => __("Secure SMTP connection", TEXTDOMAIN),
+            ),
+            array (
+                'type'          => 'tab_end',
+            ),
+
+            /** SMS */
+            array (
+                'type'          => 'tab_start',
+                'label'         => 'sms_options',
+                'description'   => __("SMS options", TEXTDOMAIN)
+            ),
+            array (
+                'type'          => 'title',
+                'label'          => 'sms_username',
+                'description'   => __("SMS username", TEXTDOMAIN)
+            ),
+            array (
+                'type'          => 'password',
+                'label'          => 'sms_password',
+                'description'   => __("SMS password", TEXTDOMAIN)
+            ),
+            array (
+                'type'          => 'title',
+                'label'          => 'sms_alpha_name',
+                'description'   => __("SMS alpha name", TEXTDOMAIN)
             ),
             array (
                 'type'          => 'tab_end',

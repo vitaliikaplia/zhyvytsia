@@ -369,6 +369,10 @@ function custom_system_auth_pages_callback() {
                                 if(empty($uhp)){
                                     update_user_meta( $user_id, 'user_phone_confirmed', false );
                                     update_user_meta( $user_id, 'user_phone', htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8') );
+                                    $user_sms_verification_code = random_int(1000, 9999);
+                                    update_user_meta( $user_id, 'user_sms_verification_code', $user_sms_verification_code );
+                                    $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
+                                    send_sms(fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')), $sms_message);
                                 } else {
                                     $context['notify'][] = add_notify('warning', __('This phone number is already taken', TEXTDOMAIN), true);
                                 }
@@ -432,6 +436,8 @@ add_filter( 'document_title_parts', function( $title_parts_array ) {
             $title_parts_array['title'] = __('Orders', TEXTDOMAIN);
         } elseif ( $path_segments[1] == 'edit'){
             $title_parts_array['title'] = __('Edit profile', TEXTDOMAIN);
+        } elseif ( $path_segments[1] == 'change-email'){
+            $title_parts_array['title'] = __('Change email', TEXTDOMAIN);
         } elseif ( $path_segments[1] == 'change-password'){
             $title_parts_array['title'] = __('Change password', TEXTDOMAIN);
         }

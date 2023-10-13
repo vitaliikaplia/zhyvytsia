@@ -1048,6 +1048,64 @@
                             "toolbar": "full",
                             "media_upload": 0,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_6529b25c4ff16",
+                            "label": "Підтвердження номера телефону",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_6529b2754ff17",
+                            "label": "Тема листа",
+                            "name": "user_phone_confirmation_subject",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6529b28d4ff18",
+                            "label": "Текст листа",
+                            "name": "user_phone_confirmation_text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         }
                     ]
                 },
@@ -2016,5 +2074,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697214797
+    "modified": 1697231536
 }

@@ -41,4 +41,10 @@
             <input disabled readonly type="text" name="password_recovery_code_for_link" id="password_recovery_code_for_link" class="regular-text" value="{{ fn('get_user_meta', user.ID, 'password_recovery_code_for_link', true) }}" /><br />
         </td>
     </tr>
+    <tr>
+        <th><label for="user_sms_verification_code">{{ __('User sms verification code', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input disabled readonly type="text" name="user_sms_verification_code" id="user_sms_verification_code" class="regular-text" value="{{ fn('get_user_meta', user.ID, 'user_sms_verification_code', true) }}" /><br />
+        </td>
+    </tr>
 </table>

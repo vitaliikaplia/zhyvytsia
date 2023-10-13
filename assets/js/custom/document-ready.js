@@ -147,6 +147,7 @@ window.addEventListener("DOMContentLoaded", function (){
             $(".profile input.user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
         }
 
+        /** profile email manual confirm */
         $('.profile a[href="#confirm-email"]').click(function(){
             prepare_middle_popup();
             $.ajax({
@@ -202,7 +203,124 @@ window.addEventListener("DOMContentLoaded", function (){
                                 });
                             }
                         });
+                        $('.middlePopup .resend').click(function(){
+                            $('.middlePopup .resend').addClass('busy');
+                            $('.middlePopup .resend .loader').addClass('show');
+                            $.ajax({
+                                type: "POST",
+                                url: ajaxUrl,
+                                dataType: "json",
+                                cache: false,
+                                data: {
+                                    "action": "profile_resend_verification_code_to_email"
+                                },
+                                success : function (out) {
+                                    if(out.status == 'ok'){
+                                        $('.middlePopup .resend .label').attr('data-static-label', $('.middlePopup .resend .label').text());
+                                        $('.middlePopup .resend .label').text(out.label);
+                                        $('.middlePopup .resend .loader').removeClass('show');
+                                        $('.middlePopup .codeInput input:first-child').focus();
+                                        setTimeout(function() {
+                                            $('.middlePopup .resend').removeClass('busy');
+                                            $('.middlePopup .resend .label').text($('.middlePopup .resend .label').attr('data-static-label'));
+                                            $('.middlePopup .resend .label').removeAttr('data-static-label');
+                                        }, 60000);
+                                    }
+                                }
+                            });
+                            return false;
+                        });
+                    }
+                }
+            });
+            return false;
+        });
 
+        /** profile sms manual confirm */
+        $('.profile a[href="#confirm-phone"]').click(function(){
+            prepare_middle_popup();
+            $.ajax({
+                type: "POST",
+                url: ajaxUrl,
+                dataType: "json",
+                cache: false,
+                data: {
+                    "action": "profile_confirm_phone_number_content"
+                },
+                success : function (out) {
+                    if(out.status == "ok"){
+                        add_content_into_middle_popup(out.title, out.content);
+                        let profileConfirmPhoneNumberForm = $('form.confirm-phone-number');
+                        profileConfirmPhoneNumberForm.find('.codeInput input:first-child').focus();
+                        profileConfirmPhoneNumberForm.find('.codeInput input').each(function(){
+                            $(this).mask('0', {placeholder: "_"});
+                            $(this).unbind('keyup');
+                        });
+                        profileConfirmPhoneNumberForm.find('.codeInput input').on('focus', function(){
+                            if(!$(this).hasClass('input_1') && $(this).prev().val().trim() == ""){
+                                $(this).prev().focus();
+                            }
+                        });
+                        profileConfirmPhoneNumberForm.find('.codeInput input').on('keyup', function(){
+                            $(this).removeClass('red');
+                            if($(this).val().trim() != ""){
+                                $(this).next().focus();
+                            } else {
+                                $(this).prev().focus();
+                            }
+                            if($(this).hasClass('input_4') && $(this).val().trim() != ""){
+
+                                profileConfirmPhoneNumberForm.find('.codeInput input').addClass('disabled');
+                                profileConfirmPhoneNumberForm.find('.codeInput input').blur();
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: ajaxUrl,
+                                    dataType: 'json',
+                                    data: new FormData(profileConfirmPhoneNumberForm[0]),
+                                    contentType: false,
+                                    cache: false,
+                                    processData: false,
+                                    success : function (out) {
+                                        if(out.status == 'ok'){
+                                            add_content_into_middle_popup(out.title, out.content);
+                                            $('.profile form input[name="user_phone"]').next().html(out.confirmed);
+                                        } else {
+                                            $('.middlePopup .codeInput input').addClass('red');
+                                            $('.middlePopup .codeInput input').removeClass('disabled');
+                                            $('.middlePopup .codeInput input:last-child').focus();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                        $('.middlePopup .resend').click(function(){
+                            $('.middlePopup .resend').addClass('busy');
+                            $('.middlePopup .resend .loader').addClass('show');
+                            $.ajax({
+                                type: "POST",
+                                url: ajaxUrl,
+                                dataType: "json",
+                                cache: false,
+                                data: {
+                                    "action": "profile_resend_verification_code_to_sms"
+                                },
+                                success : function (out) {
+                                    if(out.status == 'ok'){
+                                        $('.middlePopup .resend .label').attr('data-static-label', $('.middlePopup .resend .label').text());
+                                        $('.middlePopup .resend .label').text(out.label);
+                                        $('.middlePopup .resend .loader').removeClass('show');
+                                        $('.middlePopup .codeInput input:first-child').focus();
+                                        setTimeout(function() {
+                                            $('.middlePopup .resend').removeClass('busy');
+                                            $('.middlePopup .resend .label').text($('.middlePopup .resend .label').attr('data-static-label'));
+                                            $('.middlePopup .resend .label').removeAttr('data-static-label');
+                                        }, 60000);
+                                    }
+                                }
+                            });
+                            return false;
+                        });
                     }
                 }
             });
