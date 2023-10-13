@@ -360,22 +360,26 @@ function custom_system_auth_pages_callback() {
                         }
 
                         if (isset($_POST['user_phone']) && $_POST['user_phone']) {
-                            $user_phone = get_user_meta($user_id, 'user_phone', true);
-                            if($user_phone != $_POST['user_phone']){
-                                $uhp = get_users(array(
-                                    'meta_key' => 'user_phone',
-                                    'meta_value' => htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')
-                                ));
-                                if(empty($uhp)){
-                                    update_user_meta( $user_id, 'user_phone_confirmed', false );
-                                    update_user_meta( $user_id, 'user_phone', htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8') );
-                                    $user_sms_verification_code = random_int(1000, 9999);
-                                    update_user_meta( $user_id, 'user_sms_verification_code', $user_sms_verification_code );
-                                    $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
-                                    send_sms(fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')), $sms_message);
-                                } else {
-                                    $context['notify'][] = add_notify('warning', __('This phone number is already taken', TEXTDOMAIN), true);
+                            if(check_phone(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
+                                $user_phone = get_user_meta($user_id, 'user_phone', true);
+                                if($user_phone != fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
+                                    $uhp = get_users(array(
+                                        'meta_key' => 'user_phone',
+                                        'meta_value' => htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')
+                                    ));
+                                    if(empty($uhp)){
+                                        update_user_meta( $user_id, 'user_phone_confirmed', false );
+                                        update_user_meta( $user_id, 'user_phone', fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')));
+                                        $user_sms_verification_code = random_int(1000, 9999);
+                                        update_user_meta( $user_id, 'user_sms_verification_code', $user_sms_verification_code );
+                                        $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
+                                        send_sms(fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')), $sms_message);
+                                    } else {
+                                        $context['notify'][] = add_notify('warning', __('This phone number is already taken', TEXTDOMAIN), true);
+                                    }
                                 }
+                            } else {
+                                $context['notify'][] = add_notify('warning', __('Enter valid phone number', TEXTDOMAIN), true);
                             }
                         } else {
                             update_user_meta( $user_id, 'user_phone', false );

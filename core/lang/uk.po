@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 00:25+0300\n"
+"POT-Creation-Date: 2023-10-14 01:28+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -57,7 +57,7 @@ msgstr "Підтвердити мій Email"
 msgid "New code sent..."
 msgstr "Новий код надіслано…"
 
-#: core/ajax/profile_resend_verification_code_to_sms.php:24 core/pages.php:374
+#: core/ajax/profile_resend_verification_code_to_sms.php:24 core/pages.php:375
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
@@ -409,7 +409,7 @@ msgstr "Батьківська позииція"
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
 #: core/includes/back/custom-post-types.php:69 core/pages.php:340
-#: core/pages.php:436
+#: core/pages.php:440
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -737,16 +737,16 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: core/pages.php:46 core/pages.php:66 core/pages.php:429
+#: core/pages.php:46 core/pages.php:66 core/pages.php:433
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:50 core/pages.php:143 core/pages.php:431
+#: core/pages.php:50 core/pages.php:143 core/pages.php:435
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:54 core/pages.php:266 core/pages.php:433
+#: core/pages.php:54 core/pages.php:266 core/pages.php:437
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
@@ -786,25 +786,29 @@ msgstr "Код підтвердження надіслано"
 msgid "No account found for this email"
 msgstr "Для цьогоEmail не знайдено жодного облікового запису"
 
-#: core/pages.php:377
+#: core/pages.php:378
 msgid "This phone number is already taken"
 msgstr "Цей номер телефону вже зайнятий"
 
-#: core/pages.php:387
+#: core/pages.php:382
+msgid "Enter valid phone number"
+msgstr "Введіть дійсний номер телефону"
+
+#: core/pages.php:391
 msgid "Profile updated"
 msgstr "Профіль оновлено"
 
-#: core/pages.php:392 core/pages.php:438 views/base-profile.twig:31
+#: core/pages.php:396 core/pages.php:442 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:398 core/pages.php:442 views/base-profile.twig:33
+#: core/pages.php:402 core/pages.php:446 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:404 core/pages.php:440 views/base-profile.twig:32
+#: core/pages.php:408 core/pages.php:444 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"

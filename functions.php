@@ -68,3 +68,4 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //pr(get_option('admin_email'));
 //$auth = get_field('auth', 'options');
 //pr($auth['mail_templates']['sign_up_subject']);
+//pr(fix_phone_format('0672089900'));

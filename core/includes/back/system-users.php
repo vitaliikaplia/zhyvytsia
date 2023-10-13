@@ -54,7 +54,7 @@ function save_extra_user_profile_fields( $user_id ) {
     }
 
     update_user_meta( $user_id, 'user_email_confirmed', htmlspecialchars($_POST['user_email_confirmed'], ENT_QUOTES, 'UTF-8') );
-    update_user_meta( $user_id, 'user_phone', htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8') );
+    update_user_meta( $user_id, 'user_phone', fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')));
     update_user_meta( $user_id, 'user_phone_confirmed', htmlspecialchars($_POST['user_phone_confirmed'], ENT_QUOTES, 'UTF-8') );
 
 }
