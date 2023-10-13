@@ -4,6 +4,10 @@
 (function ($) {
     $(document).ready(function () {
 
+        if($("input#user_phone").length){
+            $("input#user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
+        }
+
         /** change item status */
         $('.column-catalog_status select').on('change', function() {
 

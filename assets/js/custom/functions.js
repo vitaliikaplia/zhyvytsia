@@ -236,3 +236,26 @@ function check_password_strength(password) {
     // Password meets all requirements
     return result;
 }
+
+/** content popup */
+function prepare_middle_popup(){
+    $('body').addClass('pop-up');
+    $('body').append('<div class="middlePopupWrapper"></div>');
+    $('.middlePopupWrapper').html('<div class="middlePopup loading"><span class="close"></span><p class="title"></p><div class="content"></div></div>');
+    $('.middlePopup .close').click(function(){
+        $('.middlePopupWrapper').remove();
+        $('body').removeClass('pop-up');
+    });
+    $('.middlePopupWrapper').click(function(e){
+        if($(e.target).attr('class') == 'middlePopupWrapper'){
+            $('.middlePopupWrapper').remove();
+            $('body').removeClass('pop-up');
+        }
+    });
+}
+
+function add_content_into_middle_popup(title, content){
+    $('.middlePopupWrapper .middlePopup').removeClass('loading');
+    $('.middlePopupWrapper .middlePopup .title').html(title);
+    $('.middlePopupWrapper .middlePopup .content').html(content);
+}

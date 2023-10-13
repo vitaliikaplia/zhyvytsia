@@ -5,9 +5,11 @@ if(!defined('ABSPATH')){exit;}
 /** custom user role */
 add_role(
     'client',
-    __( 'Client' ),
+    __('Client', TEXTDOMAIN),
     array()
 );
+
+//remove_role( 'client' );
 
 /** allow editors edit menus */
 $role_object = get_role( 'editor' );
@@ -62,14 +64,18 @@ add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
 
 /** custom user columns */
 function add_user_phone_column($columns) {
-    $columns['user_phone'] = 'Phone Number';
+    $columns['user_phone'] = __('Phone Number', TEXTDOMAIN);
     return $columns;
 }
 add_filter('manage_users_columns', 'add_user_phone_column');
 
 function show_user_phone_data($value, $column_name, $user_id) {
     if ('user_phone' == $column_name) {
-        return nice_phone_format(get_user_meta($user_id, 'user_phone', true));
+        if($user_phone = get_user_meta($user_id, 'user_phone', true)){
+            return nice_phone_format($user_phone);
+        } else {
+            return '-';
+        }
     }
     return $value;
 }

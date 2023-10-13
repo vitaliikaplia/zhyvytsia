@@ -19,3 +19,12 @@
 		@include transform(translateY(5px));
 	}
 }
+
+@include keyframe(loader){
+	from{
+		@include transform(rotate(0));
+	}
+	to{
+		@include transform(rotate(360deg));
+	}
+}

@@ -2,4 +2,10 @@
 <div class="notify {{ notify.type }}">
     <p>{{ notify.message }}</p>
 </div>
+{% elseif notify is iterable %}
+{% for key,val in notify %}
+<div class="notify {{ val.type }}">
+    <p>{{ val.message }}</p>
+</div>
+{% endfor %}
 {% endif %}

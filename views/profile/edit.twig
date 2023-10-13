@@ -4,7 +4,8 @@
 
 <h3 class="title">{{ __('Edit profile', TEXTDOMAIN) }}</h3>
 
-<form>
+<form method="post" action="?profile=update">
+    <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'profile-update') }}">
     <label>
         <p class="label">{{ __('First Name', TEXTDOMAIN) }}:</p>
         <input type="text" name="f_name" value="{{ user.first_name }}">
@@ -15,8 +16,10 @@
     </label>
     <label>
         <p class="label">{{ __('Phone', TEXTDOMAIN) }}:</p>
-        <input type="text" name="phone" value="{{ user.user_phone }}" class="user_phone">
+        <input type="text" name="user_phone" value="{{ user.user_phone }}" class="user_phone">
+        {% if user.user_phone %}
         <p class="additional">{% if user.user_phone_confirmed %}{{ __('Confirmed', TEXTDOMAIN) }}{% else %} {{ __('Phone not confirmed', TEXTDOMAIN) }}, <a href="#confirm-phone">{{ __('confirm', TEXTDOMAIN) }}</a>{% endif %}</p>
+        {% endif %}
     </label>
     <label>
         <p class="label">{{ __('Email', TEXTDOMAIN) }}:</p>
@@ -24,6 +27,7 @@
         <p class="additional">{% if user.user_email_confirmed %}{{ __('Confirmed', TEXTDOMAIN) }}{% else %} {{ __('Email not confirmed', TEXTDOMAIN) }}, <a href="#confirm-email">{{ __('confirm', TEXTDOMAIN) }}</a>{% endif %}</p>
     </label>
     <input type="submit" style="display: none;">
+    <button>{{ __('Save', TEXTDOMAIN) }}</button>
 </form>
 
 {#{{user|pr}}#}

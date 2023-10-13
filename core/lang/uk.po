@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-09 09:16+0300\n"
+"POT-Creation-Date: 2023-10-13 20:57+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -20,6 +20,21 @@ msgstr ""
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: core/ajax/profile_confirm_email_content.php:7
+#: core/ajax/profile_enter_code_from_email.php:59
+msgid "Email confirmation"
+msgstr "Підтвердження електронної пошти"
+
+#: core/ajax/profile_enter_code_from_email.php:43
+#: core/includes/back/system-do-page.php:40
+msgid "Go to my profile"
+msgstr "Перейти до мого профілю"
+
+#: core/ajax/profile_enter_code_from_email.php:60 views/profile/edit.twig:21
+#: views/profile/edit.twig:27
+msgid "Confirmed"
+msgstr "Підтверджено"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -353,7 +368,7 @@ msgstr "Батьківська позииція"
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
 #: core/includes/back/custom-post-types.php:69 core/pages.php:340
-#: core/pages.php:391
+#: core/pages.php:432
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -505,9 +520,10 @@ msgstr "Оновити версію теми"
 msgid "The Customizer is currently disabled."
 msgstr "Кастомайзер наразі вимкнено."
 
-#: core/includes/back/system-do-page.php:41
-msgid "Go to my profile"
-msgstr "Go to my profile"
+#: core/includes/back/system-do-page.php:54
+#: views/profile/profile-confirm-email-content-confirmed.twig:1
+msgid "Your email verified successfully, thanks!"
+msgstr "Вашу електронну адресу успішно підтверджено, дякуємо!"
 
 #: core/includes/back/system-thumbnails.php:15
 msgid "Thumbnail"
@@ -516,6 +532,10 @@ msgstr "Мініатюра"
 #: core/includes/back/system-users.php:8
 msgid "Client"
 msgstr "Клієнт"
+
+#: core/includes/back/system-users.php:65
+msgid "Phone Number"
+msgstr "Номер телефону"
 
 #: core/includes/front/custom-localization.php:8
 msgid "Your Email"
@@ -601,7 +621,7 @@ msgstr ""
 "Ми проводимо планове технічне обслуговування. Незабаром ми знову будемо "
 "онлайн."
 
-#: core/init.php:233
+#: core/init.php:234
 msgid "Please, install Advanced Custom Fields PRO version"
 msgstr "Будь ласка, встановіть PRO версію Advanced Custom Fields"
 
@@ -676,36 +696,44 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: core/pages.php:47 core/pages.php:67 core/pages.php:384
+#: core/pages.php:46 core/pages.php:66 core/pages.php:425
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:51 core/pages.php:146 core/pages.php:386
+#: core/pages.php:50 core/pages.php:143 core/pages.php:427
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:55 core/pages.php:264 core/pages.php:388
+#: core/pages.php:54 core/pages.php:266 core/pages.php:429
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
-#: core/pages.php:59
+#: core/pages.php:58
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:120 core/pages.php:128
+#: core/pages.php:117 core/pages.php:125
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: core/pages.php:124 core/pages.php:238
+#: core/pages.php:121 core/pages.php:240
 msgid "Password is not valid!"
 msgstr "Пароль недійсний!"
 
-#: core/pages.php:204
+#: core/pages.php:203
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
-#: core/pages.php:242
+#: core/pages.php:223
+msgid ""
+"Congratulations! Your new account has been created! Check your Email for "
+"confirmation."
+msgstr ""
+"Вітаємо! Ваш новий акаунт створено! Перевірте свій Емейл для його "
+"підтвердження."
+
+#: core/pages.php:244
 msgid "This email address is already taken!"
 msgstr "Ця електронна адреса вже зайнята!"
 
@@ -721,23 +749,31 @@ msgstr "Код підтвердження надіслано"
 msgid "No account found for this email"
 msgstr "Для цьогоEmail не знайдено жодного облікового запису"
 
-#: core/pages.php:346 core/pages.php:393 views/base-profile.twig:25
+#: core/pages.php:373
+msgid "This phone number is already taken"
+msgstr "Цей номер телефону вже зайнятий"
+
+#: core/pages.php:383
+msgid "Profile updated"
+msgstr "Профіль оновлено"
+
+#: core/pages.php:388 core/pages.php:434 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:352 core/pages.php:395 views/base-profile.twig:27
+#: core/pages.php:394 core/pages.php:436 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:358 views/base-profile.twig:26
+#: core/pages.php:400 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
-#: views/auth/sign-up.twig:8 views/profile/edit.twig:22
+#: views/auth/sign-up.twig:8 views/profile/edit.twig:25
 msgid "Email"
 msgstr "Email"
 
@@ -757,19 +793,19 @@ msgstr "Показати"
 msgid "Log in"
 msgstr "Увійти"
 
-#: views/base-profile.twig:11
+#: views/base-profile.twig:13 views/base-profile.twig:15
 msgid "Hello"
 msgstr "Вітаємо"
 
-#: views/base-profile.twig:13 views/base-profile.twig:28
+#: views/base-profile.twig:19 views/base-profile.twig:34
 msgid "Are you sure you want to log out?"
 msgstr "Ви впевнені, що бажаєте вийти?"
 
-#: views/base-profile.twig:14 views/base-profile.twig:28
+#: views/base-profile.twig:20 views/base-profile.twig:34
 msgid "Log Out"
 msgstr "Вийти"
 
-#: views/base-profile.twig:24 views/profile/orders.twig:5
+#: views/base-profile.twig:30 views/profile/orders.twig:5
 msgid "My orders"
 msgstr "Мої замовлення"
 
@@ -781,7 +817,7 @@ msgstr "Додаткові дані профілю"
 msgid "Confirmed Email?"
 msgstr "Підтверджена електронна адреса?"
 
-#: views/dashboard/user.twig:11 views/profile/edit.twig:17
+#: views/dashboard/user.twig:11 views/profile/edit.twig:18
 msgid "Phone"
 msgstr "Телефон"
 
@@ -798,6 +834,10 @@ msgid "User email verification code for link"
 msgstr "Код підтвердження електронної пошти користувача для посилання"
 
 #: views/dashboard/user.twig:33
+msgid "User email verification code"
+msgstr "Код підтвердження електронної пошти користувача"
+
+#: views/dashboard/user.twig:39
 msgid "Password recovery code for link"
 msgstr "Код відновлення пароля для посилання"
 
@@ -805,41 +845,58 @@ msgstr "Код відновлення пароля для посилання"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
-#: views/profile/edit.twig:9
+#: views/profile/edit.twig:10
 msgid "First Name"
 msgstr "Ім’я"
 
-#: views/profile/edit.twig:13
+#: views/profile/edit.twig:14
 msgid "Last Name"
 msgstr "Фамілія"
 
-#: views/profile/edit.twig:19 views/profile/edit.twig:24
-msgid "Confirmed"
-msgstr "Confirmed"
-
-#: views/profile/edit.twig:19
+#: views/profile/edit.twig:21
 msgid "Phone not confirmed"
 msgstr "Телефон не підтверджено"
 
-#: views/profile/edit.twig:19 views/profile/edit.twig:24
+#: views/profile/edit.twig:21 views/profile/edit.twig:27
 msgid "confirm"
 msgstr "підтвердити"
 
-#: views/profile/edit.twig:24
+#: views/profile/edit.twig:27
 msgid "Email not confirmed"
 msgstr "Електронна пошта не підтверджена"
 
-#~ msgid "Profile"
-#~ msgstr "Профіль"
+#: views/profile/edit.twig:30
+msgid "Save"
+msgstr "Зберегти"
+
+#: views/profile/profile-confirm-email-content.twig:2
+msgid "Enter verification code from Email"
+msgstr "Введіть код підтвердження з вашого Email"
+
+#: views/profile/profile-confirm-email-content.twig:11
+msgid "Resend verification Email"
+msgstr "Відправити ще один лист з підтвердженням"
+
+#: views/profile/profile-confirm-email-content.twig:14
+msgid ""
+"Alternatively, you can confirm your email address by clicking the "
+"confirmation button in the email"
+msgstr ""
+"Крім того, електронну адресу можна підтвердити, натиснувши на кнопку "
+"підтвердження в листі"
+
+#~ msgid "Your Email confirmed"
+#~ msgstr "Вашу електронну адресу підтверджено"
+
+#~ msgid "Also, email can be verified by clicking on the verification button."
+#~ msgstr ""
+#~ "Також електронну пошту можна підтвердити, натиснувши кнопку підтвердження."
 
 #~ msgid "Select"
 #~ msgstr "Обрати"
 
 #~ msgid "Sign up"
 #~ msgstr "Реєстрація"
-
-#~ msgid "User email verification code"
-#~ msgstr "User email verification code"
 
 #~ msgid "Welcome to Zhyvytsia"
 #~ msgstr "Ласкаво просимо до Живиці"

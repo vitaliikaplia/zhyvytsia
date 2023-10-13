@@ -7,22 +7,21 @@ function custom_system_auth_pages_callback() {
 
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
-    $auth = get_field('auth', 'options');
-    $profile = get_field('profile', 'options');
+    $general_fields = get_fields('options');
 
     if (
-        $path_segments[0] == $auth['login']['url'] ||
-        $path_segments[0] == $auth['sign_up']['url'] ||
-        $path_segments[0] == $auth['forgot_password']['url'] ||
-        $path_segments[0] == $profile['url']
+        $path_segments[0] == $general_fields['auth']['login']['url'] ||
+        $path_segments[0] == $general_fields['auth']['sign_up']['url'] ||
+        $path_segments[0] == $general_fields['auth']['forgot_password']['url'] ||
+        $path_segments[0] == $general_fields['profile']['url']
     ) {
 
-        if(is_user_logged_in() && $path_segments[0] != $profile['url']){
-            wp_redirect( BLOGINFO_URL . '/' . $profile['url'] . '/' );
+        if(is_user_logged_in() && $path_segments[0] != $general_fields['profile']['url']){
+            wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
             exit;
         }
 
-        if(!is_user_logged_in() && $path_segments[0] == $profile['url']){
+        if(!is_user_logged_in() && $path_segments[0] == $general_fields['profile']['url']){
             wp_redirect( BLOGINFO_URL );
             exit;
         }
@@ -37,21 +36,21 @@ function custom_system_auth_pages_callback() {
         $context = Timber::context();
 
         if (
-            $path_segments[0] == $auth['login']['url'] ||
-            $path_segments[0] == $auth['sign_up']['url'] ||
-            $path_segments[0] == $auth['forgot_password']['url']
+            $path_segments[0] == $general_fields['auth']['login']['url'] ||
+            $path_segments[0] == $general_fields['auth']['sign_up']['url'] ||
+            $path_segments[0] == $general_fields['auth']['forgot_password']['url']
         ){
             $context['links'] = array(
                 array(
-                    'url' => BLOGINFO_URL . '/' . $auth['login']['url'] . '/',
+                    'url' => BLOGINFO_URL . '/' . $general_fields['auth']['login']['url'] . '/',
                     'title' => __('Login', TEXTDOMAIN)
                 ),
                 array(
-                    'url' => BLOGINFO_URL . '/' . $auth['sign_up']['url'] . '/',
+                    'url' => BLOGINFO_URL . '/' . $general_fields['auth']['sign_up']['url'] . '/',
                     'title' => __('Sign Up', TEXTDOMAIN)
                 ),
                 array(
-                    'url' => BLOGINFO_URL . '/' . $auth['forgot_password']['url'] . '/',
+                    'url' => BLOGINFO_URL . '/' . $general_fields['auth']['forgot_password']['url'] . '/',
                     'title' => __('Forgot Password', TEXTDOMAIN)
                 ),
                 array(
@@ -61,11 +60,11 @@ function custom_system_auth_pages_callback() {
             );
         }
 
-        if($path_segments[0] == $auth['login']['url']) {
+        if($path_segments[0] == $general_fields['auth']['login']['url']) {
 
             $template = 'auth/login.twig';
             $title = __('Login', TEXTDOMAIN);
-            $text = $auth['login']['text'];
+            $text = $general_fields['auth']['login']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['uPassword']) && isset($_POST['nonce'])) {
@@ -93,9 +92,7 @@ function custom_system_auth_pages_callback() {
                                     wp_set_auth_cookie( $user->ID, true );
                                     do_action( 'wp_login', $user->user_login );
 
-                                    $emails = get_field('emails', 'options');
-
-                                    if($emails['send_authorization_security_letters']){
+                                    if($general_fields['emails']['send_authorization_security_letters']){
                                         $search = array(
                                             '[session]'
                                         );
@@ -107,13 +104,13 @@ function custom_system_auth_pages_callback() {
                                             'TEXTDOMAIN' => TEXTDOMAIN,
                                             'BLOGINFO_NAME' => BLOGINFO_NAME,
                                             'BLOGINFO_URL' => BLOGINFO_URL,
-                                            'subject' => $emails['auth']['login_subject'],
-                                            'text' => str_replace($search, $replace, $emails['auth']['login_text'])
+                                            'subject' => $general_fields['emails']['auth']['login_subject'],
+                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['login_text'])
                                         ));
-                                        send_email($uEmail_secure, $emails['auth']['login_subject'], $content);
+                                        send_email($uEmail_secure, $general_fields['emails']['auth']['login_subject'], $content);
                                     }
 
-                                    wp_redirect( get_the_permalink(get_option('profile_page')) );
+                                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
                                     exit;
 
                                 } else {
@@ -140,11 +137,11 @@ function custom_system_auth_pages_callback() {
 
             }
 
-        } elseif ($path_segments[0] == $auth['sign_up']['url']){
+        } elseif ($path_segments[0] == $general_fields['auth']['sign_up']['url']){
 
             $template = 'auth/sign-up.twig';
             $title = __('Sign Up', TEXTDOMAIN);
-            $text = $auth['sign_up']['text'];
+            $text = $general_fields['auth']['sign_up']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['uPassword']) && isset($_POST['nonce'])) {
@@ -181,8 +178,10 @@ function custom_system_auth_pages_callback() {
                                     if($new_user_id){
 
                                         $user_email_verification_code_for_link = random_int(1000000000, 9999999999);
+                                        $user_email_verification_code = random_int(1000, 9999);
 
                                         update_user_meta( $new_user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
+                                        update_user_meta( $new_user_id, 'user_email_verification_code', $user_email_verification_code );
                                         update_user_meta( $new_user_id, 'nickname', $uEmail_secure );
 
                                         $arr_for_link = array(
@@ -193,9 +192,9 @@ function custom_system_auth_pages_callback() {
                                         $json_for_link = json_encode($arr_for_link);
                                         $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
 
-                                        $emails = get_field('emails', 'options');
                                         $search = array(
                                             '[button]',
+                                            '[code]',
                                             '[session]'
                                         );
                                         $replace = array(
@@ -203,6 +202,7 @@ function custom_system_auth_pages_callback() {
                                                 'link' => DO_URL . $encrypted_for_link,
                                                 'title' => __('Confirm my Email', TEXTDOMAIN)
                                             )),
+                                            emoji_numbers($user_email_verification_code),
                                             get_session_info($_SERVER['REMOTE_ADDR'])
                                         );
 
@@ -210,17 +210,19 @@ function custom_system_auth_pages_callback() {
                                             'TEXTDOMAIN' => TEXTDOMAIN,
                                             'BLOGINFO_NAME' => BLOGINFO_NAME,
                                             'BLOGINFO_URL' => BLOGINFO_URL,
-                                            'subject' => $emails['auth']['sign_up_subject'],
-                                            'text' => str_replace($search, $replace, $emails['auth']['sign_up_text'])
+                                            'subject' => $general_fields['emails']['auth']['sign_up_subject'],
+                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['sign_up_text'])
                                         ));
-                                        send_email($uEmail_secure, $emails['auth']['sign_up_subject'], $content);
+                                        send_email($uEmail_secure, $general_fields['emails']['auth']['sign_up_subject'], $content);
 
                                         $new_user = get_user_by('id', $new_user_id);
                                         wp_set_current_user( $new_user->ID, $new_user->user_login );
                                         wp_set_auth_cookie( $new_user->ID, true );
                                         do_action( 'wp_login', $new_user->user_login );
 
-                                        wp_redirect( get_page_link_by_page_option_name('profile_page') );
+                                        add_notify('success', __('Congratulations! Your new account has been created! Check your Email for confirmation.', TEXTDOMAIN));
+
+                                        wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
                                         exit;
 
                                     } else {
@@ -258,11 +260,11 @@ function custom_system_auth_pages_callback() {
 
             }
 
-        } elseif ($path_segments[0] == $auth['forgot_password']['url']){
+        } elseif ($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
 
             $template = 'auth/forgot-password.twig';
             $title = __('Forgot Password', TEXTDOMAIN);
-            $text = $auth['forgot_password']['text'];
+            $text = $general_fields['auth']['forgot_password']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
             if (isset($_POST['uEmail']) && isset($_POST['nonce'])) {
@@ -294,8 +296,6 @@ function custom_system_auth_pages_callback() {
                             $json_for_link = json_encode($arr_for_link);
                             $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
 
-                            $emails = get_field('emails', 'options');
-
                             $search = array(
                                 '[button]',
                                 '[session]'
@@ -312,10 +312,10 @@ function custom_system_auth_pages_callback() {
                                 'TEXTDOMAIN' => TEXTDOMAIN,
                                 'BLOGINFO_NAME' => BLOGINFO_NAME,
                                 'BLOGINFO_URL' => BLOGINFO_URL,
-                                'subject' => $emails['auth']['reset_password_request_subject'],
-                                'text' => str_replace($search, $replace, $emails['auth']['reset_password_request_text'])
+                                'subject' => $general_fields['emails']['auth']['reset_password_request_subject'],
+                                'text' => str_replace($search, $replace, $general_fields['emails']['auth']['reset_password_request_text'])
                             ));
-                            send_email($uEmail_secure, $emails['auth']['reset_password_request_subject'], $content);
+                            send_email($uEmail_secure, $general_fields['emails']['auth']['reset_password_request_subject'], $content);
 
                             $context['notify'] = add_notify('success', __('Verification code sent', TEXTDOMAIN), true);
                         } else {
@@ -332,7 +332,7 @@ function custom_system_auth_pages_callback() {
 
             }
 
-        } elseif ($path_segments[0] == $profile['url']){
+        } elseif ($path_segments[0] == $general_fields['profile']['url']){
 
             if(!isset($path_segments[1])){
 
@@ -341,6 +341,48 @@ function custom_system_auth_pages_callback() {
                 $context['current_page'] = 'orders';
 
             } elseif ( $path_segments[1] == 'edit'){
+
+                if (isset($_POST['nonce']) && isset($_GET['profile']) && $_GET['profile'] == 'update') {
+                    $nonce = sanitize_text_field($_POST['nonce']);
+                    if (wp_verify_nonce($nonce, 'profile-update')) {
+                        $user_id = get_current_user_id();
+
+                        if (isset($_POST['f_name']) && $_POST['f_name']) {
+                            update_user_meta( $user_id, 'first_name', htmlspecialchars($_POST['f_name'], ENT_QUOTES, 'UTF-8') );
+                        } else {
+                            update_user_meta( $user_id, 'first_name', false );
+                        }
+
+                        if (isset($_POST['l_name']) && $_POST['l_name']) {
+                            update_user_meta( $user_id, 'last_name', htmlspecialchars($_POST['l_name'], ENT_QUOTES, 'UTF-8') );
+                        } else {
+                            update_user_meta( $user_id, 'last_name', false );
+                        }
+
+                        if (isset($_POST['user_phone']) && $_POST['user_phone']) {
+                            $user_phone = get_user_meta($user_id, 'user_phone', true);
+                            if($user_phone != $_POST['user_phone']){
+                                $uhp = get_users(array(
+                                    'meta_key' => 'user_phone',
+                                    'meta_value' => htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')
+                                ));
+                                if(empty($uhp)){
+                                    update_user_meta( $user_id, 'user_phone_confirmed', false );
+                                    update_user_meta( $user_id, 'user_phone', htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8') );
+                                } else {
+                                    $context['notify'][] = add_notify('warning', __('This phone number is already taken', TEXTDOMAIN), true);
+                                }
+                            }
+                        } else {
+                            update_user_meta( $user_id, 'user_phone', false );
+                            update_user_meta( $user_id, 'user_phone_confirmed', false );
+                        }
+
+                        $user = new Timber\User($user_id);
+                        $context['user'] = $user;
+                        $context['notify'][] = add_notify('success', __('Profile updated', TEXTDOMAIN), true);
+                    }
+                }
 
                 $template = 'profile/edit.twig';
                 $title = __('Edit profile', TEXTDOMAIN);
@@ -359,7 +401,7 @@ function custom_system_auth_pages_callback() {
                 $context['current_page'] = 'change-email';
 
             } elseif ($path_segments[1]){
-                wp_redirect( BLOGINFO_URL . '/' . $profile['url'] . '/' );
+                wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
                 exit;
             }
 
@@ -378,15 +420,14 @@ add_action( 'init', 'custom_system_auth_pages_callback' );
 add_filter( 'document_title_parts', function( $title_parts_array ) {
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
-    $auth = get_field('auth', 'options');
-    $profile = get_field('profile', 'options');
-    if($path_segments[0] == $auth['login']['url']){
+    $general_fields = get_fields('options');
+    if($path_segments[0] == $general_fields['auth']['login']['url']){
         $title_parts_array['title'] = __('Login', TEXTDOMAIN);
-    } elseif($path_segments[0] == $auth['sign_up']['url']){
+    } elseif($path_segments[0] == $general_fields['auth']['sign_up']['url']){
         $title_parts_array['title'] = __('Sign Up', TEXTDOMAIN);
-    } elseif($path_segments[0] == $auth['forgot_password']['url']){
+    } elseif($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
         $title_parts_array['title'] = __('Forgot Password', TEXTDOMAIN);
-    } elseif($path_segments[0] == $profile['url']){
+    } elseif($path_segments[0] == $general_fields['profile']['url']){
         if(!isset($path_segments[1])){
             $title_parts_array['title'] = __('Orders', TEXTDOMAIN);
         } elseif ( $path_segments[1] == 'edit'){

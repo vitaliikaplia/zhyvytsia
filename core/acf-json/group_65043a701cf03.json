@@ -837,7 +837,7 @@
                             "name": "sign_up_text",
                             "aria-label": "",
                             "type": "wysiwyg",
-                            "instructions": "Доступні шорткоди: [button], [session]",
+                            "instructions": "Доступні шорткоди: [button], [code], [session]",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -2016,5 +2016,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696588978
+    "modified": 1697214797
 }

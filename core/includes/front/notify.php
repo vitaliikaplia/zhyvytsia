@@ -2,7 +2,7 @@
 
 if(!defined('ABSPATH')){exit;}
 
-function add_notify($type, $message, $return){
+function add_notify($type, $message, $return = false){
     if($type && $message){
         $notify['type'] = $type;
         $notify['message'] = $message;

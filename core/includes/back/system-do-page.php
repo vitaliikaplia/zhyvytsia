@@ -7,6 +7,7 @@ function custom_system_do_page_callback() {
 
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
+    $general_fields = get_fields('options');
 
     if (isset($path_segments[0]) && $path_segments[0] === 'do') {
 
@@ -29,15 +30,13 @@ function custom_system_do_page_callback() {
                             $user_info = get_userdata($user_id);
                             $user_email = $user_info->user_email;
 
-                            $emails = get_field('emails', 'options');
-
                             $search = array(
                                 '[button]',
                                 '[session]'
                             );
                             $replace = array(
                                 get_email_part('button', array(
-                                    'link' => get_page_link_by_page_option_name('profile_page'),
+                                    'link' => BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/',
                                     'title' => __('Go to my profile', TEXTDOMAIN)
                                 )),
                                 get_session_info($_SERVER['REMOTE_ADDR'])
@@ -47,12 +46,14 @@ function custom_system_do_page_callback() {
                                 'TEXTDOMAIN' => TEXTDOMAIN,
                                 'BLOGINFO_NAME' => BLOGINFO_NAME,
                                 'BLOGINFO_URL' => BLOGINFO_URL,
-                                'subject' => $emails['auth']['user_confirmation_subject'],
-                                'text' => str_replace($search, $replace, $emails['auth']['user_confirmation_text'])
+                                'subject' => $general_fields['emails']['auth']['user_confirmation_subject'],
+                                'text' => str_replace($search, $replace, $general_fields['emails']['auth']['user_confirmation_text'])
                             ));
-                            send_email($user_email, $emails['auth']['user_confirmation_subject'], $content);
+                            send_email($user_email, $general_fields['emails']['auth']['user_confirmation_subject'], $content);
 
-                            wp_redirect( get_page_link_by_page_option_name('profile_page') );
+                            add_notify('success', __('Your email verified successfully, thanks!', TEXTDOMAIN));
+
+                            wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
                             exit;
 
                         } else {

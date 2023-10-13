@@ -147,7 +147,67 @@ window.addEventListener("DOMContentLoaded", function (){
             $(".profile input.user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
         }
 
+        $('.profile a[href="#confirm-email"]').click(function(){
+            prepare_middle_popup();
+            $.ajax({
+                type: "POST",
+                url: ajaxUrl,
+                dataType: "json",
+                cache: false,
+                data: {
+                    "action": "profile_confirm_email_content"
+                },
+                success : function (out) {
+                    if(out.status == "ok") {
+                        add_content_into_middle_popup(out.title, out.content);
+                        let profileConfirmEmailForm = $('form.profile-confirm-email');
+                        profileConfirmEmailForm.find('.codeInput input:first-child').focus();
+                        profileConfirmEmailForm.find('.codeInput input').each(function(){
+                            $(this).mask('0', {placeholder: "_"});
+                            $(this).unbind('keyup');
+                        });
+                        profileConfirmEmailForm.find('.codeInput input').on('focus', function(){
+                            if(!$(this).hasClass('input_1') && $(this).prev().val().trim() == ""){
+                                $(this).prev().focus();
+                            }
+                        });
+                        profileConfirmEmailForm.find('.codeInput input').on('keyup', function(){
+                            $(this).removeClass('red');
+                            if($(this).val().trim() != ""){
+                                $(this).next().focus();
+                            } else {
+                                $(this).prev().focus();
+                            }
+                            if($(this).hasClass('input_4') && $(this).val().trim() != ""){
+                                profileConfirmEmailForm.find('.codeInput input').addClass('disabled');
+                                profileConfirmEmailForm.find('.codeInput input').blur();
+                                $.ajax({
+                                    type: "POST",
+                                    url: ajaxUrl,
+                                    dataType: 'json',
+                                    data: new FormData(profileConfirmEmailForm[0]),
+                                    contentType: false,
+                                    cache: false,
+                                    processData: false,
+                                    success : function (out) {
+                                        if(out.status == 'ok'){
+                                            add_content_into_middle_popup(out.title, out.content);
+                                            $('.profile form input[type="email"]').next().html(out.confirmed);
+                                        } else {
+                                            profileConfirmEmailForm.find('.codeInput input').addClass('red');
+                                            profileConfirmEmailForm.find('.codeInput input').removeClass('disabled');
+                                            profileConfirmEmailForm.find('.codeInput input:last-child').focus();
+                                        }
+                                    }
+                                });
+                            }
+                        });
 
+                    }
+                }
+            });
+            return false;
+        });
 
     });
 })(jQuery);
