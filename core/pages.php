@@ -404,6 +404,82 @@ function custom_system_auth_pages_callback() {
 
             } elseif ( $path_segments[1] == 'change-email'){
 
+                if (isset($_POST['nonce']) && isset($_GET['email']) && $_GET['email'] == 'change' && isset($_POST['u_email']) && $_POST['u_email']) {
+                    $nonce = sanitize_text_field($_POST['nonce']);
+                    if (wp_verify_nonce($nonce, 'email-change')) {
+                        $user_id = get_current_user_id();
+                        $user = get_userdata($user_id);
+                        $password = wp_unslash($_POST['u_password']);
+
+                        if(strlen($password) < 60){
+
+                            if($user_id && wp_check_password( $password, $user->data->user_pass )){
+                                $user_email = $user->user_email;
+                                $new_u_email_trim = trim($_POST['u_email']);
+                                $new_u_email_secure = wp_unslash(htmlspecialchars($new_u_email_trim, ENT_QUOTES, 'UTF-8'));
+                                if(filter_var($new_u_email_secure, FILTER_VALIDATE_EMAIL) && strlen($new_u_email_secure) < 60){
+                                    if($new_u_email_secure != $user_email){
+                                        $args = array(
+                                            'ID'         => $user_id,
+                                            'user_email' => $new_u_email_secure
+                                        );
+                                        wp_update_user($args);
+                                        update_user_meta( $user_id, 'user_email_confirmed', false );
+                                        $context['notify'][] = add_notify('success', __('Email successfully changed', TEXTDOMAIN), true);
+
+                                        $user_email_verification_code_for_link = random_int(1000000000, 9999999999);
+                                        $user_email_verification_code = random_int(1000, 9999);
+
+                                        update_user_meta( $user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
+                                        update_user_meta( $user_id, 'user_email_verification_code', $user_email_verification_code );
+                                        update_user_meta( $user_id, 'nickname', $new_u_email_secure );
+
+                                        $arr_for_link = array(
+                                            'action' => 'verify_email',
+                                            'user_id' => $user_id,
+                                            'verification_code' => $user_email_verification_code_for_link,
+                                        );
+                                        $json_for_link = json_encode($arr_for_link);
+                                        $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
+
+                                        $search = array(
+                                            '[button]',
+                                            '[code]',
+                                            '[session]'
+                                        );
+                                        $replace = array(
+                                            get_email_part('button', array(
+                                                'link' => DO_URL . $encrypted_for_link,
+                                                'title' => __('Confirm my Email', TEXTDOMAIN)
+                                            )),
+                                            emoji_numbers($user_email_verification_code),
+                                            get_session_info($_SERVER['REMOTE_ADDR'])
+                                        );
+
+                                        $content = Timber::compile( 'email/email.twig', array(
+                                            'TEXTDOMAIN' => TEXTDOMAIN,
+                                            'BLOGINFO_NAME' => BLOGINFO_NAME,
+                                            'BLOGINFO_URL' => BLOGINFO_URL,
+                                            'subject' => $general_fields['emails']['auth']['sign_up_subject'],
+                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['sign_up_text'])
+                                        ));
+                                        send_email($new_u_email_secure, $general_fields['emails']['auth']['sign_up_subject'], $content);
+
+                                    } else {
+                                        $context['notify'][] = add_notify('warning', __('Email not changed', TEXTDOMAIN), true);
+                                    }
+                                }
+                            } else {
+                                $context['notify'][] = add_notify('error', __('Wrong password', TEXTDOMAIN), true);
+                            }
+                        }
+
+
+                        $user = new Timber\User($user_id);
+                        $context['user'] = $user;
+                    }
+                }
+
                 $template = 'profile/change-email.twig';
                 $title = __('Change email', TEXTDOMAIN);
                 $context['current_page'] = 'change-email';

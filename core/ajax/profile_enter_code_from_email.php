@@ -56,7 +56,7 @@ function profile_enter_code_from_email_action(){
 
             $context = Timber::context();
             $to_json['title'] = __("Email confirmation", TEXTDOMAIN);
-            $to_json['content'] = Timber::compile( 'profile/profile-confirm-email-content-confirmed.twig', $context);
+            $to_json['content'] = Timber::compile( 'ajax/profile-confirm-email-content-confirmed.twig', $context);
             $to_json['confirmed'] = __('Confirmed', TEXTDOMAIN);
 
             $to_json['status'] = 'ok';

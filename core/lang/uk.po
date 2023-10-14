@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 01:28+0300\n"
+"POT-Creation-Date: 2023-10-14 11:30+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -37,18 +37,19 @@ msgid "Go to my profile"
 msgstr "Перейти до мого профілю"
 
 #: core/ajax/profile_enter_code_from_email.php:60
-#: core/ajax/profile_enter_code_from_sms.php:56 views/profile/edit.twig:21
+#: core/ajax/profile_enter_code_from_sms.php:56
+#: views/profile/change-email.twig:16 views/profile/edit.twig:21
 #: views/profile/edit.twig:27
 msgid "Confirmed"
 msgstr "Підтверджено"
 
 #: core/ajax/profile_enter_code_from_sms.php:50
-#: views/profile/profile-confirm-phone-number-content-confirmed.twig:1
+#: views/ajax/profile-confirm-phone-number-content-confirmed.twig:1
 msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/pages.php:203
+#: core/pages.php:203 core/pages.php:453
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -173,7 +174,7 @@ msgstr "Максимальна якість для ресайзу"
 
 #: core/includes/back/custom-dashboard-options-widget.php:89
 msgid "SMTP options"
-msgstr "SMTP options"
+msgstr "SMTP налаштування"
 
 #: core/includes/back/custom-dashboard-options-widget.php:94
 msgid "Enable custom SMTP server"
@@ -409,7 +410,7 @@ msgstr "Батьківська позииція"
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
 #: core/includes/back/custom-post-types.php:69 core/pages.php:340
-#: core/pages.php:440
+#: core/pages.php:516
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -562,7 +563,7 @@ msgid "The Customizer is currently disabled."
 msgstr "Кастомайзер наразі вимкнено."
 
 #: core/includes/back/system-do-page.php:54
-#: views/profile/profile-confirm-email-content-confirmed.twig:1
+#: views/ajax/profile-confirm-email-content-confirmed.twig:1
 msgid "Your email verified successfully, thanks!"
 msgstr "Вашу електронну адресу успішно підтверджено, дякуємо!"
 
@@ -583,6 +584,7 @@ msgid "Your Email"
 msgstr "Ваш Email"
 
 #: core/includes/front/custom-localization.php:9
+#: views/profile/change-email.twig:10
 msgid "Your password"
 msgstr "Ваш пароль"
 
@@ -737,16 +739,16 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: core/pages.php:46 core/pages.php:66 core/pages.php:433
+#: core/pages.php:46 core/pages.php:66 core/pages.php:509
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:50 core/pages.php:143 core/pages.php:435
+#: core/pages.php:50 core/pages.php:143 core/pages.php:511
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:54 core/pages.php:266 core/pages.php:437
+#: core/pages.php:54 core/pages.php:266 core/pages.php:513
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
@@ -798,20 +800,56 @@ msgstr "Введіть дійсний номер телефону"
 msgid "Profile updated"
 msgstr "Профіль оновлено"
 
-#: core/pages.php:396 core/pages.php:442 views/base-profile.twig:31
+#: core/pages.php:396 core/pages.php:518 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:402 core/pages.php:446 views/base-profile.twig:33
+#: core/pages.php:402 core/pages.php:522 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:408 core/pages.php:444 views/base-profile.twig:32
+#: core/pages.php:428
+msgid "Email successfully changed"
+msgstr "Вашу електронну адресу успішно змінено!"
+
+#: core/pages.php:469
+msgid "Email not changed"
+msgstr "Електронна пошта не змінена"
+
+#: core/pages.php:473
+msgid "Wrong password"
+msgstr "Невірнй пароль"
+
+#: core/pages.php:484 core/pages.php:520 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
+
+#: views/ajax/profile-confirm-email-content.twig:2
+msgid "Enter verification code from Email"
+msgstr "Введіть код підтвердження з вашого Email"
+
+#: views/ajax/profile-confirm-email-content.twig:11
+msgid "Resend verification Email"
+msgstr "Відправити ще один лист з підтвердженням"
+
+#: views/ajax/profile-confirm-email-content.twig:14
+msgid ""
+"Alternatively, you can confirm your email address by clicking the "
+"confirmation button in the email"
+msgstr ""
+"Крім того, електронну адресу можна підтвердити, натиснувши на кнопку "
+"підтвердження в листі"
+
+#: views/ajax/profile-confirm-phone-number-content.twig:2
+msgid "Enter verification code from SMS"
+msgstr "Введіть код підтвердження з вашого SMS"
+
+#: views/ajax/profile-confirm-phone-number-content.twig:11
+msgid "Resend verification SMS"
+msgstr "Відправити ще одне SMS з підтвердженням"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
 #: views/auth/sign-up.twig:8 views/profile/edit.twig:25
@@ -890,6 +928,23 @@ msgstr "Код підтвердження SMS"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
+#: views/profile/change-email.twig:14
+msgid "Your email"
+msgstr "Ваш Email"
+
+#: views/profile/change-email.twig:16 views/profile/edit.twig:27
+msgid "Email not confirmed"
+msgstr "Електронна пошта не підтверджена"
+
+#: views/profile/change-email.twig:16 views/profile/edit.twig:21
+#: views/profile/edit.twig:27
+msgid "confirm"
+msgstr "підтвердити"
+
+#: views/profile/change-email.twig:19
+msgid "Change my email"
+msgstr "Змінити мій Email"
+
 #: views/profile/edit.twig:10
 msgid "First Name"
 msgstr "Ім’я"
@@ -902,41 +957,9 @@ msgstr "Фамілія"
 msgid "Phone not confirmed"
 msgstr "Телефон не підтверджено"
 
-#: views/profile/edit.twig:21 views/profile/edit.twig:27
-msgid "confirm"
-msgstr "підтвердити"
-
-#: views/profile/edit.twig:27
-msgid "Email not confirmed"
-msgstr "Електронна пошта не підтверджена"
-
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
-
-#: views/profile/profile-confirm-email-content.twig:2
-msgid "Enter verification code from Email"
-msgstr "Введіть код підтвердження з вашого Email"
-
-#: views/profile/profile-confirm-email-content.twig:11
-msgid "Resend verification Email"
-msgstr "Відправити ще один лист з підтвердженням"
-
-#: views/profile/profile-confirm-email-content.twig:14
-msgid ""
-"Alternatively, you can confirm your email address by clicking the "
-"confirmation button in the email"
-msgstr ""
-"Крім того, електронну адресу можна підтвердити, натиснувши на кнопку "
-"підтвердження в листі"
-
-#: views/profile/profile-confirm-phone-number-content.twig:2
-msgid "Enter verification code from SMS"
-msgstr "Введіть код підтвердження з вашого SMS"
-
-#: views/profile/profile-confirm-phone-number-content.twig:11
-msgid "Resend verification SMS"
-msgstr "Відправити ще одне SMS з підтвердженням"
 
 #~ msgid "Your Email confirmed"
 #~ msgstr "Вашу електронну адресу підтверджено"

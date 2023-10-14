@@ -4,6 +4,19 @@
 
 <h3 class="title">{{ __('Change email', TEXTDOMAIN) }}</h3>
 
-
+<form method="post" action="?email=change">
+    <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'email-change') }}">
+    <label>
+        <p class="label">{{ __('Your password', TEXTDOMAIN) }}:</p>
+        <input type="password" required name="u_password" value="" autocomplete="new-password">
+    </label>
+    <label>
+        <p class="label">{{ __('Your email', TEXTDOMAIN) }}:</p>
+        <input type="email" name="u_email" required value="{{ user.user_email }}">
+        <p class="additional">{% if user.user_email_confirmed %}{{ __('Confirmed', TEXTDOMAIN) }}{% else %} {{ __('Email not confirmed', TEXTDOMAIN) }}, <a href="#confirm-email">{{ __('confirm', TEXTDOMAIN) }}</a>{% endif %}</p>
+    </label>
+    <input type="submit" style="display: none;">
+    <button>{{ __('Change my email', TEXTDOMAIN) }}</button>
+</form>
 
 {% endblock %}

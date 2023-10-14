@@ -5,7 +5,7 @@ if(!defined('ABSPATH')){exit;}
 function profile_confirm_email_content_action(){
     $context = Timber::context();
     $to_json['title'] = __("Email confirmation", TEXTDOMAIN);
-    $to_json['content'] = Timber::compile( 'profile/profile-confirm-email-content.twig', $context);
+    $to_json['content'] = Timber::compile( 'ajax/profile-confirm-email-content.twig', $context);
     $to_json['status'] = "ok";
     echo json_encode($to_json);
     exit;

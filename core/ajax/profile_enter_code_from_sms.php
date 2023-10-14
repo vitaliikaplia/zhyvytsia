@@ -52,7 +52,7 @@ function profile_enter_code_from_sms_action(){
 
             $context = Timber::context();
             $to_json['title'] = __("Phone number confirmation", TEXTDOMAIN);
-            $to_json['content'] = Timber::compile( 'profile/profile-confirm-phone-number-content-confirmed.twig', $context);
+            $to_json['content'] = Timber::compile( 'ajax/profile-confirm-phone-number-content-confirmed.twig', $context);
             $to_json['confirmed'] = __('Confirmed', TEXTDOMAIN);
             $to_json['status'] = 'ok';
 
