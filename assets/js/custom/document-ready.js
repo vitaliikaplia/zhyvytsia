@@ -327,5 +327,25 @@ window.addEventListener("DOMContentLoaded", function (){
             return false;
         });
 
+        /** profile password strength */
+        if($('.profile input[type="password"][name="u_n_password"]').length){
+            $('.profile input[type="password"][name="u_n_password"]').on('change keyup', function(){
+                let thisEl = $(this),
+                    recEl = thisEl.parent().next(),
+                    thisVal = thisEl.val()?.trim(),
+                    passResult = check_password_strength(thisVal);
+                if(!Object.values(passResult).some(value => value === false)){
+                    recEl.removeClass('show');
+                } else {
+                    recEl.addClass('show');
+                    recEl.find('.length').toggleClass('show', !passResult.p_length);
+                    recEl.find('.lowercase').toggleClass('show', !passResult.lowercase);
+                    recEl.find('.uppercase').toggleClass('show', !passResult.uppercase);
+                    recEl.find('.digits').toggleClass('show', !passResult.digits);
+                    recEl.find('.special').toggleClass('show', !passResult.special);
+                }
+            });
+        }
+
     });
 })(jQuery);

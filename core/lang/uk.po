@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 11:30+0300\n"
+"POT-Creation-Date: 2023-10-14 13:19+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -49,7 +49,7 @@ msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/pages.php:203 core/pages.php:453
+#: core/pages.php:203 core/pages.php:483
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -106,22 +106,27 @@ msgid "Blog"
 msgstr "Блоґ"
 
 #: core/includes/back/check-password-strength.php:15 views/auth/sign-up.twig:16
+#: views/profile/change-password.twig:18
 msgid "Password should be at least 8 characters long."
 msgstr "Пароль має бути не менше 8 символів."
 
 #: core/includes/back/check-password-strength.php:20 views/auth/sign-up.twig:17
+#: views/profile/change-password.twig:19
 msgid "Password should contain at least one lowercase letter."
 msgstr "Пароль має містити принаймні одну малу літеру."
 
 #: core/includes/back/check-password-strength.php:25 views/auth/sign-up.twig:18
+#: views/profile/change-password.twig:20
 msgid "Password should contain at least one uppercase letter."
 msgstr "Пароль має містити принаймні одну велику літеру."
 
 #: core/includes/back/check-password-strength.php:31 views/auth/sign-up.twig:19
+#: views/profile/change-password.twig:21
 msgid "Password should contain at least one digit."
 msgstr "Пароль має містити хоча б одну цифру."
 
 #: core/includes/back/check-password-strength.php:37 views/auth/sign-up.twig:20
+#: views/profile/change-password.twig:22
 msgid "Password should contain at least one special character."
 msgstr "Пароль повинен містити хоча б один спеціальний символ."
 
@@ -410,7 +415,7 @@ msgstr "Батьківська позииція"
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
 #: core/includes/back/custom-post-types.php:69 core/pages.php:340
-#: core/pages.php:516
+#: core/pages.php:546
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -739,16 +744,60 @@ msgstr "Виберіть"
 msgid "Options"
 msgstr "Опції"
 
-#: core/pages.php:46 core/pages.php:66 core/pages.php:509
+#: core/libs/libraries.php:42 core/libs/libraries.php:43
+msgid "Overall"
+msgstr "Загальні"
+
+#: core/libs/libraries.php:48 core/libs/libraries.php:49
+msgid "Header"
+msgstr "Шапка"
+
+#: core/libs/libraries.php:54 core/libs/libraries.php:55
+msgid "Footer"
+msgstr "Підвал"
+
+#: core/libs/libraries.php:60 core/libs/libraries.php:61
+msgid "Mobile"
+msgstr "Мобільні"
+
+#: core/libs/libraries.php:66 core/libs/libraries.php:67
+msgid "Emails"
+msgstr "Надсилання Email"
+
+#: core/libs/libraries.php:72 core/libs/libraries.php:73
+msgid "Auth"
+msgstr "Сторінки авторизації"
+
+#: core/libs/libraries.php:78 core/libs/libraries.php:79
+msgid "Shop"
+msgstr "Магазин"
+
+#: core/libs/libraries.php:84 core/libs/libraries.php:85
+msgid "Profile"
+msgstr "Профіль"
+
+#: core/libs/libraries.php:90 core/libs/libraries.php:91
+msgid "Cookie Popup"
+msgstr "Кукі поп-ап"
+
+#: core/libs/libraries.php:96 core/libs/libraries.php:97
+msgid "Page 404"
+msgstr "Сторінка 404"
+
+#: core/libs/libraries.php:102 core/libs/libraries.php:103
+msgid "Redirects"
+msgstr "Переадресації"
+
+#: core/pages.php:46 core/pages.php:66 core/pages.php:539
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:50 core/pages.php:143 core/pages.php:511
+#: core/pages.php:50 core/pages.php:143 core/pages.php:541
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:54 core/pages.php:266 core/pages.php:513
+#: core/pages.php:54 core/pages.php:266 core/pages.php:543
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
@@ -776,7 +825,7 @@ msgstr ""
 msgid "This email address is already taken!"
 msgstr "Ця електронна адреса вже зайнята!"
 
-#: core/pages.php:306
+#: core/pages.php:306 views/profile/change-password.twig:25
 msgid "Change my password"
 msgstr "Змінити мій пароль"
 
@@ -800,29 +849,37 @@ msgstr "Введіть дійсний номер телефону"
 msgid "Profile updated"
 msgstr "Профіль оновлено"
 
-#: core/pages.php:396 core/pages.php:518 views/base-profile.twig:31
+#: core/pages.php:396 core/pages.php:548 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:402 core/pages.php:522 views/base-profile.twig:33
+#: core/pages.php:417
+msgid "The password has been changed"
+msgstr "Пароль змінено"
+
+#: core/pages.php:419
+msgid "The password has not been changed"
+msgstr "Пароль не змінено"
+
+#: core/pages.php:425 core/pages.php:503
+msgid "Wrong password"
+msgstr "Невірнй пароль"
+
+#: core/pages.php:432 core/pages.php:552 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:428
+#: core/pages.php:458
 msgid "Email successfully changed"
 msgstr "Вашу електронну адресу успішно змінено!"
 
-#: core/pages.php:469
+#: core/pages.php:499
 msgid "Email not changed"
 msgstr "Електронна пошта не змінена"
 
-#: core/pages.php:473
-msgid "Wrong password"
-msgstr "Невірнй пароль"
-
-#: core/pages.php:484 core/pages.php:520 views/base-profile.twig:32
+#: core/pages.php:514 core/pages.php:550 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
@@ -944,6 +1001,14 @@ msgstr "підтвердити"
 #: views/profile/change-email.twig:19
 msgid "Change my email"
 msgstr "Змінити мій Email"
+
+#: views/profile/change-password.twig:10
+msgid "Your old password"
+msgstr "Ваш старий пароль"
+
+#: views/profile/change-password.twig:14
+msgid "Your new password"
+msgstr "Ваш новий пароль"
 
 #: views/profile/edit.twig:10
 msgid "First Name"

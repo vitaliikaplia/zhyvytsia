@@ -452,3 +452,10 @@ body.mce-fullscreen{
 		}
 	}
 }
+
+.wrap.acf-settings-wrap{
+	padding-top: 20px;
+	&>h1{
+		display: none;
+	}
+}

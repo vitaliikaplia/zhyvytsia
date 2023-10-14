@@ -398,6 +398,53 @@ function custom_system_auth_pages_callback() {
 
             } elseif ( $path_segments[1] == 'change-password'){
 
+                if (isset($_POST['nonce']) && isset($_GET['password']) && $_GET['password'] == 'change' && isset($_POST['u_o_password']) && $_POST['u_o_password'] && isset($_POST['u_n_password']) && $_POST['u_n_password']) {
+                    $nonce = sanitize_text_field($_POST['nonce']);
+                    if (wp_verify_nonce($nonce, 'password-change')) {
+                        $user_id = get_current_user_id();
+                        $user = get_userdata($user_id);
+                        $o_password = wp_unslash($_POST['u_o_password']);
+                        $n_password = wp_unslash($_POST['u_n_password']);
+                        if(strlen($o_password) < 60){
+                            if($user_id && wp_check_password( $o_password, $user->data->user_pass )){
+                                $password_strength = check_password_strength($n_password);
+                                if($password_strength == 'ok'){
+                                    if($n_password != $o_password){
+
+                                        $search = array(
+                                            '[session]'
+                                        );
+                                        $replace = array(
+                                            get_session_info($_SERVER['REMOTE_ADDR'])
+                                        );
+
+                                        $content = Timber::compile( 'email/email.twig', array(
+                                            'TEXTDOMAIN' => TEXTDOMAIN,
+                                            'BLOGINFO_NAME' => BLOGINFO_NAME,
+                                            'BLOGINFO_URL' => BLOGINFO_URL,
+                                            'subject' => $general_fields['emails']['auth']['password_change_subject'],
+                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['password_change_text'])
+                                        ));
+                                        send_email($user->user_email, $general_fields['emails']['auth']['password_change_subject'], $content);
+
+                                        wp_set_password( $n_password, $user_id );
+                                        wp_set_current_user( $user_id, $user->user_login );
+                                        wp_set_auth_cookie( $user->ID, true );
+                                        do_action( 'wp_login', $user->user_login );
+                                        $context['notify'][] = add_notify('success', __('The password has been changed', TEXTDOMAIN), true);
+                                    } else {
+                                        $context['notify'][] = add_notify('warning', __('The password has not been changed', TEXTDOMAIN), true);
+                                    }
+                                } else {
+                                    $context['notify'] = add_notify('error', $password_strength, true);
+                                }
+                            } else {
+                                $context['notify'][] = add_notify('error', __('Wrong password', TEXTDOMAIN), true);
+                            }
+                        }
+                    }
+                }
+
                 $template = 'profile/change-password.twig';
                 $title = __('Change password', TEXTDOMAIN);
                 $context['current_page'] = 'change-password';

@@ -37,13 +37,73 @@ if (function_exists('get_fields')) {
     acf_set_options_page_menu(__("Options", TEXTDOMAIN));
     acf_set_options_page_title( __("Options", TEXTDOMAIN) );
 
-    // ACF dashboard pages
-//    acf_add_options_sub_page(array(
-//        'page_title'  => __('Options', TEXTDOMAIN),
-//        'menu_title'  => __('Options', TEXTDOMAIN),
-//        'slug' => 'options',
-//        'parent_slug' => 'themes.php',
-//    ));
+    // ACF options subpages
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Overall', TEXTDOMAIN),
+        'menu_title'  => __('Overall', TEXTDOMAIN),
+        'slug' => 'overall-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Header', TEXTDOMAIN),
+        'menu_title'  => __('Header', TEXTDOMAIN),
+        'slug' => 'header-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Footer', TEXTDOMAIN),
+        'menu_title'  => __('Footer', TEXTDOMAIN),
+        'slug' => 'footer-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Mobile', TEXTDOMAIN),
+        'menu_title'  => __('Mobile', TEXTDOMAIN),
+        'slug' => 'mobile-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Emails', TEXTDOMAIN),
+        'menu_title'  => __('Emails', TEXTDOMAIN),
+        'slug' => 'emails-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Auth', TEXTDOMAIN),
+        'menu_title'  => __('Auth', TEXTDOMAIN),
+        'slug' => 'auth-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Shop', TEXTDOMAIN),
+        'menu_title'  => __('Shop', TEXTDOMAIN),
+        'slug' => 'shop-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Profile', TEXTDOMAIN),
+        'menu_title'  => __('Profile', TEXTDOMAIN),
+        'slug' => 'profile-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Cookie Popup', TEXTDOMAIN),
+        'menu_title'  => __('Cookie Popup', TEXTDOMAIN),
+        'slug' => 'cookie-popup-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Page 404', TEXTDOMAIN),
+        'menu_title'  => __('Page 404', TEXTDOMAIN),
+        'slug' => 'page-404-options',
+        'parent_slug' => 'website-options',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title'  => __('Redirects', TEXTDOMAIN),
+        'menu_title'  => __('Redirects', TEXTDOMAIN),
+        'slug' => 'redirects-options',
+        'parent_slug' => 'website-options',
+    ));
 }
 
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Decoder.php';
