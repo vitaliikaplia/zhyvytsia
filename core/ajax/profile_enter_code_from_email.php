@@ -5,7 +5,7 @@ if(!defined('ABSPATH')){exit;}
 function profile_enter_code_from_email_action(){
 
     $to_json = array();
-    $general_fields = get_fields('options');
+    $general_fields = cache_general_fields();
 
     if( isset($_POST['value_1']) &&
         isset($_POST['value_2']) &&

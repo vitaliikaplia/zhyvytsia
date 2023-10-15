@@ -35,3 +35,22 @@ function cache_fields($post_id){
         return false;
     }
 }
+
+/** cache block fields */
+//function cache_block_fields($block_id, $page_id){
+//    if (function_exists('get_fields')) {
+//        if($block_id && $page_id){
+//            if($fields = get_transient( 'custom_block_' . $block_id .'-' . $page_id . '_fields'.LANG_SUFFIX )){
+//                return $fields;
+//            } else {
+//                $fields = get_fields();
+//                set_transient( 'custom_block_' . $block_id .'-' . $page_id . '_fields'.LANG_SUFFIX, $fields, TRANSIENTS_TIME );
+//                return $fields;
+//            }
+//        } else {
+//            return false;
+//        }
+//    } else {
+//        return false;
+//    }
+//}

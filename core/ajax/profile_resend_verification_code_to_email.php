@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){exit;}
 
 function profile_resend_verification_code_to_email_action(){
 
-    $general_fields = get_fields('options');
+    $general_fields = cache_general_fields();
 
     $to_json = array();
     $user = wp_get_current_user();

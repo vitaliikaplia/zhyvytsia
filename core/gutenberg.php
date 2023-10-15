@@ -87,9 +87,9 @@ foreach($blocks as $block){
     $style_url = TEMPLATE_DIRECTORY_URL . 'assets/css/blocks/' . $block['category'] . '/' . $block['name'] . '.min.css';
     $style_name = $block['category'] . '-' . $block['name'];
 
-    if( ( get_option('inline_scripts_and_styles') && is_admin() ) || !get_option('inline_scripts_and_styles') ){
-        wp_register_style($style_name, $style_url, '', ASSETS_VERSION);
-    }
+//    if( ( get_option('inline_scripts_and_styles') && is_admin() ) || !get_option('inline_scripts_and_styles') ){
+//        wp_register_style($style_name, $style_url, '', ASSETS_VERSION);
+//    }
 
     $custom_gutenberg_blocks[] = array(
         'name'            => $block['category'] . '-' . $block['name'],
@@ -139,7 +139,11 @@ function block_render_callback( $block, $content = '', $is_preview = false, $pos
     }
 
     // Store field values
+//    echo $block['id'];
+//    echo get_the_ID();
+//    $context['fields'] = cache_block_fields($block['id'], $post_id);
     $context['fields'] = get_fields();
+
 
     $context['site_theme_uri'] = TEMPLATE_DIRECTORY_URL;
     $context['is_admin'] = is_admin();
@@ -188,9 +192,20 @@ function organic_origin_gutenberg_styles() {
 }
 add_action( 'enqueue_block_editor_assets', 'organic_origin_gutenberg_styles' );
 
-/**
- * Adding block styles as cached inlined css
- */
+/** adding block styles as css files */
+if(!get_option('inline_scripts_and_styles') ){
+    function add_locks_styles_css_action() {
+        global $blocks;
+        foreach($blocks as $block){
+            $style_name = $block['category'] . '-' . $block['name'];
+            $style_url = TEMPLATE_DIRECTORY_URL . 'assets/css/blocks/' . $block['category'] . '/' . $block['name'] . '.min.css';
+            wp_register_style($style_name, $style_url, '', ASSETS_VERSION);
+        }
+    }
+    add_action('init', 'add_locks_styles_css_action');
+}
+
+/** adding block styles as cached inlined css */
 function add_blocks_styles() {
     if(!is_404()){
         if(get_option('inline_scripts_and_styles')){
@@ -213,3 +228,5 @@ function add_blocks_styles() {
     }
 }
 add_action( 'wp_head', 'add_blocks_styles' );
+
+

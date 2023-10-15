@@ -123,6 +123,9 @@ if(is_array($includedFiles) && $includedFiles){
 	}
 }
 
+/** custom pages forms logic */
+require_once CORE_PATH . DS . 'forms-logic.php';
+
 /** include all modules */
 $includedFiles = list_files( CORE_PATH . DS . 'includes' );
 if(is_array($includedFiles) && $includedFiles){
@@ -224,16 +227,4 @@ if(get_option('enable_html_cache')){
     define( 'TIMBER_CACHE_TIME', 48 * HOUR_IN_SECONDS );
 } else {
     define( 'TIMBER_CACHE_TIME', false );
-}
-
-/** acf notification */
-if (!function_exists('get_fields')) {
-    function sample_admin_notice__success() {
-        ?>
-        <div class="notice notice-error">
-            <p><?php _e('Please, install Advanced Custom Fields PRO version', TEXTDOMAIN); ?></p>
-        </div>
-        <?php
-    }
-    add_action( 'admin_notices', 'sample_admin_notice__success' );
 }

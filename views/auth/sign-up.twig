@@ -6,12 +6,12 @@
     <p class="title">{{ title }}</p>
     <label>
         <p>{{ __('Email', TEXTDOMAIN) }}</p>
-        <input type="email" required name="uEmail" value="{{ request.post.uEmail }}">
+        <input type="email" required name="u_email" value="{{ decoded.u_email }}">
     </label>
     <label>
         <p>{{ __('Password', TEXTDOMAIN) }}</p>
         <span class="showHide show" data-hide="{{ __('Hide', TEXTDOMAIN) }}">{{ __('Show', TEXTDOMAIN) }}</span>
-        <input type="password" required name="uPassword" id="password">
+        <input type="password" required name="u_password" id="password">
         <ul class="recommendations">
             <li class="length">{{ __('Password should be at least 8 characters long.', TEXTDOMAIN) }}</li>
             <li class="lowercase">{{ __('Password should contain at least one lowercase letter.', TEXTDOMAIN) }}</li>

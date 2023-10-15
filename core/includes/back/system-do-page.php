@@ -7,7 +7,7 @@ function custom_system_do_page_callback() {
 
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
-    $general_fields = get_fields('options');
+    $general_fields = cache_general_fields();
 
     if (isset($path_segments[0]) && $path_segments[0] === 'do') {
 

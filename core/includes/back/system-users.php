@@ -68,7 +68,6 @@ function add_user_phone_column($columns) {
     return $columns;
 }
 add_filter('manage_users_columns', 'add_user_phone_column');
-
 function show_user_phone_data($value, $column_name, $user_id) {
     if ('user_phone' == $column_name) {
         if($user_phone = get_user_meta($user_id, 'user_phone', true)){
@@ -80,3 +79,11 @@ function show_user_phone_data($value, $column_name, $user_id) {
     return $value;
 }
 add_action('manage_users_custom_column', 'show_user_phone_data', 10, 3);
+
+/** custom log out */
+function custom_logout_redirect( $redirect_to, $requested_redirect_to, $user ) {
+    $general_fields = cache_general_fields();
+    add_notify('success', __('You have successfully logged out', TEXTDOMAIN));
+    return $general_fields['auth']['login']['url'];
+}
+add_filter( 'logout_redirect', 'custom_logout_redirect', 9999, 3 );
