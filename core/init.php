@@ -126,6 +126,9 @@ if(is_array($includedFiles) && $includedFiles){
 /** custom pages forms logic */
 require_once CORE_PATH . DS . 'forms-logic.php';
 
+/** custom do logic */
+require_once CORE_PATH . DS . 'do.php';
+
 /** include all modules */
 $includedFiles = list_files( CORE_PATH . DS . 'includes' );
 if(is_array($includedFiles) && $includedFiles){

@@ -123,8 +123,8 @@ window.addEventListener("DOMContentLoaded", function (){
         }
 
         /** auth password strength */
-        if($('.sign-up input[type="password"]').length){
-            $('.sign-up input[type="password"]').on('change keyup', function(){
+        if($('.sign-up input[type="password"], .password-reset input[type="password"]').length){
+            $('.sign-up input[type="password"], .password-reset input[type="password"]').on('change keyup', function(){
                 let thisEl = $(this),
                     recEl = thisEl.next(),
                     thisVal = thisEl.val()?.trim(),

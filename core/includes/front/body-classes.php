@@ -14,16 +14,32 @@ function app_body_classes($classes) {
 
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
-    $options = get_field('auth', 'options');
-    $profile = get_field('profile', 'options');
+    $general_fields = cache_general_fields();
 
-    if ($path_segments[0] == $options['login']['url'] || $path_segments[0] == $options['sign_up']['url'] || $path_segments[0] == $options['forgot_password']['url']) {
+    if (
+        $path_segments[0] == $general_fields['auth']['login']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['sign_up']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['forgot_password']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['password_reset']['url']
+    ) {
         $classes[] = 'auth';
     }
-    if ($path_segments[0] == $options['sign_up']['url']) {
+    if ($path_segments[0] == $general_fields['auth']['login']['url']) {
+        $classes[] = 'login';
+    }
+    if ($path_segments[0] == $general_fields['auth']['sign_up']['url']) {
         $classes[] = 'sign-up';
     }
-    if ($path_segments[0] == $profile['url']) {
+    if ($path_segments[0] == $general_fields['auth']['forgot_password']['url']) {
+        $classes[] = 'forgot-password';
+    }
+    if ($path_segments[0] == $general_fields['auth']['password_reset']['url']) {
+        $classes[] = 'password-reset';
+    }
+    if ($path_segments[0] == $general_fields['profile']['url']) {
         $classes[] = 'profile';
     }
 

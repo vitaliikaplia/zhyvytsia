@@ -13,6 +13,7 @@ function custom_system_forms_logic_callback() {
     $login_url = BLOGINFO_URL . '/' . $general_fields['auth']['login']['url'] . '/';
     $sign_up_url = BLOGINFO_URL . '/' . $general_fields['auth']['sign_up']['url'] . '/';
     $forgot_password_url = BLOGINFO_URL . '/' . $general_fields['auth']['forgot_password']['url'] . '/';
+    $password_reset_url = BLOGINFO_URL . '/' . $general_fields['auth']['password_reset']['url'] . '/';
     $profile_url = BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/';
 
     /** login logic */
@@ -80,6 +81,7 @@ function custom_system_forms_logic_callback() {
         wp_set_current_user( $user->ID, $user->user_login );
         wp_set_auth_cookie( $user->ID, true );
         do_action( 'wp_login', $user->user_login );
+        delete_user_meta($user->ID, 'password_recovery_code_for_link');
 
         /** send authorization security letter if needed */
         if($general_fields['emails']['send_authorization_security_letters']){
@@ -298,6 +300,123 @@ function custom_system_forms_logic_callback() {
         send_email($u_email_secure, $general_fields['emails']['auth']['reset_password_request_subject'], $content);
         add_notify('success', __('Verification code sent', TEXTDOMAIN));
         wp_redirect( BLOGINFO_URL . '/' . $general_fields['auth']['forgot_password']['url'] . '/' );
+        exit;
+    }
+
+    /** change password logic */
+    if($path_segments[0] == $general_fields['auth']['password_reset']['url'] && isset($_POST['nonce']) && isset($_POST['u_n_password']) && isset($_POST['u_email']) && isset($_POST['request_redirect_nonce']) && isset($_SERVER['REQUEST_URI'])) {
+
+        /** Hacker? */
+        $decrypted = custom_encrypt_decrypt('decrypt', trim($path_segments[1]));
+        $arr_data = json_decode($decrypted, true);
+        if(
+            $arr_data['u_email'] != wp_unslash(htmlspecialchars(trim($_POST['u_email']), ENT_QUOTES, 'UTF-8'))
+            ||
+            $arr_data['request_redirect_nonce'] != sanitize_text_field($_POST['request_redirect_nonce'])
+        ){
+            add_notify('error', __('Hacker?', TEXTDOMAIN));
+            wp_redirect( $login_url );
+            exit;
+        }
+
+        /** checking 'password-reset' nonce */
+        if(!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'password-reset')){
+            add_notify('error', __('Nonce \'password-reset\' is wrong', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** checking 'request-redirect' nonce */
+        if(!wp_verify_nonce(sanitize_text_field($_POST['request_redirect_nonce']), 'request-redirect')){
+            add_notify('error', __('Nonce \'request-redirect\' is wrong', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** define email */
+        $u_email_secure = wp_unslash(htmlspecialchars(trim($_POST['u_email']), ENT_QUOTES, 'UTF-8'));
+
+        /** checking email length */
+        if(strlen($u_email_secure) >= 60){
+            add_notify('error', __('Email is to long', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** validating email */
+        if(!filter_var($u_email_secure, FILTER_VALIDATE_EMAIL)){
+            add_notify('error', __('Email is wrong', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** define user */
+        $user = get_user_by('email', $u_email_secure);
+
+        /** checking if user exist */
+        if(!$user && !$user->ID){
+            add_notify('error', __('Hm, no user found', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** checking recovery code */
+        if(
+            ! ( $password_recovery_code_for_link = intval(stripslashes($arr_data['password_recovery_code_for_link'])) )
+            ||
+            ! get_user_meta($user->ID, "password_recovery_code_for_link", true) == $password_recovery_code_for_link
+        ){
+            add_notify('error', __('Wrong recovery code', TEXTDOMAIN));
+            wp_redirect( $forgot_password_url );
+            exit;
+        }
+
+        /** define password */
+        $password = wp_unslash($_POST['u_n_password']);
+
+        /** checking password length */
+        if(strlen($password) >= 60){
+            add_notify('error', __('Password is to long', TEXTDOMAIN));
+            wp_redirect( $password_reset_url . $path_segments[1] . '/' );
+            exit;
+        }
+
+        /** define password strength */
+        $password_strength = check_password_strength($password);
+
+        /** checking password strength */
+        if($password_strength != 'ok'){
+            add_notify('error', $password_strength);
+            wp_redirect( $password_reset_url . $path_segments[1] . '/' );
+            exit;
+        }
+
+        /** checking same password */
+        if(wp_check_password( $password, $user->data->user_pass )){
+            add_notify('warning', __('Looks like the new password is the same', TEXTDOMAIN));
+            wp_redirect( $password_reset_url . $path_segments[1] . '/' );
+            exit;
+        }
+
+        /** processing to change password */
+        $search = array(
+            '[session]'
+        );
+        $replace = array(
+            get_session_info($_SERVER['REMOTE_ADDR'])
+        );
+        $content = Timber::compile( 'email/email.twig', array(
+            'TEXTDOMAIN' => TEXTDOMAIN,
+            'BLOGINFO_NAME' => BLOGINFO_NAME,
+            'BLOGINFO_URL' => BLOGINFO_URL,
+            'subject' => $general_fields['emails']['auth']['password_change_subject'],
+            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['password_change_text'])
+        ));
+        send_email($user->user_email, $general_fields['emails']['auth']['password_change_subject'], $content);
+        wp_set_password( $password, $user->ID );
+        delete_user_meta($user->ID, 'password_recovery_code_for_link');
+        add_notify('success', __('The password has been changed', TEXTDOMAIN));
+        wp_redirect( $login_url );
         exit;
     }
 

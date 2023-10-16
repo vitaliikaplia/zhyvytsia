@@ -10,9 +10,14 @@ function custom_system_auth_pages_callback() {
     $general_fields = cache_general_fields();
 
     if (
-        $path_segments[0] == $general_fields['auth']['login']['url'] ||
-        $path_segments[0] == $general_fields['auth']['sign_up']['url'] ||
-        $path_segments[0] == $general_fields['auth']['forgot_password']['url'] ||
+        $path_segments[0] == $general_fields['auth']['login']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['sign_up']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['forgot_password']['url']
+        ||
+        $path_segments[0] == $general_fields['auth']['password_reset']['url']
+        ||
         $path_segments[0] == $general_fields['profile']['url']
     ) {
 
@@ -22,7 +27,7 @@ function custom_system_auth_pages_callback() {
         }
 
         if(!is_user_logged_in() && $path_segments[0] == $general_fields['profile']['url']){
-            wp_redirect( BLOGINFO_URL );
+            wp_redirect( BLOGINFO_URL . '/' . $general_fields['auth']['login']['url'] . '/' );
             exit;
         }
 
@@ -36,9 +41,13 @@ function custom_system_auth_pages_callback() {
         $context = Timber::context();
 
         if (
-            $path_segments[0] == $general_fields['auth']['login']['url'] ||
-            $path_segments[0] == $general_fields['auth']['sign_up']['url'] ||
+            $path_segments[0] == $general_fields['auth']['login']['url']
+            ||
+            $path_segments[0] == $general_fields['auth']['sign_up']['url']
+            ||
             $path_segments[0] == $general_fields['auth']['forgot_password']['url']
+            ||
+            $path_segments[0] == $general_fields['auth']['password_reset']['url']
         ){
             $context['links'] = array(
                 array(
@@ -67,6 +76,8 @@ function custom_system_auth_pages_callback() {
             $path_segments[0] == $general_fields['auth']['sign_up']['url'] && isset($path_segments[1]) && $path_segments[1]
             ||
             $path_segments[0] == $general_fields['auth']['forgot_password']['url'] && isset($path_segments[1]) && $path_segments[1]
+            ||
+            $path_segments[0] == $general_fields['auth']['password_reset']['url'] && isset($path_segments[1]) && $path_segments[1]
         ) {
             if( $decrypted = custom_encrypt_decrypt('decrypt', trim($path_segments[1])) ){
                 $context['decoded'] = json_decode($decrypted, true);
@@ -80,21 +91,48 @@ function custom_system_auth_pages_callback() {
             $text = $general_fields['auth']['login']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
-        } elseif ($path_segments[0] == $general_fields['auth']['sign_up']['url']){
+        }
+
+        if ($path_segments[0] == $general_fields['auth']['sign_up']['url']){
 
             $template = 'auth/sign-up.twig';
             $title = __('Sign Up', TEXTDOMAIN);
             $text = $general_fields['auth']['sign_up']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
-        } elseif ($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
+        }
+
+        if ($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
 
             $template = 'auth/forgot-password.twig';
             $title = __('Forgot Password', TEXTDOMAIN);
             $text = $general_fields['auth']['forgot_password']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
-        } elseif ($path_segments[0] == $general_fields['profile']['url']){
+        }
+
+        if ($path_segments[0] == $general_fields['auth']['password_reset']['url']){
+
+            /** checking suffix url */
+            if (!$path_segments[1]){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            /** validating suffix url */
+            if(!($decrypted = custom_encrypt_decrypt('decrypt', trim($path_segments[1])))){
+                wp_redirect(BLOGINFO_URL);
+                exit;
+            }
+
+            $template = 'auth/password-reset.twig';
+            $title = __('Password Reset', TEXTDOMAIN);
+            $text = $general_fields['auth']['password_reset']['text'];
+            $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
+
+        }
+
+        if ($path_segments[0] == $general_fields['profile']['url']){
 
             if(!isset($path_segments[1])){
 
@@ -320,6 +358,8 @@ add_filter( 'document_title_parts', function( $title_parts_array ) {
         $title_parts_array['title'] = __('Sign Up', TEXTDOMAIN);
     } elseif($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
         $title_parts_array['title'] = __('Forgot Password', TEXTDOMAIN);
+    } elseif($path_segments[0] == $general_fields['auth']['password_reset']['url']){
+        $title_parts_array['title'] = __('Password Reset', TEXTDOMAIN);
     } elseif($path_segments[0] == $general_fields['profile']['url']){
         if(!isset($path_segments[1])){
             $title_parts_array['title'] = __('Orders', TEXTDOMAIN);
