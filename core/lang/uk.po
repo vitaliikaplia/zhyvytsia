@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-16 03:45+0300\n"
+"POT-Creation-Date: 2023-10-16 13:59+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -48,7 +48,7 @@ msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/forms-logic.php:202 core/pages.php:300
+#: core/forms-logic.php:203 core/forms-logic.php:586
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -57,7 +57,8 @@ msgstr "Підтвердити мій Email"
 msgid "New code sent..."
 msgstr "Новий код надіслано…"
 
-#: core/ajax/profile_resend_verification_code_to_sms.php:24 core/pages.php:175
+#: core/ajax/profile_resend_verification_code_to_sms.php:24
+#: core/forms-logic.php:487
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
@@ -69,17 +70,18 @@ msgstr "Вашу електронну адресу успішно підтвер
 msgid "Your link is out of date or invalid"
 msgstr "Ваше посилання застаріле або недійсне"
 
-#: core/forms-logic.php:24 core/forms-logic.php:114 core/forms-logic.php:230
+#: core/forms-logic.php:24 core/forms-logic.php:115 core/forms-logic.php:231
+#: core/forms-logic.php:428 core/forms-logic.php:515 core/forms-logic.php:608
 msgid "Nonce is wrong"
 msgstr "Nonce невірний"
 
-#: core/forms-logic.php:34 core/forms-logic.php:124 core/forms-logic.php:240
-#: core/forms-logic.php:340
+#: core/forms-logic.php:34 core/forms-logic.php:125 core/forms-logic.php:241
+#: core/forms-logic.php:341 core/forms-logic.php:546
 msgid "Email is to long"
 msgstr "Електронна пошта задовга"
 
-#: core/forms-logic.php:41 core/forms-logic.php:131 core/forms-logic.php:247
-#: core/forms-logic.php:347
+#: core/forms-logic.php:41 core/forms-logic.php:132 core/forms-logic.php:248
+#: core/forms-logic.php:348
 msgid "Email is wrong"
 msgstr "Електронна адреса неправильна"
 
@@ -87,7 +89,8 @@ msgstr "Електронна адреса неправильна"
 msgid "No user found for this email"
 msgstr "Для цього Email не знайдено жодного користувача"
 
-#: core/forms-logic.php:68 core/forms-logic.php:158 core/forms-logic.php:378
+#: core/forms-logic.php:68 core/forms-logic.php:159 core/forms-logic.php:379
+#: core/forms-logic.php:532
 msgid "Password is to long"
 msgstr "Пароль задовгий"
 
@@ -95,11 +98,11 @@ msgstr "Пароль задовгий"
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: core/forms-logic.php:148
+#: core/forms-logic.php:149
 msgid "This email address is already taken!"
 msgstr "Ця електронна адреса вже зайнята!"
 
-#: core/forms-logic.php:219
+#: core/forms-logic.php:220
 msgid ""
 "Congratulations! Your new account has been created! Check your Email for "
 "confirmation."
@@ -107,46 +110,126 @@ msgstr ""
 "Вітаємо! Ваш новий акаунт створено! Перевірте свій Емейл для його "
 "підтвердження."
 
-#: core/forms-logic.php:264
+#: core/forms-logic.php:265
 msgid "No account found for this email"
 msgstr "Для цьогоEmail не знайдено жодного облікового запису"
 
-#: core/forms-logic.php:288 views/auth/password-reset.twig:28
+#: core/forms-logic.php:289 views/auth/password-reset.twig:28
 #: views/profile/change-password.twig:25
 msgid "Change my password"
 msgstr "Змінити мій пароль"
 
-#: core/forms-logic.php:300
+#: core/forms-logic.php:301
 msgid "Verification code sent"
 msgstr "Код підтвердження надіслано"
 
-#: core/forms-logic.php:316
+#: core/forms-logic.php:317
 msgid "Hacker?"
 msgstr "Хакер?"
 
-#: core/forms-logic.php:323
+#: core/forms-logic.php:324
 msgid "Nonce 'password-reset' is wrong"
 msgstr "Nonce ‘password-reset’ невірний"
 
-#: core/forms-logic.php:330
+#: core/forms-logic.php:331
 msgid "Nonce 'request-redirect' is wrong"
 msgstr "Nonce ‘request-redirect’ невірний"
 
-#: core/forms-logic.php:357
+#: core/forms-logic.php:358
 msgid "Hm, no user found"
 msgstr "Хм, користувача не знайдено"
 
-#: core/forms-logic.php:368
+#: core/forms-logic.php:369
 msgid "Wrong recovery code"
 msgstr "Невірний код відновлення"
 
-#: core/forms-logic.php:395
+#: core/forms-logic.php:396
 msgid "Looks like the new password is the same"
 msgstr "Схоже, новий пароль однаковий"
 
-#: core/forms-logic.php:417 core/pages.php:234
+#: core/forms-logic.php:418 core/forms-logic.php:688
 msgid "The password has been changed"
 msgstr "Пароль змінено"
+
+#: core/forms-logic.php:443
+msgid "First name updated"
+msgstr "Ім’я оновлено"
+
+#: core/forms-logic.php:445 core/forms-logic.php:452
+msgid "First name not updated"
+msgstr "First name not updated"
+
+#: core/forms-logic.php:450
+msgid "First name removed"
+msgstr "Ім’я видалено"
+
+#: core/forms-logic.php:460
+msgid "Last name updated"
+msgstr "Прізвище оновлено"
+
+#: core/forms-logic.php:462 core/forms-logic.php:469
+msgid "Last name not updated"
+msgstr "Last name not updated"
+
+#: core/forms-logic.php:467
+msgid "Last name removed"
+msgstr "Прізвище видалено"
+
+#: core/forms-logic.php:489
+msgid "User phone updated"
+msgstr "Телефон користувача оновлено"
+
+#: core/forms-logic.php:491
+msgid "This phone number is already taken"
+msgstr "Цей номер телефону вже зайнятий"
+
+#: core/forms-logic.php:494
+msgid "User phone not updated"
+msgstr "Номер телефону не оновлено"
+
+#: core/forms-logic.php:497
+msgid "Enter valid phone number"
+msgstr "Введіть дійсний номер телефону"
+
+#: core/forms-logic.php:502
+msgid "Phone number removed"
+msgstr "Номер телефону видалено"
+
+#: core/forms-logic.php:539
+msgid "Wrong password"
+msgstr "Невірнй пароль"
+
+#: core/forms-logic.php:553
+msgid "New Email is the same"
+msgstr "Нова електронна пошта однакова"
+
+#: core/forms-logic.php:565
+msgid "Email successfully changed"
+msgstr "Вашу електронну адресу успішно змінено!"
+
+#: core/forms-logic.php:623
+msgid "Old password: To long"
+msgstr "Старий пароль: занадто довгий"
+
+#: core/forms-logic.php:633
+msgid "Old password"
+msgstr "Старий пароль"
+
+#: core/forms-logic.php:640
+msgid "New password: To long"
+msgstr "Новий пароль: занадто довгий"
+
+#: core/forms-logic.php:650 views/auth/password-reset.twig:8
+msgid "New password"
+msgstr "Новий пароль"
+
+#: core/forms-logic.php:657
+msgid "Wrong old password"
+msgstr "Неправильний старий пароль"
+
+#: core/forms-logic.php:664
+msgid "New password should be different"
+msgstr "Новий пароль має відрізнятись від старого"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -505,8 +588,8 @@ msgstr "Батьківська позииція"
 
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
-#: core/includes/back/custom-post-types.php:69 core/pages.php:140
-#: core/pages.php:365
+#: core/includes/back/custom-post-types.php:69 core/pages.php:152
+#: core/pages.php:207
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -874,69 +957,41 @@ msgstr "Сторінка 404"
 msgid "Redirects"
 msgstr "Переадресації"
 
-#: core/pages.php:55 core/pages.php:90 core/pages.php:356
+#: core/pages.php:61 core/pages.php:97 core/pages.php:198
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:59 core/pages.php:99 core/pages.php:358
+#: core/pages.php:65 core/pages.php:107 core/pages.php:200
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:63 core/pages.php:108 core/pages.php:360
+#: core/pages.php:69 core/pages.php:117 core/pages.php:202
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
-#: core/pages.php:67
+#: core/pages.php:73
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:129 core/pages.php:362
+#: core/pages.php:139 core/pages.php:204
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:178
-msgid "This phone number is already taken"
-msgstr "Цей номер телефону вже зайнятий"
-
-#: core/pages.php:182
-msgid "Enter valid phone number"
-msgstr "Введіть дійсний номер телефону"
-
-#: core/pages.php:191
-msgid "Profile updated"
-msgstr "Профіль оновлено"
-
-#: core/pages.php:196 core/pages.php:367 views/base-profile.twig:31
+#: core/pages.php:159 core/pages.php:209 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:236
-msgid "The password has not been changed"
-msgstr "Пароль не змінено"
-
-#: core/pages.php:242 core/pages.php:320
-msgid "Wrong password"
-msgstr "Невірнй пароль"
-
-#: core/pages.php:249 core/pages.php:371 views/base-profile.twig:33
-#: views/profile/change-password.twig:5
-msgid "Change password"
-msgstr "Змінити пароль"
-
-#: core/pages.php:275
-msgid "Email successfully changed"
-msgstr "Вашу електронну адресу успішно змінено!"
-
-#: core/pages.php:316
-msgid "Email not changed"
-msgstr "Електронна пошта не змінена"
-
-#: core/pages.php:331 core/pages.php:369 views/base-profile.twig:32
+#: core/pages.php:166 core/pages.php:211 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
+
+#: core/pages.php:173 core/pages.php:213 views/base-profile.twig:33
+#: views/profile/change-password.twig:5
+msgid "Change password"
+msgstr "Змінити пароль"
 
 #: views/ajax/profile-confirm-email-content.twig:2
 msgid "Enter verification code from Email"
@@ -984,10 +1039,6 @@ msgstr "Показати"
 #: views/auth/login.twig:23
 msgid "Log in"
 msgstr "Увійти"
-
-#: views/auth/password-reset.twig:8
-msgid "New password"
-msgstr "Новий пароль"
 
 #: views/base-profile.twig:13 views/base-profile.twig:15
 msgid "Hello"
@@ -1085,6 +1136,12 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
+
+#~ msgid "The password has not been changed"
+#~ msgstr "Пароль не змінено"
+
+#~ msgid "Email not changed"
+#~ msgstr "Електронна пошта не змінена"
 
 #~ msgid "Reset my password"
 #~ msgstr "Скинути мій пароль"

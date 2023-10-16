@@ -5,10 +5,12 @@ if(!defined('ABSPATH')){exit;}
 /** system pages */
 function custom_system_auth_pages_callback() {
 
+    /** defining stuff */
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
     $general_fields = cache_general_fields();
 
+    /** catching urls */
     if (
         $path_segments[0] == $general_fields['auth']['login']['url']
         ||
@@ -21,25 +23,29 @@ function custom_system_auth_pages_callback() {
         $path_segments[0] == $general_fields['profile']['url']
     ) {
 
+        /** authorised redirects */
         if(is_user_logged_in() && $path_segments[0] != $general_fields['profile']['url']){
             wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
             exit;
         }
-
         if(!is_user_logged_in() && $path_segments[0] == $general_fields['profile']['url']){
             wp_redirect( BLOGINFO_URL . '/' . $general_fields['auth']['login']['url'] . '/' );
             exit;
         }
 
+        /** fixing last slash in custom urls */
         if (empty($_GET) && substr($_SERVER['REQUEST_URI'], -1) !== '/') {
             wp_redirect(BLOGINFO_URL . '/' . trim($_SERVER['REQUEST_URI'], '/') . '/');
             exit();
         }
 
+        /** disable default wp 404 */
         add_action('wp', function(){ status_header( 200 ); });
 
+        /** building context */
         $context = Timber::context();
 
+        /** form menu */
         if (
             $path_segments[0] == $general_fields['auth']['login']['url']
             ||
@@ -69,7 +75,7 @@ function custom_system_auth_pages_callback() {
             );
         }
 
-        /** put encoded context */
+        /** put decoded context */
         if(
             $path_segments[0] == $general_fields['auth']['login']['url'] && isset($path_segments[1]) && $path_segments[1]
             ||
@@ -84,6 +90,7 @@ function custom_system_auth_pages_callback() {
             }
         }
 
+        /** login page */
         if($path_segments[0] == $general_fields['auth']['login']['url']) {
 
             $template = 'auth/login.twig';
@@ -93,6 +100,7 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** sign-up page */
         if ($path_segments[0] == $general_fields['auth']['sign_up']['url']){
 
             $template = 'auth/sign-up.twig';
@@ -102,6 +110,7 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** forgot-password page */
         if ($path_segments[0] == $general_fields['auth']['forgot_password']['url']){
 
             $template = 'auth/forgot-password.twig';
@@ -111,6 +120,7 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** password-reset page */
         if ($path_segments[0] == $general_fields['auth']['password_reset']['url']){
 
             /** checking suffix url */
@@ -132,204 +142,36 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** profile pages */
         if ($path_segments[0] == $general_fields['profile']['url']){
 
+            /** main */
             if(!isset($path_segments[1])){
 
                 $template = 'profile/orders.twig';
                 $title = __('Orders', TEXTDOMAIN);
                 $context['current_page'] = 'orders';
 
+            /** edit */
             } elseif ( $path_segments[1] == 'edit'){
-
-                if (isset($_POST['nonce']) && isset($_GET['profile']) && $_GET['profile'] == 'update') {
-                    $nonce = sanitize_text_field($_POST['nonce']);
-                    if (wp_verify_nonce($nonce, 'profile-update')) {
-                        $user_id = get_current_user_id();
-
-                        if (isset($_POST['f_name']) && $_POST['f_name']) {
-                            update_user_meta( $user_id, 'first_name', htmlspecialchars($_POST['f_name'], ENT_QUOTES, 'UTF-8') );
-                        } else {
-                            update_user_meta( $user_id, 'first_name', false );
-                        }
-
-                        if (isset($_POST['l_name']) && $_POST['l_name']) {
-                            update_user_meta( $user_id, 'last_name', htmlspecialchars($_POST['l_name'], ENT_QUOTES, 'UTF-8') );
-                        } else {
-                            update_user_meta( $user_id, 'last_name', false );
-                        }
-
-                        if (isset($_POST['user_phone']) && $_POST['user_phone']) {
-                            if(check_phone(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
-                                $user_phone = get_user_meta($user_id, 'user_phone', true);
-                                if($user_phone != fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
-                                    $uhp = get_users(array(
-                                        'meta_key' => 'user_phone',
-                                        'meta_value' => htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')
-                                    ));
-                                    if(empty($uhp)){
-                                        update_user_meta( $user_id, 'user_phone_confirmed', false );
-                                        update_user_meta( $user_id, 'user_phone', fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')));
-                                        $user_sms_verification_code = random_int(1000, 9999);
-                                        update_user_meta( $user_id, 'user_sms_verification_code', $user_sms_verification_code );
-                                        $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
-                                        send_sms(fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')), $sms_message);
-                                    } else {
-                                        $context['notify'][] = add_notify('warning', __('This phone number is already taken', TEXTDOMAIN), true);
-                                    }
-                                }
-                            } else {
-                                $context['notify'][] = add_notify('warning', __('Enter valid phone number', TEXTDOMAIN), true);
-                            }
-                        } else {
-                            update_user_meta( $user_id, 'user_phone', false );
-                            update_user_meta( $user_id, 'user_phone_confirmed', false );
-                        }
-
-                        $user = new Timber\User($user_id);
-                        $context['user'] = $user;
-                        $context['notify'][] = add_notify('success', __('Profile updated', TEXTDOMAIN), true);
-                    }
-                }
 
                 $template = 'profile/edit.twig';
                 $title = __('Edit profile', TEXTDOMAIN);
                 $context['current_page'] = 'edit';
 
-            } elseif ( $path_segments[1] == 'change-password'){
-
-                if (isset($_POST['nonce']) && isset($_GET['password']) && $_GET['password'] == 'change' && isset($_POST['u_o_password']) && $_POST['u_o_password'] && isset($_POST['u_n_password']) && $_POST['u_n_password']) {
-                    $nonce = sanitize_text_field($_POST['nonce']);
-                    if (wp_verify_nonce($nonce, 'password-change')) {
-                        $user_id = get_current_user_id();
-                        $user = get_userdata($user_id);
-                        $o_password = wp_unslash($_POST['u_o_password']);
-                        $n_password = wp_unslash($_POST['u_n_password']);
-                        if(strlen($o_password) < 60){
-                            if($user_id && wp_check_password( $o_password, $user->data->user_pass )){
-                                $password_strength = check_password_strength($n_password);
-                                if($password_strength == 'ok'){
-                                    if($n_password != $o_password){
-
-                                        $search = array(
-                                            '[session]'
-                                        );
-                                        $replace = array(
-                                            get_session_info($_SERVER['REMOTE_ADDR'])
-                                        );
-
-                                        $content = Timber::compile( 'email/email.twig', array(
-                                            'TEXTDOMAIN' => TEXTDOMAIN,
-                                            'BLOGINFO_NAME' => BLOGINFO_NAME,
-                                            'BLOGINFO_URL' => BLOGINFO_URL,
-                                            'subject' => $general_fields['emails']['auth']['password_change_subject'],
-                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['password_change_text'])
-                                        ));
-                                        send_email($user->user_email, $general_fields['emails']['auth']['password_change_subject'], $content);
-
-                                        wp_set_password( $n_password, $user_id );
-                                        wp_set_current_user( $user_id, $user->user_login );
-                                        wp_set_auth_cookie( $user->ID, true );
-                                        do_action( 'wp_login', $user->user_login );
-                                        $context['notify'][] = add_notify('success', __('The password has been changed', TEXTDOMAIN), true);
-                                    } else {
-                                        $context['notify'][] = add_notify('warning', __('The password has not been changed', TEXTDOMAIN), true);
-                                    }
-                                } else {
-                                    $context['notify'] = add_notify('error', $password_strength, true);
-                                }
-                            } else {
-                                $context['notify'][] = add_notify('error', __('Wrong password', TEXTDOMAIN), true);
-                            }
-                        }
-                    }
-                }
-
-                $template = 'profile/change-password.twig';
-                $title = __('Change password', TEXTDOMAIN);
-                $context['current_page'] = 'change-password';
-
+            /** change-email */
             } elseif ( $path_segments[1] == 'change-email'){
-
-                if (isset($_POST['nonce']) && isset($_GET['email']) && $_GET['email'] == 'change' && isset($_POST['u_email']) && $_POST['u_email']) {
-                    $nonce = sanitize_text_field($_POST['nonce']);
-                    if (wp_verify_nonce($nonce, 'email-change')) {
-                        $user_id = get_current_user_id();
-                        $user = get_userdata($user_id);
-                        $password = wp_unslash($_POST['u_password']);
-
-                        if(strlen($password) < 60){
-
-                            if($user_id && wp_check_password( $password, $user->data->user_pass )){
-                                $user_email = $user->user_email;
-                                $new_u_email_trim = trim($_POST['u_email']);
-                                $new_u_email_secure = wp_unslash(htmlspecialchars($new_u_email_trim, ENT_QUOTES, 'UTF-8'));
-                                if(filter_var($new_u_email_secure, FILTER_VALIDATE_EMAIL) && strlen($new_u_email_secure) < 60){
-                                    if($new_u_email_secure != $user_email){
-                                        $args = array(
-                                            'ID'         => $user_id,
-                                            'user_email' => $new_u_email_secure
-                                        );
-                                        wp_update_user($args);
-                                        update_user_meta( $user_id, 'user_email_confirmed', false );
-                                        $context['notify'][] = add_notify('success', __('Email successfully changed', TEXTDOMAIN), true);
-
-                                        $user_email_verification_code_for_link = random_int(1000000000, 9999999999);
-                                        $user_email_verification_code = random_int(1000, 9999);
-
-                                        update_user_meta( $user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
-                                        update_user_meta( $user_id, 'user_email_verification_code', $user_email_verification_code );
-                                        update_user_meta( $user_id, 'nickname', $new_u_email_secure );
-
-                                        $arr_for_link = array(
-                                            'action' => 'verify_email',
-                                            'user_id' => $user_id,
-                                            'verification_code' => $user_email_verification_code_for_link,
-                                        );
-                                        $json_for_link = json_encode($arr_for_link);
-                                        $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
-
-                                        $search = array(
-                                            '[button]',
-                                            '[code]',
-                                            '[session]'
-                                        );
-                                        $replace = array(
-                                            get_email_part('button', array(
-                                                'link' => DO_URL . $encrypted_for_link,
-                                                'title' => __('Confirm my Email', TEXTDOMAIN)
-                                            )),
-                                            emoji_numbers($user_email_verification_code),
-                                            get_session_info($_SERVER['REMOTE_ADDR'])
-                                        );
-
-                                        $content = Timber::compile( 'email/email.twig', array(
-                                            'TEXTDOMAIN' => TEXTDOMAIN,
-                                            'BLOGINFO_NAME' => BLOGINFO_NAME,
-                                            'BLOGINFO_URL' => BLOGINFO_URL,
-                                            'subject' => $general_fields['emails']['auth']['sign_up_subject'],
-                                            'text' => str_replace($search, $replace, $general_fields['emails']['auth']['sign_up_text'])
-                                        ));
-                                        send_email($new_u_email_secure, $general_fields['emails']['auth']['sign_up_subject'], $content);
-
-                                    } else {
-                                        $context['notify'][] = add_notify('warning', __('Email not changed', TEXTDOMAIN), true);
-                                    }
-                                }
-                            } else {
-                                $context['notify'][] = add_notify('error', __('Wrong password', TEXTDOMAIN), true);
-                            }
-                        }
-
-
-                        $user = new Timber\User($user_id);
-                        $context['user'] = $user;
-                    }
-                }
 
                 $template = 'profile/change-email.twig';
                 $title = __('Change email', TEXTDOMAIN);
                 $context['current_page'] = 'change-email';
+
+            /** change password */
+            } elseif ( $path_segments[1] == 'change-password'){
+
+                $template = 'profile/change-password.twig';
+                $title = __('Change password', TEXTDOMAIN);
+                $context['current_page'] = 'change-password';
 
             } elseif ($path_segments[1]){
                 wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );

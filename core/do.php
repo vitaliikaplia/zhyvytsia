@@ -5,7 +5,7 @@ if(!defined('ABSPATH')){exit;}
 /** Custom "do" page */
 function custom_system_do_page_callback() {
 
-    /** defining staff */
+    /** defining stuff */
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
     $path_segments = explode('/', trim($parsed_url['path'], '/'));
     $general_fields = cache_general_fields();
