@@ -153,6 +153,26 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_652efa5522eef",
+                    "label": "Повідомлення про порожній кошик",
+                    "name": "empty_cart_message",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
                     "key": "field_652ecb5c1633d",
                     "label": "Оформлення замовлення",
                     "name": "",
@@ -210,5 +230,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697565587
+    "modified": 1697577607
 }

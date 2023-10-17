@@ -347,6 +347,20 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** smart anchors */
+        $('a').click(function(){
+
+            let thisEL = $(this),
+                thisAnchor = thisEL.attr('href').replace('#','');
+
+            if($('.customBlockWrapper[data-anchor="'+thisAnchor+'"]').length){
+                const yOffset = -70;
+                const y = $('.customBlockWrapper[data-anchor="'+thisAnchor+'"]')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+                return false;
+            }
+        });
+
         /** cart icon element */
         cartIconEl = $("header .cart");
 

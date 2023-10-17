@@ -17,7 +17,7 @@ function show_cart_action() {
 
     if(empty($ids_arr)){
 
-        $toJson['content'] = '<p>' . __("Your cart is empty", TEXTDOMAIN) . ' 👀</p>';
+        $toJson['content'] = $general_fields['shop']['empty_cart_message'];
 
     } else {
 

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="customBlockWrapper {{ block_class }} scroll-show" id="{{ block.id }}">
+<div class="customBlockWrapper {{ block_class }} scroll-show" id="{{ block.id }}"{% if fields.anchor %} data-anchor="{{ fields.anchor }}"{% endif %}>
     <div class="customBlock">
         <div class="typo">
             {{ fields.text }}
