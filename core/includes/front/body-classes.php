@@ -42,6 +42,9 @@ function app_body_classes($classes) {
     if ($path_segments[0] == $general_fields['profile']['url']) {
         $classes[] = 'profile';
     }
+    if ($path_segments[0] == $general_fields['shop']['checkout_page_url']) {
+        $classes[] = 'checkout';
+    }
 
     return $classes;
 }

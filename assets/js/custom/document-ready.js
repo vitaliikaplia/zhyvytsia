@@ -347,5 +347,22 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** cart icon element */
+        cartIconEl = $("header .cart");
+
+        /** add to cart */
+        $(".add_to_cart").unbind();
+        $(".add_to_cart").click(function(){
+            add_to_cart($(this));
+            return false;
+        });
+
+        count_cart();
+
+        cartIconEl.click(function(){
+            show_cart();
+            return false;
+        });
+
     });
 })(jQuery);

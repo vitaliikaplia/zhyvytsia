@@ -39,18 +39,18 @@
                     <div class="swiper-button-prev"></div>
                 </div>
                 {% if fields.gallery is iterable %}
-                    <div thumbsSlider="" class="swiper thumbnails">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                {{ fields.photo | picture }}
-                            </div>
-                            {% for key,val in fields.gallery %}
-                                <div class="swiper-slide">
-                                    {{ val | picture }}
-                                </div>
-                            {% endfor %}
+                <div thumbsSlider="" class="swiper thumbnails">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            {{ fields.photo | picture }}
                         </div>
+                        {% for key,val in fields.gallery %}
+                            <div class="swiper-slide">
+                                {{ val | picture }}
+                            </div>
+                        {% endfor %}
                     </div>
+                </div>
                 {% endif %}
             </div>
             <div class="col">
@@ -72,12 +72,14 @@
                         </p>
                     </div>
                     <div class="col">
-                        <button>
+                        {% if fields.status.value == "in_stock" %}
+                        <button data-id="{{ post.id }}" class="add_to_cart">
                             <svg>
                                 <use href="{{ svg_sprite }}#iconCart"></use>
                             </svg>
                             <span>Купити</span>
                         </button>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="reminderWrapper">

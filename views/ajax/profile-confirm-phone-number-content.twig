@@ -1,14 +1,16 @@
-<form class="confirm-phone-number">
-    <p>{{ __("Enter verification code from SMS", TEXTDOMAIN) }}</p>
-    <p class="codeInput">
-        <input type="text" maxlength="1" size="1" class="input_1" name="value_1">
-        <input type="text" maxlength="1" size="1" class="input_2" name="value_2">
-        <input type="text" maxlength="1" size="1" class="input_3" name="value_3">
-        <input type="text" maxlength="1" size="1" class="input_4" name="value_4">
-    </p>
-    <input type="hidden" name="action" value="profile_enter_code_from_sms">
-    <button class="resend">
-        <span class="label">{{ __("Resend verification SMS", TEXTDOMAIN) }}</span>
-        <span class="loader"></span>
-    </button>
-</form>
+<div class="confirmation">
+    <form class="confirm-phone-number">
+        <p>{{ __("Enter verification code from SMS", TEXTDOMAIN) }}</p>
+        <p class="codeInput">
+            <input type="text" maxlength="1" size="1" class="input_1" name="value_1">
+            <input type="text" maxlength="1" size="1" class="input_2" name="value_2">
+            <input type="text" maxlength="1" size="1" class="input_3" name="value_3">
+            <input type="text" maxlength="1" size="1" class="input_4" name="value_4">
+        </p>
+        <input type="hidden" name="action" value="profile_enter_code_from_sms">
+        <button class="resend">
+            <span class="label">{{ __("Resend verification SMS", TEXTDOMAIN) }}</span>
+            <span class="loader"></span>
+        </button>
+    </form>
+</div>

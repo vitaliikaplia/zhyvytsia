@@ -21,10 +21,12 @@ function custom_system_auth_pages_callback() {
         $path_segments[0] == $general_fields['auth']['password_reset']['url']
         ||
         $path_segments[0] == $general_fields['profile']['url']
+        ||
+        $path_segments[0] == $general_fields['shop']['checkout_page_url']
     ) {
 
         /** authorised redirects */
-        if(is_user_logged_in() && $path_segments[0] != $general_fields['profile']['url']){
+        if(is_user_logged_in() && ( $path_segments[0] == $general_fields['auth']['login']['url'] || $path_segments[0] == $general_fields['auth']['sign_up']['url'] || $path_segments[0] == $general_fields['auth']['forgot_password']['url'] || $path_segments[0] == $general_fields['auth']['password_reset']['url'] )){
             wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
             exit;
         }
@@ -180,6 +182,15 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** checkout page */
+        if ($path_segments[0] == $general_fields['shop']['checkout_page_url']){
+
+            $template = 'checkout.twig';
+            $title = __('Checkout', TEXTDOMAIN);
+            $context['current_page'] = 'checkout';
+
+        }
+
         $context['title'] = $title;
         $context['text'] = $text;
         Timber::render( $template, $context );
@@ -212,6 +223,8 @@ add_filter( 'document_title_parts', function( $title_parts_array ) {
         } elseif ( $path_segments[1] == 'change-password'){
             $title_parts_array['title'] = __('Change password', TEXTDOMAIN);
         }
+    } elseif($path_segments[0] == $general_fields['shop']['checkout_page_url']){
+        $title_parts_array['title'] = __('Checkout page', TEXTDOMAIN);
     }
     return $title_parts_array;
 });

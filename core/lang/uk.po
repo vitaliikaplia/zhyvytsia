@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-16 13:59+0300\n"
+"POT-Creation-Date: 2023-10-17 21:42+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -43,7 +43,7 @@ msgid "Confirmed"
 msgstr "Підтверджено"
 
 #: core/ajax/profile_enter_code_from_sms.php:50
-#: views/ajax/profile-confirm-phone-number-content-confirmed.twig:1
+#: views/ajax/profile-confirm-phone-number-content-confirmed.twig:2
 msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
@@ -62,7 +62,15 @@ msgstr "Новий код надіслано…"
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
-#: core/do.php:71 views/ajax/profile-confirm-email-content-confirmed.twig:1
+#: core/ajax/show_cart.php:16
+msgid "Cart"
+msgstr "Кошик"
+
+#: core/ajax/show_cart.php:20
+msgid "Your cart is empty"
+msgstr "Ваш кошик порожній"
+
+#: core/do.php:71 views/ajax/profile-confirm-email-content-confirmed.twig:2
 msgid "Your email verified successfully, thanks!"
 msgstr "Вашу електронну адресу успішно підтверджено, дякуємо!"
 
@@ -588,8 +596,8 @@ msgstr "Батьківська позииція"
 
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
-#: core/includes/back/custom-post-types.php:69 core/pages.php:152
-#: core/pages.php:207
+#: core/includes/back/custom-post-types.php:69 core/pages.php:154
+#: core/pages.php:218
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -957,51 +965,67 @@ msgstr "Сторінка 404"
 msgid "Redirects"
 msgstr "Переадресації"
 
-#: core/pages.php:61 core/pages.php:97 core/pages.php:198
+#: core/pages.php:63 core/pages.php:99 core/pages.php:209
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:65 core/pages.php:107 core/pages.php:200
+#: core/pages.php:67 core/pages.php:109 core/pages.php:211
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:69 core/pages.php:117 core/pages.php:202
+#: core/pages.php:71 core/pages.php:119 core/pages.php:213
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
-#: core/pages.php:73
+#: core/pages.php:75
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:139 core/pages.php:204
+#: core/pages.php:141 core/pages.php:215
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:159 core/pages.php:209 views/base-profile.twig:31
+#: core/pages.php:161 core/pages.php:220 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:166 core/pages.php:211 views/base-profile.twig:32
+#: core/pages.php:168 core/pages.php:222 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
-#: core/pages.php:173 core/pages.php:213 views/base-profile.twig:33
+#: core/pages.php:175 core/pages.php:224 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: views/ajax/profile-confirm-email-content.twig:2
+#: core/pages.php:189
+msgid "Checkout"
+msgstr "Оформлення замовлення"
+
+#: core/pages.php:227 views/checkout.twig:7
+msgid "Checkout page"
+msgstr "Сторінка оформлення замовлення"
+
+#: views/ajax/cart.twig:30
+msgid "Total amount"
+msgstr "Загальна сума"
+
+#: views/ajax/cart.twig:35
+msgid "Go to checkout page"
+msgstr "Перейти на сторінку оформлення замовлення"
+
+#: views/ajax/profile-confirm-email-content.twig:3
 msgid "Enter verification code from Email"
 msgstr "Введіть код підтвердження з вашого Email"
 
-#: views/ajax/profile-confirm-email-content.twig:11
+#: views/ajax/profile-confirm-email-content.twig:12
 msgid "Resend verification Email"
 msgstr "Відправити ще один лист з підтвердженням"
 
-#: views/ajax/profile-confirm-email-content.twig:14
+#: views/ajax/profile-confirm-email-content.twig:15
 msgid ""
 "Alternatively, you can confirm your email address by clicking the "
 "confirmation button in the email"
@@ -1009,11 +1033,11 @@ msgstr ""
 "Крім того, електронну адресу можна підтвердити, натиснувши на кнопку "
 "підтвердження в листі"
 
-#: views/ajax/profile-confirm-phone-number-content.twig:2
+#: views/ajax/profile-confirm-phone-number-content.twig:3
 msgid "Enter verification code from SMS"
 msgstr "Введіть код підтвердження з вашого SMS"
 
-#: views/ajax/profile-confirm-phone-number-content.twig:11
+#: views/ajax/profile-confirm-phone-number-content.twig:12
 msgid "Resend verification SMS"
 msgstr "Відправити ще одне SMS з підтвердженням"
 

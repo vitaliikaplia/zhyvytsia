@@ -1,7 +1,8 @@
 {% set post = Post(val) %}
 {% set price = post.meta('price') %}
+{% set status = post.meta('status') %}
 <div class="item scroll-show">
-    <a href="{{ post.link }}">
+    <a href="{{ post.link }}" class="thumbnail">
         {{ post.meta('photo') | picture }}
     </a>
     <p class="title">
@@ -17,12 +18,14 @@
             </p>
         </div>
         <div class="col">
-            <button>
+            {% if status.value == "in_stock" %}
+            <button data-id="{{ post.id }}" class="add_to_cart">
                 <svg>
                     <use href="{{ svg_sprite }}#iconCart"></use>
                 </svg>
                 <span>Купити</span>
             </button>
+            {% endif %}
         </div>
     </div>
 </div>

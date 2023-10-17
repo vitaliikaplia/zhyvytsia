@@ -237,7 +237,7 @@ function check_password_strength(password) {
     return result;
 }
 
-/** content popup */
+/** prepare content popup */
 function prepare_middle_popup(){
     $('body').addClass('pop-up');
     $('body').append('<div class="middlePopupWrapper"></div>');
@@ -254,8 +254,254 @@ function prepare_middle_popup(){
     });
 }
 
+/** content popup render content */
 function add_content_into_middle_popup(title, content){
     $('.middlePopupWrapper .middlePopup').removeClass('loading');
     $('.middlePopupWrapper .middlePopup .title').html(title);
     $('.middlePopupWrapper .middlePopup .content').html(content);
+}
+
+/** add to cart */
+function add_to_cart(el){
+
+    const elId = el.attr("data-id");
+    let flyingImg,
+        flyingImgSrc;
+
+    if(el.parent().parent().parent().hasClass('item') && el.parent().parent().parent().find(".thumbnail").length){
+        flyingImg = el.parents(".item").find(".thumbnail img");
+        flyingImgSrc = flyingImg.attr("src");
+    } else if (el.parents(".singleCatalogItem").find(".swiper-slide.swiper-slide-active").length){
+        flyingImg = el.parents(".singleCatalogItem").find(".swiper-slide.swiper-slide-active img");
+        flyingImgSrc = flyingImg.attr("src");
+    }
+
+    if(!$("body").hasClass("cart-animation-in-process")){
+        if(flyingImg && flyingImgSrc){
+            $("body").addClass("cart-animation-in-process");
+            $('<img src="'+flyingImgSrc+'" id="temp_cart_animate" style="z-index: 60; transform: translateZ(60px); position: absolute; top:'+Math.ceil(flyingImg.offset().top)+'px; left:'+Math.ceil(flyingImg.offset().left)+'px; width:'+Math.ceil(flyingImg.width())+'px; height:'+Math.ceil(flyingImg.height())+'px;">').prependTo('body');
+            $('#temp_cart_animate').animate(
+                {
+                    top: cartIconEl.offset().top+6,
+                    left: cartIconEl.offset().left+12,
+                    width: 20,
+                    height: 20,
+                    opacity: .5,
+                    borderRadius: '50%'
+                }, 350,
+                function() {
+                    $('#temp_cart_animate').remove();
+                    setTimeout(function () {
+                        $("body").removeClass("cart-animation-in-process");
+                    }, 200);
+                }
+            );
+            setTimeout(function () {
+                $('#temp_cart_animate').css({'z-index': '90','transform': 'translateZ(90px)'});
+            }, 250);
+        }
+    }
+
+    /** add cookie */
+    if($.cookie("cart",  { path: '/' }) === null || $.cookie("cart",  { path: '/' }) === "") {
+
+        /** if first cookie */
+        $.cookie("cart", elId+".", {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+
+    } else {
+
+        /** if cookie exists */
+        $.cookie("cart", $.cookie("cart",  { path: '/' }) + elId + ".", {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+
+    }
+
+    count_cart();
+
+    show_cart();
+
+}
+
+/** fix cart array */
+function clean_array(actual){
+    let newArray = new Array();
+    for(let i = 0; i<actual.length; i++){
+        if (actual[i]){
+            newArray.push(actual[i]);
+        }
+    }
+    return newArray;
+}
+
+/** count cart icon */
+function count_cart(){
+    let cart = $.cookie("cart",  { path: '/' });
+    if(cart && cart != "."){
+        if(String(clean_array(cart.split('.')).length).replace(/ /g,'').length == 3){
+            cartIconEl.find(".counter").addClass("small");
+        } else {
+            cartIconEl.find(".counter").removeClass("small");
+        }
+        cartIconEl.find(".counter").addClass("show");
+        cartIconEl.find(".counter").html(clean_array(cart.split('.')).length);
+    } else if(cart == ".") {
+        $.cookie("cart", null, {
+            expires: -1,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+        cartIconEl.find(".counter").removeClass("small").removeClass("show").html("");
+    } else {
+        cartIconEl.find(".counter").removeClass("small").removeClass("show").html("");
+    }
+}
+
+/** doing stuff inside positions */
+function operate_positions(){
+
+    /** remove one item from cookie */
+    $(".positions .quantity .down").click(function() {
+        $(".positions").addClass("busy");
+        let newCookie = $.cookie("cart",  { path: '/' }).replace($(this).attr("data-id")+'.', '');
+        $.cookie("cart", newCookie, {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+        show_cart(true);
+        count_cart();
+        return false;
+    });
+
+    /** add one item to cookie */
+    $(".positions .quantity .up").click(function() {
+        $(".positions").addClass("busy");
+        let newCookie = $.cookie("cart",  { path: '/' })+$(this).attr("data-id")+'.';
+        $.cookie("cart", newCookie, {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+        show_cart(true);
+        count_cart();
+        return false;
+    });
+
+    /** remove all items from */
+    $(".positions .remove").click(function() {
+        $(".positions").addClass("busy");
+        let newCookie = $.cookie("cart",  { path: '/' }).replace(new RegExp($(this).attr("data-id")+'.','g'), '');
+        $.cookie("cart", newCookie, {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+        show_cart(true);
+        count_cart();
+        return false;
+    });
+
+    /** set amount manually */
+    $(".positions .quantity .amount").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+    $(".positions .quantity .amount").blur(function () {
+        if($(this).val() == ""){
+            $(this).val(1);
+        } else if($(this).val() == "0"){
+            $(this).val(1);
+        } else if($(this).val() == 0){
+            $(this).val(1);
+        }
+    });
+    $(".positions .quantity .amount").keyup(function (e) {
+
+        $(".positions").addClass("busy");
+
+        if($(this).val() == ""){
+            $(this).val(1);
+        } else if($(this).val() == "0"){
+            $(this).val(1);
+        } else if($(this).val() == 0){
+            $(this).val(1);
+        }
+
+        let itemsToAdd = $(this).val();
+
+        let newCookie = $.cookie("cart",  { path: '/' }).replace(new RegExp($(this).attr("data-id")+'.','g'), '');
+
+        let i = 0;
+        while (i < itemsToAdd) {
+            newCookie += $(this).attr("data-id")+'.';
+            i++;
+        }
+
+        $.cookie("cart", newCookie, {
+            expires: 356,
+            path: "/",
+            domain: siteCookieDomain,
+            secure: false
+        });
+
+        show_cart(true);
+        count_cart();
+
+    });
+
+}
+
+/** render cart */
+function show_cart(update){
+
+    if(!update){
+        prepare_middle_popup();
+    }
+
+    $.ajax({
+        type: "POST",
+        url: ajaxUrl,
+        dataType: "json",
+        cache: false,
+        data: {
+            "action": "show_cart"
+        },
+        success : function (out) {
+            if(out.status == "ok"){
+                console.log(out);
+
+                add_content_into_middle_popup(out.title, out.content);
+
+                $('.positions').removeClass('busy');
+
+                operate_positions();
+
+            }
+        }
+    });
+
 }

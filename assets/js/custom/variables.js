@@ -10,3 +10,4 @@ const siteCookieDomain = "."+document.location.hostname.replace("www.","");
 const footerEl = document.querySelector('footer');
 const bodyEl = document.querySelector('body');
 let elementsFadeInTimer = 30;
+let cartIconEl;
