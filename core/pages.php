@@ -185,6 +185,21 @@ function custom_system_auth_pages_callback() {
         /** checkout page */
         if ($path_segments[0] == $general_fields['shop']['checkout_page_url']){
 
+            [
+                'ids_arr' => $ids_arr,
+                'items' => $items,
+                'ids_arr_count_values' => $ids_arr_count_values,
+                'ids_arr_count' => $ids_arr_count,
+                'ids_arr_unique' => $ids_arr_unique,
+                'total_price' => $total_price
+            ] = prepare_positions();
+
+            $context['items'] = $items;
+            $context['ids_arr_count_values'] = $ids_arr_count_values;
+            $context['ids_arr_count'] = $ids_arr_count;
+            $context['ids_arr_unique'] = $ids_arr_unique;
+            $context['total_price'] = $total_price;
+
             $template = 'checkout.twig';
             $title = __('Checkout', TEXTDOMAIN);
             $context['current_page'] = 'checkout';

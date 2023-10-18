@@ -10,48 +10,50 @@
     <div class="singleCatalogItem">
         <div class="columns">
             <div class="col">
-                <div class="swiper frame">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a
-                                href="{{ fields.photo.url }}"
-                                class="fancybox"
-                                data-fancybox="gallery"
-                                data-buttons="false">
-                                {{ fields.photo | picture }}
-                            </a>
-                        </div>
-                        {% if fields.gallery is iterable %}
-                            {% for key,val in fields.gallery %}
-                                <div class="swiper-slide">
-                                    <a
-                                        href="{{ val.url }}"
+                <div class="sticky">
+                    <div class="swiper frame">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a
+                                        href="{{ fields.photo.url }}"
                                         class="fancybox"
                                         data-fancybox="gallery"
                                         data-buttons="false">
-                                        {{ val | picture }}
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                {% if fields.gallery is iterable %}
-                <div thumbsSlider="" class="swiper thumbnails">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            {{ fields.photo | picture }}
-                        </div>
-                        {% for key,val in fields.gallery %}
-                            <div class="swiper-slide">
-                                {{ val | picture }}
+                                    {{ fields.photo | picture }}
+                                </a>
                             </div>
-                        {% endfor %}
+                            {% if fields.gallery is iterable %}
+                                {% for key,val in fields.gallery %}
+                                    <div class="swiper-slide">
+                                        <a
+                                                href="{{ val.url }}"
+                                                class="fancybox"
+                                                data-fancybox="gallery"
+                                                data-buttons="false">
+                                            {{ val | picture }}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
+                    {% if fields.gallery is iterable %}
+                    <div thumbsSlider="" class="swiper thumbnails">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    {{ fields.photo | picture }}
+                                </div>
+                                {% for key,val in fields.gallery %}
+                                    <div class="swiper-slide">
+                                        {{ val | picture }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
             <div class="col">
                 <div class="head">

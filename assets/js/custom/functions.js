@@ -261,6 +261,11 @@ function add_content_into_middle_popup(title, content){
     $('.middlePopupWrapper .middlePopup .content').html(content);
 }
 
+/** check if popup opened */
+function is_popup(){
+    return $('body').hasClass('pop-up');
+}
+
 /** add to cart */
 function add_to_cart(el){
 
@@ -370,6 +375,7 @@ function count_cart(){
 function operate_positions(){
 
     /** remove one item from cookie */
+    $(".positions .quantity .down").unbind();
     $(".positions .quantity .down").click(function() {
         $(".positions").addClass("busy");
         let newCookie = $.cookie("cart",  { path: '/' }).replace($(this).attr("data-id")+'.', '');
@@ -379,12 +385,17 @@ function operate_positions(){
             domain: siteCookieDomain,
             secure: false
         });
-        show_cart(true);
-        count_cart();
+        if(is_popup()){
+            show_cart(true);
+            count_cart();
+        } else {
+            update_checkout_positions();
+        }
         return false;
     });
 
     /** add one item to cookie */
+    $(".positions .quantity .up").unbind();
     $(".positions .quantity .up").click(function() {
         $(".positions").addClass("busy");
         let newCookie = $.cookie("cart",  { path: '/' })+$(this).attr("data-id")+'.';
@@ -394,12 +405,17 @@ function operate_positions(){
             domain: siteCookieDomain,
             secure: false
         });
-        show_cart(true);
-        count_cart();
+        if(is_popup()){
+            show_cart(true);
+            count_cart();
+        } else {
+            update_checkout_positions();
+        }
         return false;
     });
 
     /** remove all items from */
+    $(".positions .remove").unbind();
     $(".positions .remove").click(function() {
         $(".positions").addClass("busy");
         let newCookie = $.cookie("cart",  { path: '/' }).replace(new RegExp($(this).attr("data-id")+'.','g'), '');
@@ -409,12 +425,17 @@ function operate_positions(){
             domain: siteCookieDomain,
             secure: false
         });
-        show_cart(true);
-        count_cart();
+        if(is_popup()){
+            show_cart(true);
+            count_cart();
+        } else {
+            update_checkout_positions();
+        }
         return false;
     });
 
     /** set amount manually */
+    $(".positions .quantity .amount").unbind();
     $(".positions .quantity .amount").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -430,6 +451,7 @@ function operate_positions(){
             e.preventDefault();
         }
     });
+    $(".positions .quantity .amount").unbind();
     $(".positions .quantity .amount").blur(function () {
         if($(this).val() == ""){
             $(this).val(1);
@@ -439,6 +461,7 @@ function operate_positions(){
             $(this).val(1);
         }
     });
+    $(".positions .quantity .amount").unbind();
     $(".positions .quantity .amount").keyup(function (e) {
 
         $(".positions").addClass("busy");
@@ -468,8 +491,12 @@ function operate_positions(){
             secure: false
         });
 
-        show_cart(true);
-        count_cart();
+        if(is_popup()){
+            show_cart(true);
+            count_cart();
+        } else {
+            update_checkout_positions();
+        }
 
     });
 
@@ -492,7 +519,6 @@ function show_cart(update){
         },
         success : function (out) {
             if(out.status == "ok"){
-                console.log(out);
 
                 add_content_into_middle_popup(out.title, out.content);
 
@@ -504,4 +530,28 @@ function show_cart(update){
         }
     });
 
+}
+
+/** update checkout positions */
+function update_checkout_positions(){
+    $.ajax({
+        type: "POST",
+        url: ajaxUrl,
+        dataType: "json",
+        cache: false,
+        data: {
+            "action": "update_checkout_positions"
+        },
+        success : function (out) {
+            if(out.status == "ok"){
+                $('.positionsWrapper').html(out.html);
+                $('.positionsWrapper .positions').removeClass('busy');
+                operate_positions();
+            } else if(out.status == "empty"){
+                $('.positionsWrapper').remove();
+                $('.hiddenButtons').addClass('show');
+                $('.firstText').html(out.html);
+            }
+        }
+    });
 }

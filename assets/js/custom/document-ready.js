@@ -365,17 +365,60 @@ window.addEventListener("DOMContentLoaded", function (){
         cartIconEl = $("header .cart");
 
         /** add to cart */
-        $(".add_to_cart").unbind();
         $(".add_to_cart").click(function(){
             add_to_cart($(this));
             return false;
         });
+        if(cartIconEl.length){
+            count_cart();
+            cartIconEl.click(function(){
+                show_cart();
+                return false;
+            });
+        }
 
-        count_cart();
+        /** checkout */
+        if($('.positionsWrapper .positions.busy').length){
+            $('.positionsWrapper .positions').removeClass('busy');
+            operate_positions();
+        }
 
-        cartIconEl.click(function(){
-            show_cart();
-            return false;
+        $('#mySelect2').select2({
+            placeholder: 'Пошук...',
+            language: {
+                noResults: function() {
+                    return "Результатів не знайдено";
+                },
+                inputTooShort: function (args) {
+                    let remainingChars = args.minimum - args.input.length;
+                    return "Будь ласка, введіть перші " + remainingChars + " символа назвии міста";
+                }
+            },
+            ajax: {
+                url: ajaxUrl,
+                type: 'POST',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        action: 'get_cities_list',
+                        search: params.term
+                    };
+                },
+                processResults: function (data) {
+                    let resultsArray = $.map(data, function (value, key) {
+                        return {
+                            id: key,
+                            text: value
+                        };
+                    });
+                    return {
+                        results: resultsArray
+                    };
+                },
+                cache: true
+            },
+            minimumInputLength: 3,
         });
 
     });

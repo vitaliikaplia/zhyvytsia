@@ -131,6 +131,9 @@ require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Record' . DS . 'Subd
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Database' . DS . 'Reader.php';
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Util.php';
 
+/** nova poshta */
+require_once CORE_PATH . DS . 'libs' . DS . 'nova-poshta' . DS . 'NovaPoshtaApi2.php';
+
 /** timber */
 require_once CORE_PATH . DS . 'libs' . DS . 'timber' . DS . 'timber.php';
 Timber::$dirname = TIMBER_VIEWS;

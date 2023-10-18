@@ -5,5 +5,6 @@
 //@prepros-prepend plugins/jquery.autogrow-textarea.js
 //@prepros-prepend plugins/jquery.fancybox.js
 //@prepros-prepend plugins/jquery.mask.min.js
+//@prepros-prepend plugins/select2.min.js
 //@prepros-prepend plugins/jquery.ba-dotimeout.js
 //@prepros-prepend plugins/pgwBrowser.js

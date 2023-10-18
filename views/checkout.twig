@@ -5,6 +5,28 @@
 <div class="checkoutWrapper">
     <div class="checkout">
         <h3 class="title">{{ __('Checkout page', TEXTDOMAIN) }}</h3>
+        {% if items and items is iterable %}
+        {% if general_fields.shop.checkout_description %}
+        <div class="typo firstText">
+            {{ general_fields.shop.checkout_description }}
+        </div>
+        {% endif %}
+        <div class="positionsWrapper">
+            {% include 'overall/positions.twig' %}
+        </div>
+        {% else %}
+        <div class="typo firstText">
+            {{ general_fields.shop.empty_cart_message }}
+        </div>
+        {% endif %}
+        <div class="hiddenButtons{% if not items %} show{% endif %}">
+            <p class="overallButton green inline">
+                <a href="{{ site.url }}">
+                    <span>{{ __("Back to home page", TEXTDOMAIN) }}</span>
+                </a>
+            </p>
+        </div>
+        <select id="mySelect2"></select>
     </div>
 </div>
 

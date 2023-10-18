@@ -908,20 +908,12 @@ footer{
 
 		& > .columns{
 			display: flex;
-			align-items: flex-start;
+			align-items: stretch;
 
 			& > .col{
 
 				&:nth-child(1){
 					width: 40%;
-					border: solid 1px lightgrey;
-					border-radius: 8px;
-					padding: 12px;
-					transition: all,.35s;
-
-					&:hover{
-						box-shadow: 0 0 8px rgba(black,.1);
-					}
 				}
 
 				&:nth-child(2){
@@ -1368,6 +1360,25 @@ footer{
 				}
 			}
 
+			.sticky{
+				position: sticky;
+				position: -webkit-sticky;
+				align-self: flex-start;
+				border: solid 1px lightgrey;
+				border-radius: 8px;
+				padding: 12px;
+				@include transition(all, .2s);
+				top: 120px;
+
+				&:hover{
+					box-shadow: 0 0 8px rgba(black,.1);
+				}
+
+				.headroom--unpinned &{
+					top: 86px;
+				}
+			}
+
 			.swiper{
 				user-select: none;
 
@@ -1810,13 +1821,44 @@ footer{
 	.checkout{
 		position: relative;
 		padding: 32px 0;
-		max-width: 1140px;
+		max-width: 800px;
 		margin: 0 auto;
 
 		.title{
 			color: #000;
 			font-size: 24px;
 			font-weight: 700;
+			margin-bottom: 32px;
+			text-align: center;
+		}
+
+		.typo{
+			text-align: center;
+			margin-bottom: 36px;
+		}
+
+		.hiddenButtons{
+			display: none;
+			text-align: center;
+
+			&.show{
+				display: block;
+			}
+		}
+
+		.positionsWrapper{
+			border: solid 1px lightgrey;
+			border-radius: 8px;
+			padding: 14px 20px;
+			@include transition(all, .2s);
+
+			&:hover{
+				box-shadow: 0 0 8px rgba(black,.1);
+			}
+		}
+
+		#mySelect2{
+			width: 100%;
 		}
 	}
 }

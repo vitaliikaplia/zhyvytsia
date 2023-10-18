@@ -44,12 +44,14 @@
                 </ul>
             </div>
             {% endif %}
+            {% if current_page != 'checkout' %}
             <button class="cart">
                 <svg>
                     <use href="{{ svg_sprite }}#iconCart"></use>
                 </svg>
                 <span class="counter"></span>
             </button>
+            {% endif %}
             {% if fn('current_user_can', 'administrator') or fn('current_user_can', 'editor') %}
             <a href="/wp-admin/" class="wp">
                 <svg><use xlink:href="{{ svg_sprite }}#wp"></use></svg>

@@ -1,0 +1,30 @@
+<ul class="positions busy">
+    {% for item in items %}
+    {% set photo = item.meta('photo') %}
+    {% set count = ids_arr_count_values[item.ID] %}
+    {% set price = fn('render_price', item.ID, count, ids_arr_count) %}
+    <li class="cartItem" data-count="{{ count }}">
+        <p>{{ item.title }}</p>
+        <div class="columns">
+            <div class="col">
+                {% if photo %}
+                    {{ photo | picture }}
+                {% endif %}
+                <div class="quantity">
+                    <button class="up" id="btnDecrease" data-id="{{ item.ID }}">+</button>
+                    <input class="amount" id="controlledByButtons-{{ item.ID }}" value="{{ count }}" maxlength="2" data-id="{{ item.ID }}">
+                    <button class="down" id="btnIncrease" type="button" data-id="{{ item.ID }}">-</button>
+                </div>
+            </div>
+            <div class="col">
+                <span class="price">{{ price }}</span>
+                <button class="remove" data-id="{{ item.ID }}"></button>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<div class="totalBox">
+    <span class="totalTitle">{{ __('Total amount', TEXTDOMAIN) }}: </span>
+    <span class="totalPrice">{{ total_price }}</span>
+</div>

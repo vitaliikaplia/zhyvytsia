@@ -5,7 +5,7 @@ if(!defined('ABSPATH')){exit;}
 /**
  * Show cart
  */
-function show_cart_action() {
+function update_checkout_positions_action() {
 
     [
         'ids_arr' => $ids_arr,
@@ -19,11 +19,7 @@ function show_cart_action() {
     $general_fields = cache_general_fields();
     $toJson['title'] = __("Cart", TEXTDOMAIN);
 
-    if(empty($ids_arr)){
-
-        $toJson['content'] = $general_fields['shop']['empty_cart_message'];
-
-    } else {
+    if(!empty($ids_arr)){
 
         $context = Timber::context();
         $context['items'] = $items;
@@ -31,16 +27,17 @@ function show_cart_action() {
         $context['ids_arr_count'] = $ids_arr_count;
         $context['ids_arr_unique'] = $ids_arr_unique;
         $context['total_price'] = $total_price;
-        $context['BLOGINFO_URL'] = BLOGINFO_URL;
-        $toJson['content'] = Timber::compile( 'ajax/cart.twig', $context);
+        $toJson['html'] = Timber::compile( 'overall/positions.twig', $context);
+        $toJson['status'] = "ok";
 
+    } else {
+        $toJson['html'] = $general_fields['shop']['empty_cart_message'];
+        $toJson['status'] = "empty";
     }
-
-	$toJson['status'] = "ok";
 
 	echo json_encode($toJson);
 	exit;
 
 }
-add_action( 'wp_ajax_show_cart', 'show_cart_action' );
-add_action( 'wp_ajax_nopriv_show_cart', 'show_cart_action' );
+add_action( 'wp_ajax_update_checkout_positions', 'update_checkout_positions_action' );
+add_action( 'wp_ajax_nopriv_update_checkout_positions', 'update_checkout_positions_action' );
