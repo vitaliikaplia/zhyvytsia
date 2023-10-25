@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-17 21:42+0300\n"
+"POT-Creation-Date: 2023-10-25 09:23+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -62,13 +62,9 @@ msgstr "Новий код надіслано…"
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
-#: core/ajax/show_cart.php:16
+#: core/ajax/show_cart.php:20 core/ajax/update_checkout_positions.php:20
 msgid "Cart"
 msgstr "Кошик"
-
-#: core/ajax/show_cart.php:20
-msgid "Your cart is empty"
-msgstr "Ваш кошик порожній"
 
 #: core/do.php:71 views/ajax/profile-confirm-email-content-confirmed.twig:2
 msgid "Your email verified successfully, thanks!"
@@ -597,7 +593,7 @@ msgstr "Батьківська позииція"
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
 #: core/includes/back/custom-post-types.php:69 core/pages.php:154
-#: core/pages.php:218
+#: core/pages.php:233
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -965,16 +961,16 @@ msgstr "Сторінка 404"
 msgid "Redirects"
 msgstr "Переадресації"
 
-#: core/pages.php:63 core/pages.php:99 core/pages.php:209
+#: core/pages.php:63 core/pages.php:99 core/pages.php:224
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:67 core/pages.php:109 core/pages.php:211
+#: core/pages.php:67 core/pages.php:109 core/pages.php:226
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:71 core/pages.php:119 core/pages.php:213
+#: core/pages.php:71 core/pages.php:119 core/pages.php:228
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
@@ -982,38 +978,34 @@ msgstr "Забули пароль"
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:141 core/pages.php:215
+#: core/pages.php:141 core/pages.php:230
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:161 core/pages.php:220 views/base-profile.twig:31
+#: core/pages.php:161 core/pages.php:235 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:168 core/pages.php:222 views/base-profile.twig:32
+#: core/pages.php:168 core/pages.php:237 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
-#: core/pages.php:175 core/pages.php:224 views/base-profile.twig:33
+#: core/pages.php:175 core/pages.php:239 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:189
+#: core/pages.php:204
 msgid "Checkout"
 msgstr "Оформлення замовлення"
 
-#: core/pages.php:227 views/checkout.twig:7
+#: core/pages.php:242
 msgid "Checkout page"
 msgstr "Сторінка оформлення замовлення"
 
-#: views/ajax/cart.twig:30
-msgid "Total amount"
-msgstr "Загальна сума"
-
-#: views/ajax/cart.twig:35
+#: views/ajax/cart.twig:6
 msgid "Go to checkout page"
 msgstr "Перейти на сторінку оформлення замовлення"
 
@@ -1042,7 +1034,7 @@ msgid "Resend verification SMS"
 msgstr "Відправити ще одне SMS з підтвердженням"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
-#: views/auth/sign-up.twig:8 views/profile/edit.twig:25
+#: views/auth/sign-up.twig:8 views/checkout.twig:32 views/profile/edit.twig:25
 msgid "Email"
 msgstr "Email"
 
@@ -1080,6 +1072,47 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
+#: views/checkout.twig:9
+msgid "Check your order"
+msgstr "Перевірте своє замовлення"
+
+#: views/checkout.twig:17
+msgid "Enter your information"
+msgstr "Введіть свою інформацію"
+
+#: views/checkout.twig:20 views/profile/edit.twig:10
+msgid "First Name"
+msgstr "Ім’я"
+
+#: views/checkout.twig:24 views/profile/edit.twig:14
+msgid "Last Name"
+msgstr "Фамілія"
+
+#: views/checkout.twig:28 views/dashboard/user.twig:11
+#: views/profile/edit.twig:18
+msgid "Phone"
+msgstr "Телефон"
+
+#: views/checkout.twig:36
+msgid "Select the Nova Poshta office"
+msgstr "Оберіть відділення Нової Пошти"
+
+#: views/checkout.twig:39
+msgid "City or settlement"
+msgstr "Місто або селище"
+
+#: views/checkout.twig:43
+msgid "Post office number"
+msgstr "Номер поштового відділення"
+
+#: views/checkout.twig:50
+msgid "Your cart is empty"
+msgstr "Ваш кошик порожній"
+
+#: views/checkout.twig:54
+msgid "Back to home page"
+msgstr "Повернутися на головну сторінку"
+
 #: views/dashboard/user.twig:2
 msgid "Extra profile data"
 msgstr "Додаткові дані профілю"
@@ -1087,10 +1120,6 @@ msgstr "Додаткові дані профілю"
 #: views/dashboard/user.twig:5
 msgid "Confirmed Email?"
 msgstr "Підтверджена електронна адреса?"
-
-#: views/dashboard/user.twig:11 views/profile/edit.twig:18
-msgid "Phone"
-msgstr "Телефон"
 
 #: views/dashboard/user.twig:17
 msgid "Confirmed phone?"
@@ -1120,6 +1149,10 @@ msgstr "Код підтвердження SMS"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
+#: views/overall/positions.twig:28
+msgid "Total amount"
+msgstr "Загальна сума"
+
 #: views/profile/change-email.twig:14
 msgid "Your email"
 msgstr "Ваш Email"
@@ -1145,14 +1178,6 @@ msgstr "Ваш старий пароль"
 msgid "Your new password"
 msgstr "Ваш новий пароль"
 
-#: views/profile/edit.twig:10
-msgid "First Name"
-msgstr "Ім’я"
-
-#: views/profile/edit.twig:14
-msgid "Last Name"
-msgstr "Фамілія"
-
 #: views/profile/edit.twig:21
 msgid "Phone not confirmed"
 msgstr "Телефон не підтверджено"
@@ -1160,6 +1185,12 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
+
+#~ msgid "Сhoose a Nova Poshta delivery point"
+#~ msgstr "Виберіть пункт доставки Нової Пошти"
+
+#~ msgid "City"
+#~ msgstr "Місто"
 
 #~ msgid "The password has not been changed"
 #~ msgstr "Пароль не змінено"

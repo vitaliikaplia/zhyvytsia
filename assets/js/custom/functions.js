@@ -548,9 +548,7 @@ function update_checkout_positions(){
                 $('.positionsWrapper .positions').removeClass('busy');
                 operate_positions();
             } else if(out.status == "empty"){
-                $('.positionsWrapper').remove();
-                $('.hiddenButtons').addClass('show');
-                $('.firstText').html(out.html);
+                $('.noOrder').addClass('show');
             }
         }
     });

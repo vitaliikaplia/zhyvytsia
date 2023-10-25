@@ -134,6 +134,12 @@ require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Util.php';
 /** nova poshta */
 require_once CORE_PATH . DS . 'libs' . DS . 'nova-poshta' . DS . 'NovaPoshtaApi2.php';
 
+/** monopay */
+require_once CORE_PATH . DS . 'libs' . DS . 'monopay' . DS . 'RequestBuilder.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'monopay' . DS . 'Webhook.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'monopay' . DS . 'Client.php';
+require_once CORE_PATH . DS . 'libs' . DS . 'monopay' . DS . 'Payment.php';
+
 /** timber */
 require_once CORE_PATH . DS . 'libs' . DS . 'timber' . DS . 'timber.php';
 Timber::$dirname = TIMBER_VIEWS;

@@ -4,29 +4,58 @@
 
 <div class="checkoutWrapper">
     <div class="checkout">
-        <h3 class="title">{{ __('Checkout page', TEXTDOMAIN) }}</h3>
-        {% if items and items is iterable %}
-        {% if general_fields.shop.checkout_description %}
-        <div class="typo firstText">
-            {{ general_fields.shop.checkout_description }}
+        <form method="post" action="?checkout=go" class="orderColumns{% if items and items is iterable %} show{% endif %}">
+            <div class="col">
+                <h3 class="title">🛒 {{ __('Check your order', TEXTDOMAIN) }}</h3>
+                {% if items and items is iterable %}
+                <div class="positionsWrapper">
+                    {% include 'overall/positions.twig' %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="col">
+                <h3 class="title">🪪 {{ __('Enter your information', TEXTDOMAIN) }}</h3>
+                <div class="informationWrapper">
+                    <label>
+                        <p class="label">{{ __('First Name', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="f_name" value="{{ user.first_name }}">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('Last Name', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="l_name" value="{{ user.last_name }}">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('Phone', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="user_phone" value="{{ user.user_phone }}" class="user_phone">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('Email', TEXTDOMAIN) }}:</p>
+                        <input type="email" value="{{ user.user_email }}">
+                    </label>
+                </div>
+                <h3 class="title smaller">🎁 {{ __('Select the Nova Poshta office', TEXTDOMAIN) }}</h3>
+                <div class="npWrapper">
+                    <label>
+                        <p class="label">{{ __('City or settlement', TEXTDOMAIN) }}:</p>
+                        <select id="citySearch"></select>
+                    </label>
+                    <label>
+                        <p class="label">{{ __('Post office number', TEXTDOMAIN) }}:</p>
+                        <select id="postOfficeNumberSearch" disabled></select>
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="noOrder{% if not items and items is not iterable %} show{% endif %}">
+            <h3 class="title">{{ __('Your cart is empty', TEXTDOMAIN) }}</h3>
+            <div class="buttons">
+                <p class="overallButton green inline">
+                    <a href="{{ site.url }}">
+                        <span>{{ __("Back to home page", TEXTDOMAIN) }}</span>
+                    </a>
+                </p>
+            </div>
         </div>
-        {% endif %}
-        <div class="positionsWrapper">
-            {% include 'overall/positions.twig' %}
-        </div>
-        {% else %}
-        <div class="typo firstText">
-            {{ general_fields.shop.empty_cart_message }}
-        </div>
-        {% endif %}
-        <div class="hiddenButtons{% if not items %} show{% endif %}">
-            <p class="overallButton green inline">
-                <a href="{{ site.url }}">
-                    <span>{{ __("Back to home page", TEXTDOMAIN) }}</span>
-                </a>
-            </p>
-        </div>
-        <select id="mySelect2"></select>
     </div>
 </div>
 

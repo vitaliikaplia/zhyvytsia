@@ -69,3 +69,32 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //$auth = get_field('auth', 'options');
 //pr($auth['mail_templates']['sign_up_subject']);
 //pr(fix_phone_format('0672089900'));
+
+//$general_fields = cache_general_fields();
+//use \MonoPay;
+
+//створили клієнта - через нього запити будуть слатись
+//$monoClient = new \MonoPay\Client($general_fields['shop']['monobank_token']);
+
+//$general_fields = cache_general_fields();
+//
+//$np = new NovaPoshtaApi2(
+//    $general_fields['shop']['nova_poshta_api_key'],
+//    'ua',
+//    FALSE,
+//    'curl'
+//);
+//
+//$warehouses = $np->getWarehouses('69da41bd-3f5d-11de-b509-001d92f78698');
+//$results = array();
+//
+//if($warehouses['success'] && !empty($warehouses['data'])){
+//    foreach ($warehouses['data'] as $office){
+//        $results[] = array(
+//            "id" => $office['Number'],
+//            "text" => $office['Description']
+//        );
+//    }
+//}
+//
+//pr($results);

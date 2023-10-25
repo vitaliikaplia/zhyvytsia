@@ -1821,15 +1821,45 @@ footer{
 	.checkout{
 		position: relative;
 		padding: 32px 0;
-		max-width: 800px;
+		max-width: 1140px;
 		margin: 0 auto;
+
+		.orderColumns{
+			display: none;
+
+			&.show{
+				display: flex;
+			}
+
+			.col{
+				&:nth-child(1){
+					width: 60%;
+				}
+
+				&:nth-child(2){
+					width: 40%;
+					padding-left: 40px;
+				}
+			}
+		}
+
+		.noOrder{
+			display: none;
+
+			&.show{
+				display: block;
+			}
+		}
 
 		.title{
 			color: #000;
 			font-size: 24px;
 			font-weight: 700;
 			margin-bottom: 32px;
-			text-align: center;
+
+			&.smaller{
+				font-size: 21px;
+			}
 		}
 
 		.typo{
@@ -1837,27 +1867,70 @@ footer{
 			margin-bottom: 36px;
 		}
 
-		.hiddenButtons{
-			display: none;
+		.buttons{
+			display: block;
 			text-align: center;
-
-			&.show{
-				display: block;
-			}
 		}
 
-		.positionsWrapper{
+		.positionsWrapper,
+		.informationWrapper,
+		.npWrapper{
 			border: solid 1px lightgrey;
 			border-radius: 8px;
 			padding: 14px 20px;
 			@include transition(all, .2s);
+			margin-bottom: 40px;
 
 			&:hover{
 				box-shadow: 0 0 8px rgba(black,.1);
 			}
 		}
 
-		#mySelect2{
+		label{
+			display: block;
+			margin-bottom: 18px;
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+
+			p{
+				line-height: 1;
+
+				&.label{
+					font-weight: 500;
+					font-size: 14px;
+					margin-bottom: 8px;
+				}
+				&.additional{
+					font-size: 13px;
+					padding-top: 6px;
+					color: #3a3a3a;
+				}
+			}
+
+			input{
+				padding: 8px;
+				display: block;
+				width: 100%;
+				max-width: 420px;
+				box-sizing: border-box;
+				line-height: 1;
+				font-size: 15px;
+				font-family: inherit;
+				border: solid 1px lightgrey;
+				border-radius: 8px;
+				transition: all, .35s;
+
+				&:active,
+				&:focus{
+					box-shadow: 0 0 8px rgba(black,.1);
+				}
+			}
+		}
+
+		#citySearch,
+		#postOfficeNumberSearch{
 			width: 100%;
 		}
 	}

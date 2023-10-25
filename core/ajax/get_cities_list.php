@@ -2,9 +2,6 @@
 
 if(!defined('ABSPATH')){exit;}
 
-/**
- * Show cart
- */
 function get_cities_list_action() {
 
     if(isset($_POST['search'])){
