@@ -133,7 +133,7 @@
             "aria-label": "",
             "type": "number",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -149,13 +149,35 @@
             "append": "грн"
         },
         {
+            "key": "field_6539767e3b8bd",
+            "label": "Вага в грамах",
+            "name": "weight_in_grams",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "гр"
+        },
+        {
             "key": "field_650bb91096954",
             "label": "Код товару",
             "name": "sku",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -175,7 +197,7 @@
             "aria-label": "",
             "type": "select",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -214,5 +236,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695947095
+    "modified": 1698264782
 }
