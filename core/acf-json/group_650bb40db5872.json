@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_650bb5d216010",
-            "label": "Фото та галерея",
+            "label": "Фото",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -111,7 +111,7 @@
         },
         {
             "key": "field_650bb67322448",
-            "label": "Ціна та інші налаштування",
+            "label": "Опції",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -125,6 +125,24 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_653ad361a917f",
+            "label": "Важливо!",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Інформація з цієї секції використовується для калькуляцій кошика та чекаута, тому вона є необхідною",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_650bb67d22449",
@@ -216,6 +234,89 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_653ad43427391",
+            "label": "Характеристики",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_653ad44227392",
+            "label": "",
+            "name": "characteristics",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "no_label",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Додати характеристику",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_653ad49727393",
+                    "label": "Назва",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_653ad44227392"
+                },
+                {
+                    "key": "field_653ad4bc27394",
+                    "label": "Значення",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_653ad44227392"
+                }
+            ]
         }
     ],
     "location": [
@@ -236,5 +337,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698264782
+    "modified": 1698354440
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-25 09:23+0300\n"
+"POT-Creation-Date: 2023-10-27 00:08+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -1185,6 +1185,9 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
+
+#~ msgid "Select and add a technical specification field"
+#~ msgstr "Оберіть та додайте поле технічної характеристики"
 
 #~ msgid "Сhoose a Nova Poshta delivery point"
 #~ msgstr "Виберіть пункт доставки Нової Пошти"
