@@ -89,12 +89,26 @@
                         <p>При замовленні від 5 пляшок квасу, ціна за одну – 60 гривень 🎉</p>
                     </div>
                 </div>
+                <ul class="tabsWrapper">
+                    <li class="active"><a href="#description">Опис</a></li>
+                    <li><a href="#characteristics">Характеристики</a></li>
+                </ul>
                 {% if fields.description %}
-                <div class="descriptionWrapper">
+                <div class="descriptionWrapper show">
                     <div class="description short typo">
                         {{ fields.description }}
                     </div>
                     <button>Показати більше</button>
+                </div>
+                {% endif %}
+                {% if fields.characteristics and fields.characteristics is iterable %}
+                <div class="characteristicsWrapper">
+                    {% for val in fields.characteristics %}
+                    <div class="line">
+                        <p class="label">{{ val.label }}:</p>
+                        <p class="value">{{ val.value }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
                 {% endif %}
                 {% if goods and goods is iterable %}

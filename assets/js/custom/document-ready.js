@@ -56,6 +56,27 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** shop item rating scroll */
+        $('.single-catalog .ratingWrapper a').click(function(){
+            if($('.feedbackWrapper').length){
+                const yOffset = -70;
+                const y = $('.feedbackWrapper')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+                return false;
+            }
+        });
+
+        /** shop item tabs */
+        $('.single-catalog .tabsWrapper li a').click(function(){
+            let thisEl = $(this),
+                parentEl = thisEl.parents('.tabsWrapper');
+            parentEl.find('.active').removeClass('active');
+            thisEl.parent().addClass('active');
+            $('.descriptionWrapper').toggleClass('show');
+            $('.characteristicsWrapper').toggleClass('show');
+            return false;
+        });
+
         /** shop item slider */
         let frameSingle,
             thumbnailsSingle;
@@ -145,6 +166,9 @@ window.addEventListener("DOMContentLoaded", function (){
         /** profile phone mask */
         if($(".profile input.user_phone").length){
             $(".profile input.user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
+        }
+        if($(".checkout input.user_phone").length){
+            $(".checkout input.user_phone").mask('+380 00 000-00-00', {placeholder: "+380 __ ___-__-__"});
         }
 
         /** profile email manual confirm */

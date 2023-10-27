@@ -300,7 +300,7 @@
                     "label": "Значення",
                     "name": "value",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -311,9 +311,9 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "rows": 3,
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "new_lines": "br",
                     "parent_repeater": "field_653ad44227392"
                 }
             ]
@@ -337,5 +337,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698354440
+    "modified": 1698402829
 }

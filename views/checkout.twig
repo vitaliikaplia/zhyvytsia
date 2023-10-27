@@ -2,6 +2,13 @@
 
 {% block content %}
 
+{% if user %}
+    {% set first_name = user.first_name %}
+    {% set last_name = user.last_name %}
+    {% set user_phone = user.user_phone %}
+    {% set user_email = user.user_email %}
+{% endif %}
+
 <div class="checkoutWrapper">
     <div class="checkout">
         <form method="post" action="?checkout=go" class="orderColumns{% if items and items is iterable %} show{% endif %}">
@@ -18,19 +25,19 @@
                 <div class="informationWrapper">
                     <label>
                         <p class="label">{{ __('First Name', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="f_name" value="{{ user.first_name }}">
+                        <input type="text" name="f_name" value="{{ first_name }}">
                     </label>
                     <label>
                         <p class="label">{{ __('Last Name', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="l_name" value="{{ user.last_name }}">
+                        <input type="text" name="l_name" value="{{ last_name }}">
                     </label>
                     <label>
                         <p class="label">{{ __('Phone', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="user_phone" value="{{ user.user_phone }}" class="user_phone">
+                        <input type="text" name="user_phone" value="{{ user_phone }}" class="user_phone">
                     </label>
                     <label>
                         <p class="label">{{ __('Email', TEXTDOMAIN) }}:</p>
-                        <input type="email" value="{{ user.user_email }}">
+                        <input type="email" value="{{ user_email }}">
                     </label>
                 </div>
                 <h3 class="title smaller">🎁 {{ __('Select the Nova Poshta office', TEXTDOMAIN) }}</h3>
