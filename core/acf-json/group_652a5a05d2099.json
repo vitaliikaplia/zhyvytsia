@@ -232,6 +232,59 @@
                     "append": "гр"
                 },
                 {
+                    "key": "field_65397556c83cf",
+                    "label": "Увімкнути можливість вказати адресу для УкрПошти",
+                    "name": "enable_simple_address",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653bacfbe06be",
+                    "label": "Логотип УкрПошти",
+                    "name": "ukrposhta_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_65397556c83cf",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
                     "key": "field_65396c19e90ce",
                     "label": "Увімкнути можливість вибору відділення Нової Пошти",
                     "name": "enable_nova_poshta_office",
@@ -259,24 +312,41 @@
                     "ui": 1
                 },
                 {
-                    "key": "field_65397556c83cf",
-                    "label": "Увімкнути можливість вказати адресу для УкрПошти",
-                    "name": "enable_simple_address",
+                    "key": "field_653baccee06bc",
+                    "label": "Логотип Нової Пошти",
+                    "name": "nova_poshta_logo",
                     "aria-label": "",
-                    "type": "true_false",
+                    "type": "image",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652f177ab45a7",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_65396c19e90ce",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "default_value": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "ui": 1
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 },
                 {
                     "key": "field_65397063e90cf",
@@ -297,6 +367,39 @@
                     "ui_on_text": "",
                     "ui_off_text": "",
                     "ui": 1
+                },
+                {
+                    "key": "field_653bad6680fba",
+                    "label": "Зображення, яке сиимволізує самовивіз",
+                    "name": "self_pickup_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_65397063e90cf",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 },
                 {
                     "key": "field_6539709fe90d0",
@@ -324,14 +427,14 @@
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
-                    "collapsed": "",
+                    "collapsed": "field_653bc4e1c9549",
                     "button_label": "Додати пункт",
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_653970d8e90d1",
-                            "label": "Адреса",
-                            "name": "address",
+                            "key": "field_653bc4e1c9549",
+                            "label": "Назва",
+                            "name": "name",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -347,6 +450,26 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
+                            "parent_repeater": "field_6539709fe90d0"
+                        },
+                        {
+                            "key": "field_653970d8e90d1",
+                            "label": "Адреса",
+                            "name": "address",
+                            "aria-label": "",
+                            "type": "google_map",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "center_lat": "",
+                            "center_lng": "",
+                            "zoom": "",
+                            "height": "",
                             "parent_repeater": "field_6539709fe90d0"
                         },
                         {
@@ -395,8 +518,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "display_format": "H:i:s",
-                            "return_format": "H:i:s",
+                            "display_format": "H:i",
+                            "return_format": "H:i",
                             "parent_repeater": "field_6539709fe90d0"
                         },
                         {
@@ -413,8 +536,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "display_format": "H:i:s",
-                            "return_format": "H:i:s",
+                            "display_format": "H:i",
+                            "return_format": "H:i",
                             "parent_repeater": "field_6539709fe90d0"
                         }
                     ]
@@ -493,5 +616,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698265035
+    "modified": 1698438774
 }

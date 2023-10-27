@@ -7,6 +7,9 @@
     {% set last_name = user.last_name %}
     {% set user_phone = user.user_phone %}
     {% set user_email = user.user_email %}
+    {% set delivery_type = user.delivery_type %}
+{% else %}
+    {% set delivery_type = "up" %}
 {% endif %}
 
 <div class="checkoutWrapper">
@@ -19,8 +22,6 @@
                     {% include 'overall/positions.twig' %}
                 </div>
                 {% endif %}
-            </div>
-            <div class="col">
                 <h3 class="title">🪪 {{ __('Enter your information', TEXTDOMAIN) }}</h3>
                 <div class="informationWrapper">
                     <label>
@@ -40,8 +41,57 @@
                         <input type="email" value="{{ user_email }}">
                     </label>
                 </div>
-                <h3 class="title smaller">🎁 {{ __('Select the Nova Poshta office', TEXTDOMAIN) }}</h3>
-                <div class="npWrapper">
+            </div>
+            <div class="col">
+                <h3 class="title">📦 {{ __('Choose the type of delivery', TEXTDOMAIN) }}</h3>
+                <div class="deliveryTypeWrapper">
+                    {% if general_fields.shop.enable_simple_address %}
+                    <label>
+                        {{ general_fields.shop.ukrposhta_logo | picture }}
+                        <input type="radio" name="delivery_type" value="up"{% if delivery_type == 'up' %} checked{% endif %}>
+                        <span class="checked"></span>
+                    </label>
+                    {% endif %}
+                    {% if general_fields.shop.enable_nova_poshta_office %}
+                    <label>
+                        {{ general_fields.shop.nova_poshta_logo | picture }}
+                        <input type="radio" name="delivery_type" value="np"{% if delivery_type == 'np' %} checked{% endif %}>
+                        <span class="checked"></span>
+                    </label>
+                    {% endif %}
+                    {% if general_fields.shop.enable_self_pickup_points %}
+                    <label>
+                        {{ general_fields.shop.self_pickup_logo | picture }}
+                        <p class="label">{{ __('Pickup', TEXTDOMAIN) }}</p>
+                        <input type="radio" name="delivery_type" value="pu"{% if delivery_type == 'pu' %} checked{% endif %}>
+                        <span class="checked"></span>
+                    </label>
+                    {% endif %}
+                </div>
+                {% if general_fields.shop.enable_simple_address %}
+                <h3 class="title upTitle{% if delivery_type == 'up' %} show{% endif %}">🎁 {{ __('Enter your address', TEXTDOMAIN) }}</h3>
+                <div class="upWrapper{% if delivery_type == 'up' %} show{% endif %}">
+                    <label>
+                        <p class="label">{{ __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="region" value="{{ region }}">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('City (or settlement)', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="city" value="{{ city }}">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('ZIP Code', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="zip" value="{{ zip }}">
+                    </label>
+                    <label>
+                        <p class="label">{{ __('Address (street, house, apartment)', TEXTDOMAIN) }}:</p>
+                        <input type="text" name="address" value="{{ address }}">
+                    </label>
+                </div>
+                {% endif %}
+                {% if general_fields.shop.enable_nova_poshta_office %}
+                <h3 class="title smaller npTitle{% if delivery_type == 'np' %} show{% endif %}">🎁 {{ __('Select the Nova Poshta office', TEXTDOMAIN) }}</h3>
+                <div class="npWrapper{% if delivery_type == 'np' %} show{% endif %}">
                     <label>
                         <p class="label">{{ __('City or settlement', TEXTDOMAIN) }}:</p>
                         <select id="citySearch"></select>
@@ -51,6 +101,40 @@
                         <select id="postOfficeNumberSearch" disabled></select>
                     </label>
                 </div>
+                {% endif %}
+                {% if general_fields.shop.enable_self_pickup_points %}
+                <h3 class="title puTitle{% if delivery_type == 'pu' %} show{% endif %}">🎁 {{ __('Select pickup office', TEXTDOMAIN) }}</h3>
+                <div class="puWrapper{% if delivery_type == 'pu' %} show{% endif %}">
+                    {% if general_fields.shop.self_pickup_points is iterable %}
+                    <p class="label">{{ __('Pickup point', TEXTDOMAIN) }}:</p>
+                    <select id="selfPickupPoints">
+                        <option value=""></option>
+                        {% for val in general_fields.shop.self_pickup_points %}
+                        <option value="{{ val.name | sanitize_title }}">{{ val.name }}</option>
+                        {% endfor %}
+                    </select>
+                    {% for val in general_fields.shop.self_pickup_points %}
+                    <div class="selfPickupPointInfo {{ val.name | sanitize_title }}">
+                        <div class="lines">
+                            <div class="line">
+                                <p class="label">{{ __('Working hours', TEXTDOMAIN) }}:</p>
+                                <p class="value">{{ __('From', TEXTDOMAIN) }} <b>{{ val.from_time }}</b> {{ __('to', TEXTDOMAIN) }} <b>{{ val.to_time }}</b></p>
+                            </div>
+                            <div class="line">
+                                <p class="label">{{ __('Working days', TEXTDOMAIN) }}:</p>
+                                <p class="value">{{ val.days | render_working_days }}</p>
+                            </div>
+                            <div class="line">
+                                <p class="label">{{ __('Address', TEXTDOMAIN) }}:</p>
+                                <p class="value">{{ val.address.address }}</p>
+                            </div>
+                        </div>
+                        <div class="map" data-lat="{{ val.address.lat }}" data-lng="{{ val.address.lng }}" data-address="{{ val.address.address }}"></div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
         </form>
         <div class="noOrder{% if not items and items is not iterable %} show{% endif %}">

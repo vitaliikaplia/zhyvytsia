@@ -548,8 +548,41 @@ function update_checkout_positions(){
                 $('.positionsWrapper .positions').removeClass('busy');
                 operate_positions();
             } else if(out.status == "empty"){
+                $('.orderColumns').removeClass('show');
                 $('.noOrder').addClass('show');
             }
         }
+    });
+}
+
+/** google maps */
+async function map_init(mapEl, position, contentString) {
+    const { Map } = await google.maps.importLibrary("maps");
+    let map = new Map(mapEl[0], {
+        center: position,
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        scaleControl: true,
+        zoomControl: true,
+        scrollwheel: false,
+        styles: mapStyle
+    });
+    let image = {
+        url: mapDotUrl,
+        size: new google.maps.Size(33, 48),
+        scaledSize: new google.maps.Size(33, 48),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(16, 48)
+    };
+    let marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        icon: image,
+        title: contentString
+    });
+    marker.addListener('click', function() {
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${position.lat},${position.lng}`;
+        window.open(googleMapsUrl, '_blank'); // Opens Google Maps in a new window or tab with the marker's location
     });
 }

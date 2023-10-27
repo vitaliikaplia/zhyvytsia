@@ -401,111 +401,159 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
-        /** checkout */
+        /** checkout cart */
         if($('.positionsWrapper .positions.busy').length){
             $('.positionsWrapper .positions').removeClass('busy');
             operate_positions();
+        }
+
+        /** checkout delivery type */
+        $(".checkout .deliveryTypeWrapper input[name='delivery_type']").on('click', function() {
+            let thisValue = $(this).val();
+            $('.npTitle').removeClass('show');
+            $('.npWrapper').removeClass('show');
+            $('.upTitle').removeClass('show');
+            $('.upWrapper').removeClass('show');
+            $('.puTitle').removeClass('show');
+            $('.puWrapper').removeClass('show');
+            if(thisValue == 'np'){
+                $('.npWrapper').addClass('show');
+                $('.npTitle').addClass('show');
+            }
+            if(thisValue == 'up'){
+                $('.upTitle').addClass('show');
+                $('.upWrapper').addClass('show');
+            }
+            if(thisValue == 'pu'){
+                $('.puTitle').addClass('show');
+                $('.puWrapper').addClass('show');
+            }
+        });
+
+        /** self pickup */
+        const selfPickupPoints = $('#selfPickupPoints');
+        if(selfPickupPoints){
+            selfPickupPoints.select2({
+                width: '100%',
+                placeholder: 'Оберіть пункт самовивозу',
+            });
+            selfPickupPoints.on("change", function(e) {
+                if($(this).val()){
+                    $('.puWrapper .selfPickupPointInfo').removeClass('show');
+                    $('.puWrapper .selfPickupPointInfo.'+$(this).val()).addClass('show');
+                }
+            });
+        }
+
+        /** self pickup maps */
+        if($('.selfPickupPointInfo .map').length){
+            $('.selfPickupPointInfo .map').each(function(){
+                let mapEl = $(this),
+                    mapElLat = parseFloat(mapEl.attr("data-lat")),
+                    mapElLng = parseFloat(mapEl.attr("data-lng")),
+                    mapElInfo = mapEl.attr("data-address");
+                map_init(mapEl, {lat: mapElLat, lng: mapElLng}, mapElInfo);
+            });
         }
 
         /** nova poshta */
         const citySearch = $('#citySearch');
         const postOfficeNumberSearch = $('#postOfficeNumberSearch');
 
-        // $(document).on('select2:open', function(e) {
-        //     document.querySelector(`[aria-controls="select2-${e.target.id}-results"]`).focus();
-        // });
+        if(citySearch && postOfficeNumberSearch){
 
-        citySearch.select2({
-            placeholder: 'Вкажіть місто...',
-            language: {
-                noResults: function() {
-                    return "Міст не знайдено";
-                },
-                inputTooShort: function (args) {
-                    let remainingChars = args.minimum - args.input.length;
-                    return "Будь ласка, введіть перші " + remainingChars + " символа назвии вашого міста або селища";
-                },
-                searching: function() {
-                    return "Шукаємо...";
-                }
-            },
-            ajax: {
-                url: ajaxUrl,
-                type: 'POST',
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        action: 'get_cities_list',
-                        search: params.term
-                    };
-                },
-                processResults: function (data) {
-                    let resultsArray = $.map(data, function (value, key) {
-                        return {
-                            id: key,
-                            text: value
-                        };
-                    });
-                    return {
-                        results: resultsArray
-                    };
-                },
-                cache: true
-            },
-            minimumInputLength: 2,
-        });
-
-        citySearch.on("change", function(e) {
-            if($(this).val()){
-                $.ajax({
-                    type: "POST",
-                    url: ajaxUrl,
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        "action": "np_get_offices_by_city_ref",
-                        "ref": $(this).val(),
+            citySearch.select2({
+                width: '100%',
+                placeholder: 'Вкажіть місто...',
+                language: {
+                    noResults: function() {
+                        return "Міст не знайдено";
                     },
-                    success : function (out) {
-                        postOfficeNumberSearch.empty();
-                        postOfficeNumberSearch.select2({
-                            data: out
-                        });
-                        postOfficeNumberSearch.select2({
-                            placeholder: "Оберіть відділення",
-                            language: {
-                                noResults: function() {
-                                    return "Відділення не знайдено";
-                                }
-                            },
-                        });
-                        postOfficeNumberSearch.prop('disabled', false).trigger('change.select2');
+                    inputTooShort: function (args) {
+                        let remainingChars = args.minimum - args.input.length;
+                        return "Введіть перші " + remainingChars + " символа назви вашого міста або селища";
+                    },
+                    searching: function() {
+                        return "Шукаємо...";
                     }
+                },
+                ajax: {
+                    url: ajaxUrl,
+                    type: 'POST',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            action: 'get_cities_list',
+                            search: params.term
+                        };
+                    },
+                    processResults: function (data) {
+                        let resultsArray = $.map(data, function (value, key) {
+                            return {
+                                id: key,
+                                text: value
+                            };
+                        });
+                        return {
+                            results: resultsArray
+                        };
+                    },
+                    cache: true
+                },
+                minimumInputLength: 2,
+            });
+
+            citySearch.on("change", function(e) {
+                if($(this).val()){
+                    $.ajax({
+                        type: "POST",
+                        url: ajaxUrl,
+                        dataType: "json",
+                        cache: false,
+                        data: {
+                            "action": "np_get_offices_by_city_ref",
+                            "ref": $(this).val(),
+                        },
+                        success : function (out) {
+                            postOfficeNumberSearch.empty();
+                            postOfficeNumberSearch.select2({
+                                data: out
+                            });
+                            postOfficeNumberSearch.select2({
+                                placeholder: "Оберіть відділення",
+                                language: {
+                                    noResults: function() {
+                                        return "Відділення не знайдено";
+                                    }
+                                },
+                            });
+                            postOfficeNumberSearch.prop('disabled', false).trigger('change.select2');
+                        }
+                    });
+                }
+            });
+
+            postOfficeNumberSearch.select2({
+                width: '100%',
+                language: {
+                    noResults: function() {
+                        return "Відділення не знайдено";
+                    }
+                },
+            });
+
+            if (postOfficeNumberSearch.prop('disabled')) {
+                postOfficeNumberSearch.select2({
+                    placeholder: "Спочатку оберіть місто або селище"
+                });
+            } else {
+                postOfficeNumberSearch.select2({
+                    placeholder: "Оберіть відділення"
                 });
             }
-        });
 
-        postOfficeNumberSearch.select2({
-            language: {
-                noResults: function() {
-                    return "Відділення не знайдено";
-                }
-            },
-        });
-
-        if (postOfficeNumberSearch.prop('disabled')) {
-            postOfficeNumberSearch.select2({
-                placeholder: "Спочатку оберіть місто або селище"
-            });
-        } else {
-            postOfficeNumberSearch.select2({
-                placeholder: "Оберіть відділення"
-            });
         }
-
-
-
 
     });
 })(jQuery);

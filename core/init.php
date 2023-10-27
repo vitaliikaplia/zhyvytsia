@@ -210,6 +210,8 @@ class BlankSite extends TimberSite {
         $twig->addFilter( new Twig_SimpleFilter( 'to_options', 'to_options' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'recent_posts', 'timber_recent_posts' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'link', 'get_page_link_by_page_option_name' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'render_working_days', 'render_working_days' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'sanitize_title', 'sanitize_title' ) );
 		return $twig;
 	}
 

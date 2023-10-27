@@ -4,26 +4,32 @@
     {% set count = ids_arr_count_values[item.ID] %}
     {% set price = fn('render_price', item.ID, count, ids_arr_count) %}
     <li class="cartItem" data-count="{{ count }}">
-        <p>{{ item.title }}</p>
-        <div class="columns">
-            <div class="col">
-                {% if photo %}
-                    {{ photo | picture }}
-                {% endif %}
-                <div class="quantity">
-                    <button class="up" id="btnDecrease" data-id="{{ item.ID }}">+</button>
-                    <input class="amount" id="controlledByButtons-{{ item.ID }}" value="{{ count }}" maxlength="2" data-id="{{ item.ID }}">
-                    <button class="down" id="btnIncrease" type="button" data-id="{{ item.ID }}">-</button>
-                </div>
+        <div class="col">
+            {% if photo %}
+            <a href="{{ photo.url }}" class="picture fancybox" data-fancybox="gallery-cart" data-buttons="false">
+                {{ photo | picture }}
+            </a>
+            {% endif %}
+            <div class="quantity">
+                <button class="down" id="btnIncrease" type="button" data-id="{{ item.ID }}">-</button>
+                <input class="amount" id="controlledByButtons-{{ item.ID }}" value="{{ count }}" maxlength="2" data-id="{{ item.ID }}">
+                <button class="up" id="btnDecrease" data-id="{{ item.ID }}">+</button>
             </div>
-            <div class="col">
-                <span class="price">{{ price }}</span>
-                <button class="remove" data-id="{{ item.ID }}"></button>
-            </div>
+            <p class="itemTitle"><a href="{{ item.link }}">{{ item.title }}</a></p>
+        </div>
+        <div class="col">
+            <span class="price">{{ price }}</span>
+            <button class="remove" data-id="{{ item.ID }}"></button>
         </div>
     </li>
     {% endfor %}
 </ul>
+{% if ids_arr_count < general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount %}
+{% set difference = general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount - ids_arr_count %}
+<div class="positionsReminder typo">
+    <p>Додайте ще {{ fn('plural_form', difference, ['товар','товару','товарів'] )}} в кошик і отримайте знижку {{ general_fields.shop.wholesale_discount_percentage }}% 🎉</p>
+</div>
+{% endif %}
 <div class="totalBox">
     <span class="totalTitle">{{ __('Total amount', TEXTDOMAIN) }}: </span>
     <span class="totalPrice">{{ total_price }}</span>

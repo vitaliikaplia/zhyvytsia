@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-27 00:08+0300\n"
+"POT-Creation-Date: 2023-10-27 23:38+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -1003,7 +1003,7 @@ msgstr "Оформлення замовлення"
 
 #: core/pages.php:242
 msgid "Checkout page"
-msgstr "Сторінка оформлення замовлення"
+msgstr "Оформлення замовлення"
 
 #: views/ajax/cart.twig:6
 msgid "Go to checkout page"
@@ -1034,7 +1034,7 @@ msgid "Resend verification SMS"
 msgstr "Відправити ще одне SMS з підтвердженням"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
-#: views/auth/sign-up.twig:8 views/checkout.twig:32 views/profile/edit.twig:25
+#: views/auth/sign-up.twig:8 views/checkout.twig:40 views/profile/edit.twig:25
 msgid "Email"
 msgstr "Email"
 
@@ -1072,44 +1072,100 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
-#: views/checkout.twig:9
+#: views/checkout.twig:19
 msgid "Check your order"
 msgstr "Перевірте своє замовлення"
 
-#: views/checkout.twig:17
+#: views/checkout.twig:25
 msgid "Enter your information"
 msgstr "Введіть свою інформацію"
 
-#: views/checkout.twig:20 views/profile/edit.twig:10
+#: views/checkout.twig:28 views/profile/edit.twig:10
 msgid "First Name"
 msgstr "Ім’я"
 
-#: views/checkout.twig:24 views/profile/edit.twig:14
+#: views/checkout.twig:32 views/profile/edit.twig:14
 msgid "Last Name"
 msgstr "Фамілія"
 
-#: views/checkout.twig:28 views/dashboard/user.twig:11
+#: views/checkout.twig:36 views/dashboard/user.twig:11
 #: views/profile/edit.twig:18
 msgid "Phone"
 msgstr "Телефон"
 
-#: views/checkout.twig:36
+#: views/checkout.twig:46
+msgid "Choose the type of delivery"
+msgstr "Оберіть тип доставки"
+
+#: views/checkout.twig:65
+msgid "Pickup"
+msgstr "Самовивіз"
+
+#: views/checkout.twig:72
+msgid "Enter your address"
+msgstr "Введіть свою адресу"
+
+#: views/checkout.twig:75
+msgid "Region (for example, Kyivska, Lvivska, etc.)"
+msgstr "Область (наприклад, Київська, Львівська тощо)"
+
+#: views/checkout.twig:79
+msgid "City (or settlement)"
+msgstr "Місто (або населений пункт)"
+
+#: views/checkout.twig:83
+msgid "ZIP Code"
+msgstr "Поштовий індекс"
+
+#: views/checkout.twig:87
+msgid "Address (street, house, apartment)"
+msgstr "Адреса (вулиця, будинок, квартира)"
+
+#: views/checkout.twig:93
 msgid "Select the Nova Poshta office"
 msgstr "Оберіть відділення Нової Пошти"
 
-#: views/checkout.twig:39
+#: views/checkout.twig:96
 msgid "City or settlement"
 msgstr "Місто або селище"
 
-#: views/checkout.twig:43
+#: views/checkout.twig:100
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:50
+#: views/checkout.twig:106
+msgid "Select pickup office"
+msgstr "Оберіть пункт самовивозу"
+
+#: views/checkout.twig:109
+msgid "Pickup point"
+msgstr "Пункт самовивозу"
+
+#: views/checkout.twig:120
+msgid "Working hours"
+msgstr "Робочі години"
+
+#: views/checkout.twig:121
+msgid "From"
+msgstr "З"
+
+#: views/checkout.twig:121
+msgid "to"
+msgstr "по"
+
+#: views/checkout.twig:124
+msgid "Working days"
+msgstr "Робочі дні"
+
+#: views/checkout.twig:128
+msgid "Address"
+msgstr "Адреса"
+
+#: views/checkout.twig:141
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:54
+#: views/checkout.twig:145
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 
@@ -1149,7 +1205,7 @@ msgstr "Код підтвердження SMS"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
-#: views/overall/positions.twig:28
+#: views/overall/positions.twig:26
 msgid "Total amount"
 msgstr "Загальна сума"
 
@@ -1185,6 +1241,12 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
+
+#~ msgid "Nova Poshta"
+#~ msgstr "Нова Пошта"
+
+#~ msgid "UkrPoshta"
+#~ msgstr "УкрПошта"
 
 #~ msgid "Select and add a technical specification field"
 #~ msgstr "Оберіть та додайте поле технічної характеристики"
@@ -1239,9 +1301,6 @@ msgstr "Зберегти"
 
 #~ msgid "Your secret 2FA code"
 #~ msgstr "Ваш код двохфакторної автентифікації"
-
-#~ msgid "2FA Code"
-#~ msgstr "Код двохфакторної автентифікації"
 
 #~ msgid "Second screen"
 #~ msgstr "Другий екран"
