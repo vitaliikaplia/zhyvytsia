@@ -7,7 +7,11 @@
     {% set last_name = user.last_name %}
     {% set user_phone = user.user_phone %}
     {% set user_email = user.user_email %}
-    {% set delivery_type = user.delivery_type %}
+    {% if not user.delivery_type %}
+        {% set delivery_type = "up" %}
+    {% else %}
+        {% set delivery_type = user.delivery_type %}
+    {% endif %}
 {% else %}
     {% set delivery_type = "up" %}
 {% endif %}
