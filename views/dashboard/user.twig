@@ -20,7 +20,18 @@
         </td>
     </tr>
     <tr>
-        <th><label for="user_phone_confirmed">{{ __('Delivery type', TEXTDOMAIN) }}</label></th>
+        <th><label for="payment_type">{{ __('Payment type', TEXTDOMAIN) }}</label></th>
+        <td>
+            <select name="payment_type">
+                <option value="online_payment"{% if user.payment_type == "online_payment" %} selected="selected"{% endif%}>{{ __('Online payment', TEXTDOMAIN) }}</option>
+                <option value="cod_payment"{% if user.payment_type == "cod_payment" %} selected="selected"{% endif%}>{{ __('COD Payment', TEXTDOMAIN) }}</option>
+                <option value="payment_upon_receipt"{% if user.payment_type == "payment_upon_receipt" %} selected="selected"{% endif%}>{{ __('Payment upon receipt', TEXTDOMAIN) }}</option>
+                <option value="payment_by_details"{% if user.payment_type == "payment_by_details" %} selected="selected"{% endif%}>{{ __('Payment by details', TEXTDOMAIN) }}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="delivery_type">{{ __('Delivery type', TEXTDOMAIN) }}</label></th>
         <td>
             <select name="delivery_type">
                 <option value="up"{% if user.delivery_type == "up" %} selected="selected"{% endif%}>{{ __('UkrPoshta', TEXTDOMAIN) }}</option>

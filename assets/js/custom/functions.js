@@ -544,10 +544,15 @@ function update_checkout_positions(){
         },
         success : function (out) {
             if(out.status == "ok"){
-                $('.positionsWrapper').html(out.html);
-                $('.positionsWrapper .positions').removeClass('busy');
+                if(out.html){
+                    $('.positionsWidget .inner').html(out.html);
+                }
+                if(out.total){
+                    $('.orderWidget .total').html(out.total);
+                }
+                $('.positionsWidget .inner .positions').removeClass('busy');
                 operate_positions();
-                if($('.npWrapper').length){
+                if($('.npWidget').length){
                     if($('#citySearch').val()){
                         $.ajax({
                             type: "POST",

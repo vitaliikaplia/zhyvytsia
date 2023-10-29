@@ -15,6 +15,7 @@ function custom_system_forms_logic_callback() {
     $forgot_password_url = BLOGINFO_URL . '/' . $general_fields['auth']['forgot_password']['url'] . '/';
     $password_reset_url = BLOGINFO_URL . '/' . $general_fields['auth']['password_reset']['url'] . '/';
     $profile_url = BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/';
+    $checkout_url = BLOGINFO_URL . '/' . $general_fields['shop']['checkout_page_url'] . '/';
 
     /** auth: login logic */
     if($path_segments[0] == $general_fields['auth']['login']['url'] && isset($_POST['nonce']) && isset($_POST['u_email']) && isset($_POST['u_password'])) {
@@ -477,7 +478,7 @@ function custom_system_forms_logic_callback() {
                 if($user_phone != fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
                     $uhp = get_users(array(
                         'meta_key' => 'user_phone',
-                        'meta_value' => htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')
+                        'meta_value' => fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))
                     ));
                     if(empty($uhp)){
                         update_user_meta( $user_id, 'user_phone_confirmed', false );
@@ -688,6 +689,300 @@ function custom_system_forms_logic_callback() {
         add_notify('success', __('The password has been changed', TEXTDOMAIN));
         wp_redirect( $profile_url . $path_segments[1] . '/' );
         exit;
+    }
+
+    /** checkout */
+    if($path_segments[0] == $general_fields['shop']['checkout_page_url'] && isset($_POST['nonce']) && isset($_GET['checkout']) && $_GET['checkout'] == "process"){
+
+        /** checking nonce */
+        if(!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'checkout-process')){
+            add_notify('error', __('Nonce is wrong', TEXTDOMAIN));
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** define email */
+        $u_email_secure = wp_unslash(htmlspecialchars(trim($_POST['user_email']), ENT_QUOTES, 'UTF-8'));
+
+        /** checking email length */
+        if(strlen($u_email_secure) >= 60){
+            add_notify('error', __('Email is to long', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** validating email */
+        if(!filter_var($u_email_secure, FILTER_VALIDATE_EMAIL)){
+            add_notify('error', __('Email is wrong', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** check and define first_name */
+        if(!isset($_POST['first_name']) || !$_POST['first_name']){
+            add_notify('error', __('First name is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+        $first_name = wp_unslash(htmlspecialchars(trim($_POST['first_name']), ENT_QUOTES, 'UTF-8'));
+
+        /** checking first_name length */
+        if(strlen($first_name) >= 60){
+            add_notify('error', __('Your first name is to long', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** check and define last_name */
+        if(!isset($_POST['last_name']) || !$_POST['last_name']){
+            add_notify('error', __('Last name is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+        $last_name = wp_unslash(htmlspecialchars(trim($_POST['last_name']), ENT_QUOTES, 'UTF-8'));
+
+        /** checking last_name length */
+        if(strlen($last_name) >= 60){
+            add_notify('error', __('Your last name is to long', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** check if user phone specified */
+        if(!isset($_POST['user_phone']) || !$_POST['user_phone']){
+            add_notify('error', __('Phone number is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** check if user phone is valid */
+        if(!check_phone(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'))){
+            add_notify('error', __('Phone number is not valid', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** define user phone */
+        $user_phone = fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8'));
+
+        /** check if delivery type specified */
+        if(!isset($_POST['delivery_type']) || !$_POST['delivery_type']){
+            add_notify('error', __('Delivery type is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** define delivery type */
+        $delivery_type = htmlspecialchars($_POST['delivery_type'], ENT_QUOTES, 'UTF-8');
+
+        /** check if payment type specified */
+        if(!isset($_POST['payment_type']) || !$_POST['payment_type']){
+            add_notify('error', __('Payment type is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
+        /** define payment type */
+        $payment_type = htmlspecialchars($_POST['payment_type'], ENT_QUOTES, 'UTF-8');
+
+        /** check if delivery data specified */
+        if($delivery_type == "up"){
+
+            /** check if address data specified */
+            if(
+                !isset($_POST['user_region']) || !$_POST['user_region']
+                ||
+                !isset($_POST['user_city']) || !$_POST['user_city']
+                ||
+                !isset($_POST['user_zip']) || !$_POST['user_zip']
+                ||
+                !isset($_POST['user_address']) || !$_POST['user_address']
+            ){
+                add_notify('error', __('Address is not specified', TEXTDOMAIN));
+                setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                wp_redirect( $checkout_url );
+                exit;
+            }
+
+            /** define address data */
+            $user_region = htmlspecialchars($_POST['user_region'], ENT_QUOTES, 'UTF-8');
+            $user_city = htmlspecialchars($_POST['user_city'], ENT_QUOTES, 'UTF-8');
+            $user_zip = htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8');
+            $user_address = htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8');
+
+        } elseif ($delivery_type == "np"){
+
+            /** check if nova poshta city and office specified */
+            if(
+                !isset($_POST['user_np_city_ref']) || !$_POST['user_np_city_ref']
+                ||
+                !isset($_POST['user_np_city_name']) || !$_POST['user_np_city_name']
+                ||
+                !isset($_POST['user_np_office_number']) || !$_POST['user_np_office_number']
+                ||
+                !isset($_POST['user_np_office_name']) || !$_POST['user_np_office_name']
+            ){
+                add_notify('error', __('Nova Poshta city and office is not specified', TEXTDOMAIN));
+                setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                wp_redirect( $checkout_url );
+                exit;
+            }
+
+            /** define nova poshta city and office */
+            $user_np_city_ref = htmlspecialchars($_POST['user_np_city_ref'], ENT_QUOTES, 'UTF-8');
+            $user_np_city_name = htmlspecialchars($_POST['user_np_city_name'], ENT_QUOTES, 'UTF-8');
+            $user_np_office_number = htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8');
+            $user_np_office_name = htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8');
+
+        } elseif ($delivery_type == "pu"){
+
+            /** check if self pickup point specified */
+            if( !isset($_POST['user_pickup_point']) || !$_POST['user_pickup_point'] ){
+                add_notify('error', __('Self pickup point is not specified', TEXTDOMAIN));
+                setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                wp_redirect( $checkout_url );
+                exit;
+            }
+
+            /** define self pickup point */
+            $user_pickup_point = htmlspecialchars($_POST['user_pickup_point'], ENT_QUOTES, 'UTF-8');
+
+        }
+
+        /** checking if user logged in */
+        if(is_user_logged_in()){
+
+
+
+        } else {
+
+            /** define user by email */
+            $existing_user = get_user_by('email', $u_email_secure);
+
+            /** register new user */
+            if(isset($_POST['create_an_account']) && $_POST['create_an_account']){
+
+                /** check user phone is already taken */
+                $uhp = get_users(array(
+                    'meta_key' => 'user_phone',
+                    'meta_value' => $user_phone
+                ));
+                if(!empty($uhp)){
+                    add_notify('error', __('This phone number is already taken', TEXTDOMAIN));
+                    setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                    wp_redirect( $checkout_url );
+                    exit;
+                }
+
+                /** check if user exist */
+                if($existing_user && $existing_user->ID){
+                    add_notify('error', __('This email address is already taken!', TEXTDOMAIN));
+                    setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                    wp_redirect( $checkout_url );
+                    exit;
+                }
+
+                /** define new user password */
+                $password = wp_generate_password();
+
+                /** preparing new user data */
+                $user_data_arr = array(
+                    'user_login'    => $u_email_secure,
+                    'user_pass'	    => $password,
+                    'user_email'    => $u_email_secure,
+                    'role'		    => 'client'
+                );
+
+                /** adding new user */
+                $new_user_id = wp_insert_user( $user_data_arr );
+
+                /** if new user created */
+                if($new_user_id){
+
+                    /** set additional profile verification options */
+                    $user_email_verification_code_for_link = random_int(1000000000, 9999999999);
+                    $user_email_verification_code = random_int(1000, 9999);
+                    update_user_meta( $new_user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
+                    update_user_meta( $new_user_id, 'user_email_verification_code', $user_email_verification_code );
+                    update_user_meta( $new_user_id, 'nickname', $u_email_secure );
+
+                    /** preparing confirmation link */
+                    $arr_for_link = array(
+                        'action' => 'verify_email',
+                        'user_id' => $new_user_id,
+                        'verification_code' => $user_email_verification_code_for_link,
+                    );
+                    $json_for_link = json_encode($arr_for_link);
+                    $encrypted_for_link = custom_encrypt_decrypt('encrypt', $json_for_link);
+
+                    /** preparing email content */
+                    $search = array(
+                        '[login]',
+                        '[password]',
+                        '[button]',
+                        '[code]',
+                        '[session]'
+                    );
+                    $replace = array(
+                        $u_email_secure,
+                        $password,
+                        get_email_part('button', array(
+                            'link' => DO_URL . $encrypted_for_link,
+                            'title' => __('Confirm my Email', TEXTDOMAIN)
+                        )),
+                        emoji_numbers($user_email_verification_code),
+                        get_session_info($_SERVER['REMOTE_ADDR'])
+                    );
+                    $content = Timber::compile( 'email/email.twig', array(
+                        'TEXTDOMAIN' => TEXTDOMAIN,
+                        'BLOGINFO_NAME' => BLOGINFO_NAME,
+                        'BLOGINFO_URL' => BLOGINFO_URL,
+                        'subject' => $general_fields['emails']['checkout']['sign_up_subject'],
+                        'text' => str_replace($search, $replace, $general_fields['emails']['checkout']['sign_up_text'])
+                    ));
+
+                    /** sending email */
+                    send_email($u_email_secure, $general_fields['emails']['checkout']['sign_up_subject'], $content);
+
+                    /** set additional profile options */
+                    update_user_meta( $new_user_id, 'first_name', $first_name );
+                    update_user_meta( $new_user_id, 'last_name', $last_name );
+                    update_user_meta( $new_user_id, 'user_phone', $user_phone );
+                    update_user_meta( $new_user_id, 'user_phone_confirmed', false );
+
+                    /** preparing sms content */
+                    $user_sms_verification_code = random_int(1000, 9999);
+                    update_user_meta( $new_user_id, 'user_sms_verification_code', $user_sms_verification_code );
+                    $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
+
+                    /** sending sms */
+                    send_sms($user_phone, $sms_message);
+
+                    /** authorising and redirecting new user */
+                    $new_user = get_user_by('id', $new_user_id);
+                    wp_set_current_user( $new_user->ID, $new_user->user_login );
+                    wp_set_auth_cookie( $new_user->ID, true );
+                    do_action( 'wp_login', $new_user->user_login );
+                    add_notify('success', __('Congratulations! Your new account has been created!', TEXTDOMAIN));
+                    setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+                    wp_redirect( $checkout_url );
+                    exit;
+                }
+
+            }
+
+        }
+
     }
 
 }

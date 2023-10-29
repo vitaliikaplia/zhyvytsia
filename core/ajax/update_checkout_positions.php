@@ -27,7 +27,9 @@ function update_checkout_positions_action() {
         $context['ids_arr_count'] = $ids_arr_count;
         $context['ids_arr_unique'] = $ids_arr_unique;
         $context['total_price'] = $total_price;
+        $context['where_am_i'] = 'widget';
         $toJson['html'] = Timber::compile( 'overall/positions.twig', $context);
+        $toJson['total'] = Timber::compile( 'overall/total.twig', $context);
         $toJson['status'] = "ok";
 
     } else {

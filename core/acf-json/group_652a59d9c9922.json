@@ -612,6 +612,99 @@
                             "delay": 0
                         }
                     ]
+                },
+                {
+                    "key": "field_653e8503e0d2e",
+                    "label": "Чекаут",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_653e8527e0d2f",
+                    "label": "",
+                    "name": "checkout",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "no_label",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_653e8527e0d30",
+                            "label": "Реєстрація нового користувача",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_653e8527e0d31",
+                            "label": "Тема листа",
+                            "name": "sign_up_subject",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_653e8527e0d32",
+                            "label": "Текст листа",
+                            "name": "sign_up_text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [login], [password], [button], [code], [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
                 }
             ]
         }
@@ -634,5 +727,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697279047
+    "modified": 1698596533
 }

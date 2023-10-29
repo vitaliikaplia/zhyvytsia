@@ -624,6 +624,43 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_653ddd081c0ba",
+                    "label": "Логотип онлайн оплати",
+                    "name": "online_payment_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652f536604b1f",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_653dba3b4e9dc",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
                     "key": "field_653dbc65b620b",
                     "label": "Увімкнути можливість накладеного платежу",
                     "name": "enable_cod_payment",
@@ -656,6 +693,109 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_653ddd411c0bc",
+                    "label": "Логотип накладеного платежу",
+                    "name": "cod_payment_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652f177ab45a7",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_653dbc65b620b",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_653de6aa8d89f",
+                    "label": "Увімкнути можливість оплати при отриманні",
+                    "name": "enable_payment_upon_receipt",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_65397063e90cf",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653de7088d8a0",
+                    "label": "Логотип оплати при отриманні",
+                    "name": "payment_upon_receipt_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_65397063e90cf",
+                                "operator": "==",
+                                "value": "1"
+                            },
+                            {
+                                "field": "field_653de6aa8d89f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
                     "key": "field_653dbb00d773b",
                     "label": "Увімкнути можливість оплати за реквізитами",
                     "name": "enable_payment_by_details",
@@ -674,6 +814,39 @@
                     "ui_on_text": "",
                     "ui_off_text": "",
                     "ui": 1
+                },
+                {
+                    "key": "field_653ddd8c1c0be",
+                    "label": "Логотип оплати за реквізитами",
+                    "name": "details_payment_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_653dbb00d773b",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 },
                 {
                     "key": "field_653dbb53d773c",
@@ -795,5 +968,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698545204
+    "modified": 1698555696
 }

@@ -1,5 +1,5 @@
 {% if items and items is iterable %}
-    {% include 'overall/positions.twig' %}
+    {% include 'overall/positions.twig' with {'where_am_i': 'cart'} %}
 {% endif %}
 <p class="overallButton green inline">
     <a href="{{ BLOGINFO_URL }}/{{ general_fields.shop.checkout_page_url }}/">

@@ -1,4 +1,4 @@
-<ul class="positions busy">
+<ul class="positions {{ where_am_i }} busy">
     {% for item in items %}
     {% set photo = item.meta('photo') %}
     {% set count = ids_arr_count_values[item.ID] %}
@@ -24,13 +24,15 @@
     </li>
     {% endfor %}
 </ul>
+{% if where_am_i == 'cart' %}
 {% if general_fields.shop.enable_wholesale_discounts and ids_arr_count < general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount %}
 {% set difference = general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount - ids_arr_count %}
 <div class="positionsReminder typo">
-    <p>Додайте ще {{ fn('plural_form', difference, ['товар','товару','товарів'] )}} в кошик і отримайте знижку {{ general_fields.shop.wholesale_discount_percentage }}% 🎉</p>
+    <p>Додайте ще {{ fn('plural_form', difference, ['товар','товари','товарів'] )}} в кошик і отримайте знижку {{ general_fields.shop.wholesale_discount_percentage }}% 🎉</p>
 </div>
 {% endif %}
 <div class="totalBox">
     <span class="totalTitle">{{ __('Total amount', TEXTDOMAIN) }}: </span>
     <span class="totalPrice">{{ total_price }}</span>
 </div>
+{% endif %}

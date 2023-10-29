@@ -402,31 +402,30 @@ window.addEventListener("DOMContentLoaded", function (){
         }
 
         /** checkout cart */
-        if($('.positionsWrapper .positions.busy').length){
-            $('.positionsWrapper .positions').removeClass('busy');
+        if($('.positionsWidget .positions.busy').length){
+            $('.positionsWidget .positions').removeClass('busy');
             operate_positions();
         }
 
         /** checkout delivery type */
-        $(".checkout .deliveryTypeWrapper input[name='delivery_type']").on('click', function() {
+        $(".checkout .deliveryTypeWidget input[name='delivery_type']").on('click', function() {
             let thisValue = $(this).val();
-            $('.npTitle').removeClass('show');
-            $('.npWrapper').removeClass('show');
-            $('.upTitle').removeClass('show');
-            $('.upWrapper').removeClass('show');
-            $('.puTitle').removeClass('show');
-            $('.puWrapper').removeClass('show');
-            if(thisValue == 'np'){
-                $('.npWrapper').addClass('show');
-                $('.npTitle').addClass('show');
-            }
+            $('.npWidget').removeClass('show');
+            $('.upWidget').removeClass('show');
+            $('.puWidget').removeClass('show');
+            $('.cod_payment_type').addClass('hidden');
+            $('.payment_upon_receipt_type').addClass('hidden');
+            $('input[name="payment_type"]').prop('checked', false);
             if(thisValue == 'up'){
-                $('.upTitle').addClass('show');
-                $('.upWrapper').addClass('show');
+                $('.upWidget').addClass('show');
+            }
+            if(thisValue == 'np'){
+                $('.npWidget').addClass('show');
+                $('.cod_payment_type').removeClass('hidden');
             }
             if(thisValue == 'pu'){
-                $('.puTitle').addClass('show');
-                $('.puWrapper').addClass('show');
+                $('.puWidget').addClass('show');
+                $('.payment_upon_receipt_type').removeClass('hidden');
             }
         });
 
@@ -439,8 +438,8 @@ window.addEventListener("DOMContentLoaded", function (){
             });
             selfPickupPoints.on("change", function(e) {
                 if($(this).val()){
-                    $('.puWrapper .selfPickupPointInfo').removeClass('show');
-                    $('.puWrapper .selfPickupPointInfo.'+$(this).val()).addClass('show');
+                    $('.puWidget .selfPickupPointInfo').removeClass('show');
+                    $('.puWidget .selfPickupPointInfo.'+$(this).val()).addClass('show');
                 }
             });
         }
@@ -459,7 +458,6 @@ window.addEventListener("DOMContentLoaded", function (){
         /** nova poshta */
         const citySearch = $('#citySearch');
         const postOfficeNumberSearch = $('#postOfficeNumberSearch');
-
         if(citySearch && postOfficeNumberSearch){
 
             citySearch.select2({
@@ -505,7 +503,9 @@ window.addEventListener("DOMContentLoaded", function (){
             });
 
             citySearch.on("change", function(e) {
+
                 $('input[name="user_np_city_name"]').val($(this).find("option:selected").text());
+
                 if($(this).val()){
                     $.ajax({
                         type: "POST",
@@ -517,10 +517,6 @@ window.addEventListener("DOMContentLoaded", function (){
                             "ref": $(this).val(),
                         },
                         success : function (out) {
-
-                            if(out[0]?.text){
-                                $('input[name="user_np_office_name"]').val(out[0].text);
-                            }
 
                             postOfficeNumberSearch.val(null);
                             postOfficeNumberSearch.empty();
@@ -540,6 +536,12 @@ window.addEventListener("DOMContentLoaded", function (){
                                     data: out
                                 });
                                 postOfficeNumberSearch.prop('disabled', false).trigger('change.select2');
+
+                                if(out[0]?.text){
+                                    console.log(out[0]?.text);
+                                    $('input[name="user_np_office_name"]').val(out[0]?.text);
+                                }
+
                             } else {
                                 postOfficeNumberSearch.select2({
                                     placeholder: "Відділення не знайдено"
@@ -575,6 +577,112 @@ window.addEventListener("DOMContentLoaded", function (){
             });
 
         }
+
+        /** submit checkout form */
+        $('.checkout form').submit(function(){
+            const thisForm = $(this);
+            const yOffset = ($('header').outerHeight()+20)*-1;
+            let letThisHappen = true,
+                isPersonalInformationComplete = true,
+                deliveryType,
+                isDeliveryTypeSelected = true,
+                isDeliveryInformationComplete = true,
+                isPaymentTypeSelected = true,
+                paymentType,
+                errorMessage = "",
+                isScrolled = false;
+
+            thisForm.find('.informationWidget input[type="text"],.informationWidget input[type="email"]').each(function(){
+                if($(this).val().trim() == ""){
+                    isPersonalInformationComplete = false;
+                    if(!isScrolled){
+                        // thisForm.find('.informationWidget input').first().focus();
+                        const y = $('.informationWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                        isScrolled = true;
+                    }
+                }
+            });
+            if(!isPersonalInformationComplete){
+                letThisHappen = false;
+                errorMessage += '<p>Вкажіть вашу персональну інформацію</p>';
+            }
+
+            if(!thisForm.find('input[type="radio"][name="delivery_type"]:checked').length){
+                letThisHappen = false;
+                isDeliveryTypeSelected = false;
+                errorMessage += '<p>Вкажіть метод доставки</p>';
+                if(!isScrolled){
+                    const y = $('.deliveryTypeWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                    isScrolled = true;
+                }
+            } else {
+                deliveryType = thisForm.find('input[type="radio"][name="delivery_type"]:checked').val();
+            }
+
+            if(!thisForm.find('input[type="radio"][name="payment_type"]:checked').length){
+                letThisHappen = false;
+                isPaymentTypeSelected = false;
+                errorMessage += '<p>Вкажіть метод оплати</p>';
+                if(!isScrolled){
+                    const y = $('.paymentTypeWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                    isScrolled = true;
+                }
+            } else {
+                paymentType = thisForm.find('input[type="radio"][name="payment_type"]:checked').val();
+            }
+
+            if(deliveryType == 'up'){
+                thisForm.find('.upWidget input[type="text"]').each(function(){
+                    if($(this).val().trim() == ""){
+                        isDeliveryInformationComplete = false;
+                        if(!isScrolled){
+                            // thisForm.find('.upWidget input').first().focus();
+                            const y = $('.upWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                            isScrolled = true;
+                        }
+                    }
+                });
+                if(!isDeliveryInformationComplete){
+                    letThisHappen = false;
+                    errorMessage += '<p>Вкажіть адресу доставки</p>';
+                }
+            } else if(deliveryType == 'np'){
+                if (!thisForm.find('#citySearch').val() || !thisForm.find('#postOfficeNumberSearch').val()){
+                    letThisHappen = false;
+                    isDeliveryInformationComplete = false;
+                    errorMessage += '<p>Вкажіть місто та відділення Нової Пошти</p>';
+                    if(!isScrolled){
+                        const y = $('.npWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                        isScrolled = true;
+                    }
+                }
+            } else if(deliveryType == 'pu'){
+                if (!thisForm.find('#selfPickupPoints').val()){
+                    letThisHappen = false;
+                    isDeliveryInformationComplete = false;
+                    errorMessage += '<p>Вкажіть пункт самовивозу</p>';
+                    if(!isScrolled){
+                        const y = $('.puWidget')[0].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                        isScrolled = true;
+                    }
+                }
+            }
+
+            if(!letThisHappen){
+                if(!$('.checkout .orderWidget .notify').length){
+                    $('.checkout .orderWidget .total').after('<div class="notify"></div>');
+                }
+                $('.checkout .orderWidget .notify').addClass('error show');
+                $('.checkout .orderWidget .notify').html(errorMessage);
+                return false;
+            }
+        });
 
     });
 })(jQuery);
