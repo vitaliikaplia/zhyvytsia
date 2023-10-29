@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-27 23:38+0300\n"
+"POT-Creation-Date: 2023-10-28 12:34+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -753,11 +753,11 @@ msgstr "Мініатюра"
 msgid "Client"
 msgstr "Клієнт"
 
-#: core/includes/back/system-users.php:67
+#: core/includes/back/system-users.php:68
 msgid "Phone Number"
 msgstr "Номер телефону"
 
-#: core/includes/back/system-users.php:86
+#: core/includes/back/system-users.php:87
 msgid "You have successfully logged out"
 msgstr "Ви успішно вийшли"
 
@@ -1034,7 +1034,7 @@ msgid "Resend verification SMS"
 msgstr "Відправити ще одне SMS з підтвердженням"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
-#: views/auth/sign-up.twig:8 views/checkout.twig:40 views/profile/edit.twig:25
+#: views/auth/sign-up.twig:8 views/checkout.twig:48 views/profile/edit.twig:25
 msgid "Email"
 msgstr "Email"
 
@@ -1072,100 +1072,100 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
-#: views/checkout.twig:19
+#: views/checkout.twig:27
 msgid "Check your order"
 msgstr "Перевірте своє замовлення"
 
-#: views/checkout.twig:25
+#: views/checkout.twig:33
 msgid "Enter your information"
 msgstr "Введіть свою інформацію"
 
-#: views/checkout.twig:28 views/profile/edit.twig:10
+#: views/checkout.twig:36 views/profile/edit.twig:10
 msgid "First Name"
 msgstr "Ім’я"
 
-#: views/checkout.twig:32 views/profile/edit.twig:14
+#: views/checkout.twig:40 views/profile/edit.twig:14
 msgid "Last Name"
 msgstr "Фамілія"
 
-#: views/checkout.twig:36 views/dashboard/user.twig:11
+#: views/checkout.twig:44 views/dashboard/user.twig:11
 #: views/profile/edit.twig:18
 msgid "Phone"
 msgstr "Телефон"
 
-#: views/checkout.twig:46
+#: views/checkout.twig:54
 msgid "Choose the type of delivery"
 msgstr "Оберіть тип доставки"
 
-#: views/checkout.twig:65
+#: views/checkout.twig:73 views/dashboard/user.twig:28
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: views/checkout.twig:72
+#: views/checkout.twig:80
 msgid "Enter your address"
 msgstr "Введіть свою адресу"
 
-#: views/checkout.twig:75
+#: views/checkout.twig:83
 msgid "Region (for example, Kyivska, Lvivska, etc.)"
 msgstr "Область (наприклад, Київська, Львівська тощо)"
 
-#: views/checkout.twig:79
+#: views/checkout.twig:87
 msgid "City (or settlement)"
 msgstr "Місто (або населений пункт)"
 
-#: views/checkout.twig:83
+#: views/checkout.twig:91
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
-#: views/checkout.twig:87
+#: views/checkout.twig:95
 msgid "Address (street, house, apartment)"
 msgstr "Адреса (вулиця, будинок, квартира)"
 
-#: views/checkout.twig:93
+#: views/checkout.twig:101
 msgid "Select the Nova Poshta office"
 msgstr "Оберіть відділення Нової Пошти"
 
-#: views/checkout.twig:96
+#: views/checkout.twig:104
 msgid "City or settlement"
 msgstr "Місто або селище"
 
-#: views/checkout.twig:100
+#: views/checkout.twig:108
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:106
+#: views/checkout.twig:114
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
 
-#: views/checkout.twig:109
+#: views/checkout.twig:117
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
-#: views/checkout.twig:120
+#: views/checkout.twig:128
 msgid "Working hours"
 msgstr "Робочі години"
 
-#: views/checkout.twig:121
+#: views/checkout.twig:129
 msgid "From"
 msgstr "З"
 
-#: views/checkout.twig:121
+#: views/checkout.twig:129
 msgid "to"
 msgstr "по"
 
-#: views/checkout.twig:124
+#: views/checkout.twig:132
 msgid "Working days"
 msgstr "Робочі дні"
 
-#: views/checkout.twig:128
+#: views/checkout.twig:136
 msgid "Address"
 msgstr "Адреса"
 
-#: views/checkout.twig:141
+#: views/checkout.twig:149
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:145
+#: views/checkout.twig:153
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 
@@ -1181,23 +1181,35 @@ msgstr "Підтверджена електронна адреса?"
 msgid "Confirmed phone?"
 msgstr "Підтверджений телефон?"
 
-#: views/dashboard/user.twig:24
+#: views/dashboard/user.twig:23
+msgid "Delivery type"
+msgstr "Тип доставки"
+
+#: views/dashboard/user.twig:26
+msgid "UkrPoshta"
+msgstr "УкрПошта"
+
+#: views/dashboard/user.twig:27
+msgid "Nova Poshta"
+msgstr "Нова Пошта"
+
+#: views/dashboard/user.twig:34
 msgid "Technical data"
 msgstr "Технічна інформація"
 
-#: views/dashboard/user.twig:27
+#: views/dashboard/user.twig:37
 msgid "User email verification code for link"
 msgstr "Код підтвердження електронної пошти користувача для посилання"
 
-#: views/dashboard/user.twig:33
+#: views/dashboard/user.twig:43
 msgid "User email verification code"
 msgstr "Код підтвердження електронної пошти користувача"
 
-#: views/dashboard/user.twig:39
+#: views/dashboard/user.twig:49
 msgid "Password recovery code for link"
 msgstr "Код відновлення пароля для посилання"
 
-#: views/dashboard/user.twig:45
+#: views/dashboard/user.twig:55
 msgid "User sms verification code"
 msgstr "Код підтвердження SMS"
 
@@ -1205,7 +1217,7 @@ msgstr "Код підтвердження SMS"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
-#: views/overall/positions.twig:26
+#: views/overall/positions.twig:34
 msgid "Total amount"
 msgstr "Загальна сума"
 
@@ -1241,12 +1253,6 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
-
-#~ msgid "Nova Poshta"
-#~ msgstr "Нова Пошта"
-
-#~ msgid "UkrPoshta"
-#~ msgstr "УкрПошта"
 
 #~ msgid "Select and add a technical specification field"
 #~ msgstr "Оберіть та додайте поле технічної характеристики"

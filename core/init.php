@@ -212,6 +212,7 @@ class BlankSite extends TimberSite {
         $twig->addFilter( new Twig_SimpleFilter( 'link', 'get_page_link_by_page_option_name' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'render_working_days', 'render_working_days' ) );
         $twig->addFilter( new Twig_SimpleFilter( 'sanitize_title', 'sanitize_title' ) );
+        $twig->addFilter( new Twig_SimpleFilter( 'np_get_offices_by_city_ref', 'np_get_offices_by_city_ref' ) );
 		return $twig;
 	}
 

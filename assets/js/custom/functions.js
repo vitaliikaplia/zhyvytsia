@@ -547,6 +547,49 @@ function update_checkout_positions(){
                 $('.positionsWrapper').html(out.html);
                 $('.positionsWrapper .positions').removeClass('busy');
                 operate_positions();
+                if($('.npWrapper').length){
+                    if($('#citySearch').val()){
+                        $.ajax({
+                            type: "POST",
+                            url: ajaxUrl,
+                            dataType: "json",
+                            cache: false,
+                            data: {
+                                "action": "np_get_offices_by_city_ref",
+                                "ref": $('#citySearch').val(),
+                            },
+                            success : function (out) {
+                                if(out[0]?.text){
+                                    $('input[name="user_np_office_name"]').val(out[0].text);
+                                }
+                                $('#postOfficeNumberSearch').val(null);
+                                $('#postOfficeNumberSearch').empty();
+                                $('#postOfficeNumberSearch').trigger('change');
+                                $('#postOfficeNumberSearch').select2({
+                                    placeholder: "Оберіть відділення",
+                                    language: {
+                                        noResults: function() {
+                                            return "Відділення не знайдено";
+                                        }
+                                    },
+                                });
+                                $('#postOfficeNumberSearch').prop('disabled', false).trigger('change.select2');
+
+                                if(out.length > 0){
+                                    $('#postOfficeNumberSearch').select2({
+                                        data: out
+                                    });
+                                    $('#postOfficeNumberSearch').prop('disabled', false).trigger('change.select2');
+                                } else {
+                                    $('#postOfficeNumberSearch').select2({
+                                        placeholder: "Відділення не знайдено"
+                                    });
+                                    $('#postOfficeNumberSearch').prop('disabled', true).trigger('change.select2');
+                                }
+                            }
+                        });
+                    }
+                }
             } else if(out.status == "empty"){
                 $('.orderColumns').removeClass('show');
                 $('.noOrder').addClass('show');

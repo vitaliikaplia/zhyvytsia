@@ -4,19 +4,90 @@
     <tr>
         <th><label for="user_email_confirmed">{{ __('Confirmed Email?', TEXTDOMAIN) }}</label></th>
         <td>
-            <input type="checkbox" name="user_email_confirmed" id="user_email_confirmed" value="1"{% if fn('get_user_meta', user.ID, 'user_email_confirmed', true) %} checked="checked" {% endif%} /><br />
+            <input type="checkbox" name="user_email_confirmed" id="user_email_confirmed" value="1"{% if user.user_email_confirmed %} checked="checked" {% endif%} /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_phone">{{ __('Phone', TEXTDOMAIN) }}</label></th>
         <td>
-            <input type="text" name="user_phone" id="user_phone" placeholder="+380..." class="regular-text" value="{{ fn('get_user_meta', user.ID, 'user_phone', true) }}" /><br />
+            <input type="text" name="user_phone" id="user_phone" placeholder="+380..." class="regular-text" value="{{ user.user_phone }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_phone_confirmed">{{ __('Confirmed phone?', TEXTDOMAIN) }}</label></th>
         <td>
-            <input type="checkbox" name="user_phone_confirmed" id="user_phone_confirmed" value="1"{% if fn('get_user_meta', user.ID, 'user_phone_confirmed', true) %} checked="checked" {% endif%} /><br />
+            <input type="checkbox" name="user_phone_confirmed" id="user_phone_confirmed" value="1"{% if user.user_phone_confirmed %} checked="checked" {% endif%} /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_phone_confirmed">{{ __('Delivery type', TEXTDOMAIN) }}</label></th>
+        <td>
+            <select name="delivery_type">
+                <option value="up"{% if user.delivery_type == "up" %} selected="selected"{% endif%}>{{ __('UkrPoshta', TEXTDOMAIN) }}</option>
+                <option value="np"{% if user.delivery_type == "np" %} selected="selected"{% endif%}>{{ __('Nova Poshta', TEXTDOMAIN) }}</option>
+                <option value="pu"{% if user.delivery_type == "pu" %} selected="selected"{% endif%}>{{ __('Pickup', TEXTDOMAIN) }}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_region">{{ __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_region" id="user_region" class="regular-text" value="{{ user.user_region }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_city">{{ __('City (or settlement)', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_city" id="user_city" class="regular-text" value="{{ user.user_city }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_zip">{{ __('ZIP Code', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_zip" id="user_zip" class="regular-text" value="{{ user.user_zip }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_address">{{ __('Address (street, house, apartment)', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_address" id="user_address" class="regular-text" value="{{ user.user_address }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_np_city_ref">{{ __('Nova Poshta city ref', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_np_city_ref" id="user_np_city_ref" class="regular-text" value="{{ user.user_np_city_ref }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_np_city_name">{{ __('Nova Poshta city name', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_np_city_name" id="user_np_city_name" class="regular-text" value="{{ user.user_np_city_name }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_np_office_number">{{ __('Nova Poshta office number', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_np_office_number" id="user_np_office_number" class="regular-text" value="{{ user.user_np_office_number }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_np_office_name">{{ __('Nova Poshta office name', TEXTDOMAIN) }}</label></th>
+        <td>
+            <input type="text" name="user_np_office_name" id="user_np_office_name" class="regular-text" value="{{ user.user_np_office_name }}" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="user_pickup_point">{{ __('Pickup point', TEXTDOMAIN) }}</label></th>
+        <td>
+            <select name="user_pickup_point">
+                {% if general_fields.shop.self_pickup_points is iterable %}
+                {% for key,val in general_fields.shop.self_pickup_points %}
+                {% set point = 'point-'~(key+1) %}
+                <option value="{{ point }}"{% if user.user_pickup_point == point %} selected="selected"{% endif%}>{{ val.name }}</option>
+                {% endfor %}
+                {% endif %}
+            </select>
         </td>
     </tr>
 </table>

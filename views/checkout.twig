@@ -7,10 +7,19 @@
     {% set last_name = user.last_name %}
     {% set user_phone = user.user_phone %}
     {% set user_email = user.user_email %}
-    {% if not user.delivery_type %}
-        {% set delivery_type = "up" %}
-    {% else %}
+    {% set user_region = user.user_region %}
+    {% set user_city = user.user_city %}
+    {% set user_zip = user.user_zip %}
+    {% set user_address = user.user_address %}
+    {% set user_np_city_ref = user.user_np_city_ref %}
+    {% set user_np_city_name = user.user_np_city_name %}
+    {% set user_np_office_number = user.user_np_office_number %}
+    {% set user_np_office_name = user.user_np_office_name %}
+    {% set user_pickup_point = user.user_pickup_point %}
+    {% if user.delivery_type %}
         {% set delivery_type = user.delivery_type %}
+    {% else %}
+        {% set delivery_type = "up" %}
     {% endif %}
 {% else %}
     {% set delivery_type = "up" %}
@@ -77,19 +86,19 @@
                 <div class="upWrapper{% if delivery_type == 'up' %} show{% endif %}">
                     <label>
                         <p class="label">{{ __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="region" value="{{ region }}">
+                        <input type="text" name="region" value="{{ user_region }}">
                     </label>
                     <label>
                         <p class="label">{{ __('City (or settlement)', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="city" value="{{ city }}">
+                        <input type="text" name="city" value="{{ user_city }}">
                     </label>
                     <label>
                         <p class="label">{{ __('ZIP Code', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="zip" value="{{ zip }}">
+                        <input type="text" name="zip" value="{{ user_zip }}">
                     </label>
                     <label>
                         <p class="label">{{ __('Address (street, house, apartment)', TEXTDOMAIN) }}:</p>
-                        <input type="text" name="address" value="{{ address }}">
+                        <input type="text" name="address" value="{{ user_address }}">
                     </label>
                 </div>
                 {% endif %}
@@ -98,12 +107,25 @@
                 <div class="npWrapper{% if delivery_type == 'np' %} show{% endif %}">
                     <label>
                         <p class="label">{{ __('City or settlement', TEXTDOMAIN) }}:</p>
-                        <select id="citySearch"></select>
+                        <select id="citySearch" name="user_np_city_ref">
+                            {% if user_np_city_ref and user_np_city_name %}
+                            <option value="{{ user_np_city_ref }}" selected>{{ user_np_city_name }}</option>
+                            {% endif %}
+                        </select>
                     </label>
+                    <input type="hidden" name="user_np_city_name" value="{% if user_np_city_name %}{{ user_np_city_name }}{% endif %}">
                     <label>
                         <p class="label">{{ __('Post office number', TEXTDOMAIN) }}:</p>
-                        <select id="postOfficeNumberSearch" disabled></select>
+                        <select id="postOfficeNumberSearch" name="user_np_office_number"{% if not user_np_city_ref and not user_np_city_name and not user_np_office_number and not user_np_office_name %} disabled{% endif %}>
+                            {% set offices = user_np_city_ref | np_get_offices_by_city_ref %}
+                            {% if offices is iterable %}
+                            {% for val in offices %}
+                            <option value="{{ val.id }}"{% if user_np_office_number == val.id and user_np_office_name == val.text %} selected="selected"{% endif%}>{{ val.text }}</option>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
                     </label>
+                    <input type="hidden" name="user_np_office_name" value="{% if user_np_office_name %}{{ user_np_office_name }}{% endif %}">
                 </div>
                 {% endif %}
                 {% if general_fields.shop.enable_self_pickup_points %}
@@ -113,12 +135,14 @@
                     <p class="label">{{ __('Pickup point', TEXTDOMAIN) }}:</p>
                     <select id="selfPickupPoints">
                         <option value=""></option>
-                        {% for val in general_fields.shop.self_pickup_points %}
-                        <option value="{{ val.name | sanitize_title }}">{{ val.name }}</option>
+                        {% for key,val in general_fields.shop.self_pickup_points %}
+                        {% set point = 'point-'~(key+1) %}
+                        <option value="{{ point }}"{% if user_pickup_point == point %} selected="selected"{% endif%}>{{ val.name }}</option>
                         {% endfor %}
                     </select>
-                    {% for val in general_fields.shop.self_pickup_points %}
-                    <div class="selfPickupPointInfo {{ val.name | sanitize_title }}">
+                    {% for key,val in general_fields.shop.self_pickup_points %}
+                    {% set point = 'point-'~(key+1) %}
+                    <div class="selfPickupPointInfo {{ point }}{% if user_pickup_point == point %} show{% endif%}">
                         <div class="lines">
                             <div class="line">
                                 <p class="label">{{ __('Working hours', TEXTDOMAIN) }}:</p>

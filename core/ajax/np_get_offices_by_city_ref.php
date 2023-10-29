@@ -11,28 +11,7 @@ function np_get_offices_by_city_ref_action() {
         $ref = strip_tags($ref);
         $ref = htmlspecialchars($ref, ENT_QUOTES, 'UTF-8');
 
-        $general_fields = cache_general_fields();
-
-        $np = new NovaPoshtaApi2(
-            $general_fields['shop']['nova_poshta_api_key'],
-            'ua',
-            FALSE,
-            'curl'
-        );
-
-        $warehouses = $np->getWarehouses($ref);
-        $results = array();
-
-        if($warehouses['success'] && !empty($warehouses['data'])){
-            foreach ($warehouses['data'] as $office){
-                $results[] = array(
-                    "id" => $office['Number'],
-                    "text" => $office['Description']
-                );
-            }
-        }
-
-        echo json_encode($results);
+        echo json_encode(np_get_offices_by_city_ref($ref));
     }
 
     exit;

@@ -85,6 +85,11 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //    'curl'
 //);
 //
+//$cityData = $np->getCity('c335d9f1-bf5e-11e1-bdef-0026b97ed48a');
+//
+//pr($cityData);
+
+//
 //$warehouses = $np->getWarehouses('69da41bd-3f5d-11de-b509-001d92f78698');
 //$results = array();
 //
@@ -98,3 +103,25 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //}
 //
 //pr($results);
+//$ids_arr = array_filter(explode(".", wp_unslash(stripslashes($_COOKIE['cart']))));
+//$general_fields = cache_general_fields();
+//if(!empty($ids_arr)){
+//    foreach ($ids_arr as $cid){
+//        $weight += get_field('weight_in_grams', $cid);
+//    }
+//    $weight = ceil( ( $weight + intval($general_fields['shop']['reserve_weight_in_grams']) ) / 1000);
+//    pr($weight);
+//}
+
+//$general_fields = cache_general_fields();
+//
+//$np = new NovaPoshtaApi2(
+//    $general_fields['shop']['nova_poshta_api_key'],
+//    'ua',
+//    FALSE,
+//    'curl'
+//);
+//
+//$warehouses = $np->getWarehouses('c335d9f1-bf5e-11e1-bdef-0026b97ed48a');
+//
+//pr($warehouses);

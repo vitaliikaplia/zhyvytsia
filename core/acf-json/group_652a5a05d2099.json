@@ -190,6 +190,24 @@
                     "endpoint": 0
                 },
                 {
+                    "key": "field_653db9f74e9d9",
+                    "label": "Загальні налаштування",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
                     "key": "field_652ecb711633e",
                     "label": "URL сторінки",
                     "name": "checkout_page_url",
@@ -230,6 +248,24 @@
                     "step": "",
                     "prepend": "",
                     "append": "гр"
+                },
+                {
+                    "key": "field_653dba144e9da",
+                    "label": "Методи доставки",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
                     "key": "field_65397556c83cf",
@@ -543,6 +579,149 @@
                     ]
                 },
                 {
+                    "key": "field_653dba284e9db",
+                    "label": "Методи оплати",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_653dba3b4e9dc",
+                    "label": "Увімкнути можливість онлайн оплати",
+                    "name": "enable_online_payment",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652f536604b1f",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653dbc65b620b",
+                    "label": "Увімкнути можливість накладеного платежу",
+                    "name": "enable_cod_payment",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652f177ab45a7",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_65396c19e90ce",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653dbb00d773b",
+                    "label": "Увімкнути можливість оплати за реквізитами",
+                    "name": "enable_payment_by_details",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653dbb53d773c",
+                    "label": "Реквізити для оплати",
+                    "name": "details_for_payment",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_653dbb00d773b",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_653dba694923e",
+                    "label": "",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 1
+                },
+                {
                     "key": "field_652f1761b45a6",
                     "label": "Інтеграції",
                     "name": "",
@@ -616,5 +795,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698438774
+    "modified": 1698545204
 }

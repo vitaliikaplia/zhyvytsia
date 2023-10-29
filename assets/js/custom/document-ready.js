@@ -505,6 +505,7 @@ window.addEventListener("DOMContentLoaded", function (){
             });
 
             citySearch.on("change", function(e) {
+                $('input[name="user_np_city_name"]').val($(this).find("option:selected").text());
                 if($(this).val()){
                     $.ajax({
                         type: "POST",
@@ -516,10 +517,14 @@ window.addEventListener("DOMContentLoaded", function (){
                             "ref": $(this).val(),
                         },
                         success : function (out) {
+
+                            if(out[0]?.text){
+                                $('input[name="user_np_office_name"]').val(out[0].text);
+                            }
+
+                            postOfficeNumberSearch.val(null);
                             postOfficeNumberSearch.empty();
-                            postOfficeNumberSearch.select2({
-                                data: out
-                            });
+                            postOfficeNumberSearch.trigger('change');
                             postOfficeNumberSearch.select2({
                                 placeholder: "Оберіть відділення",
                                 language: {
@@ -529,6 +534,18 @@ window.addEventListener("DOMContentLoaded", function (){
                                 },
                             });
                             postOfficeNumberSearch.prop('disabled', false).trigger('change.select2');
+
+                            if(out.length > 0){
+                                postOfficeNumberSearch.select2({
+                                    data: out
+                                });
+                                postOfficeNumberSearch.prop('disabled', false).trigger('change.select2');
+                            } else {
+                                postOfficeNumberSearch.select2({
+                                    placeholder: "Відділення не знайдено"
+                                });
+                                postOfficeNumberSearch.prop('disabled', true).trigger('change.select2');
+                            }
                         }
                     });
                 }
@@ -552,6 +569,10 @@ window.addEventListener("DOMContentLoaded", function (){
                     placeholder: "Оберіть відділення"
                 });
             }
+
+            postOfficeNumberSearch.on("change", function(e) {
+                $('input[name="user_np_office_name"]').val($(this).find("option:selected").text());
+            });
 
         }
 
