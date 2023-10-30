@@ -2,8 +2,8 @@
 
 if(!defined('ABSPATH')){exit;}
 
-/** catalog photo column */
-function add_catalog_photo_column($cols) {
+/** catalog columns */
+function add_catalog_columns($cols) {
     $screen = get_current_screen();
     if ($screen && ($screen->post_type == 'catalog')) {
         $cols['catalog_photo'] = __('Photo', TEXTDOMAIN);
@@ -11,10 +11,21 @@ function add_catalog_photo_column($cols) {
         $cols['catalog_rating'] = __('Rating', TEXTDOMAIN);
         $cols['catalog_sku'] = __('SKU', TEXTDOMAIN);
         $cols['catalog_status'] = __('Status', TEXTDOMAIN);
+        $cols = [
+            'cb' => $cols['cb'],
+            'title' => $cols['title'],
+            'catalog_price' => $cols['catalog_price'],
+            'catalog_rating' => $cols['catalog_rating'],
+            'catalog_sku' => $cols['catalog_sku'],
+            'author' => $cols['author'],
+            'date' => $cols['date'],
+            'catalog_photo' => $cols['catalog_photo'],
+            'catalog_status' => $cols['catalog_status'],
+        ];
     }
     return $cols;
 }
-function add_catalog_photo_value($column_name, $post_id) {
+function add_catalog_columns_values($column_name, $post_id) {
     if ( 'catalog_photo' == $column_name ) {
         if ( $photo = get_field('photo', $post_id) ) {
             echo '<img src="'.$photo['url'].'" width="100" height="80">';
@@ -64,17 +75,15 @@ function add_catalog_photo_value($column_name, $post_id) {
         echo $raw;
     }
 }
-// for posts
-add_filter( 'manage_posts_columns', 'add_catalog_photo_column' );
-add_action( 'manage_posts_custom_column', 'add_catalog_photo_value', 10, 2 );
-// for pages
-add_filter( 'manage_pages_columns', 'add_catalog_photo_column' );
-add_action( 'manage_pages_custom_column', 'add_catalog_photo_value', 10, 2 );
+add_filter( 'manage_posts_columns', 'add_catalog_columns' );
+add_action( 'manage_posts_custom_column', 'add_catalog_columns_values', 10, 2 );
+//add_filter( 'manage_pages_columns', 'add_catalog_columns' );
+//add_action( 'manage_pages_custom_column', 'add_catalog_columns_values', 10, 2 );
 
 /**
- * Change order status
+ * Change catalog item status
  */
-function dashboard_change_order_status_action() {
+function dashboard_change_item_status_action() {
 
     if( isset($_POST['new_status']) && isset($_POST['post_id']) ){
 
@@ -90,4 +99,4 @@ function dashboard_change_order_status_action() {
     exit;
 
 }
-add_action( 'wp_ajax_dashboard_change_order_status', 'dashboard_change_order_status_action' );
+add_action( 'wp_ajax_dashboard_change_item_status', 'dashboard_change_item_status_action' );

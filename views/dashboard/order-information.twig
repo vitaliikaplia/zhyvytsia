@@ -1,3 +1,17 @@
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order status', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {% set order_statuses = fn('custom_order_statuses') %}
+        <select class="order_status_select" data-post-id="{{ order.id }}">
+            <option></option>
+            {% for key,val in order_statuses %}
+            <option value="{{ key }}"{% if key == order.order_status %} selected="selected"{% endif %}>{{ val }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
 {% if order.ordered_items %}
 <div class="line">
     <div class="col">
@@ -98,3 +112,7 @@
     </div>
 </div>
 {% endif %}
+<div class="line note order">
+    <p>{{ __('Order note', TEXTDOMAIN) }}</p>
+    <textarea name="note" data-post-id="{{ order.id }}">{{ order.note }}</textarea>
+</div>

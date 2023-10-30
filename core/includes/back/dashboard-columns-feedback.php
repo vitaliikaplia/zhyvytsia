@@ -2,17 +2,26 @@
 
 if(!defined('ABSPATH')){exit;}
 
-/** feedback photo column */
-function add_feedback_photo_column($cols) {
+/** feedback columns */
+function add_feedback_columns($cols) {
     $screen = get_current_screen();
     if ($screen && ($screen->post_type == 'feedback')) {
         $cols['feedback_photo'] = __('Photo', TEXTDOMAIN);
         $cols['feedback_rate'] = __('Rate', TEXTDOMAIN);
         $cols['feedback_catalog_item'] = __('Catalog item', TEXTDOMAIN);
+        $cols = [
+            'cb' => $cols['cb'],
+            'title' => $cols['title'],
+            'feedback_catalog_item' => $cols['feedback_catalog_item'],
+            'feedback_rate' => $cols['feedback_rate'],
+            'author' => $cols['author'],
+            'date' => $cols['date'],
+            'feedback_photo' => $cols['feedback_photo'],
+        ];
     }
     return $cols;
 }
-function add_feedback_photo_value($column_name, $post_id) {
+function add_feedback_columns_values($column_name, $post_id) {
     if ( 'feedback_photo' == $column_name ) {
         if ( $photo = get_field('photo', $post_id) ) {
             echo '<img src="'.$photo['url'].'" width="100" height="80">';
@@ -39,9 +48,7 @@ function add_feedback_photo_value($column_name, $post_id) {
         }
     }
 }
-// for posts
-add_filter( 'manage_posts_columns', 'add_feedback_photo_column' );
-add_action( 'manage_posts_custom_column', 'add_feedback_photo_value', 10, 2 );
-// for pages
-add_filter( 'manage_pages_columns', 'add_feedback_photo_column' );
-add_action( 'manage_pages_custom_column', 'add_feedback_photo_value', 10, 2 );
+add_filter( 'manage_posts_columns', 'add_feedback_columns' );
+add_action( 'manage_posts_custom_column', 'add_feedback_columns_values', 10, 2 );
+//add_filter( 'manage_pages_columns', 'add_feedback_columns' );
+//add_action( 'manage_pages_custom_column', 'add_feedback_columns_values', 10, 2 );

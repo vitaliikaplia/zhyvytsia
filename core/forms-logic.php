@@ -1064,6 +1064,7 @@ function custom_system_forms_logic_callback() {
                 'post_title' => __("Order", TEXTDOMAIN) . ' #' . $order_id
             );
             wp_update_post( $post_update );
+            update_post_meta( $order_id, 'order_status', 'new_order' );
             update_post_meta( $order_id, 'order_user_id', $order_user_id ?? false );
             update_post_meta( $order_id, 'ordered_items', $ordered_items ?? false );
             update_post_meta( $order_id, 'total_price', $total_price ?? false );

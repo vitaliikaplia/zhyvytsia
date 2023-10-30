@@ -128,3 +128,5 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 
 //$current_user = wp_get_current_user();
 //pr($current_user->ID);
+
+//pr(custom_order_statuses());

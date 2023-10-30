@@ -11,6 +11,41 @@
         /** change item status */
         $('.column-catalog_status select').on('change', function() {
 
+            const itemStatusSelect = $(this);
+            let postIdForChange = itemStatusSelect.attr("data-post-id");
+            let newItemStatus = itemStatusSelect.val();
+
+            itemStatusSelect.attr("disabled","disabled");
+
+            $.ajax({
+                type: "POST",
+                url: "/wp-admin/admin-ajax.php",
+                dataType: "json",
+                cache: false,
+                data: {
+                    "action": "dashboard_change_item_status",
+                    "new_status": newItemStatus,
+                    "post_id": postIdForChange
+                },
+                success : function (out) {
+                    if(out.status == "ok"){
+                        itemStatusSelect.removeAttr("disabled");
+                    }
+                }
+            });
+        });
+
+        /** order status select2 */
+        if($('.order_status_select').length){
+            $('.order_status_select').select2({
+                width: '100%',
+                placeholder: 'Оберіть статус замовлення',
+            });
+        }
+
+        /** change order status */
+        $('.order_status_select').on('change', function() {
+
             const orderStatusSelect = $(this);
             let postIdForChange = orderStatusSelect.attr("data-post-id");
             let newOrderStatus = orderStatusSelect.val();
@@ -34,6 +69,33 @@
                 }
             });
         });
+
+        /** order note autogrow and save logic */
+        if($('.line.note.order textarea').length){
+            let thisEl = $('.line.note.order textarea'),
+                postIdForChange = thisEl.attr("data-post-id");
+            thisEl.autogrow();
+            thisEl.bind('keyup', function(){
+                $(this).doTimeout( 'text-type', 500, function(){
+                    thisEl.addClass('wait');
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "/wp-admin/admin-ajax.php",
+                        dataType: "json",
+                        cache: false,
+                        data: {
+                            "action": "dashboard_change_order_note",
+                            "note": thisEl.val().trim(),
+                            "post_id": postIdForChange
+                        },
+                        beforeSend: function() {},
+                        success : function (out) {
+                            thisEl.removeClass('wait');
+                        }
+                    });
+                });
+            });
+        }
 
     });
 })(jQuery);
