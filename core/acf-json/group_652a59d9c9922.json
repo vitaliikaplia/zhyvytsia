@@ -703,6 +703,122 @@
                             "toolbar": "full",
                             "media_upload": 0,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_653f2bea154fa",
+                            "label": "Нове замовлення (повідомлення замовнику)",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_653f2c03154fb",
+                            "label": "Тема листа",
+                            "name": "checkout_subject_user",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Доступні шорткоди: [order_id]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_653f2c7a154fc",
+                            "label": "Текст листа",
+                            "name": "checkout_text_user",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [order_id], [ordered_items], [total_price], [first_name], [last_name], [user_phone], [user_email], [payment_type], [delivery_type], [delivery_information], [details_for_payment], [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_653f303ce82b2",
+                            "label": "Нове замовлення (повідомлення адмінам)",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_653f3083e82b3",
+                            "label": "Тема листа",
+                            "name": "checkout_subject_admin",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Доступні шорткоди: [order_id]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_653f3095e82b4",
+                            "label": "Текст листа",
+                            "name": "checkout_text_admin",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [order_id], [ordered_items], [total_price], [first_name], [last_name], [user_phone], [user_email], [payment_type], [delivery_type], [delivery_information], [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         }
                     ]
                 }
@@ -727,5 +843,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698596533
+    "modified": 1698658839
 }

@@ -1,0 +1,100 @@
+{% if order.ordered_items %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Ordered items', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.ordered_items }}
+    </div>
+</div>
+{% endif %}
+{% if order.total_price %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Total amount', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.total_price }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_email %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user email', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_email }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_first_name %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user first name', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_first_name }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_last_name %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user last name', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_last_name }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_phone %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user phone', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_phone }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_delivery_type %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user delivery type', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_delivery_type }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_payment_type %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user payment type', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_payment_type }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_delivery_information %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user delivery information', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_delivery_information }}
+    </div>
+</div>
+{% endif %}
+{% if order_user %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Registered Order user', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        <p><a href="/wp-admin/user-edit.php?user_id={{ order_user.ID }}">{{ order_user.first_name }} {{ order_user.last_name }} (ID#{{ order_user.ID }})</a></p>
+    </div>
+</div>
+{% endif %}

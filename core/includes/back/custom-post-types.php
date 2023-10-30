@@ -59,7 +59,7 @@ register_post_type('orders-log', array(
         'exclude_from_search' => true,
         'menu_position' => 26,
         'menu_icon' => 'dashicons-feedback',
-        'supports' => array('title','editor'),
+        'supports' => array('title'),
         'capabilities' => array(
             'create_posts' => false
         ),

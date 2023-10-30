@@ -147,7 +147,7 @@ function custom_system_forms_logic_callback() {
 
         /** check exist user */
         if($user && $user->ID){
-            add_notify('error', __('This email address is already taken!', TEXTDOMAIN));
+            add_notify('error', __('This email address is already taken', TEXTDOMAIN));
             wp_redirect( $sign_up_url );
             exit;
         }
@@ -702,10 +702,10 @@ function custom_system_forms_logic_callback() {
         }
 
         /** define email */
-        $u_email_secure = wp_unslash(htmlspecialchars(trim($_POST['user_email']), ENT_QUOTES, 'UTF-8'));
+        $user_email_secure = wp_unslash(htmlspecialchars(trim($_POST['user_email']), ENT_QUOTES, 'UTF-8'));
 
         /** checking email length */
-        if(strlen($u_email_secure) >= 60){
+        if(strlen($user_email_secure) >= 60){
             add_notify('error', __('Email is to long', TEXTDOMAIN));
             setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
             wp_redirect( $checkout_url );
@@ -713,7 +713,7 @@ function custom_system_forms_logic_callback() {
         }
 
         /** validating email */
-        if(!filter_var($u_email_secure, FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($user_email_secure, FILTER_VALIDATE_EMAIL)){
             add_notify('error', __('Email is wrong', TEXTDOMAIN));
             setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
             wp_redirect( $checkout_url );
@@ -820,6 +820,11 @@ function custom_system_forms_logic_callback() {
             $user_zip = htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8');
             $user_address = htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8');
 
+            $delivery_information = "<p>" . __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) . ": <b>" . $user_region . "</b><br>";
+            $delivery_information .= __('City (or settlement)', TEXTDOMAIN) . ": <b>" . $user_city . "</b><br>";
+            $delivery_information .= __('ZIP Code', TEXTDOMAIN) . ": <b>" . $user_zip . "</b><br>";
+            $delivery_information .= __('Address (street, house, apartment)', TEXTDOMAIN) . ": <b>" . $user_address . "</b></p>";
+
         } elseif ($delivery_type == "np"){
 
             /** check if nova poshta city and office specified */
@@ -844,6 +849,10 @@ function custom_system_forms_logic_callback() {
             $user_np_office_number = htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8');
             $user_np_office_name = htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8');
 
+            $delivery_information = "<p>" . __('Nova Poshta city name', TEXTDOMAIN) . ": <b>" . $user_np_city_name . "</b><br>";
+            $delivery_information .= __('Nova Poshta office name', TEXTDOMAIN) . ": <b>" . $user_np_office_name . "</b><br>";
+            $delivery_information .= __('Nova Poshta office number', TEXTDOMAIN) . ": <b>" . $user_np_office_number . "</b></p>";
+
         } elseif ($delivery_type == "pu"){
 
             /** check if self pickup point specified */
@@ -857,17 +866,36 @@ function custom_system_forms_logic_callback() {
             /** define self pickup point */
             $user_pickup_point = htmlspecialchars($_POST['user_pickup_point'], ENT_QUOTES, 'UTF-8');
 
+            $point_id = intval(str_replace('point-','',$user_pickup_point))-1;
+            $delivery_information = "<p>".__('Pickup point', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['name'] . "</b></p>";
+
         }
 
         /** checking if user logged in */
         if(is_user_logged_in()){
 
+            $current_user = wp_get_current_user();
+            $order_user_id = $current_user->ID;
 
+            /** update profile options */
+            update_user_meta( $order_user_id, 'first_name', $first_name ?? false );
+            update_user_meta( $order_user_id, 'last_name', $last_name ?? false );
+            update_user_meta( $order_user_id, 'payment_type', $payment_type ?? false );
+            update_user_meta( $order_user_id, 'delivery_type', $delivery_type ?? false );
+            update_user_meta( $order_user_id, 'user_region', $user_region ?? false );
+            update_user_meta( $order_user_id, 'user_city', $user_city ?? false );
+            update_user_meta( $order_user_id, 'user_zip', $user_zip ?? false );
+            update_user_meta( $order_user_id, 'user_address', $user_address ?? false );
+            update_user_meta( $order_user_id, 'user_np_city_ref', $user_np_city_ref ?? false );
+            update_user_meta( $order_user_id, 'user_np_city_name', $user_np_city_name ?? false );
+            update_user_meta( $order_user_id, 'user_np_office_number', $user_np_office_number ?? false );
+            update_user_meta( $order_user_id, 'user_np_office_name', $user_np_office_name ?? false );
+            update_user_meta( $order_user_id, 'user_pickup_point', $user_pickup_point ?? false );
 
         } else {
 
             /** define user by email */
-            $existing_user = get_user_by('email', $u_email_secure);
+            $existing_user = get_user_by('email', $user_email_secure);
 
             /** register new user */
             if(isset($_POST['create_an_account']) && $_POST['create_an_account']){
@@ -886,7 +914,7 @@ function custom_system_forms_logic_callback() {
 
                 /** check if user exist */
                 if($existing_user && $existing_user->ID){
-                    add_notify('error', __('This email address is already taken!', TEXTDOMAIN));
+                    add_notify('error', __('This email address is already taken', TEXTDOMAIN));
                     setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
                     wp_redirect( $checkout_url );
                     exit;
@@ -897,29 +925,29 @@ function custom_system_forms_logic_callback() {
 
                 /** preparing new user data */
                 $user_data_arr = array(
-                    'user_login'    => $u_email_secure,
+                    'user_login'    => $user_email_secure,
                     'user_pass'	    => $password,
-                    'user_email'    => $u_email_secure,
+                    'user_email'    => $user_email_secure,
                     'role'		    => 'client'
                 );
 
                 /** adding new user */
-                $new_user_id = wp_insert_user( $user_data_arr );
+                $order_user_id = wp_insert_user( $user_data_arr );
 
                 /** if new user created */
-                if($new_user_id){
+                if($order_user_id){
 
                     /** set additional profile verification options */
                     $user_email_verification_code_for_link = random_int(1000000000, 9999999999);
                     $user_email_verification_code = random_int(1000, 9999);
-                    update_user_meta( $new_user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
-                    update_user_meta( $new_user_id, 'user_email_verification_code', $user_email_verification_code );
-                    update_user_meta( $new_user_id, 'nickname', $u_email_secure );
+                    update_user_meta( $order_user_id, 'user_email_verification_code_for_link', $user_email_verification_code_for_link );
+                    update_user_meta( $order_user_id, 'user_email_verification_code', $user_email_verification_code );
+                    update_user_meta( $order_user_id, 'nickname', $user_email_secure );
 
                     /** preparing confirmation link */
                     $arr_for_link = array(
                         'action' => 'verify_email',
-                        'user_id' => $new_user_id,
+                        'user_id' => $order_user_id,
                         'verification_code' => $user_email_verification_code_for_link,
                     );
                     $json_for_link = json_encode($arr_for_link);
@@ -934,7 +962,7 @@ function custom_system_forms_logic_callback() {
                         '[session]'
                     );
                     $replace = array(
-                        $u_email_secure,
+                        $user_email_secure,
                         $password,
                         get_email_part('button', array(
                             'link' => DO_URL . $encrypted_for_link,
@@ -952,36 +980,201 @@ function custom_system_forms_logic_callback() {
                     ));
 
                     /** sending email */
-                    send_email($u_email_secure, $general_fields['emails']['checkout']['sign_up_subject'], $content);
+                    send_email($user_email_secure, $general_fields['emails']['checkout']['sign_up_subject'], $content);
 
                     /** set additional profile options */
-                    update_user_meta( $new_user_id, 'first_name', $first_name );
-                    update_user_meta( $new_user_id, 'last_name', $last_name );
-                    update_user_meta( $new_user_id, 'user_phone', $user_phone );
-                    update_user_meta( $new_user_id, 'user_phone_confirmed', false );
+                    update_user_meta( $order_user_id, 'first_name', $first_name ?? false );
+                    update_user_meta( $order_user_id, 'last_name', $last_name ?? false );
+                    update_user_meta( $order_user_id, 'user_phone', $user_phone ?? false );
 
-                    /** preparing sms content */
+                    /** set more additional profile options */
+                    update_user_meta( $order_user_id, 'payment_type', $payment_type ?? false );
+                    update_user_meta( $order_user_id, 'delivery_type', $delivery_type ?? false );
+                    update_user_meta( $order_user_id, 'user_region', $user_region ?? false );
+                    update_user_meta( $order_user_id, 'user_city', $user_city ?? false );
+                    update_user_meta( $order_user_id, 'user_zip', $user_zip ?? false );
+                    update_user_meta( $order_user_id, 'user_address', $user_address ?? false );
+                    update_user_meta( $order_user_id, 'user_np_city_ref', $user_np_city_ref ?? false );
+                    update_user_meta( $order_user_id, 'user_np_city_name', $user_np_city_name ?? false );
+                    update_user_meta( $order_user_id, 'user_np_office_number', $user_np_office_number ?? false );
+                    update_user_meta( $order_user_id, 'user_np_office_name', $user_np_office_name ?? false );
+                    update_user_meta( $order_user_id, 'user_pickup_point', $user_pickup_point ?? false );
+
+                    /** preparing and sending sms */
                     $user_sms_verification_code = random_int(1000, 9999);
-                    update_user_meta( $new_user_id, 'user_sms_verification_code', $user_sms_verification_code );
+                    update_user_meta( $order_user_id, 'user_sms_verification_code', $user_sms_verification_code );
                     $sms_message = __("Your verification code:", TEXTDOMAIN) . ' ' . emoji_numbers($user_sms_verification_code);
-
-                    /** sending sms */
                     send_sms($user_phone, $sms_message);
 
                     /** authorising and redirecting new user */
-                    $new_user = get_user_by('id', $new_user_id);
+                    $new_user = get_user_by('id', $order_user_id);
                     wp_set_current_user( $new_user->ID, $new_user->user_login );
                     wp_set_auth_cookie( $new_user->ID, true );
                     do_action( 'wp_login', $new_user->user_login );
                     add_notify('success', __('Congratulations! Your new account has been created!', TEXTDOMAIN));
+
+                } else {
+
+                    add_notify('error', __('Error while creating new user', TEXTDOMAIN));
                     setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
                     wp_redirect( $checkout_url );
                     exit;
+
                 }
+
+            } else {
+
+                /** no new user registered */
+                $order_user_id = false;
 
             }
 
         }
+
+        /** preparing ordered items */
+        if(true){
+            [
+                'ids_arr' => $ids_arr,
+                'items' => $items,
+                'ids_arr_count_values' => $ids_arr_count_values,
+                'ids_arr_count' => $ids_arr_count,
+                'ids_arr_unique' => $ids_arr_unique,
+                'total_price' => $total_price
+            ] = prepare_positions();
+            $context = Timber::context();
+            $context['items'] = $items;
+            $context['ids_arr_count_values'] = $ids_arr_count_values;
+            $context['ids_arr_count'] = $ids_arr_count;
+            $context['ids_arr_unique'] = $ids_arr_unique;
+            $context['total_price'] = $total_price;
+            $ordered_items = Timber::compile( 'dashboard/ordered-items.twig', $context);
+        }
+
+        /** placing new order */
+        if(true){
+            $new_order_args = array(
+                'post_type' => 'orders-log',
+                'post_title' => 'New order',
+                'post_content' => '',
+                'post_status' => 'publish'
+            );
+            $order_id = wp_insert_post($new_order_args);
+            $post_update = array(
+                'ID'         => $order_id,
+                'post_title' => __("Order", TEXTDOMAIN) . ' #' . $order_id
+            );
+            wp_update_post( $post_update );
+            update_post_meta( $order_id, 'order_user_id', $order_user_id ?? false );
+            update_post_meta( $order_id, 'ordered_items', $ordered_items ?? false );
+            update_post_meta( $order_id, 'total_price', $total_price ?? false );
+            update_post_meta( $order_id, 'order_user_email', $user_email_secure ?? false );
+            update_post_meta( $order_id, 'order_user_first_name', $first_name ?? false );
+            update_post_meta( $order_id, 'order_user_last_name', $last_name ?? false );
+            update_post_meta( $order_id, 'order_user_phone', nice_phone_format($user_phone) ?? false );
+            update_post_meta( $order_id, 'order_user_delivery_type', ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? false );
+            update_post_meta( $order_id, 'order_user_payment_type', ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
+            update_post_meta( $order_id, 'order_user_delivery_information', $delivery_information );
+        }
+
+        /** sending email to client */
+        if(true){
+            $search = array(
+                '[order_id]',
+                '[ordered_items]',
+                '[total_price]',
+                '[first_name]',
+                '[last_name]',
+                '[user_phone]',
+                '[user_email]',
+                '[payment_type]',
+                '[delivery_type]',
+                '[delivery_information]',
+                '[details_for_payment]',
+                '[session]'
+            );
+            $replace = array(
+                $order_id,
+                $ordered_items,
+                $total_price,
+                $first_name,
+                $last_name,
+                nice_phone_format($user_phone),
+                $user_email_secure,
+                ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
+                ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
+                $delivery_information,
+                $general_fields['shop']['details_for_payment'],
+                get_session_info($_SERVER['REMOTE_ADDR'])
+            );
+            $content = Timber::compile( 'email/email.twig', array(
+                'TEXTDOMAIN' => TEXTDOMAIN,
+                'BLOGINFO_NAME' => BLOGINFO_NAME,
+                'BLOGINFO_URL' => BLOGINFO_URL,
+                'subject' => str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_subject_user']),
+                'text' => str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_text_user'])
+            ));
+            send_email($user_email_secure, str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_subject_user']), $content);
+        }
+
+        /** sending email to admins */
+        if(!empty($general_fields['shop']['new_order_email_recipients'])){
+            foreach ($general_fields['shop']['new_order_email_recipients'] as $recipient){
+
+                /** preparing email content */
+                $search = array(
+                    '[order_id]',
+                    '[ordered_items]',
+                    '[total_price]',
+                    '[first_name]',
+                    '[last_name]',
+                    '[user_phone]',
+                    '[user_email]',
+                    '[payment_type]',
+                    '[delivery_type]',
+                    '[delivery_information]',
+                    '[session]'
+                );
+                $replace = array(
+                    $order_id,
+                    $ordered_items,
+                    $total_price,
+                    $first_name,
+                    $last_name,
+                    nice_phone_format($user_phone),
+                    $user_email_secure,
+                    ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
+                    ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
+                    $delivery_information,
+                    get_session_info($_SERVER['REMOTE_ADDR'])
+                );
+                $content = Timber::compile( 'email/email.twig', array(
+                    'TEXTDOMAIN' => TEXTDOMAIN,
+                    'BLOGINFO_NAME' => BLOGINFO_NAME,
+                    'BLOGINFO_URL' => BLOGINFO_URL,
+                    'subject' => str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_subject_admin']),
+                    'text' => str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_text_admin'])
+                ));
+
+                /** sending email */
+                send_email($recipient['email'], str_replace($search, $replace, $general_fields['emails']['checkout']['checkout_subject_admin']), $content);
+
+            }
+        }
+
+        /** sending sms to admins */
+        if($general_fields['shop']['activate_sms_notification_about_new_orders'] && !empty($general_fields['shop']['new_order_sms_recipients'])){
+            foreach ($general_fields['shop']['new_order_sms_recipients'] as $recipient){
+                /** sending sms */
+                if(check_phone($recipient['phone'])){
+                    $sms_message = __("New order has been placed", TEXTDOMAIN) . ' #' . $order_id;
+                    send_sms(fix_phone_format($recipient['phone']), $sms_message);
+                }
+            }
+        }
+
+        setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+        wp_redirect( $checkout_url );
+        exit;
 
     }
 

@@ -28,6 +28,8 @@
 
 {% if decoded.create_an_account %}
     {% set create_an_account = decoded.create_an_account %}
+{% else %}
+    {% set create_an_account = true %}
 {% endif %}
 
 {% if decoded.user_region %}

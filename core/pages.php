@@ -96,7 +96,7 @@ function custom_system_auth_pages_callback() {
         if( $path_segments[0] == $general_fields['shop']['checkout_page_url'] && isset($_COOKIE['checkout-data']) && $_COOKIE['checkout-data'] ) {
             if( $decrypted = custom_encrypt_decrypt('decrypt', trim($_COOKIE['checkout-data'])) ){
                 $context['decoded'] = json_decode($decrypted, true);
-                // setcookie('checkout-data', '', time() - 3600, '/');
+                setcookie('checkout-data', '', time() - 3600, '/');
             }
         }
 

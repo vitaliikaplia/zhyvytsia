@@ -125,3 +125,6 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //$warehouses = $np->getWarehouses('c335d9f1-bf5e-11e1-bdef-0026b97ed48a');
 //
 //pr($warehouses);
+
+//$current_user = wp_get_current_user();
+//pr($current_user->ID);

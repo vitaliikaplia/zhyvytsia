@@ -39,8 +39,10 @@ function nice_phone_format($phone){
 
 }
 
-function check_phone($phone){
-    if(strlen(fix_phone_format($phone)) == 13){
+function check_phone($phone) {
+    $valid_codes = ['050', '066', '095', '099', '067', '068', '096', '097', '098', '063', '073', '093', '091', '092', '094'];
+    $phone = fix_phone_format($phone);
+    if(strlen($phone) == 13 && in_array(substr($phone, 3, 3), $valid_codes)) {
         return true;
     } else {
         return false;

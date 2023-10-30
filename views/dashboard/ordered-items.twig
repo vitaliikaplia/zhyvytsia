@@ -1,0 +1,5 @@
+{% for item in items %}
+    {% set count = ids_arr_count_values[item.ID] %}
+    {% set price = fn('render_price', item.ID, count, ids_arr_count) %}
+    <p><a href="{{ item.link }}">{{ item.title }}</a> ({{ count }}шт.)</p>
+{% endfor %}

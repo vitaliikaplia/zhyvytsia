@@ -250,6 +250,123 @@
                     "append": "гр"
                 },
                 {
+                    "key": "field_653f31b995f98",
+                    "label": "Отримувачі Email про нові замовлення",
+                    "name": "new_order_email_recipients",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Додати Email",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_653f323795f99",
+                            "label": "Email",
+                            "name": "email",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_653f31b995f98"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_653f448ef343d",
+                    "label": "Активувати SMS інформування про нові замовлення",
+                    "name": "activate_sms_notification_about_new_orders",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_653f32b6b138c",
+                    "label": "Отримувачі SMS про нові замовлення",
+                    "name": "new_order_sms_recipients",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_653f448ef343d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Додати номер телефону",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_653f32e8b138e",
+                            "label": "Номер телефону",
+                            "name": "phone",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_653f32b6b138c"
+                        }
+                    ]
+                },
+                {
                     "key": "field_653dba144e9da",
                     "label": "Методи доставки",
                     "name": "",
@@ -968,5 +1085,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698555696
+    "modified": 1698645236
 }

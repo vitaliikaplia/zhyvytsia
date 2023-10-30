@@ -92,6 +92,7 @@
         <th><label for="user_pickup_point">{{ __('Pickup point', TEXTDOMAIN) }}</label></th>
         <td>
             <select name="user_pickup_point">
+                <option></option>
                 {% if general_fields.shop.self_pickup_points is iterable %}
                 {% for key,val in general_fields.shop.self_pickup_points %}
                 {% set point = 'point-'~(key+1) %}

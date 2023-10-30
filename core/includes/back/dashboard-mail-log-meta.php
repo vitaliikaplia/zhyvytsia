@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){exit;}
 
 function add_custom_mail_log_meta_box() {
     add_meta_box(
-        'custom-fields-meta-box',
+        'custom-mail-log-fields-meta-box',
         __('Form fields', TEXTDOMAIN),
         'mail_log_render_custom_fields',
         'mail-log',

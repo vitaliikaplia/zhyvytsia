@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 13:50+0200\n"
+"POT-Creation-Date: 2023-10-30 12:14+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -48,7 +48,7 @@ msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/forms-logic.php:203 core/forms-logic.php:586
+#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:969
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -58,7 +58,7 @@ msgid "New code sent..."
 msgstr "Новий код надіслано…"
 
 #: core/ajax/profile_resend_verification_code_to_sms.php:24
-#: core/forms-logic.php:487
+#: core/forms-logic.php:488 core/forms-logic.php:1006
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
@@ -74,39 +74,40 @@ msgstr "Вашу електронну адресу успішно підтвер
 msgid "Your link is out of date or invalid"
 msgstr "Ваше посилання застаріле або недійсне"
 
-#: core/forms-logic.php:24 core/forms-logic.php:115 core/forms-logic.php:231
-#: core/forms-logic.php:428 core/forms-logic.php:515 core/forms-logic.php:608
+#: core/forms-logic.php:25 core/forms-logic.php:116 core/forms-logic.php:232
+#: core/forms-logic.php:429 core/forms-logic.php:516 core/forms-logic.php:609
+#: core/forms-logic.php:699
 msgid "Nonce is wrong"
 msgstr "Nonce невірний"
 
-#: core/forms-logic.php:34 core/forms-logic.php:125 core/forms-logic.php:241
-#: core/forms-logic.php:341 core/forms-logic.php:546
+#: core/forms-logic.php:35 core/forms-logic.php:126 core/forms-logic.php:242
+#: core/forms-logic.php:342 core/forms-logic.php:547 core/forms-logic.php:709
 msgid "Email is to long"
 msgstr "Електронна пошта задовга"
 
-#: core/forms-logic.php:41 core/forms-logic.php:132 core/forms-logic.php:248
-#: core/forms-logic.php:348
+#: core/forms-logic.php:42 core/forms-logic.php:133 core/forms-logic.php:249
+#: core/forms-logic.php:349 core/forms-logic.php:717
 msgid "Email is wrong"
 msgstr "Електронна адреса неправильна"
 
-#: core/forms-logic.php:58
+#: core/forms-logic.php:59
 msgid "No user found for this email"
 msgstr "Для цього Email не знайдено жодного користувача"
 
-#: core/forms-logic.php:68 core/forms-logic.php:159 core/forms-logic.php:379
-#: core/forms-logic.php:532
+#: core/forms-logic.php:69 core/forms-logic.php:160 core/forms-logic.php:380
+#: core/forms-logic.php:533
 msgid "Password is to long"
 msgstr "Пароль задовгий"
 
-#: core/forms-logic.php:75
+#: core/forms-logic.php:76
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: core/forms-logic.php:149
-msgid "This email address is already taken!"
-msgstr "Ця електронна адреса вже зайнята!"
+#: core/forms-logic.php:150 core/forms-logic.php:917
+msgid "This email address is already taken"
+msgstr "Ця електронна адреса вже зайнята"
 
-#: core/forms-logic.php:220
+#: core/forms-logic.php:221
 msgid ""
 "Congratulations! Your new account has been created! Check your Email for "
 "confirmation."
@@ -114,126 +115,267 @@ msgstr ""
 "Вітаємо! Ваш новий акаунт створено! Перевірте свій Емейл для його "
 "підтвердження."
 
-#: core/forms-logic.php:265
+#: core/forms-logic.php:266
 msgid "No account found for this email"
 msgstr "Для цьогоEmail не знайдено жодного облікового запису"
 
-#: core/forms-logic.php:289 views/auth/password-reset.twig:28
+#: core/forms-logic.php:290 views/auth/password-reset.twig:28
 #: views/profile/change-password.twig:25
 msgid "Change my password"
 msgstr "Змінити мій пароль"
 
-#: core/forms-logic.php:301
+#: core/forms-logic.php:302
 msgid "Verification code sent"
 msgstr "Код підтвердження надіслано"
 
-#: core/forms-logic.php:317
+#: core/forms-logic.php:318
 msgid "Hacker?"
 msgstr "Хакер?"
 
-#: core/forms-logic.php:324
+#: core/forms-logic.php:325
 msgid "Nonce 'password-reset' is wrong"
 msgstr "Nonce ‘password-reset’ невірний"
 
-#: core/forms-logic.php:331
+#: core/forms-logic.php:332
 msgid "Nonce 'request-redirect' is wrong"
 msgstr "Nonce ‘request-redirect’ невірний"
 
-#: core/forms-logic.php:358
+#: core/forms-logic.php:359
 msgid "Hm, no user found"
 msgstr "Хм, користувача не знайдено"
 
-#: core/forms-logic.php:369
+#: core/forms-logic.php:370
 msgid "Wrong recovery code"
 msgstr "Невірний код відновлення"
 
-#: core/forms-logic.php:396
+#: core/forms-logic.php:397
 msgid "Looks like the new password is the same"
 msgstr "Схоже, новий пароль однаковий"
 
-#: core/forms-logic.php:418 core/forms-logic.php:688
+#: core/forms-logic.php:419 core/forms-logic.php:689
 msgid "The password has been changed"
 msgstr "Пароль змінено"
 
-#: core/forms-logic.php:443
+#: core/forms-logic.php:444
 msgid "First name updated"
 msgstr "Ім’я оновлено"
 
-#: core/forms-logic.php:445 core/forms-logic.php:452
+#: core/forms-logic.php:446 core/forms-logic.php:453
 msgid "First name not updated"
 msgstr "Ім’я не оновлено"
 
-#: core/forms-logic.php:450
+#: core/forms-logic.php:451
 msgid "First name removed"
 msgstr "Ім’я видалено"
 
-#: core/forms-logic.php:460
+#: core/forms-logic.php:461
 msgid "Last name updated"
 msgstr "Прізвище оновлено"
 
-#: core/forms-logic.php:462 core/forms-logic.php:469
+#: core/forms-logic.php:463 core/forms-logic.php:470
 msgid "Last name not updated"
 msgstr "Прізвище не оновлено"
 
-#: core/forms-logic.php:467
+#: core/forms-logic.php:468
 msgid "Last name removed"
 msgstr "Прізвище видалено"
 
-#: core/forms-logic.php:489
+#: core/forms-logic.php:490
 msgid "User phone updated"
 msgstr "Телефон користувача оновлено"
 
-#: core/forms-logic.php:491
+#: core/forms-logic.php:492 core/forms-logic.php:909
 msgid "This phone number is already taken"
 msgstr "Цей номер телефону вже зайнятий"
 
-#: core/forms-logic.php:494
+#: core/forms-logic.php:495
 msgid "User phone not updated"
 msgstr "Номер телефону не оновлено"
 
-#: core/forms-logic.php:497
+#: core/forms-logic.php:498
 msgid "Enter valid phone number"
 msgstr "Введіть дійсний номер телефону"
 
-#: core/forms-logic.php:502
+#: core/forms-logic.php:503
 msgid "Phone number removed"
 msgstr "Номер телефону видалено"
 
-#: core/forms-logic.php:539
+#: core/forms-logic.php:540
 msgid "Wrong password"
 msgstr "Невірнй пароль"
 
-#: core/forms-logic.php:553
+#: core/forms-logic.php:554
 msgid "New Email is the same"
 msgstr "Нова електронна пошта однакова"
 
-#: core/forms-logic.php:565
+#: core/forms-logic.php:566
 msgid "Email successfully changed"
 msgstr "Вашу електронну адресу успішно змінено!"
 
-#: core/forms-logic.php:623
+#: core/forms-logic.php:624
 msgid "Old password: To long"
 msgstr "Старий пароль: занадто довгий"
 
-#: core/forms-logic.php:633
+#: core/forms-logic.php:634
 msgid "Old password"
 msgstr "Старий пароль"
 
-#: core/forms-logic.php:640
+#: core/forms-logic.php:641
 msgid "New password: To long"
 msgstr "Новий пароль: занадто довгий"
 
-#: core/forms-logic.php:650 views/auth/password-reset.twig:8
+#: core/forms-logic.php:651 views/auth/password-reset.twig:8
 msgid "New password"
 msgstr "Новий пароль"
 
-#: core/forms-logic.php:657
+#: core/forms-logic.php:658
 msgid "Wrong old password"
 msgstr "Неправильний старий пароль"
 
-#: core/forms-logic.php:664
+#: core/forms-logic.php:665
 msgid "New password should be different"
 msgstr "Новий пароль має відрізнятись від старого"
+
+#: core/forms-logic.php:725
+msgid "First name is not specified"
+msgstr "Ім’я не вказано"
+
+#: core/forms-logic.php:734
+msgid "Your first name is to long"
+msgstr "Ваше ім’я надто довге"
+
+#: core/forms-logic.php:742
+msgid "Last name is not specified"
+msgstr "Прізвище не вказано"
+
+#: core/forms-logic.php:751
+msgid "Your last name is to long"
+msgstr "Ваше прізвище надто довге"
+
+#: core/forms-logic.php:759
+msgid "Phone number is not specified"
+msgstr "Номер телефону не вказано"
+
+#: core/forms-logic.php:767
+msgid "Phone number is not valid"
+msgstr "Номер телефону недійсний"
+
+#: core/forms-logic.php:778
+msgid "Delivery type is not specified"
+msgstr "Тип доставки не вказано"
+
+#: core/forms-logic.php:789
+msgid "Payment type is not specified"
+msgstr "Тип оплати не вказано"
+
+#: core/forms-logic.php:811
+msgid "Address is not specified"
+msgstr "Address is not specified"
+
+#: core/forms-logic.php:823 views/checkout.twig:210
+#: views/dashboard/user.twig:44
+msgid "Region (for example, Kyivska, Lvivska, etc.)"
+msgstr "Область (наприклад, Київська, Львівська тощо)"
+
+#: core/forms-logic.php:824 views/checkout.twig:214
+#: views/dashboard/user.twig:50
+msgid "City (or settlement)"
+msgstr "Місто (або населений пункт)"
+
+#: core/forms-logic.php:825 views/checkout.twig:218
+#: views/dashboard/user.twig:56
+msgid "ZIP Code"
+msgstr "Поштовий індекс"
+
+#: core/forms-logic.php:826 views/checkout.twig:222
+#: views/dashboard/user.twig:62
+msgid "Address (street, house, apartment)"
+msgstr "Адреса (вулиця, будинок, квартира)"
+
+#: core/forms-logic.php:840
+msgid "Nova Poshta city and office is not specified"
+msgstr "Місто та відділення Нової Пошт не вказано"
+
+#: core/forms-logic.php:852 views/dashboard/user.twig:74
+msgid "Nova Poshta city name"
+msgstr "Назва міста відділення Нової Пошти"
+
+#: core/forms-logic.php:853 views/dashboard/user.twig:86
+msgid "Nova Poshta office name"
+msgstr "Назва відділення Нової Пошти"
+
+#: core/forms-logic.php:854 views/dashboard/user.twig:80
+msgid "Nova Poshta office number"
+msgstr "Номер відділення Нової Пошти"
+
+#: core/forms-logic.php:860
+msgid "Self pickup point is not specified"
+msgstr "Пункт самовивозу не вказано"
+
+#: core/forms-logic.php:870 views/checkout.twig:260
+#: views/dashboard/user.twig:92
+msgid "Pickup point"
+msgstr "Пункт самовивозу"
+
+#: core/forms-logic.php:1014
+msgid "Congratulations! Your new account has been created!"
+msgstr "Вітаємо! Ваш новий обліковий запис створено!"
+
+#: core/forms-logic.php:1018
+msgid "Error while creating new user"
+msgstr "Помилка під час створення нового користувача"
+
+#: core/forms-logic.php:1064 core/includes/back/custom-post-types.php:68
+msgid "Order"
+msgstr "Замовлення"
+
+#: core/forms-logic.php:1074 core/forms-logic.php:1104
+#: core/forms-logic.php:1146 views/dashboard/user.twig:37
+msgid "UkrPoshta"
+msgstr "УкрПошта"
+
+#: core/forms-logic.php:1074 core/forms-logic.php:1104
+#: core/forms-logic.php:1146 views/dashboard/user.twig:38
+msgid "Nova Poshta"
+msgstr "Нова Пошта"
+
+#: core/forms-logic.php:1074 core/forms-logic.php:1104
+#: core/forms-logic.php:1146 views/checkout.twig:162
+#: views/dashboard/user.twig:39
+msgid "Pickup"
+msgstr "Самовивіз"
+
+#: core/forms-logic.php:1075 core/forms-logic.php:1103
+#: core/forms-logic.php:1145 views/dashboard/user.twig:26
+msgid "Online payment"
+msgstr "Онлайн оплата"
+
+#: core/forms-logic.php:1075 core/forms-logic.php:1103
+#: core/forms-logic.php:1145 views/checkout.twig:182
+#: views/dashboard/user.twig:27
+msgid "COD Payment"
+msgstr "Накладений платіж"
+
+#: core/forms-logic.php:1075 core/forms-logic.php:1103
+#: core/forms-logic.php:1145 views/checkout.twig:190
+#: views/dashboard/user.twig:28
+msgid "Payment upon receipt"
+msgstr "Оплата при отриманні"
+
+#: core/forms-logic.php:1075 core/forms-logic.php:1103
+#: core/forms-logic.php:1145 views/checkout.twig:198
+#: views/dashboard/user.twig:29
+msgid "Payment by details"
+msgstr "Оплата за реквізитами"
+
+#: core/forms-logic.php:1103 core/forms-logic.php:1104
+#: core/forms-logic.php:1145 core/forms-logic.php:1146
+msgid "Unknown"
+msgstr "Невідомо"
+
+#: core/forms-logic.php:1169
+msgid "New order has been placed"
+msgstr "Нове замовлення розміщено"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -592,13 +734,9 @@ msgstr "Батьківська позииція"
 
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
-#: core/includes/back/custom-post-types.php:69 core/pages.php:154
-#: core/pages.php:233
+#: core/includes/back/custom-post-types.php:69 core/pages.php:162
+#: core/pages.php:241
 msgid "Orders"
-msgstr "Замовлення"
-
-#: core/includes/back/custom-post-types.php:68
-msgid "Order"
 msgstr "Замовлення"
 
 #: core/includes/back/custom-post-types.php:70
@@ -736,6 +874,10 @@ msgstr "Поля форми"
 #: core/includes/back/dashboard-menu.php:53
 msgid "Add new post"
 msgstr "Додати новий пост"
+
+#: core/includes/back/dashboard-orders-log-meta.php:8
+msgid "Order information"
+msgstr "Інформація про замовлення"
 
 #: core/includes/back/dashboard-update-assets-version.php:16
 msgid "Update theme version"
@@ -961,16 +1103,16 @@ msgstr "Сторінка 404"
 msgid "Redirects"
 msgstr "Переадресації"
 
-#: core/pages.php:63 core/pages.php:99 core/pages.php:224
+#: core/pages.php:63 core/pages.php:107 core/pages.php:232
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:67 core/pages.php:109 core/pages.php:226
+#: core/pages.php:67 core/pages.php:117 core/pages.php:234
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:71 core/pages.php:119 core/pages.php:228
+#: core/pages.php:71 core/pages.php:127 core/pages.php:236
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
@@ -978,30 +1120,30 @@ msgstr "Забули пароль"
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:141 core/pages.php:230
+#: core/pages.php:149 core/pages.php:238
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:161 core/pages.php:235 views/base-profile.twig:31
+#: core/pages.php:169 core/pages.php:243 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:168 core/pages.php:237 views/base-profile.twig:32
+#: core/pages.php:176 core/pages.php:245 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
-#: core/pages.php:175 core/pages.php:239 views/base-profile.twig:33
+#: core/pages.php:183 core/pages.php:247 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:204
+#: core/pages.php:212
 msgid "Checkout"
 msgstr "Оформлення замовлення"
 
-#: core/pages.php:242
+#: core/pages.php:250
 msgid "Checkout page"
 msgstr "Оформлення замовлення"
 
@@ -1034,7 +1176,7 @@ msgid "Resend verification SMS"
 msgstr "Відправити ще одне SMS з підтвердженням"
 
 #: views/auth/forgot-password.twig:8 views/auth/login.twig:8
-#: views/auth/sign-up.twig:8 views/checkout.twig:55 views/profile/edit.twig:25
+#: views/auth/sign-up.twig:8 views/checkout.twig:129 views/profile/edit.twig:25
 msgid "Email"
 msgstr "Email"
 
@@ -1072,32 +1214,32 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
-#: views/checkout.twig:33
+#: views/checkout.twig:107
 msgid "Check your cart"
 msgstr "Перевірте свій кошик"
 
-#: views/checkout.twig:40
+#: views/checkout.twig:114
 msgid "Enter your information"
 msgstr "Введіть свою інформацію"
 
-#: views/checkout.twig:43 views/profile/edit.twig:10
+#: views/checkout.twig:117 views/profile/edit.twig:10
 msgid "First Name"
 msgstr "Ім’я"
 
-#: views/checkout.twig:47 views/profile/edit.twig:14
+#: views/checkout.twig:121 views/profile/edit.twig:14
 msgid "Last Name"
 msgstr "Фамілія"
 
-#: views/checkout.twig:51 views/dashboard/user.twig:11
+#: views/checkout.twig:125 views/dashboard/user.twig:11
 #: views/profile/edit.twig:18
 msgid "Phone"
 msgstr "Телефон"
 
-#: views/checkout.twig:60
+#: views/checkout.twig:134
 msgid "Create an account"
 msgstr "Створити акаунт"
 
-#: views/checkout.twig:63
+#: views/checkout.twig:137
 msgid ""
 "After creating an account, we will send you a login and password, which will "
 "allow you to view your order history in the future and make subsequent "
@@ -1108,105 +1250,110 @@ msgstr ""
 "значно швидше робити наступні покупки зі знижками та іншими приємними "
 "бонусами!"
 
-#: views/checkout.twig:69
+#: views/checkout.twig:143
 msgid "Choose the type of delivery"
 msgstr "Оберіть тип доставки"
 
-#: views/checkout.twig:88 views/dashboard/user.twig:39
-msgid "Pickup"
-msgstr "Самовивіз"
-
-#: views/checkout.twig:96
+#: views/checkout.twig:170
 msgid "Select the payment type"
 msgstr "Оберіть тип оплати"
 
-#: views/checkout.twig:108 views/dashboard/user.twig:27
-msgid "COD Payment"
-msgstr "Накладений платіж"
-
-#: views/checkout.twig:116 views/dashboard/user.twig:28
-msgid "Payment upon receipt"
-msgstr "Оплата при отриманні"
-
-#: views/checkout.twig:124 views/dashboard/user.twig:29
-msgid "Payment by details"
-msgstr "Оплата за реквізитами"
-
-#: views/checkout.twig:133
+#: views/checkout.twig:207
 msgid "Enter your address"
 msgstr "Введіть свою адресу"
 
-#: views/checkout.twig:136 views/dashboard/user.twig:44
-msgid "Region (for example, Kyivska, Lvivska, etc.)"
-msgstr "Область (наприклад, Київська, Львівська тощо)"
-
-#: views/checkout.twig:140 views/dashboard/user.twig:50
-msgid "City (or settlement)"
-msgstr "Місто (або населений пункт)"
-
-#: views/checkout.twig:144 views/dashboard/user.twig:56
-msgid "ZIP Code"
-msgstr "Поштовий індекс"
-
-#: views/checkout.twig:148 views/dashboard/user.twig:62
-msgid "Address (street, house, apartment)"
-msgstr "Адреса (вулиця, будинок, квартира)"
-
-#: views/checkout.twig:156
+#: views/checkout.twig:230
 msgid "Select the Nova Poshta office"
 msgstr "Оберіть відділення Нової Пошти"
 
-#: views/checkout.twig:159
+#: views/checkout.twig:233
 msgid "City or settlement"
 msgstr "Місто або селище"
 
-#: views/checkout.twig:168
+#: views/checkout.twig:242
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:184
+#: views/checkout.twig:258
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
 
-#: views/checkout.twig:186 views/dashboard/user.twig:92
-msgid "Pickup point"
-msgstr "Пункт самовивозу"
-
-#: views/checkout.twig:199
+#: views/checkout.twig:273
 msgid "Working hours"
 msgstr "Робочі години"
 
-#: views/checkout.twig:200
+#: views/checkout.twig:274
 msgid "From"
 msgstr "З"
 
-#: views/checkout.twig:200
+#: views/checkout.twig:274
 msgid "to"
 msgstr "по"
 
-#: views/checkout.twig:203
+#: views/checkout.twig:277
 msgid "Working days"
 msgstr "Робочі дні"
 
-#: views/checkout.twig:207
+#: views/checkout.twig:281
 msgid "Address"
 msgstr "Адреса"
 
-#: views/checkout.twig:220
+#: views/checkout.twig:294
 msgid "Your order"
 msgstr "Ваше замовлення"
 
-#: views/checkout.twig:226
+#: views/checkout.twig:301
 msgid "Process to checkout"
 msgstr "Оформити замовлення"
 
-#: views/checkout.twig:232
+#: views/checkout.twig:307
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:236
+#: views/checkout.twig:311
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
+
+#: views/dashboard/order-information.twig:4
+msgid "Ordered items"
+msgstr "Замовлені товари"
+
+#: views/dashboard/order-information.twig:14 views/overall/positions.twig:35
+#: views/overall/total.twig:8
+msgid "Total amount"
+msgstr "Загальна сума"
+
+#: views/dashboard/order-information.twig:24
+msgid "Order user email"
+msgstr "Email адреса замовника"
+
+#: views/dashboard/order-information.twig:34
+msgid "Order user first name"
+msgstr "Ім’я замовника"
+
+#: views/dashboard/order-information.twig:44
+msgid "Order user last name"
+msgstr "Прізвище замовника"
+
+#: views/dashboard/order-information.twig:54
+msgid "Order user phone"
+msgstr "Телефон замовника"
+
+#: views/dashboard/order-information.twig:64
+msgid "Order user delivery type"
+msgstr "Тип доставки замовника"
+
+#: views/dashboard/order-information.twig:74
+msgid "Order user payment type"
+msgstr "Тип оплати замовника"
+
+#: views/dashboard/order-information.twig:84
+msgid "Order user delivery information"
+msgstr "Інформація про доставку замовника"
+
+#: views/dashboard/order-information.twig:94
+msgid "Registered Order user"
+msgstr "Зареєстрований користувач замовлення"
 
 #: views/dashboard/user.twig:2
 msgid "Extra profile data"
@@ -1224,65 +1371,37 @@ msgstr "Підтверджений телефон?"
 msgid "Payment type"
 msgstr "Тип оплати"
 
-#: views/dashboard/user.twig:26
-msgid "Online payment"
-msgstr "Онлайн оплата"
-
 #: views/dashboard/user.twig:34
 msgid "Delivery type"
 msgstr "Тип доставки"
-
-#: views/dashboard/user.twig:37
-msgid "UkrPoshta"
-msgstr "УкрПошта"
-
-#: views/dashboard/user.twig:38
-msgid "Nova Poshta"
-msgstr "Нова Пошта"
 
 #: views/dashboard/user.twig:68
 msgid "Nova Poshta city ref"
 msgstr "Нова Пошта REF міста"
 
-#: views/dashboard/user.twig:74
-msgid "Nova Poshta city name"
-msgstr "Нова Пошта назва міста"
-
-#: views/dashboard/user.twig:80
-msgid "Nova Poshta office number"
-msgstr "Нова Пошта номер відділення"
-
-#: views/dashboard/user.twig:86
-msgid "Nova Poshta office name"
-msgstr "Нова Пошта назва відділення"
-
-#: views/dashboard/user.twig:106
+#: views/dashboard/user.twig:107
 msgid "Technical data"
 msgstr "Технічна інформація"
 
-#: views/dashboard/user.twig:109
+#: views/dashboard/user.twig:110
 msgid "User email verification code for link"
 msgstr "Код підтвердження електронної пошти користувача для посилання"
 
-#: views/dashboard/user.twig:115
+#: views/dashboard/user.twig:116
 msgid "User email verification code"
 msgstr "Код підтвердження електронної пошти користувача"
 
-#: views/dashboard/user.twig:121
+#: views/dashboard/user.twig:122
 msgid "Password recovery code for link"
 msgstr "Код відновлення пароля для посилання"
 
-#: views/dashboard/user.twig:127
+#: views/dashboard/user.twig:128
 msgid "User sms verification code"
 msgstr "Код підтвердження SMS"
 
 #: views/email/base.twig:403
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
-
-#: views/overall/positions.twig:35 views/overall/total.twig:8
-msgid "Total amount"
-msgstr "Загальна сума"
 
 #: views/profile/change-email.twig:14
 msgid "Your email"
