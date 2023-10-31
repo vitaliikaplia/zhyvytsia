@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3 class="title">{{ __('Change email', TEXTDOMAIN) }}</h3>
+<h3 class="title">📧 {{ __('Change email', TEXTDOMAIN) }}</h3>
 
 <form method="post" action="?email=change">
     <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'email-change') }}">

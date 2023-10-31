@@ -4,7 +4,7 @@
 (function ($) {
     $(window).on("load scroll resize", function () {
 
-        if(footerEl && !$('body').hasClass('profile') && !$('body').hasClass('checkout')){
+        if(footerEl && !$('body').hasClass('profile') && !$('body').hasClass('checkout') && !$('body').hasClass('order')){
             if (isInViewport(footerEl)) {
                 if (!bodyEl.classList.contains('footer-in-viewport')) {
                     bodyEl.classList.add('footer-in-viewport');

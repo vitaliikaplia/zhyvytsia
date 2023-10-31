@@ -76,6 +76,46 @@
                     "delay": 0
                 },
                 {
+                    "key": "field_65411160d994b",
+                    "label": "Повідомлення про відсутність попередніх замовлень",
+                    "name": "no_orders_message",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_6541101795e2c",
+                    "label": "Повідомлення про успішне замовлення",
+                    "name": "successful_order_message",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
                     "key": "field_652ecb441633c",
                     "label": "Оптові знижки",
                     "name": "",
@@ -1085,5 +1125,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698645236
+    "modified": 1698763147
 }

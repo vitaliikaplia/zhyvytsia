@@ -1,0 +1,114 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{% set custom_order_statuses = fn('custom_order_statuses') %}
+
+<div class="singleOrderWrapper">
+    <div class="singleOrder">
+        <div class="inner">
+            {% include 'overall/notify.twig' %}
+            <div class="corners">
+                <h3 class="title">🛍️ {{ __('Order', TEXTDOMAIN) }} #{{ order.id }} ({{ custom_order_statuses[order.order_status] }})</h3>
+                <p class="sum">💵 {{ __('Sum', TEXTDOMAIN) }}: {{ order.total_price }}</p>
+            </div>
+            <ul class="orderItems">
+                {% for item in items %}
+                    {% set photo = item.meta('photo') %}
+                    {% set count = ids_arr_count_values[item.ID] %}
+                    {% set price = ids_arr_count_values_prices[item.ID] %}
+                    <li>
+                        <div class="col">
+                            {% if photo %}
+                                <a href="{{ photo.url }}" class="picture fancybox" data-fancybox="gallery-cart" data-buttons="false">
+                                    {{ photo | picture }}
+                                </a>
+                            {% endif %}
+                            <p class="itemTitle"><a href="{{ item.link }}">{{ item.title }}</a></p>
+                        </div>
+                        <div class="col">
+                            <p class="quantity">{{ fn('plural_form', count, ['товар','товари','товарів'] )}}</p>
+                            <span class="price">{{ price }} грн</span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h3 class="title">🪪 {{ __('Order information', TEXTDOMAIN) }}:</h3>
+            <div class="orderInfo">
+                {% if order.order_user_email %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user email', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_email | mask_email }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_first_name %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user first name', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_first_name | mask_string }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_last_name %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user last name', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_last_name | mask_string }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_phone %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user phone', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_phone | mask_phone_number }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_payment_type %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user payment type', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_payment_type }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_delivery_type %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user delivery type', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {{ order.order_user_delivery_type }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if order.order_user_delivery_information %}
+                    <div class="line">
+                        <div class="col">
+                            <p>{{ __('Order user delivery information', TEXTDOMAIN) }}</p>
+                        </div>
+                        <div class="col">
+                            {#{{ order.order_user_delivery_information | mask_address }}#}
+                            Інформація прихована
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

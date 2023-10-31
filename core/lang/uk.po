@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-30 23:17+0200\n"
+"POT-Creation-Date: 2023-10-31 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -294,7 +294,7 @@ msgstr "Адреса (вулиця, будинок, квартира)"
 
 #: core/forms-logic.php:840
 msgid "Nova Poshta city and office is not specified"
-msgstr "Місто та відділення Нової Пошт не вказано"
+msgstr "Місто та відділення Нової Пошти не вказано"
 
 #: core/forms-logic.php:852 views/dashboard/user.twig:74
 msgid "Nova Poshta city name"
@@ -325,55 +325,57 @@ msgstr "Вітаємо! Ваш новий обліковий запис ство
 msgid "Error while creating new user"
 msgstr "Помилка під час створення нового користувача"
 
-#: core/forms-logic.php:1064 core/includes/back/custom-post-types.php:68
+#: core/forms-logic.php:1071 core/includes/back/custom-post-types.php:68
+#: core/pages.php:208 core/pages.php:320 core/pages.php:357 views/order.twig:12
+#: views/profile/order.twig:8 views/profile/orders.twig:11
 msgid "Order"
 msgstr "Замовлення"
 
-#: core/forms-logic.php:1075 core/forms-logic.php:1105
-#: core/forms-logic.php:1147 views/dashboard/user.twig:37
+#: core/forms-logic.php:1089 core/forms-logic.php:1126
+#: core/forms-logic.php:1168 views/dashboard/user.twig:37
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
-#: core/forms-logic.php:1075 core/forms-logic.php:1105
-#: core/forms-logic.php:1147 views/dashboard/user.twig:38
+#: core/forms-logic.php:1089 core/forms-logic.php:1126
+#: core/forms-logic.php:1168 views/dashboard/user.twig:38
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: core/forms-logic.php:1075 core/forms-logic.php:1105
-#: core/forms-logic.php:1147 views/checkout.twig:162
+#: core/forms-logic.php:1089 core/forms-logic.php:1126
+#: core/forms-logic.php:1168 views/checkout.twig:162
 #: views/dashboard/user.twig:39
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: core/forms-logic.php:1076 core/forms-logic.php:1104
-#: core/forms-logic.php:1146 views/dashboard/user.twig:26
+#: core/forms-logic.php:1090 core/forms-logic.php:1125
+#: core/forms-logic.php:1167 views/dashboard/user.twig:26
 msgid "Online payment"
 msgstr "Онлайн оплата"
 
-#: core/forms-logic.php:1076 core/forms-logic.php:1104
-#: core/forms-logic.php:1146 views/checkout.twig:182
+#: core/forms-logic.php:1090 core/forms-logic.php:1125
+#: core/forms-logic.php:1167 views/checkout.twig:182
 #: views/dashboard/user.twig:27
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
-#: core/forms-logic.php:1076 core/forms-logic.php:1104
-#: core/forms-logic.php:1146 views/checkout.twig:190
+#: core/forms-logic.php:1090 core/forms-logic.php:1125
+#: core/forms-logic.php:1167 views/checkout.twig:190
 #: views/dashboard/user.twig:28
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
-#: core/forms-logic.php:1076 core/forms-logic.php:1104
-#: core/forms-logic.php:1146 views/checkout.twig:198
+#: core/forms-logic.php:1090 core/forms-logic.php:1125
+#: core/forms-logic.php:1167 views/checkout.twig:198
 #: views/dashboard/user.twig:29
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
-#: core/forms-logic.php:1104 core/forms-logic.php:1105
-#: core/forms-logic.php:1146 core/forms-logic.php:1147
+#: core/forms-logic.php:1125 core/forms-logic.php:1126
+#: core/forms-logic.php:1167 core/forms-logic.php:1168
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: core/forms-logic.php:1170
+#: core/forms-logic.php:1191
 msgid "New order has been placed"
 msgstr "Нове замовлення розміщено"
 
@@ -734,8 +736,8 @@ msgstr "Батьківська позииція"
 
 #: core/includes/back/custom-post-types.php:47
 #: core/includes/back/custom-post-types.php:67
-#: core/includes/back/custom-post-types.php:69 core/pages.php:162
-#: core/pages.php:241
+#: core/includes/back/custom-post-types.php:69 core/pages.php:164
+#: core/pages.php:346
 msgid "Orders"
 msgstr "Замовлення"
 
@@ -841,6 +843,7 @@ msgid "SKU"
 msgstr "Ідентифікатор"
 
 #: core/includes/back/dashboard-columns-catalog.php:13
+#: views/profile/orders.twig:15
 msgid "Status"
 msgstr "Статус"
 
@@ -875,12 +878,14 @@ msgid "Total amount"
 msgstr "Загальна сума"
 
 #: core/includes/back/dashboard-columns-orders-log.php:11
-#: views/dashboard/order-information.twig:48
+#: views/dashboard/order-information.twig:48 views/order.twig:51
+#: views/profile/order.twig:50
 msgid "Order user first name"
 msgstr "Ім’я замовника"
 
 #: core/includes/back/dashboard-columns-orders-log.php:12
-#: views/dashboard/order-information.twig:68
+#: views/dashboard/order-information.twig:68 views/order.twig:71
+#: views/profile/order.twig:70
 msgid "Order user phone"
 msgstr "Телефон замовника"
 
@@ -901,7 +906,8 @@ msgstr "Поля форми"
 msgid "Add new post"
 msgstr "Додати новий пост"
 
-#: core/includes/back/dashboard-orders-log-meta.php:8
+#: core/includes/back/dashboard-orders-log-meta.php:8 views/order.twig:36
+#: views/profile/order.twig:34
 msgid "Order information"
 msgstr "Інформація про замовлення"
 
@@ -1129,47 +1135,47 @@ msgstr "Сторінка 404"
 msgid "Redirects"
 msgstr "Переадресації"
 
-#: core/pages.php:63 core/pages.php:107 core/pages.php:232
+#: core/pages.php:65 core/pages.php:109 core/pages.php:337
 msgid "Login"
 msgstr "Вхід"
 
-#: core/pages.php:67 core/pages.php:117 core/pages.php:234
+#: core/pages.php:69 core/pages.php:119 core/pages.php:339
 #: views/auth/sign-up.twig:30
 msgid "Sign Up"
 msgstr "Реєстрація"
 
-#: core/pages.php:71 core/pages.php:127 core/pages.php:236
+#: core/pages.php:73 core/pages.php:129 core/pages.php:341
 msgid "Forgot Password"
 msgstr "Забули пароль"
 
-#: core/pages.php:75
+#: core/pages.php:77
 msgid "Home page"
 msgstr "Головна сторінка"
 
-#: core/pages.php:149 core/pages.php:238
+#: core/pages.php:151 core/pages.php:343
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:169 core/pages.php:243 views/base-profile.twig:31
+#: core/pages.php:228 core/pages.php:348 views/base-profile.twig:31
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:176 core/pages.php:245 views/base-profile.twig:32
+#: core/pages.php:235 core/pages.php:350 views/base-profile.twig:32
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
-#: core/pages.php:183 core/pages.php:247 views/base-profile.twig:33
+#: core/pages.php:242 core/pages.php:352 views/base-profile.twig:33
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
 
-#: core/pages.php:212
+#: core/pages.php:271
 msgid "Checkout"
 msgstr "Оформлення замовлення"
 
-#: core/pages.php:250
+#: core/pages.php:355
 msgid "Checkout page"
 msgstr "Оформлення замовлення"
 
@@ -1340,23 +1346,28 @@ msgstr "Ваш кошик порожній"
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 
-#: views/dashboard/order-information.twig:38
+#: views/dashboard/order-information.twig:38 views/order.twig:41
+#: views/profile/order.twig:40
 msgid "Order user email"
 msgstr "Email адреса замовника"
 
-#: views/dashboard/order-information.twig:58
+#: views/dashboard/order-information.twig:58 views/order.twig:61
+#: views/profile/order.twig:60
 msgid "Order user last name"
 msgstr "Прізвище замовника"
 
-#: views/dashboard/order-information.twig:78
-msgid "Order user delivery type"
-msgstr "Тип доставки замовника"
-
-#: views/dashboard/order-information.twig:88
+#: views/dashboard/order-information.twig:78 views/order.twig:81
+#: views/profile/order.twig:80
 msgid "Order user payment type"
 msgstr "Тип оплати замовника"
 
-#: views/dashboard/order-information.twig:98
+#: views/dashboard/order-information.twig:88 views/order.twig:91
+#: views/profile/order.twig:90
+msgid "Order user delivery type"
+msgstr "Тип доставки замовника"
+
+#: views/dashboard/order-information.twig:98 views/order.twig:101
+#: views/profile/order.twig:100
 msgid "Order user delivery information"
 msgstr "Інформація про доставку замовника"
 
@@ -1416,6 +1427,10 @@ msgstr "Код підтвердження SMS"
 msgid "Made with love"
 msgstr "Зроблено з любов’ю"
 
+#: views/order.twig:13 views/profile/order.twig:9 views/profile/orders.twig:14
+msgid "Sum"
+msgstr "Сума"
+
 #: views/profile/change-email.twig:14
 msgid "Your email"
 msgstr "Ваш Email"
@@ -1448,6 +1463,17 @@ msgstr "Телефон не підтверджено"
 #: views/profile/edit.twig:30
 msgid "Save"
 msgstr "Зберегти"
+
+#: views/profile/orders.twig:12
+msgid "Amount of goods"
+msgstr "Кількість товарів"
+
+#: views/profile/orders.twig:13
+msgid "Date"
+msgstr "Дата"
+
+#~ msgid "Your order has been placed"
+#~ msgstr "Ваше замовлення розміщено"
 
 #~ msgid "Select and add a technical specification field"
 #~ msgstr "Оберіть та додайте поле технічної характеристики"

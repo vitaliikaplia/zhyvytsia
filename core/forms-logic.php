@@ -422,7 +422,7 @@ function custom_system_forms_logic_callback() {
     }
 
     /** profile: edit profile */
-    if($path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'edit' && isset($_POST['nonce']) && isset($_GET['profile']) && $_GET['profile'] == 'update'){
+    if(isset($path_segments[0]) && isset($path_segments[1]) && $path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'edit' && isset($_POST['nonce']) && isset($_GET['profile']) && $_GET['profile'] == 'update'){
 
         /** checking nonce */
         if(!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'profile-update')){
@@ -509,7 +509,7 @@ function custom_system_forms_logic_callback() {
     }
 
     /** profile: change email */
-    if($path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'change-email' && isset($_POST['nonce']) && isset($_GET['email']) && $_GET['email'] == 'change' && isset($_POST['u_email']) && $_POST['u_email'] && isset($_POST['u_password']) && $_POST['u_password']){
+    if(isset($path_segments[0]) && isset($path_segments[1]) && $path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'change-email' && isset($_POST['nonce']) && isset($_GET['email']) && $_GET['email'] == 'change' && isset($_POST['u_email']) && $_POST['u_email'] && isset($_POST['u_password']) && $_POST['u_password']){
 
         /** checking nonce */
         if(!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'email-change')){
@@ -602,7 +602,7 @@ function custom_system_forms_logic_callback() {
     }
 
     /** profile: change password */
-    if($path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'change-password' && isset($_POST['nonce']) && isset($_GET['password']) && $_GET['password'] == 'change' && isset($_POST['u_o_password']) && $_POST['u_o_password'] && isset($_POST['u_n_password']) && $_POST['u_n_password']){
+    if(isset($path_segments[0]) && isset($path_segments[1]) && $path_segments[0] == $general_fields['profile']['url'] && $path_segments[1] == 'change-password' && isset($_POST['nonce']) && isset($_GET['password']) && $_GET['password'] == 'change' && isset($_POST['u_o_password']) && $_POST['u_o_password'] && isset($_POST['u_n_password']) && $_POST['u_n_password']){
 
         /** checking nonce */
         if(!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'password-change')){
@@ -1039,7 +1039,10 @@ function custom_system_forms_logic_callback() {
                 'ids_arr_count_values' => $ids_arr_count_values,
                 'ids_arr_count' => $ids_arr_count,
                 'ids_arr_unique' => $ids_arr_unique,
-                'total_price' => $total_price
+                'total_price' => $total_price,
+                'total_price_raw' => $total_price_raw,
+                'discount' => $discount,
+                'ids_arr_count_values_prices' => $ids_arr_count_values_prices
             ] = prepare_positions();
             $context = Timber::context();
             $context['items'] = $items;
@@ -1058,6 +1061,10 @@ function custom_system_forms_logic_callback() {
                 'post_content' => '',
                 'post_status' => 'publish'
             );
+            $public_order_secret = mt_rand(1, 9);
+            for ($i = 1; $i < 50; $i++) {
+                $public_order_secret .= mt_rand(0, 9);
+            }
             $order_id = wp_insert_post($new_order_args);
             $post_update = array(
                 'ID'         => $order_id,
@@ -1065,6 +1072,13 @@ function custom_system_forms_logic_callback() {
             );
             wp_update_post( $post_update );
             update_post_meta( $order_id, 'order_status', 'new_order' );
+            update_post_meta( $order_id, 'total_price_raw', $total_price_raw );
+            update_post_meta( $order_id, 'public_order_secret', $public_order_secret );
+            update_post_meta( $order_id, 'discount', $discount );
+            update_post_meta( $order_id, 'ids_arr_count_values_prices', $ids_arr_count_values_prices );
+            update_post_meta( $order_id, 'ids_arr', $ids_arr );
+            update_post_meta( $order_id, 'ids_arr_count', $ids_arr_count );
+            update_post_meta( $order_id, 'ids_arr_count_values', $ids_arr_count_values );
             update_post_meta( $order_id, 'order_user_id', $order_user_id ?? false );
             update_post_meta( $order_id, 'ordered_items', $ordered_items ?? false );
             update_post_meta( $order_id, 'total_price', $total_price ?? false );
@@ -1075,6 +1089,13 @@ function custom_system_forms_logic_callback() {
             update_post_meta( $order_id, 'order_user_delivery_type', ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? false );
             update_post_meta( $order_id, 'order_user_payment_type', ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
             update_post_meta( $order_id, 'order_user_delivery_information', $delivery_information );
+        }
+
+        /** preparing redirect url */
+        if(is_user_logged_in()){
+            $success_url = $profile_url . 'order/'.$order_id.'/';
+        } else {
+            $success_url = BLOGINFO_URL . '/order/'.$order_id.'/'.$public_order_secret.'/';
         }
 
         /** sending email to client */
@@ -1173,8 +1194,10 @@ function custom_system_forms_logic_callback() {
             }
         }
 
-        setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
-        wp_redirect( $checkout_url );
+        /** cleaning cookie, preparing notify message and redirecting */
+        add_notify('success', $general_fields['shop']['successful_order_message']);
+        setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
+        wp_redirect($success_url);
         exit;
 
     }

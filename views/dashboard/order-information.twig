@@ -72,16 +72,6 @@
     </div>
 </div>
 {% endif %}
-{% if order.order_user_delivery_type %}
-<div class="line">
-    <div class="col">
-        <p>{{ __('Order user delivery type', TEXTDOMAIN) }}</p>
-    </div>
-    <div class="col">
-        {{ order.order_user_delivery_type }}
-    </div>
-</div>
-{% endif %}
 {% if order.order_user_payment_type %}
 <div class="line">
     <div class="col">
@@ -89,6 +79,16 @@
     </div>
     <div class="col">
         {{ order.order_user_payment_type }}
+    </div>
+</div>
+{% endif %}
+{% if order.order_user_delivery_type %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user delivery type', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_delivery_type }}
     </div>
 </div>
 {% endif %}

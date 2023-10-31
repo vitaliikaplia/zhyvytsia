@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3 class="title">{{ __('Edit profile', TEXTDOMAIN) }}</h3>
+<h3 class="title">✏️ {{ __('Edit profile', TEXTDOMAIN) }}</h3>
 
 <form method="post" action="?profile=update">
     <input type="hidden" name="nonce" value="{{ fn('wp_create_nonce', 'profile-update') }}">

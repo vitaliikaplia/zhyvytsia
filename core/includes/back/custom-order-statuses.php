@@ -24,6 +24,7 @@ function custom_order_statuses(){
         'payment_problem' => 'Проблема з оплатою',
         'the_order_has_been_stopped' => 'Замовлення зупинено',
         'cancelled' => 'Скасовано',
-        'archived' => 'Архівний'
+        'done' => 'Виконано',
+        'archived' => 'Архівне'
     );
 }

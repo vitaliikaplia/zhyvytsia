@@ -23,6 +23,8 @@ function custom_system_auth_pages_callback() {
         $path_segments[0] == $general_fields['profile']['url']
         ||
         $path_segments[0] == $general_fields['shop']['checkout_page_url']
+        ||
+        $path_segments[0] == 'order'
     ) {
 
         /** authorised redirects */
@@ -105,7 +107,7 @@ function custom_system_auth_pages_callback() {
 
             $template = 'auth/login.twig';
             $title = __('Login', TEXTDOMAIN);
-            $text = $general_fields['auth']['login']['text'];
+            $context['text'] = $general_fields['auth']['login']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
         }
@@ -115,7 +117,7 @@ function custom_system_auth_pages_callback() {
 
             $template = 'auth/sign-up.twig';
             $title = __('Sign Up', TEXTDOMAIN);
-            $text = $general_fields['auth']['sign_up']['text'];
+            $context['text'] = $general_fields['auth']['sign_up']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
         }
@@ -125,7 +127,7 @@ function custom_system_auth_pages_callback() {
 
             $template = 'auth/forgot-password.twig';
             $title = __('Forgot Password', TEXTDOMAIN);
-            $text = $general_fields['auth']['forgot_password']['text'];
+            $context['text'] = $general_fields['auth']['forgot_password']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
         }
@@ -147,7 +149,7 @@ function custom_system_auth_pages_callback() {
 
             $template = 'auth/password-reset.twig';
             $title = __('Password Reset', TEXTDOMAIN);
-            $text = $general_fields['auth']['password_reset']['text'];
+            $context['text'] = $general_fields['auth']['password_reset']['text'];
             $context['links'] = array_values(array_filter($context['links'], fn($subArray) => $subArray['title'] !== $title));
 
         }
@@ -161,6 +163,63 @@ function custom_system_auth_pages_callback() {
                 $template = 'profile/orders.twig';
                 $title = __('Orders', TEXTDOMAIN);
                 $context['current_page'] = 'orders';
+
+                $sArgs = array(
+                    'post_type' => 'orders-log',
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'meta_key' => 'order_user_id',
+                    'meta_value' => get_current_user_id()
+                );
+                $context['orders'] = Timber::get_posts($sArgs);
+                $context['orders_link_prefix'] = BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/order';
+
+            /** order */
+            } elseif ( $path_segments[1] == 'order'){
+
+                if (!$path_segments[2]){
+                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
+                    exit;
+                }
+
+                $orderId = intval($path_segments[2]);
+
+                if(strlen($orderId) >= 10){
+                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
+                    exit;
+                }
+
+                if(get_post_type($orderId) != "orders-log"){
+                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
+                    exit;
+                }
+
+                if(get_post_meta($orderId, 'order_user_id', true) != get_current_user_id()){
+                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
+                    exit;
+                }
+
+                if ($path_segments[3]){
+                    wp_redirect( BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/' );
+                    exit;
+                }
+
+                $template = 'profile/order.twig';
+                $title = __('Order', TEXTDOMAIN);
+                $context['current_page'] = 'orders';
+                $context['order'] = new TimberPost($orderId);
+
+                $args = array(
+                    'post_type'      => 'catalog',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    'post__in' => get_post_meta($orderId, 'ids_arr_unique', true),
+                    'orderby' => 'title',
+                    'order' => 'ASC'
+                );
+                $context['items'] = Timber::get_posts( $args );
+                $context['ids_arr_count_values'] = get_post_meta($orderId, 'ids_arr_count_values', true);
+                $context['ids_arr_count_values_prices'] = get_post_meta($orderId, 'ids_arr_count_values_prices', true);
 
             /** edit */
             } elseif ( $path_segments[1] == 'edit'){
@@ -214,8 +273,54 @@ function custom_system_auth_pages_callback() {
 
         }
 
+        /** order page */
+        if ($path_segments[0] == 'order'){
+
+            if (!$path_segments[1]){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            $orderId = intval($path_segments[1]);
+
+            if(strlen($orderId) >= 10){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            if(get_post_type($orderId) != "orders-log"){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            if (!$path_segments[2]){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            if ($path_segments[2] != get_post_meta($orderId, 'public_order_secret', true)){
+                wp_redirect( BLOGINFO_URL );
+                exit;
+            }
+
+            $context['order'] = new TimberPost($orderId);
+            $args = array(
+                'post_type'      => 'catalog',
+                'post_status'    => 'publish',
+                'posts_per_page' => -1,
+                'post__in' => get_post_meta($orderId, 'ids_arr_unique', true),
+                'orderby' => 'title',
+                'order' => 'ASC'
+            );
+            $context['items'] = Timber::get_posts( $args );
+            $context['ids_arr_count_values'] = get_post_meta($orderId, 'ids_arr_count_values', true);
+            $context['ids_arr_count_values_prices'] = get_post_meta($orderId, 'ids_arr_count_values_prices', true);
+
+            $template = 'order.twig';
+            $title = __('Order', TEXTDOMAIN);
+        }
+
         $context['title'] = $title;
-        $context['text'] = $text;
         Timber::render( $template, $context );
         exit;
     }
@@ -248,6 +353,8 @@ add_filter( 'document_title_parts', function( $title_parts_array ) {
         }
     } elseif($path_segments[0] == $general_fields['shop']['checkout_page_url']){
         $title_parts_array['title'] = __('Checkout page', TEXTDOMAIN);
+    } elseif($path_segments[0] == 'order'){
+        $title_parts_array['title'] = __('Order', TEXTDOMAIN);
     }
     return $title_parts_array;
 });

@@ -2,6 +2,32 @@
 
 {% block content %}
 
-<h3 class="title">{{ __('My orders', TEXTDOMAIN) }}</h3>
+<h3 class="title">🛍️ {{ __('My orders', TEXTDOMAIN) }}</h3>
+
+{% if orders and orders is iterable %}
+{% set custom_order_statuses = fn('custom_order_statuses') %}
+<div class="orders">
+    <div class="head">
+        <div class="col">{{ __('Order', TEXTDOMAIN) }}</div>
+        <div class="col">{{ __('Amount of goods', TEXTDOMAIN) }}</div>
+        <div class="col">{{ __('Date', TEXTDOMAIN) }}</div>
+        <div class="col">{{ __('Sum', TEXTDOMAIN) }}</div>
+        <div class="col">{{ __('Status', TEXTDOMAIN) }}</div>
+    </div>
+    {% for order in orders %}
+    <a href="{{ orders_link_prefix }}/{{ order.id }}/" class="order">
+        <div class="col">#{{ order.id }}</div>
+        <div class="col">{{ order.ids_arr_count }}</div>
+        <div class="col">{{ order.post_date|date('F d Y') }}</div>
+        <div class="col">{{ order.total_price }}</div>
+        <div class="col">{{ custom_order_statuses[order.order_status] }}</div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="typo noOrdersMessage">
+    {{ general_fields.shop.no_orders_message }}
+</div>
+{% endif %}
 
 {% endblock %}
