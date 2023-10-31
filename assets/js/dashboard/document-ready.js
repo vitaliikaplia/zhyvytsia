@@ -97,8 +97,60 @@
             });
         }
 
+        /** order note popup */
+        $('.edit-order-note').click(function(){
+            let thisEl = $(this),
+                thisElId = thisEl.attr("data-post-id");
+            jQuery.ajax({
+                type: "POST",
+                url: "/wp-admin/admin-ajax.php",
+                dataType: "json",
+                cache: false,
+                data: {
+                    "action": "dashboard_get_order_note",
+                    "post_id": thisElId
+                },
+                success : function (out) {
+                    $('body').append('<div class="orderNotePopupEditorWrapper"><textarea>'+out.note+'</textarea></div>');
+                    let popup = $('.orderNotePopupEditorWrapper'),
+                        editor = popup.find('textarea');
+                    editor.focus();
+                    $('.orderNotePopupEditorWrapper').click(function(e){
+                        if($(e.target).attr('class') == "orderNotePopupEditorWrapper"){
+                            saveAndCloseOrderNotePopup(popup, editor, thisElId);
+                        }
+                    });
+                    editor.keyup(function(e) {
+                        if (e.key === "Escape") {
+                            saveAndCloseOrderNotePopup(popup, editor, thisElId);
+                        }
+                    });
+                }
+            });
+        });
+
     });
 })(jQuery);
+
+/**
+ * editing order note function
+ */
+function saveAndCloseOrderNotePopup(popup, editor, thisElId) {
+    jQuery.ajax({
+        type: "POST",
+        url: "/wp-admin/admin-ajax.php",
+        dataType: "json",
+        cache: false,
+        data: {
+            "action": "dashboard_change_order_note",
+            "note": editor.val().trim(),
+            "post_id": thisElId
+        },
+        success: function(out) {
+            popup.remove();
+        }
+    });
+}
 
 /**
  * JS inside blocks

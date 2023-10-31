@@ -106,6 +106,7 @@ if (function_exists('get_fields')) {
     ));
 }
 
+/** GeoIP */
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Decoder.php';
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'InvalidDatabaseException.php';
 require_once CORE_PATH . DS . 'libs' . DS . 'geoip' . DS . 'Db' . DS . 'Reader' . DS . 'Metadata.php';

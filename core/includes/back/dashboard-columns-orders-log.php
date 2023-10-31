@@ -19,6 +19,7 @@ function add_order_columns($cols) {
             'order_user_first_name' => $cols['order_user_first_name'],
             'order_user_phone' => $cols['order_user_phone'],
             'date' => $cols['date'],
+            'note' => $cols['note'],
             'order_status' => $cols['order_status']
         ];
     }
@@ -67,29 +68,33 @@ function add_order_columns_values($column_name, $post_id) {
         $raw .= '</select>';
         echo $raw;
     }
+    if ( 'note' == $column_name ) {
+        echo '<span class="edit-order-note" data-post-id="'.$post_id.'"></span>';
+    }
 }
 add_filter( 'manage_posts_columns', 'add_order_columns', 1000 );
 add_action( 'manage_posts_custom_column', 'add_order_columns_values', 10, 2 );
 
-/**
- * Change order status
- */
+/** change order status */
 function dashboard_change_order_status_action() {
-
     if( isset($_POST['new_status']) && isset($_POST['post_id']) ){
-
         $new_status = stripslashes($_POST['new_status']);
-
         $post_id = stripslashes($_POST['post_id']);
-
         update_post_meta( $post_id, 'order_status', $new_status );
-
         $toJson['status'] = "ok";
-
         echo json_encode($toJson);
     }
-
     exit;
-
 }
 add_action( 'wp_ajax_dashboard_change_order_status', 'dashboard_change_order_status_action' );
+
+/** change order status */
+function dashboard_get_order_note_action() {
+    if( isset($_POST['post_id']) ){
+        $post_id = stripslashes($_POST['post_id']);
+        $toJson['note'] = get_post_meta( $post_id, 'note', true );
+        echo json_encode($toJson);
+    }
+    exit;
+}
+add_action( 'wp_ajax_dashboard_get_order_note', 'dashboard_get_order_note_action' );
