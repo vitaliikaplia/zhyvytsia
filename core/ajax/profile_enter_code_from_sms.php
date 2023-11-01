@@ -36,7 +36,7 @@ function profile_enter_code_from_sms_action(){
                 '[session]'
             );
             $replace = array(
-                get_session_info($_SERVER['REMOTE_ADDR'])
+                get_session_info(getUserIP())
             );
             $content = Timber::compile( 'email/email.twig', array(
                 'TEXTDOMAIN' => TEXTDOMAIN,

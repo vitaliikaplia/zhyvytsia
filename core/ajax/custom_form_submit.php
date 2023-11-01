@@ -37,10 +37,10 @@ function custom_form_submit_action() {
 
         $text_content .= '<p><b><span>Назва сторінки:</span></b> ' .  '<span>' . $form_name . '</span></p>';
         $text_content .= '<p><b><span>URL сторінки:</span></b> ' .  '<span>' . $form_url . '</span></p>';
-        $text_content .= '<p><b><span>Сесія:</span></b> ' .  '<span>' . get_session_info($_SERVER['REMOTE_ADDR']) . '</span></p>';
+        $text_content .= '<p><b><span>Сесія:</span></b> ' .  '<span>' . get_session_info(getUserIP()) . '</span></p>';
         $form_fields['Назва сторінки'] = $form_name;
         $form_fields['URL сторінки'] = $form_url;
-        $form_fields['Сесія'] = get_session_info($_SERVER['REMOTE_ADDR']);
+        $form_fields['Сесія'] = get_session_info(getUserIP());
 
         $mail_post = array(
             'post_type' => 'mail-log',

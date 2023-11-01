@@ -90,7 +90,7 @@ function custom_system_forms_logic_callback() {
                 '[session]'
             );
             $replace = array(
-                get_session_info($_SERVER['REMOTE_ADDR'])
+                get_session_info(getUserIP())
             );
             $content = Timber::compile( 'email/email.twig', array(
                 'TEXTDOMAIN' => TEXTDOMAIN,
@@ -204,7 +204,7 @@ function custom_system_forms_logic_callback() {
                     'title' => __('Confirm my Email', TEXTDOMAIN)
                 )),
                 emoji_numbers($user_email_verification_code),
-                get_session_info($_SERVER['REMOTE_ADDR'])
+                get_session_info(getUserIP())
             );
             $content = Timber::compile( 'email/email.twig', array(
                 'TEXTDOMAIN' => TEXTDOMAIN,
@@ -289,7 +289,7 @@ function custom_system_forms_logic_callback() {
                 'link' => DO_URL . $encrypted_for_link,
                 'title' => __('Change my password', TEXTDOMAIN)
             )),
-            get_session_info($_SERVER['REMOTE_ADDR'])
+            get_session_info(getUserIP())
         );
         $content = Timber::compile( 'email/email.twig', array(
             'TEXTDOMAIN' => TEXTDOMAIN,
@@ -404,7 +404,7 @@ function custom_system_forms_logic_callback() {
             '[session]'
         );
         $replace = array(
-            get_session_info($_SERVER['REMOTE_ADDR'])
+            get_session_info(getUserIP())
         );
         $content = Timber::compile( 'email/email.twig', array(
             'TEXTDOMAIN' => TEXTDOMAIN,
@@ -587,7 +587,7 @@ function custom_system_forms_logic_callback() {
                 'title' => __('Confirm my Email', TEXTDOMAIN)
             )),
             emoji_numbers($user_email_verification_code),
-            get_session_info($_SERVER['REMOTE_ADDR'])
+            get_session_info(getUserIP())
         );
         $content = Timber::compile( 'email/email.twig', array(
             'TEXTDOMAIN' => TEXTDOMAIN,
@@ -672,7 +672,7 @@ function custom_system_forms_logic_callback() {
             '[session]'
         );
         $replace = array(
-            get_session_info($_SERVER['REMOTE_ADDR'])
+            get_session_info(getUserIP())
         );
         $content = Timber::compile( 'email/email.twig', array(
             'TEXTDOMAIN' => TEXTDOMAIN,
@@ -990,7 +990,7 @@ function custom_system_forms_logic_callback() {
                             'title' => __('Confirm my Email', TEXTDOMAIN)
                         )),
                         emoji_numbers($user_email_verification_code),
-                        get_session_info($_SERVER['REMOTE_ADDR'])
+                        get_session_info(getUserIP())
                     );
                     $content = Timber::compile( 'email/email.twig', array(
                         'TEXTDOMAIN' => TEXTDOMAIN,
@@ -1141,7 +1141,7 @@ function custom_system_forms_logic_callback() {
                 ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
                 $delivery_information,
                 $general_fields['shop']['details_for_payment'],
-                get_session_info($_SERVER['REMOTE_ADDR'])
+                get_session_info(getUserIP())
             );
             $content = Timber::compile( 'email/email.twig', array(
                 'TEXTDOMAIN' => TEXTDOMAIN,
@@ -1182,7 +1182,7 @@ function custom_system_forms_logic_callback() {
                     ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
                     ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
                     $delivery_information,
-                    get_session_info($_SERVER['REMOTE_ADDR'])
+                    get_session_info(getUserIP())
                 );
                 $content = Timber::compile( 'email/email.twig', array(
                     'TEXTDOMAIN' => TEXTDOMAIN,

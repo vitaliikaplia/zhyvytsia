@@ -42,7 +42,7 @@ function profile_enter_code_from_email_action(){
                     'link' => BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/',
                     'title' => __('Go to my profile', TEXTDOMAIN)
                 )),
-                get_session_info($_SERVER['REMOTE_ADDR'])
+                get_session_info(getUserIP())
             );
 
             $content = Timber::compile( 'email/email.twig', array(

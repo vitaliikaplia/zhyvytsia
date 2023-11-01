@@ -44,7 +44,7 @@ function profile_resend_verification_code_to_email_action(){
                 'title' => __('Confirm my Email', TEXTDOMAIN)
             )),
             emoji_numbers($user_email_verification_code),
-            get_session_info($_SERVER['REMOTE_ADDR'])
+            get_session_info(getUserIP())
         );
 
         $content = Timber::compile( 'email/email.twig', array(

@@ -58,7 +58,7 @@ function custom_system_do_page_callback() {
                             'link' => BLOGINFO_URL . '/' . $general_fields['profile']['url'] . '/',
                             'title' => __('Go to my profile', TEXTDOMAIN)
                         )),
-                        get_session_info($_SERVER['REMOTE_ADDR'])
+                        get_session_info(getUserIP())
                     );
                     $content = Timber::compile( 'email/email.twig', array(
                         'TEXTDOMAIN' => TEXTDOMAIN,
