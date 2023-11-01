@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 15:26+0200\n"
+"POT-Creation-Date: 2023-11-01 18:33+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -331,51 +331,51 @@ msgstr "Помилка під час створення нового корис�
 msgid "Order"
 msgstr "Замовлення"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/dashboard/user.twig:37
+#: core/forms-logic.php:1111 core/forms-logic.php:1142
+#: core/forms-logic.php:1184 views/dashboard/user.twig:37
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/dashboard/user.twig:38
+#: core/forms-logic.php:1111 core/forms-logic.php:1142
+#: core/forms-logic.php:1184 views/dashboard/user.twig:38
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/checkout.twig:162
+#: core/forms-logic.php:1111 core/forms-logic.php:1142
+#: core/forms-logic.php:1184 views/checkout.twig:162
 #: views/dashboard/user.twig:39
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1140
-#: core/forms-logic.php:1182 views/dashboard/user.twig:26
+#: core/forms-logic.php:1112 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/dashboard/user.twig:26
 msgid "Online payment"
 msgstr "Онлайн оплата"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1140
-#: core/forms-logic.php:1182 views/checkout.twig:182
+#: core/forms-logic.php:1112 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/checkout.twig:182
 #: views/dashboard/user.twig:27
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1140
-#: core/forms-logic.php:1182 views/checkout.twig:190
+#: core/forms-logic.php:1112 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/checkout.twig:190
 #: views/dashboard/user.twig:28
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1140
-#: core/forms-logic.php:1182 views/checkout.twig:198
+#: core/forms-logic.php:1112 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/checkout.twig:198
 #: views/dashboard/user.twig:29
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
-#: core/forms-logic.php:1140 core/forms-logic.php:1141
-#: core/forms-logic.php:1182 core/forms-logic.php:1183
+#: core/forms-logic.php:1141 core/forms-logic.php:1142
+#: core/forms-logic.php:1183 core/forms-logic.php:1184
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: core/forms-logic.php:1206
+#: core/forms-logic.php:1207
 msgid "New order has been placed"
 msgstr "Нове замовлення розміщено"
 
@@ -936,7 +936,8 @@ msgstr "Поля форми"
 msgid "Add new post"
 msgstr "Додати новий пост"
 
-#: core/includes/back/dashboard-orders-log-meta.php:8 views/order.twig:36
+#: core/includes/back/dashboard-orders-log-meta.php:8
+#: core/includes/back/dashboard-payments-log-meta.php:8 views/order.twig:36
 #: views/profile/order.twig:34
 msgid "Order information"
 msgstr "Інформація про замовлення"
@@ -945,7 +946,7 @@ msgstr "Інформація про замовлення"
 msgid "Update theme version"
 msgstr "Оновити версію теми"
 
-#: core/includes/back/prepare-online-payment.php:85
+#: core/includes/back/prepare-online-payment.php:15
 msgid "Payment for order"
 msgstr "Оплата для замовлення"
 
@@ -1406,12 +1407,24 @@ msgid "Order user delivery information"
 msgstr "Інформація про доставку замовника"
 
 #: views/dashboard/order-information.twig:108
+msgid "Order user session information"
+msgstr "Інформація про сесію замовника"
+
+#: views/dashboard/order-information.twig:118
 msgid "Registered Order user"
 msgstr "Зареєстрований користувач замовлення"
 
-#: views/dashboard/order-information.twig:116
+#: views/dashboard/order-information.twig:126
 msgid "Order note"
 msgstr "Примітка до замовлення"
+
+#: views/dashboard/payment-information.twig:4
+msgid "Invoice ID"
+msgstr "Ідентифікатор рахунку-фактури"
+
+#: views/dashboard/payment-information.twig:14
+msgid "Redirect URL"
+msgstr "URL Переадресації"
 
 #: views/dashboard/user.twig:2
 msgid "Extra profile data"

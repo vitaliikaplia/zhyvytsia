@@ -102,6 +102,16 @@
     </div>
 </div>
 {% endif %}
+{% if order.order_user_session_information %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order user session information', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ order.order_user_session_information }}
+    </div>
+</div>
+{% endif %}
 {% if order_user %}
 <div class="line">
     <div class="col">

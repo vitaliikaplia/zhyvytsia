@@ -1111,6 +1111,7 @@ function custom_system_forms_logic_callback() {
             update_post_meta( $order_id, 'order_user_delivery_type', ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? false );
             update_post_meta( $order_id, 'order_user_payment_type', ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
             update_post_meta( $order_id, 'order_user_delivery_information', $delivery_information );
+            update_post_meta( $order_id, 'order_user_session_information', get_session_info(getUserIP()) );
         }
 
         /** sending email to client */
