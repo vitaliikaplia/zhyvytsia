@@ -1,0 +1,100 @@
+{% if payment.invoiceId %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Invoice ID', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ payment.invoiceId }}
+    </div>
+</div>
+{% endif %}
+{% if payment.pageUrl %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Redirect URL', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        {{ payment.pageUrl }}
+    </div>
+</div>
+{% endif %}
+{% if payment.paymentStatus %}
+<div class="line">
+    <div class="col">
+        <p>status</p>
+    </div>
+    <div class="col">
+        {{ payment.paymentStatus }}
+    </div>
+</div>
+{% endif %}
+{% if payment.payMethod %}
+<div class="line">
+    <div class="col">
+        <p>payMethod</p>
+    </div>
+    <div class="col">
+        {{ payment.payMethod }}
+    </div>
+</div>
+{% endif %}
+{% if payment.amount %}
+<div class="line">
+    <div class="col">
+        <p>amount</p>
+    </div>
+    <div class="col">
+        {{ payment.amount }}
+    </div>
+</div>
+{% endif %}
+{% if payment.ccy %}
+<div class="line">
+    <div class="col">
+        <p>ccy</p>
+    </div>
+    <div class="col">
+        {{ payment.ccy }}
+    </div>
+</div>
+{% endif %}
+{% if payment.finalAmount %}
+<div class="line">
+    <div class="col">
+        <p>finalAmount</p>
+    </div>
+    <div class="col">
+        {{ payment.finalAmount }}
+    </div>
+</div>
+{% endif %}
+{% if payment.createdDate %}
+<div class="line">
+    <div class="col">
+        <p>createdDate</p>
+    </div>
+    <div class="col">
+        {{ payment.createdDate }}
+    </div>
+</div>
+{% endif %}
+{% if payment.modifiedDate %}
+<div class="line">
+    <div class="col">
+        <p>modifiedDate</p>
+    </div>
+    <div class="col">
+        {{ payment.modifiedDate }}
+    </div>
+</div>
+{% endif %}
+{% if payment.reference %}
+<div class="line">
+    <div class="col">
+        <p>reference</p>
+    </div>
+    <div class="col">
+        {{ payment.reference }}
+    </div>
+</div>
+{% endif %}

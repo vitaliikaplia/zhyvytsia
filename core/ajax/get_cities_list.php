@@ -2,6 +2,8 @@
 
 if(!defined('ABSPATH')){exit;}
 
+use LisDev\Delivery\NovaPoshtaApi2;
+
 function get_cities_list_action() {
 
     if(isset($_POST['search'])){

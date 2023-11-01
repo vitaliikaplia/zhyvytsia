@@ -39,7 +39,7 @@ add_action( 'admin_init', 'add_admin_menu_separator' );
 
 function set_admin_menu_separator() {
     do_action( 'admin_init', 25 );
-    do_action( 'admin_init', 28 );
+    do_action( 'admin_init', 29 );
     do_action( 'admin_init', 87 );
 }
 add_action( 'admin_menu', 'set_admin_menu_separator' );

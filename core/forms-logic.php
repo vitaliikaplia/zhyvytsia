@@ -795,6 +795,14 @@ function custom_system_forms_logic_callback() {
         /** define payment type */
         $payment_type = htmlspecialchars($_POST['payment_type'], ENT_QUOTES, 'UTF-8');
 
+        /** check if payment type specified */
+        if( ! ( $payment_type == "online_payment" || $payment_type == "cod_payment" || $payment_type == "payment_upon_receipt" || $payment_type == "payment_by_details" ) ){
+            add_notify('error', __('Payment type is not specified', TEXTDOMAIN));
+            setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
+            wp_redirect( $checkout_url );
+            exit;
+        }
+
         /** check if delivery data specified */
         if($delivery_type == "up"){
 
@@ -814,17 +822,6 @@ function custom_system_forms_logic_callback() {
                 exit;
             }
 
-            /** define address data */
-            $user_region = htmlspecialchars($_POST['user_region'], ENT_QUOTES, 'UTF-8');
-            $user_city = htmlspecialchars($_POST['user_city'], ENT_QUOTES, 'UTF-8');
-            $user_zip = htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8');
-            $user_address = htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8');
-
-            $delivery_information = "<p>" . __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) . ": <b>" . $user_region . "</b><br>";
-            $delivery_information .= __('City (or settlement)', TEXTDOMAIN) . ": <b>" . $user_city . "</b><br>";
-            $delivery_information .= __('ZIP Code', TEXTDOMAIN) . ": <b>" . $user_zip . "</b><br>";
-            $delivery_information .= __('Address (street, house, apartment)', TEXTDOMAIN) . ": <b>" . $user_address . "</b></p>";
-
         } elseif ($delivery_type == "np"){
 
             /** check if nova poshta city and office specified */
@@ -843,16 +840,6 @@ function custom_system_forms_logic_callback() {
                 exit;
             }
 
-            /** define nova poshta city and office */
-            $user_np_city_ref = htmlspecialchars($_POST['user_np_city_ref'], ENT_QUOTES, 'UTF-8');
-            $user_np_city_name = htmlspecialchars($_POST['user_np_city_name'], ENT_QUOTES, 'UTF-8');
-            $user_np_office_number = htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8');
-            $user_np_office_name = htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8');
-
-            $delivery_information = "<p>" . __('Nova Poshta city name', TEXTDOMAIN) . ": <b>" . $user_np_city_name . "</b><br>";
-            $delivery_information .= __('Nova Poshta office name', TEXTDOMAIN) . ": <b>" . $user_np_office_name . "</b><br>";
-            $delivery_information .= __('Nova Poshta office number', TEXTDOMAIN) . ": <b>" . $user_np_office_number . "</b></p>";
-
         } elseif ($delivery_type == "pu"){
 
             /** check if self pickup point specified */
@@ -863,11 +850,45 @@ function custom_system_forms_logic_callback() {
                 exit;
             }
 
+        }
+
+        /** preparing delivery information */
+        if($delivery_type == "up" || $delivery_type == "np" || $delivery_type == "pu"){
+
+            /** define address data */
+            $user_region = htmlspecialchars($_POST['user_region'], ENT_QUOTES, 'UTF-8');
+            $user_city = htmlspecialchars($_POST['user_city'], ENT_QUOTES, 'UTF-8');
+            $user_zip = htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8');
+            $user_address = htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8');
+
+            /** define nova poshta city and office */
+            $user_np_city_ref = htmlspecialchars($_POST['user_np_city_ref'], ENT_QUOTES, 'UTF-8');
+            $user_np_city_name = htmlspecialchars($_POST['user_np_city_name'], ENT_QUOTES, 'UTF-8');
+            $user_np_office_number = htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8');
+            $user_np_office_name = htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8');
+
             /** define self pickup point */
             $user_pickup_point = htmlspecialchars($_POST['user_pickup_point'], ENT_QUOTES, 'UTF-8');
 
-            $point_id = intval(str_replace('point-','',$user_pickup_point))-1;
-            $delivery_information = "<p>".__('Pickup point', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['name'] . "</b></p>";
+            if($delivery_type == "up"){
+
+                $delivery_information = "<p>" . __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) . ": <b>" . $user_region . "</b><br>";
+                $delivery_information .= __('City (or settlement)', TEXTDOMAIN) . ": <b>" . $user_city . "</b><br>";
+                $delivery_information .= __('ZIP Code', TEXTDOMAIN) . ": <b>" . $user_zip . "</b><br>";
+                $delivery_information .= __('Address (street, house, apartment)', TEXTDOMAIN) . ": <b>" . $user_address . "</b></p>";
+
+            } elseif ($delivery_type == "np"){
+
+                $delivery_information = "<p>" . __('Nova Poshta city name', TEXTDOMAIN) . ": <b>" . $user_np_city_name . "</b><br>";
+                $delivery_information .= __('Nova Poshta office name', TEXTDOMAIN) . ": <b>" . $user_np_office_name . "</b><br>";
+                $delivery_information .= __('Nova Poshta office number', TEXTDOMAIN) . ": <b>" . $user_np_office_number . "</b></p>";
+
+            } elseif ($delivery_type == "pu"){
+
+                $point_id = intval(str_replace('point-','',$user_pickup_point))-1;
+                $delivery_information = "<p>".__('Pickup point', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['name'] . "</b></p>";
+
+            }
 
         }
 
@@ -1077,6 +1098,7 @@ function custom_system_forms_logic_callback() {
             update_post_meta( $order_id, 'discount', $discount );
             update_post_meta( $order_id, 'ids_arr_count_values_prices', $ids_arr_count_values_prices );
             update_post_meta( $order_id, 'ids_arr', $ids_arr );
+            update_post_meta( $order_id, 'ids_arr_unique', $ids_arr_unique );
             update_post_meta( $order_id, 'ids_arr_count', $ids_arr_count );
             update_post_meta( $order_id, 'ids_arr_count_values', $ids_arr_count_values );
             update_post_meta( $order_id, 'order_user_id', $order_user_id ?? false );
@@ -1089,13 +1111,6 @@ function custom_system_forms_logic_callback() {
             update_post_meta( $order_id, 'order_user_delivery_type', ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? false );
             update_post_meta( $order_id, 'order_user_payment_type', ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
             update_post_meta( $order_id, 'order_user_delivery_information', $delivery_information );
-        }
-
-        /** preparing redirect url */
-        if(is_user_logged_in()){
-            $success_url = $profile_url . 'order/'.$order_id.'/';
-        } else {
-            $success_url = BLOGINFO_URL . '/order/'.$order_id.'/'.$public_order_secret.'/';
         }
 
         /** sending email to client */
@@ -1194,10 +1209,23 @@ function custom_system_forms_logic_callback() {
             }
         }
 
-        /** cleaning cookie, preparing notify message and redirecting */
-        add_notify('success', $general_fields['shop']['successful_order_message']);
-        setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
-        wp_redirect($success_url);
+        /** preparing redirect url */
+        if($payment_type == "online_payment"){
+            /** creating new payment and redirection url to bank payment system */
+            $redirect_url = prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count);
+        } else {
+            /** preparing new order url, notify message and removing cookie cart */
+            add_notify('success', $general_fields['shop']['successful_order_message']);
+            setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
+            if(is_user_logged_in()){
+                $redirect_url = $profile_url . 'order/'.$order_id.'/';
+            } else {
+                $redirect_url = BLOGINFO_URL . '/order/'.$order_id.'/'.$public_order_secret.'/';
+            }
+        }
+
+        /** redirecting */
+        wp_redirect($redirect_url);
         exit;
 
     }

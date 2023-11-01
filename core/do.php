@@ -102,6 +102,37 @@ function custom_system_do_page_callback() {
                     }
                 }
                 break;
+            case "redirect_to_new_order":
+                if( $order_id = intval(stripslashes($arr_data['order_id'])) ){
+                    /** preparing new order url */
+                    if(is_user_logged_in()){
+                        $order_url = $profile_url . 'order/'.$order_id.'/';
+                    } else {
+                        $order_url = BLOGINFO_URL . '/order/'.$order_id.'/'.get_post_meta($order_id, 'public_order_secret', true).'/';
+                    }
+                    add_notify('success', $general_fields['shop']['successful_order_message']);
+                    setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
+                    wp_redirect($order_url);
+                } else {
+                    wp_redirect(BLOGINFO_URL);
+                }
+                break;
+            case "update_payment_information":
+                if( $payment_id = intval(stripslashes($arr_data['payment_id'])) ){
+                    $post_data = file_get_contents("php://input");
+                    $data_array = json_decode($post_data, true);
+                    if($data_array['invoiceId'] == get_post_meta( $payment_id, 'invoiceId', true )){
+                        update_post_meta( $payment_id, 'paymentStatus', $data_array['status'] );
+                        update_post_meta( $payment_id, 'payMethod', $data_array['payMethod'] );
+                        update_post_meta( $payment_id, 'amount', $data_array['amount'] );
+                        update_post_meta( $payment_id, 'ccy', $data_array['ccy'] );
+                        update_post_meta( $payment_id, 'finalAmount', $data_array['finalAmount'] );
+                        update_post_meta( $payment_id, 'createdDate', $data_array['createdDate'] );
+                        update_post_meta( $payment_id, 'modifiedDate', $data_array['modifiedDate'] );
+                        update_post_meta( $payment_id, 'reference', $data_array['reference'] );
+                    }
+                }
+                break;
             default:
                 wp_redirect(BLOGINFO_URL);
                 break;

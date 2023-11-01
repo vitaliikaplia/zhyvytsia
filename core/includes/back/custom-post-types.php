@@ -83,6 +83,48 @@ register_post_type('orders-log', array(
 );
 
 /**
+ * Payments
+ */
+register_post_type('payments-log', array(
+        'label' => __('Payments', TEXTDOMAIN),
+        'description' => '',
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => false,
+        'capability_type' => 'post',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'rewrite' => array('slug' => '', 'with_front' => false),
+        'query_var' => true,
+        'has_archive' => false,
+        'exclude_from_search' => true,
+        'menu_position' => 27,
+        'menu_icon' => 'dashicons-money-alt',
+        'supports' => array('title'),
+        'capabilities' => array(
+            'create_posts' => false
+        ),
+        'labels' => array (
+            'name' => __('Payments', TEXTDOMAIN),
+            'singular_name' => __('Payment', TEXTDOMAIN),
+            'menu_name' => __('Payments', TEXTDOMAIN),
+            'add_new' => __('Add', TEXTDOMAIN),
+            'add_new_item' => __('Add', TEXTDOMAIN),
+            'edit' => __('Edit', TEXTDOMAIN),
+            'edit_item' => __('Edit', TEXTDOMAIN),
+            'new_item' => __('New', TEXTDOMAIN),
+            'view' => __('View', TEXTDOMAIN),
+            'view_item' => __('View', TEXTDOMAIN),
+            'search_items' => __('Search for payments', TEXTDOMAIN),
+            'not_found' => __('No payments found', TEXTDOMAIN),
+            'not_found_in_trash' => __('No payments found in trash', TEXTDOMAIN),
+            'parent' => __('Parent', TEXTDOMAIN),
+        )
+    )
+);
+
+/**
  * Feedback
  */
 register_post_type('feedback', array(

@@ -2,6 +2,8 @@
 
 if(!defined('ABSPATH')){exit;}
 
+use LisDev\Delivery\NovaPoshtaApi2;
+
 function np_get_offices_by_city_ref($ref) {
 
     if($ref){
@@ -18,12 +20,14 @@ function np_get_offices_by_city_ref($ref) {
         $warehouses = $np->getWarehouses($ref);
         $results = array();
 
+        $weight = intval($general_fields['shop']['reserve_weight_in_grams']);
+
         $ids_arr = array_filter(explode(".", wp_unslash(stripslashes($_COOKIE['cart']))));
         if(!empty($ids_arr)){
             foreach ($ids_arr as $cid){
                 $weight += get_field('weight_in_grams', $cid);
             }
-            $weight = ceil( ( $weight + intval($general_fields['shop']['reserve_weight_in_grams']) ) / 1000);
+            $weight = ceil( $weight / 1000);
         }
 
         if($warehouses['success'] && !empty($warehouses['data'])){

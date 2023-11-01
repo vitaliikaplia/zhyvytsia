@@ -2,6 +2,9 @@
 
 if(!defined('ABSPATH')){exit;}
 
+/** vendor */
+require_once 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+
 /** let's go! */
 require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 
@@ -76,6 +79,40 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //створили клієнта - через нього запити будуть слатись
 //$monoClient = new \MonoPay\Client($general_fields['shop']['monobank_token']);
 
+//для створення платежів створюємо цей об'єкт
+//$monoPayment = new \MonoPay\Payment($monoClient);
+
+//інформація про платіж
+//$invoice = $monoPayment->info('231031E3zcxkL4jwwExZ');
+//pr($invoice);
+
+//створення платежу
+//$invoice = $monoPayment->create(
+//    1000,
+//    [
+//        //деталі оплати
+//        'merchantPaymInfo' => [
+//            'reference' => 'my_shop_order_28142', //номер чека, замовлення, тощо; визначається мерчантом (вами)
+//            'destination' => 'Оплата за замовлення #28142', //призначення платежу
+//            'basketOrder' => [ //наповнення замовлення, використовується для відображення кошика замовлення
+//                [
+//                    'name' => 'Сосновий квас', //назва товару
+//                    'qty' => 4, //кількість
+//                    'sum' => 80, //сума у мінімальних одиницях валюти за одиницю товару
+//                    'icon' => 'https://zhivitsa.com.ua/wp-content/uploads/2023/07/sosnoviy_text_1-576x1024.jpg', //посилання на зображення товару
+//                    'unit' => 'пляшка', //назва одиниці вимiру товару
+//                ],
+//            ],
+//        ],
+//        'redirectUrl' => 'https://zhivitsa.com.ua/', //адреса для повернення (GET) - на цю адресу буде переадресовано користувача після завершення оплати (у разі успіху або помилки)
+//        'webHookUrl' => 'https://zhivitsa.com.ua/secret234256565453354634/log.php', //адреса для CallBack (POST) – на цю адресу буде надіслано дані про стан платежу при кожній зміні статусу. Зміст тіла запиту ідентичний відповіді запиту “перевірки статусу рахунку”
+//        'validity' => 3600 * 24 * 7, //строк дії в секундах, за замовчуванням рахунок перестає бути дійсним через 24 години
+//        'paymentType' => 'debit', //debit | hold. Тип операції. Для значення hold термін складає 9 днів. Якщо через 9 днів холд не буде фіналізовано — він скасовується
+//    ]
+//);
+
+//pr($invoice);
+
 //$general_fields = cache_general_fields();
 //
 //$np = new NovaPoshtaApi2(
@@ -114,7 +151,7 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //}
 
 //$general_fields = cache_general_fields();
-//
+//use LisDev\Delivery\NovaPoshtaApi2;
 //$np = new NovaPoshtaApi2(
 //    $general_fields['shop']['nova_poshta_api_key'],
 //    'ua',
@@ -130,3 +167,77 @@ require_once 'core' . DIRECTORY_SEPARATOR . 'init.php';
 //pr($current_user->ID);
 
 //pr(custom_order_statuses());
+
+//$ip = '207.97.227.239';
+//pr(get_ip_info($ip));
+
+//[
+//    'ids_arr' => $ids_arr,
+//    'items' => $items,
+//    'ids_arr_count_values' => $ids_arr_count_values,
+//    'ids_arr_count' => $ids_arr_count,
+//    'ids_arr_unique' => $ids_arr_unique,
+//    'total_price' => $total_price,
+//    'total_price_raw' => $total_price_raw,
+//    'discount' => $discount,
+//    'ids_arr_count_values_prices' => $ids_arr_count_values_prices
+//] = prepare_positions();
+//$args = array(
+//    'post_type'      => 'catalog',
+//    'post_status'    => 'publish',
+//    'posts_per_page' => -1,
+//    'post__in' => $ids_arr_unique,
+//    'orderby' => 'title',
+//    'order' => 'ASC'
+//);
+//$the_query = new WP_Query( $args );
+//$items_for_mono = array();
+//if ( $the_query->have_posts() ) :
+//    while ( $the_query->have_posts() ) : $the_query->the_post();
+//        $item = array();
+//        $item['name'] = get_the_title();
+//        $qty = $ids_arr_count_values[get_the_ID()];
+//        $item['qty'] = $qty;
+//        if( $general_fields['shop']['enable_wholesale_discounts'] && $ids_arr_count >= intval($general_fields['shop']['minimum_quantity_of_products_in_the_cart_for_wholesale_discount']) ){
+//            $price = get_field('price');
+//            $item['sum'] = ( $price / 100 ) * ( 100 - intval($general_fields['shop']['wholesale_discount_percentage']) );
+//        } else {
+//            $item['sum'] = get_field('price');
+//        }
+//        $photo = get_field('photo');
+//        $item['icon'] = $photo['url'];
+//        $item['unit'] = plural_form_title($qty, array('товар','товари','товарів'));
+//        $items_for_mono[] = $item;
+//    endwhile;
+//endif;
+//wp_reset_postdata();
+
+//$items_for_mono = [ // наповнення замовлення, використовується для відображення кошика замовлення
+//    [
+//        'name' => 'Сосновий квас', // назва товару
+//        'qty' => 4, // кількість
+//        'sum' => 80, // сума у мінімальних одиницях валюти за одиницю товару
+//        'icon' => 'https://zhivitsa.com.ua/wp-content/uploads/2023/07/sosnoviy_text_1-576x1024.jpg', // посилання на зображення товару
+//        'unit' => 'пляшка', // назва одиниці вимiру товару
+//    ],
+//    [
+//        'name' => 'Сосновий квас', // назва товару
+//        'qty' => 4, // кількість
+//        'sum' => 80, // сума у мінімальних одиницях валюти за одиницю товару
+//        'icon' => 'https://zhivitsa.com.ua/wp-content/uploads/2023/07/sosnoviy_text_1-576x1024.jpg', // посилання на зображення товару
+//        'unit' => 'пляшка', // назва одиниці вимiру товару
+//    ],
+//];
+
+//pr($items_for_mono);
+
+///** логуємо новий платіж */
+//$new_payment_args = array(
+//    'post_type' => 'payments-log',
+//    'post_title' => __("Payment for order", TEXTDOMAIN) . ' #123',
+//    'post_content' => '',
+//    'post_status' => 'publish'
+//);
+//$payment_id = wp_insert_post($new_payment_args);
+//update_post_meta( $payment_id, 'invoice_id', '2310314vMdocX2bwSk9C' );
+//update_post_meta( $payment_id, 'redirect', 'https://pay.mbnk.biz/2310314vMdocX2bwSk9C' );

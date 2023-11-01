@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-31 16:53+0200\n"
+"POT-Creation-Date: 2023-11-01 15:26+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -48,7 +48,7 @@ msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:969
+#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:990
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -58,7 +58,7 @@ msgid "New code sent..."
 msgstr "Новий код надіслано…"
 
 #: core/ajax/profile_resend_verification_code_to_sms.php:24
-#: core/forms-logic.php:488 core/forms-logic.php:1006
+#: core/forms-logic.php:488 core/forms-logic.php:1027
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
@@ -103,7 +103,7 @@ msgstr "Пароль задовгий"
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: core/forms-logic.php:150 core/forms-logic.php:917
+#: core/forms-logic.php:150 core/forms-logic.php:938
 msgid "This email address is already taken"
 msgstr "Ця електронна адреса вже зайнята"
 
@@ -184,7 +184,7 @@ msgstr "Прізвище видалено"
 msgid "User phone updated"
 msgstr "Телефон користувача оновлено"
 
-#: core/forms-logic.php:492 core/forms-logic.php:909
+#: core/forms-logic.php:492 core/forms-logic.php:930
 msgid "This phone number is already taken"
 msgstr "Цей номер телефону вже зайнятий"
 
@@ -264,118 +264,118 @@ msgstr "Номер телефону недійсний"
 msgid "Delivery type is not specified"
 msgstr "Тип доставки не вказано"
 
-#: core/forms-logic.php:789
+#: core/forms-logic.php:789 core/forms-logic.php:800
 msgid "Payment type is not specified"
 msgstr "Тип оплати не вказано"
 
-#: core/forms-logic.php:811
+#: core/forms-logic.php:819
 msgid "Address is not specified"
 msgstr "Address is not specified"
 
-#: core/forms-logic.php:823 views/checkout.twig:210
+#: core/forms-logic.php:837
+msgid "Nova Poshta city and office is not specified"
+msgstr "Місто та відділення Нової Пошти не вказано"
+
+#: core/forms-logic.php:847
+msgid "Self pickup point is not specified"
+msgstr "Пункт самовивозу не вказано"
+
+#: core/forms-logic.php:875 views/checkout.twig:210
 #: views/dashboard/user.twig:44
 msgid "Region (for example, Kyivska, Lvivska, etc.)"
 msgstr "Область (наприклад, Київська, Львівська тощо)"
 
-#: core/forms-logic.php:824 views/checkout.twig:214
+#: core/forms-logic.php:876 views/checkout.twig:214
 #: views/dashboard/user.twig:50
 msgid "City (or settlement)"
 msgstr "Місто (або населений пункт)"
 
-#: core/forms-logic.php:825 views/checkout.twig:218
+#: core/forms-logic.php:877 views/checkout.twig:218
 #: views/dashboard/user.twig:56
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
-#: core/forms-logic.php:826 views/checkout.twig:222
+#: core/forms-logic.php:878 views/checkout.twig:222
 #: views/dashboard/user.twig:62
 msgid "Address (street, house, apartment)"
 msgstr "Адреса (вулиця, будинок, квартира)"
 
-#: core/forms-logic.php:840
-msgid "Nova Poshta city and office is not specified"
-msgstr "Місто та відділення Нової Пошти не вказано"
-
-#: core/forms-logic.php:852 views/dashboard/user.twig:74
+#: core/forms-logic.php:882 views/dashboard/user.twig:74
 msgid "Nova Poshta city name"
 msgstr "Назва міста відділення Нової Пошти"
 
-#: core/forms-logic.php:853 views/dashboard/user.twig:86
+#: core/forms-logic.php:883 views/dashboard/user.twig:86
 msgid "Nova Poshta office name"
 msgstr "Назва відділення Нової Пошти"
 
-#: core/forms-logic.php:854 views/dashboard/user.twig:80
+#: core/forms-logic.php:884 views/dashboard/user.twig:80
 msgid "Nova Poshta office number"
 msgstr "Номер відділення Нової Пошти"
 
-#: core/forms-logic.php:860
-msgid "Self pickup point is not specified"
-msgstr "Пункт самовивозу не вказано"
-
-#: core/forms-logic.php:870 views/checkout.twig:260
+#: core/forms-logic.php:889 views/checkout.twig:260
 #: views/dashboard/user.twig:92
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
-#: core/forms-logic.php:1014
+#: core/forms-logic.php:1035
 msgid "Congratulations! Your new account has been created!"
 msgstr "Вітаємо! Ваш новий обліковий запис створено!"
 
-#: core/forms-logic.php:1018
+#: core/forms-logic.php:1039
 msgid "Error while creating new user"
 msgstr "Помилка під час створення нового користувача"
 
-#: core/forms-logic.php:1071 core/includes/back/custom-post-types.php:68
+#: core/forms-logic.php:1092 core/includes/back/custom-post-types.php:68
 #: core/pages.php:208 core/pages.php:320 core/pages.php:357 views/order.twig:12
 #: views/profile/order.twig:8 views/profile/orders.twig:11
 msgid "Order"
 msgstr "Замовлення"
 
-#: core/forms-logic.php:1089 core/forms-logic.php:1126
-#: core/forms-logic.php:1168 views/dashboard/user.twig:37
+#: core/forms-logic.php:1111 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/dashboard/user.twig:37
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
-#: core/forms-logic.php:1089 core/forms-logic.php:1126
-#: core/forms-logic.php:1168 views/dashboard/user.twig:38
+#: core/forms-logic.php:1111 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/dashboard/user.twig:38
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: core/forms-logic.php:1089 core/forms-logic.php:1126
-#: core/forms-logic.php:1168 views/checkout.twig:162
+#: core/forms-logic.php:1111 core/forms-logic.php:1141
+#: core/forms-logic.php:1183 views/checkout.twig:162
 #: views/dashboard/user.twig:39
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: core/forms-logic.php:1090 core/forms-logic.php:1125
-#: core/forms-logic.php:1167 views/dashboard/user.twig:26
+#: core/forms-logic.php:1112 core/forms-logic.php:1140
+#: core/forms-logic.php:1182 views/dashboard/user.twig:26
 msgid "Online payment"
 msgstr "Онлайн оплата"
 
-#: core/forms-logic.php:1090 core/forms-logic.php:1125
-#: core/forms-logic.php:1167 views/checkout.twig:182
+#: core/forms-logic.php:1112 core/forms-logic.php:1140
+#: core/forms-logic.php:1182 views/checkout.twig:182
 #: views/dashboard/user.twig:27
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
-#: core/forms-logic.php:1090 core/forms-logic.php:1125
-#: core/forms-logic.php:1167 views/checkout.twig:190
+#: core/forms-logic.php:1112 core/forms-logic.php:1140
+#: core/forms-logic.php:1182 views/checkout.twig:190
 #: views/dashboard/user.twig:28
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
-#: core/forms-logic.php:1090 core/forms-logic.php:1125
-#: core/forms-logic.php:1167 views/checkout.twig:198
+#: core/forms-logic.php:1112 core/forms-logic.php:1140
+#: core/forms-logic.php:1182 views/checkout.twig:198
 #: views/dashboard/user.twig:29
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
-#: core/forms-logic.php:1125 core/forms-logic.php:1126
-#: core/forms-logic.php:1167 core/forms-logic.php:1168
+#: core/forms-logic.php:1140 core/forms-logic.php:1141
+#: core/forms-logic.php:1182 core/forms-logic.php:1183
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: core/forms-logic.php:1191
+#: core/forms-logic.php:1206
 msgid "New order has been placed"
 msgstr "Нове замовлення розміщено"
 
@@ -406,10 +406,10 @@ msgstr "Колонки"
 msgid "About"
 msgstr "Про нас"
 
-#: core/gutenberg.php:58 core/includes/back/custom-post-types.php:89
-#: core/includes/back/custom-post-types.php:105
-#: core/includes/back/custom-post-types.php:106
-#: core/includes/back/custom-post-types.php:107
+#: core/gutenberg.php:58 core/includes/back/custom-post-types.php:131
+#: core/includes/back/custom-post-types.php:147
+#: core/includes/back/custom-post-types.php:148
+#: core/includes/back/custom-post-types.php:149
 msgid "Feedback"
 msgstr "Відгуки"
 
@@ -691,9 +691,11 @@ msgstr "Додати нову позицію"
 #: core/includes/back/custom-post-types.php:30
 #: core/includes/back/custom-post-types.php:72
 #: core/includes/back/custom-post-types.php:73
-#: core/includes/back/custom-post-types.php:110
+#: core/includes/back/custom-post-types.php:114
+#: core/includes/back/custom-post-types.php:115
 #: core/includes/back/custom-post-types.php:152
-#: core/includes/back/custom-post-types.php:153
+#: core/includes/back/custom-post-types.php:194
+#: core/includes/back/custom-post-types.php:195
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -708,9 +710,11 @@ msgstr "Нова позиція"
 #: core/includes/back/custom-post-types.php:33
 #: core/includes/back/custom-post-types.php:75
 #: core/includes/back/custom-post-types.php:76
-#: core/includes/back/custom-post-types.php:113
+#: core/includes/back/custom-post-types.php:117
+#: core/includes/back/custom-post-types.php:118
 #: core/includes/back/custom-post-types.php:155
-#: core/includes/back/custom-post-types.php:156
+#: core/includes/back/custom-post-types.php:197
+#: core/includes/back/custom-post-types.php:198
 msgid "View"
 msgstr "Переглянути"
 
@@ -743,13 +747,16 @@ msgstr "Замовлення"
 
 #: core/includes/back/custom-post-types.php:70
 #: core/includes/back/custom-post-types.php:71
-#: core/includes/back/custom-post-types.php:150
-#: core/includes/back/custom-post-types.php:151
+#: core/includes/back/custom-post-types.php:112
+#: core/includes/back/custom-post-types.php:113
+#: core/includes/back/custom-post-types.php:192
+#: core/includes/back/custom-post-types.php:193
 msgid "Add"
 msgstr "Додати"
 
 #: core/includes/back/custom-post-types.php:74
-#: core/includes/back/custom-post-types.php:154
+#: core/includes/back/custom-post-types.php:116
+#: core/includes/back/custom-post-types.php:196
 msgid "New"
 msgstr "Нове"
 
@@ -766,62 +773,85 @@ msgid "No orders found in trash"
 msgstr "Замовлення не знайдені"
 
 #: core/includes/back/custom-post-types.php:80
-#: core/includes/back/custom-post-types.php:160
+#: core/includes/back/custom-post-types.php:122
+#: core/includes/back/custom-post-types.php:202
 msgid "Parent"
 msgstr "Батьківське"
 
-#: core/includes/back/custom-post-types.php:108
+#: core/includes/back/custom-post-types.php:89
+#: core/includes/back/custom-post-types.php:109
+#: core/includes/back/custom-post-types.php:111
+msgid "Payments"
+msgstr "Платежі"
+
+#: core/includes/back/custom-post-types.php:110
+msgid "Payment"
+msgstr "Платіж"
+
+#: core/includes/back/custom-post-types.php:119
+msgid "Search for payments"
+msgstr "Пошук платежів"
+
+#: core/includes/back/custom-post-types.php:120
+msgid "No payments found"
+msgstr "Платежі не знайдено"
+
+#: core/includes/back/custom-post-types.php:121
+msgid "No payments found in trash"
+msgstr "Немає платежів у кошику"
+
+#: core/includes/back/custom-post-types.php:150
 msgid "Add feedback"
 msgstr "Додати відгук"
 
-#: core/includes/back/custom-post-types.php:109
+#: core/includes/back/custom-post-types.php:151
 msgid "Add new feedback"
 msgstr "Додати новий відгук"
 
-#: core/includes/back/custom-post-types.php:111
+#: core/includes/back/custom-post-types.php:153
 msgid "Edit feedback"
 msgstr "Реедагувати відгук"
 
-#: core/includes/back/custom-post-types.php:112
+#: core/includes/back/custom-post-types.php:154
 msgid "New feedback"
 msgstr "Новий відгук"
 
-#: core/includes/back/custom-post-types.php:114
+#: core/includes/back/custom-post-types.php:156
 msgid "View feedback"
 msgstr "Переглянути відгук"
 
-#: core/includes/back/custom-post-types.php:115
+#: core/includes/back/custom-post-types.php:157
 msgid "Search for feedback"
 msgstr "Пошук відгугків"
 
-#: core/includes/back/custom-post-types.php:116
+#: core/includes/back/custom-post-types.php:158
 msgid "No feedback found"
 msgstr "Відгуки не знайдені"
 
-#: core/includes/back/custom-post-types.php:117
+#: core/includes/back/custom-post-types.php:159
 msgid "No feedback found in trash"
 msgstr "Відгуки не знайдені"
 
-#: core/includes/back/custom-post-types.php:118
+#: core/includes/back/custom-post-types.php:160
 msgid "Parent feedback"
 msgstr "Бітьківський відгук"
 
-#: core/includes/back/custom-post-types.php:127
-#: core/includes/back/custom-post-types.php:147
-#: core/includes/back/custom-post-types.php:148
-#: core/includes/back/custom-post-types.php:149
+#: core/includes/back/custom-post-types.php:169
+#: core/includes/back/custom-post-types.php:189
+#: core/includes/back/custom-post-types.php:190
+#: core/includes/back/custom-post-types.php:191
 msgid "Mail log"
 msgstr "Надсилання"
 
-#: core/includes/back/custom-post-types.php:157
+#: core/includes/back/custom-post-types.php:199
 msgid "Search for mail logs"
 msgstr "Пошук надсилань"
 
-#: core/includes/back/custom-post-types.php:158
+#: core/includes/back/custom-post-types.php:200
 msgid "No mail logs found"
 msgstr "Надслань не знайдено"
 
-#: core/includes/back/custom-post-types.php:159
+#: core/includes/back/custom-post-types.php:201
 msgid "No mail logs found in trash"
 msgstr "Надслань не знайдено"
 
@@ -914,6 +944,10 @@ msgstr "Інформація про замовлення"
 #: core/includes/back/dashboard-update-assets-version.php:16
 msgid "Update theme version"
 msgstr "Оновити версію теми"
+
+#: core/includes/back/prepare-online-payment.php:85
+msgid "Payment for order"
+msgstr "Оплата для замовлення"
 
 #: core/includes/back/system-disable-customizer.php:109
 msgid "The Customizer is currently disabled."

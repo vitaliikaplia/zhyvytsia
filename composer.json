@@ -1,0 +1,24 @@
+{
+    "name": "vitaliikaplia/zhyvytsia",
+    "description": "",
+    "type": "theme",
+    "license": "none",
+    "autoload": {},
+    "authors": [
+        {
+            "name": "vitaliikaplia",
+            "email": "vitalii.kaplia@gmail.com"
+        }
+    ],
+    "require": {
+        "plakidan/monobank-pay": "^0.1.0",
+        "geoip2/geoip2": "~2.0",
+        "lis-dev/nova-poshta-api-2": "^0.1.6"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "platform": {
+            "php": "7.4"
+        }
+    }
+}
