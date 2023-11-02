@@ -119,10 +119,11 @@
           }
 
           textarea{
-            resize: vertical;
+            resize: none;
             min-height: 80px;
             max-height: 320px;
             padding: 8px 14px;
+            overflow: hidden;
           }
         }
       }

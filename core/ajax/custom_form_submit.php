@@ -85,6 +85,8 @@ function custom_form_submit_action() {
                 send_email($sEmail, $emails['contact']['sender_form_subject'], $contentToSender);
             }
         }
+        $toJson['title'] = $form_options['send_success_title'];
+        $toJson['content'] = $form_options['send_success_text'];
 
         $toJson['status'] = "ok";
     }

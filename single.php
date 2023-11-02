@@ -6,6 +6,7 @@ $context = Timber::get_context();
 $post = Timber::query_post();
 $context['post'] = $post;
 $context['category'] = get_the_category( $post->ID );
+$context['blog_url'] = get_the_permalink(PAGE_FOR_POSTS);
 
 $relatedArgs = array(
     'post_type' => 'post',

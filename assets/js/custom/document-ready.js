@@ -759,5 +759,12 @@ window.addEventListener("DOMContentLoaded", function (){
             });
         }
 
+        /** custom form */
+        if($('form.feedbackForm').length){
+            $('form.feedbackForm').each(function(){
+                feedback_form_submit($(this));
+            });
+        }
+
     });
 })(jQuery);

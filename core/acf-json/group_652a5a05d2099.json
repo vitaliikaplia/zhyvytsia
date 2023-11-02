@@ -116,6 +116,107 @@
                     "append": ""
                 },
                 {
+                    "key": "field_6544199aa7ace",
+                    "label": "Відгуки",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_654419d0be760",
+                    "label": "Отримувачі Email про нові відгуки",
+                    "name": "new_review_email_recipients",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Додати Email",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_654419d0be761",
+                            "label": "Email",
+                            "name": "email",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_654419d0be760"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_65441597d65b8",
+                    "label": "Заголовок успіху відправки фідбеку",
+                    "name": "review_send_success_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_65441599d65b9",
+                    "label": "Текст успіху відправки фідбеку",
+                    "name": "review_send_success_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
                     "key": "field_652ecb441633c",
                     "label": "Оптові знижки",
                     "name": "",
@@ -1125,5 +1226,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698763147
+    "modified": 1698961926
 }

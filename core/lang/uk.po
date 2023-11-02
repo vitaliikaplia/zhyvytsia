@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-02 19:47+0200\n"
+"POT-Creation-Date: 2023-11-03 00:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -20,6 +20,10 @@ msgstr ""
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: core/ajax/feedback_form_submit.php:57
+msgid "Check new review"
+msgstr "Переглянути новий відгук"
 
 #: core/ajax/profile_confirm_email_content.php:7
 #: core/ajax/profile_enter_code_from_email.php:58
@@ -424,7 +428,7 @@ msgstr "Блоґ"
 
 #: core/gutenberg.php:79
 msgid "Simple text"
-msgstr "Simple text"
+msgstr "Простий текст"
 
 #: core/includes/back/check-password-strength.php:15
 #: views/auth/password-reset.twig:12 views/auth/sign-up.twig:16
@@ -814,7 +818,7 @@ msgstr "Додати новий відгук"
 
 #: core/includes/back/custom-post-types.php:153
 msgid "Edit feedback"
-msgstr "Реедагувати відгук"
+msgstr "Редагувати відгук"
 
 #: core/includes/back/custom-post-types.php:154
 msgid "New feedback"
@@ -1285,7 +1289,7 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
-#: views/blog/regular.twig:27
+#: views/blog/regular.twig:28
 msgid "Read more"
 msgstr "Читати більше"
 
@@ -1527,13 +1531,39 @@ msgstr "Кількість товарів"
 msgid "Date"
 msgstr "Дата"
 
-#: views/single.twig:21 views/single.twig:58
+#: views/single-catalog.twig:125
+msgid "Your reviews"
+msgstr "Ваші відгуки"
+
+#: views/single-catalog.twig:136
+msgid "There are no reviews yet, but yours could be the first!"
+msgstr "Відгуків поки що немає, але ваш може стати першим!"
+
+#: views/single-catalog.twig:143
+msgid "Rate us"
+msgstr "Поставте нам оцінку"
+
+#: views/single-catalog.twig:187
+msgid "Enter your review"
+msgstr "Залиште свій відгук"
+
+#: views/single-catalog.twig:190 views/single-catalog.twig:197
+msgid "Leave review"
+msgstr "Залишити відгугк"
+
+#: views/single.twig:20 views/single.twig:55
 msgid "Share"
 msgstr "Поділитися"
 
-#: views/single.twig:76
+#: views/single.twig:73
 msgid "Related Posts"
 msgstr "Схожі записи"
+
+#~ msgid "Enter your comment"
+#~ msgstr "Залиште свій коментар"
+
+#~ msgid "Leave comment"
+#~ msgstr "Залишити коментар"
 
 #~ msgid "Your order has been placed"
 #~ msgstr "Ваше замовлення розміщено"

@@ -15,10 +15,10 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a
-                                        href="{{ fields.photo.url }}"
-                                        class="fancybox"
-                                        data-fancybox="gallery"
-                                        data-buttons="false">
+                                    href="{{ fields.photo.url }}"
+                                    class="fancybox"
+                                    data-fancybox="gallery"
+                                    data-buttons="false">
                                     {{ fields.photo | picture }}
                                 </a>
                             </div>
@@ -26,10 +26,10 @@
                                 {% for key,val in fields.gallery %}
                                     <div class="swiper-slide">
                                         <a
-                                                href="{{ val.url }}"
-                                                class="fancybox"
-                                                data-fancybox="gallery"
-                                                data-buttons="false">
+                                            href="{{ val.url }}"
+                                            class="fancybox"
+                                            data-fancybox="gallery"
+                                            data-buttons="false">
                                             {{ val | picture }}
                                         </a>
                                     </div>
@@ -122,7 +122,7 @@
                 </div>
                 {% endif %}
                 <div class="feedbackWrapper">
-                    <h3 class="feedbackTitle">Ваші відгуки</h3>
+                    <h3 class="feedbackTitle">{{ __('Your reviews', TEXTDOMAIN) }}</h3>
                     {% if feedback and feedback is iterable %}
                     <div class="feedbackItems">
                         {% for key,post in feedback %}
@@ -132,7 +132,71 @@
                         {% endfor %}
                     </div>
                     {% else %}
-                    <p>Відгуків поки що немає, але ваш може стати першим! 😉</p>
+                    <div class="typo">
+                        <p>{{ __('There are no reviews yet, but yours could be the first!', TEXTDOMAIN) }} 😉</p>
+                    </div>
+                    {% endif %}
+                    {% if user %}
+                    <form class="feedbackForm">
+                        <input type="hidden" name="review_for_id" value="{{ post.id }}">
+                        <input type="hidden" name="action" value="feedback_form_submit">
+                        <p class="label">{{ __('Rate us', TEXTDOMAIN) }}</p>
+                        <div class="buttons">
+                            <label>
+                                <input type="radio" name="rate" value="1">
+                                <p class="label">1</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="2">
+                                <p class="label">2</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="3">
+                                <p class="label">3</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="4">
+                                <p class="label">4</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="5">
+                                <p class="label">5</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="6">
+                                <p class="label">6</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="7">
+                                <p class="label">7</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="8">
+                                <p class="label">8</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="9">
+                                <p class="label">9</p>
+                            </label>
+                            <label>
+                                <input type="radio" name="rate" value="10">
+                                <p class="label">10</p>
+                            </label>
+                        </div>
+                        <label>
+                            <p class="label">{{ __('Enter your review', TEXTDOMAIN) }}</p>
+                            <textarea name="review" class="required"></textarea>
+                        </label>
+                        <button>{{ __('Leave review', TEXTDOMAIN) }}</button>
+                        <input type="submit" style="display: none;">
+                    </form>
+                    {% else %}
+                    <div class="overallButton green inline">
+                        {% set auth_url = site.url~'/'~general_fields.auth.login.url~'/' %}
+                        <a href="{{ auth_url }}">
+                            <span>{{ __('Leave review', TEXTDOMAIN) }}</span>
+                        </a>
+                    </div>
                     {% endif %}
                 </div>
             </div>

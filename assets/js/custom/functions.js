@@ -97,7 +97,7 @@ function custom_form_submit(thisFormEl){
 
         e.preventDefault();
 
-        var readyToSend;
+        let readyToSend;
 
         if(!thisFormEl.hasClass("busy")){
 
@@ -156,11 +156,110 @@ function custom_form_submit(thisFormEl){
                     jQuery(this).blur();
                 });
 
-                const formData = new FormData(thisFormEl[0]);
-                for (const [name, value] of new FormData(thisFormEl[0])) {
-                    const encodedValue = encodeURIComponent(value);
-                    formData.append(name, encodedValue);
-                }
+                // let formData = new FormData(thisFormEl[0]);
+                // console.log(formData.values());
+                // for (const [name, value] of new FormData(thisFormEl[0])) {
+                //     const encodedValue = encodeURIComponent(value);
+                //     formData.append(name, encodedValue);
+                // }
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: ajaxUrl,
+                    dataType: 'json',
+                    data: new FormData(thisFormEl[0]),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success : function (out) {
+                        if(out.status == "ok"){
+                            thisFormEl.find('select').addClass('required').removeClass('selected');
+                            thisFormEl.removeClass("busy");
+                            thisFormEl.trigger("reset");
+                            prepare_middle_popup();
+                            setTimeout(function () {
+                                add_content_into_middle_popup(out.title, out.content);
+                            }, 200);
+                        }
+                    }
+                });
+
+            }
+
+        }
+
+    });
+
+}
+
+/** feedback form submit */
+function feedback_form_submit(thisFormEl){
+
+    /** form textarea fields autogrow */
+    if(thisFormEl.find('textarea').length){
+        thisFormEl.find('textarea').each(function(){
+            var thisEl = jQuery(this),
+                thisTextAreaHeight = thisEl.outerHeight();
+            thisEl.autogrow();
+            thisEl.css("height",thisTextAreaHeight);
+        });
+    }
+
+    thisFormEl.find("button").click(function(){
+        thisFormEl.submit();
+        return false;
+    });
+
+    thisFormEl.find(".buttons").click(function(){
+        jQuery(this).removeClass("red");
+    });
+
+    thisFormEl.find(".required").bind('click keyup', function(){
+        let thisEl = $(this);
+        setTimeout(function () {
+            thisEl.removeClass("red");
+        }, 400);
+    });
+
+    thisFormEl.submit(function(e){
+
+        e.preventDefault();
+
+        let readyToSend;
+
+        if(!thisFormEl.hasClass("busy")){
+
+            readyToSend = true;
+
+            if(thisFormEl.find("textarea.required").length){
+                thisFormEl.find("textarea.required").each(function(){
+                    if(jQuery(this).val().trim() == ""){
+                        readyToSend = false;
+                        jQuery(this).addClass("red");
+                    } else {
+                        jQuery(this).removeClass("red");
+                    }
+                });
+            }
+
+            if(thisFormEl.find('.buttons input[type="radio"]').length){
+                thisFormEl.find('.buttons input[type="radio"]').each(function(){
+                    if(!jQuery('.buttons input[type="radio"]:checked').length){
+                        readyToSend = false;
+                        thisFormEl.find('.buttons').addClass("red");
+                    } else {
+                        thisFormEl.find('.buttons').removeClass("red");
+                    }
+                });
+            }
+
+            if(readyToSend == true){
+
+                thisFormEl.addClass("busy");
+
+                thisFormEl.find('input, button').each(function(){
+                    jQuery(this).blur();
+                });
 
                 jQuery.ajax({
                     type: "POST",
@@ -173,9 +272,12 @@ function custom_form_submit(thisFormEl){
                     success : function (out) {
                         console.log(out);
                         if(out.status == "ok"){
-                            thisFormEl.find('select').addClass('required').removeClass('selected');
                             thisFormEl.removeClass("busy");
                             thisFormEl.trigger("reset");
+                            prepare_middle_popup();
+                            setTimeout(function () {
+                                add_content_into_middle_popup(out.title, out.content);
+                            }, 200);
                         }
                     }
                 });

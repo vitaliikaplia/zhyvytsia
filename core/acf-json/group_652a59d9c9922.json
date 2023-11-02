@@ -821,6 +821,99 @@
                             "delay": 0
                         }
                     ]
+                },
+                {
+                    "key": "field_65441af80c480",
+                    "label": "Відгуки",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_65441b080c481",
+                    "label": "",
+                    "name": "reviews",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "no_label",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_65441b080c488",
+                            "label": "Новий відгук (повідомлення адмінам)",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_65441b080c489",
+                            "label": "Тема листа",
+                            "name": "new_review_subject_admin",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_65441b080c48a",
+                            "label": "Текст листа",
+                            "name": "new_review_text_admin",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [review_id], [button], [shop_item], [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
                 }
             ]
         }
@@ -843,5 +936,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698658839
+    "modified": 1698962633
 }
