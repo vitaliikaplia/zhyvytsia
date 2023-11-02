@@ -270,14 +270,16 @@ function feedback_form_submit(thisFormEl){
                     cache: false,
                     processData: false,
                     success : function (out) {
-                        console.log(out);
                         if(out.status == "ok"){
                             thisFormEl.removeClass("busy");
-                            thisFormEl.trigger("reset");
                             prepare_middle_popup();
                             setTimeout(function () {
                                 add_content_into_middle_popup(out.title, out.content);
+                                $('.middlePopupWrapper .middlePopup .content').addClass('typo');
                             }, 200);
+                            if(out.post_status == "success"){
+                                thisFormEl.trigger("reset");
+                            }
                         }
                     }
                 });

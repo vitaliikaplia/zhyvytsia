@@ -244,6 +244,7 @@
                                 {% set offices = user_np_city_ref | np_get_offices_by_city_ref %}
                                 {% if offices is iterable %}
                                 {% for val in offices %}
+                                <option></option>
                                 <option value="{{ val.id }}"{% if user_np_office_number == val.id and user_np_office_name == val.text %} selected="selected"{% endif%}>{{ val.text }}</option>
                                 {% endfor %}
                                 {% endif %}

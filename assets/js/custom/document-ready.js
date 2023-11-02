@@ -568,6 +568,7 @@ window.addEventListener("DOMContentLoaded", function (){
 
             postOfficeNumberSearch.select2({
                 width: '100%',
+                placeholder: "Оберіть відділення",
                 language: {
                     noResults: function() {
                         return "Відділення не знайдено";
@@ -577,11 +578,18 @@ window.addEventListener("DOMContentLoaded", function (){
 
             if (postOfficeNumberSearch.prop('disabled')) {
                 postOfficeNumberSearch.select2({
+                    width: '100%',
                     placeholder: "Спочатку оберіть місто або селище"
                 });
             } else {
                 postOfficeNumberSearch.select2({
-                    placeholder: "Оберіть відділення"
+                    width: '100%',
+                    placeholder: "Оберіть відділення",
+                    language: {
+                        noResults: function() {
+                            return "Відділення не знайдено";
+                        }
+                    },
                 });
             }
 
