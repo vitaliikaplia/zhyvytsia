@@ -504,7 +504,9 @@ window.addEventListener("DOMContentLoaded", function (){
 
             citySearch.on("change", function(e) {
 
-                // $('input[name="user_np_city_name"]').val($(this).find("option:selected").text());
+                if($(this).find("option:selected").text()){
+                    $('input[name="user_np_city_name"]').val($(this).find("option:selected").text());
+                }
 
                 if($(this).val()){
                     $.ajax({
