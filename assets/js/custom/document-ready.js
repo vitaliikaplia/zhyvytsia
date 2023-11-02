@@ -29,10 +29,15 @@ window.addEventListener("DOMContentLoaded", function (){
                 $('.cookiePopupWrapper').addClass('show');
             }, 2000);
             $('.cookiePopupWrapper').click(function(e){
-                if($(e.target).hasClass('cookiePopupWrapper') || $(e.target).is('span')){
+                if($(e.target).hasClass('cookiePopupWrapper')){
                     $.cookie("user-cookies-accepted", true);
                     $('.cookiePopupWrapper').removeClass('show');
+                    return false;
                 }
+            });
+            $('.closeCookiePopup a').click(function(e){
+                $.cookie("user-cookies-accepted", true);
+                $('.cookiePopupWrapper').removeClass('show');
                 return false;
             });
         }

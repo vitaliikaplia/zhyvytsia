@@ -1,23 +1,23 @@
 {% if general_fields.cookie_popup.title and general_fields.cookie_popup.message and general_fields.cookie_popup.button %}
-    <div class="cookiePopupWrapper">
-        <div class="cookiePopupInner">
-            <div class="cookiePopup">
-                {% if general_fields.cookie_popup.title %}
-                    <p class="title">{{ general_fields.cookie_popup.title }}</p>
-                {% endif %}
-                {% if general_fields.cookie_popup.message %}
-                    <div class="message typo">{{ general_fields.cookie_popup.message }}</div>
-                {% endif %}
-                {% if general_fields.cookie_popup.button %}
-                    <p class="overallButton green">
-                        <a href="#close" class="close">
-                            <span>{{ general_fields.cookie_popup.button }}</span>
-                        </a>
-                    </p>
-                {% endif %}
-            </div>
+<div class="cookiePopupWrapper">
+    <div class="cookiePopupInner">
+        <div class="cookiePopup">
+            {% if general_fields.cookie_popup.title %}
+            <p class="title">{{ general_fields.cookie_popup.title }}</p>
+            {% endif %}
+            {% if general_fields.cookie_popup.message %}
+            <div class="message typo">{{ general_fields.cookie_popup.message }}</div>
+            {% endif %}
+            {% if general_fields.cookie_popup.button %}
+            <p class="overallButton green closeCookiePopup">
+                <a href="#close" class="close">
+                    <span>{{ general_fields.cookie_popup.button }}</span>
+                </a>
+            </p>
+            {% endif %}
         </div>
     </div>
+</div>
 {% endif %}
 <footer>
     <div class="inner">
