@@ -570,6 +570,10 @@ header{
 					box-shadow: inset 0px 0px 0px 0px #224A30;
 					transition: inherit;
 
+					&.small{
+						font-size: 8px;
+					}
+
 					&.show{
 						display: block;
 					}

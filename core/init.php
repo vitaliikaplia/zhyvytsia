@@ -171,6 +171,7 @@ class BlankSite extends TimberSite {
         $context['general_fields'] = cache_general_fields();
         $context['localization'] = custom_localization();
         $context['notify'] = render_notify();
+        $context['cart_amount'] = get_cart_amount();
         $context['TEXTDOMAIN'] = TEXTDOMAIN;
 
         /** redirect rules */

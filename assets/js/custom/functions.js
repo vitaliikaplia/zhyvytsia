@@ -564,9 +564,10 @@ function update_checkout_positions(){
                                 "ref": $('#citySearch').val(),
                             },
                             success : function (out) {
-                                if(out[0]?.text){
-                                    $('input[name="user_np_office_name"]').val(out[0].text);
-                                }
+                                // if(out[0]?.text){
+                                //     $('input[name="user_np_office_name"]').val(out[0].text);
+                                // }
+
                                 $('#postOfficeNumberSearch').val(null);
                                 $('#postOfficeNumberSearch').empty();
                                 $('#postOfficeNumberSearch').trigger('change');
@@ -582,8 +583,15 @@ function update_checkout_positions(){
 
                                 if(out.length > 0){
                                     $('#postOfficeNumberSearch').select2({
+                                        placeholder: "Оберіть відділення",
+                                        language: {
+                                            noResults: function() {
+                                                return "Відділення не знайдено";
+                                            }
+                                        },
                                         data: out
                                     });
+                                    $('#postOfficeNumberSearch').val(null).trigger('change');
                                     $('#postOfficeNumberSearch').prop('disabled', false).trigger('change.select2');
                                 } else {
                                     $('#postOfficeNumberSearch').select2({

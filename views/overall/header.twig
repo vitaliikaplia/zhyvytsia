@@ -49,7 +49,7 @@
                 <svg>
                     <use href="{{ svg_sprite }}#iconCart"></use>
                 </svg>
-                <span class="counter"></span>
+                <span class="counter{% if cart_amount %} show{% endif %}{% if cart_amount|length == 3 %} small{% endif %}">{{ cart_amount }}</span>
             </button>
             {% endif %}
             {% if fn('current_user_can', 'administrator') or fn('current_user_can', 'editor') %}

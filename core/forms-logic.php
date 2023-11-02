@@ -1218,6 +1218,7 @@ function custom_system_forms_logic_callback() {
             /** preparing new order url, notify message and removing cookie cart */
             add_notify('success', $general_fields['shop']['successful_order_message']);
             setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
+            setcookie('checkout-data', '', time() - 3600, '/');
             if(is_user_logged_in()){
                 $redirect_url = $profile_url . 'order/'.$order_id.'/';
             } else {

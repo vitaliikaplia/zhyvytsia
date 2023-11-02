@@ -103,6 +103,8 @@ function custom_system_do_page_callback() {
                 }
                 break;
             case "redirect_to_new_order":
+                setcookie('checkout-data', '', time() - 3600, '/');
+                setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
                 if( $order_id = intval(stripslashes($arr_data['order_id'])) ){
                     /** preparing new order url */
                     if(is_user_logged_in()){
@@ -111,7 +113,6 @@ function custom_system_do_page_callback() {
                         $order_url = BLOGINFO_URL . '/order/'.$order_id.'/'.get_post_meta($order_id, 'public_order_secret', true).'/';
                     }
                     add_notify('success', $general_fields['shop']['successful_order_message']);
-                    setcookie('cart', '', time() - 3600, '/', '.'.BLOGINFO_JUST_DOMAIN);
                     wp_redirect($order_url);
                 } else {
                     wp_redirect(BLOGINFO_URL);

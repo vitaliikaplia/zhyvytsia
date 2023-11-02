@@ -38,33 +38,4 @@ function get_catalog_item_rating($id){
         'label' => $label
     );
 
-//    global $wpdb;
-//
-//    $sql = $wpdb->prepare("
-//            SELECT AVG(meta_value) as average_rating, COUNT(post_id) as total_reviews
-//            FROM $wpdb->postmeta
-//            WHERE meta_key = 'rate' AND post_id IN (
-//                SELECT post_id FROM $wpdb->postmeta
-//                WHERE meta_key = 'catalog_item_feedback' AND meta_value = %d
-//            )
-//    ", $id);
-//
-//    $result = $wpdb->get_row($sql);
-//
-//    $rate = floatval($result->average_rating);
-//    $total_reviews = intval($result->total_reviews);
-//
-//    $label = $total_reviews > 0
-//        ? plural_form($total_reviews, array('відгук', 'відгука', 'відгуків'))
-//        : 'додати відгук';
-//
-//    $rating_data = array(
-//        'rate' => $rate,
-//        'items' => $total_reviews,
-//        'link' => get_the_permalink($id),
-//        'label' => $label
-//    );
-//
-//    return $rating_data;
-
 }
