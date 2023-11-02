@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 18:33+0200\n"
+"POT-Creation-Date: 2023-11-02 19:47+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -421,6 +421,10 @@ msgstr "Форма"
 #: core/includes/back/dashboard-menu.php:52
 msgid "Blog"
 msgstr "Блоґ"
+
+#: core/gutenberg.php:79
+msgid "Simple text"
+msgstr "Simple text"
 
 #: core/includes/back/check-password-strength.php:15
 #: views/auth/password-reset.twig:12 views/auth/sign-up.twig:16
@@ -1281,6 +1285,10 @@ msgstr "Вийти"
 msgid "My orders"
 msgstr "Мої замовлення"
 
+#: views/blog/regular.twig:27
+msgid "Read more"
+msgstr "Читати більше"
+
 #: views/checkout.twig:107
 msgid "Check your cart"
 msgstr "Перевірте свій кошик"
@@ -1518,6 +1526,14 @@ msgstr "Кількість товарів"
 #: views/profile/orders.twig:13
 msgid "Date"
 msgstr "Дата"
+
+#: views/single.twig:21 views/single.twig:58
+msgid "Share"
+msgstr "Поділитися"
+
+#: views/single.twig:76
+msgid "Related Posts"
+msgstr "Схожі записи"
 
 #~ msgid "Your order has been placed"
 #~ msgstr "Ваше замовлення розміщено"

@@ -2,6 +2,17 @@
 
 {% block content %}
 
-{{ post.content }}
+<div class="blogPageWrapper">
+    <div class="blogPage">
+        <div class="regularPosts">
+        {% for key,post in posts %}
+            {% include 'blog/regular.twig' with {'blog_fields': blog_fields }  %}
+        {% endfor %}
+        </div>
+        <nav class="page-nav">
+            {{ function('numeric_posts_nav', wp_query) }}
+        </nav>
+    </div>
+</div>
 
 {% endblock %}

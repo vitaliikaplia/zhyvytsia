@@ -2,6 +2,80 @@
 
 {% block content %}
 
-{{ post.content }}
+<div class="blogPageWrapper">
+    <div class="blogPage">
+        <h1 class="postTitle">{{ post.title }}</h1>
+        <div class="social">
+            <div class="left">
+                <ul class="meta">
+                    <li>{{ post.post_date|date('F d, Y') }}</li>
+                    <li>{{ post.author.name }}</li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="share">
+                    <p class="title">{{ __("Share", TEXTDOMAIN) }}</p>
+                    <p class="icon tw">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-tw"></use></svg>
+                    </p>
+                    <p class="icon fb">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-fb"></use></svg>
+                    </p>
+                    <p class="icon ld">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-ld"></use></svg>
+                    </p>
+                    <p class="icon pi">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-pi"></use></svg>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% if post.thumbnail %}
+        <div class="singleThumbnail">
+            {{ post.thumbnail | picture }}
+        </div>
+        {% endif %}
+        <div class="typo">
+            {{ post.content | shortcodes }}
+        </div>
+        <div class="social">
+            <div class="left">
+                <p class="like" data-id="{{ post.ID }}">
+                    <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.4 16.8145C1.07452 16.8145 0 15.7399 0 14.4145V9.61445C0 8.28897 1.07452 7.21445 2.4 7.21445H3.5048L6.04223 2.14114C6.42486 1.37589 7.1835 0.875914 8.02931 0.819741L8.18885 0.814453H8.4C9.46039 0.814453 10.328 1.63968 10.3957 2.68295L10.4 2.81445V7.21445H13.5986C13.7567 7.21445 13.9143 7.23006 14.0693 7.26106C15.3226 7.51172 16.1512 8.69636 15.9757 9.94605L15.952 10.0851L14.992 14.8851C14.777 15.9602 13.8634 16.7466 12.7807 16.8103L12.6386 16.8145H2.4ZM3.2 8.81446H2.4C1.95818 8.81446 1.6 9.17263 1.6 9.61446V14.4145C1.6 14.8563 1.95818 15.2145 2.4 15.2145H3.2V8.81446ZM8.40001 2.41446H8.18887C7.91952 2.41446 7.67072 2.54973 7.52358 2.77014L7.47333 2.85669L4.88447 8.0344C4.84282 8.11771 4.81614 8.20744 4.8054 8.29949L4.80001 8.39217V15.2145H12.6386C12.9882 15.2145 13.2932 14.9883 13.3992 14.6626L13.4231 14.5714L14.3831 9.77135C14.4697 9.3381 14.1888 8.91664 13.7555 8.82999L13.6775 8.81835V8.81835L13.5986 8.81446H10.4C9.55652 8.81446 8.86548 8.16176 8.8044 7.33387L8.80001 7.21446V2.81446C8.80001 2.61809 8.65851 2.45477 8.47191 2.4209L8.40001 2.41446Z"/>
+                    </svg>
+                    <span>{{ fn('custom_post_likes', post) }}</span>
+                </p>
+            </div>
+            <div class="right">
+                <div class="share">
+                    <p class="title">{{ __("Share", TEXTDOMAIN) }}</p>
+                    <p class="icon tw">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-tw"></use></svg>
+                    </p>
+                    <p class="icon fb">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-fb"></use></svg>
+                    </p>
+                    <p class="icon ld">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-ld"></use></svg>
+                    </p>
+                    <p class="icon pi">
+                        <svg><use xlink:href="{{ svg_sprite }}#icon-share-pi"></use></svg>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% if related and related is iterable %}
+        <div class="relatedPosts">
+            <p class="title">{{ __("Related Posts", TEXTDOMAIN) }}</p>
+            <div class="posts">
+                {% for key,post in related %}
+                    {% include 'blog/related.twig' with {'blog_fields': blog_fields }  %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

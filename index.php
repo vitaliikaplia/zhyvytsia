@@ -7,13 +7,12 @@ $context['posts'] = Timber::get_posts();
 $templates = array( 'index.twig' );
 
 if ( is_front_page() && is_home() ) {
-	//
 } elseif( is_front_page() ){
-	//
 } elseif(is_home()) {
-    $context = Timber::get_context();
-    $post = new TimberPost();
-    $context['post'] = $post;
+    global $wp_query;
+    $context['wp_query'] = $wp_query;
+    $context['count_posts'] = wp_count_posts();
+    $context['posts'] = Timber::get_posts();
     array_unshift( $templates, 'blog.twig' );
 }
 Timber::render( $templates, $context, TIMBER_CACHE_TIME );

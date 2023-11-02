@@ -1,0 +1,17 @@
+<div class="post">
+    {% if post.thumbnail %}
+    <p class="thumbnail">
+        <a href="{{ post.link }}">
+            {{ post.thumbnail | picture }}
+        </a>
+    </p>
+    {% endif %}
+    <p class="postTitle">
+        <a href="{{ post.link }}">
+            {{ post.title }}
+        </a>
+    </p>
+    <p class="date">
+        {{ post.post_date | date('F d, Y') }}
+    </p>
+</div>

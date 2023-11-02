@@ -1,0 +1,32 @@
+<div class="post">
+    {% if post.thumbnail %}
+    <p class="thumbnail">
+        <a href="{{ post.link }}">
+            {{ post.thumbnail | picture }}
+        </a>
+    </p>
+    {% endif %}
+    <div class="meta">
+        <ul class="top">
+            <li class="date">
+                {{ post.post_date | date('F d, Y') }}
+            </li>
+            <li class="author">
+                {{ post.author.name }}
+            </li>
+        </ul>
+        <p class="postTitle">
+            <a href="{{ post.link }}">
+                {{ post.title }}
+            </a>
+        </p>
+        <p class="excerpt">
+            {{ fn('wp_trim_words',fn('trim',fn('strip_tags',post.content)),42) }}
+        </p>
+        <p class="more">
+            <a href="{{ post.link }}">
+                {{ __("Read more", TEXTDOMAIN) }}
+            </a>
+        </p>
+    </div>
+</div>

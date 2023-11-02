@@ -697,5 +697,67 @@ window.addEventListener("DOMContentLoaded", function (){
             }
         });
 
+        /** post custom likes increment */
+        if($('.blogPageWrapper .social .like').length){
+            $('.blogPageWrapper .social .like').click(function(){
+                let thisLikesEl = $(this);
+                if(!thisLikesEl.hasClass('hold')){
+                    thisLikesEl.addClass('hold');
+                    $.ajax({
+                        type: "POST",
+                        url: ajaxUrl,
+                        dataType: "json",
+                        cache: false,
+                        data: {
+                            "action": "like_this_post",
+                            "postId": parseInt(thisLikesEl.data('id')),
+                            "currentPageUrl": document.URL
+                        },
+                        success : function (out) {
+                            if(out.status == "ok"){
+                                thisLikesEl.removeClass('hold');
+                                if(out.operation == 'minus'){
+                                    thisLikesEl.removeClass('liked');
+                                    $.cookie('post-id-'+out.post_id+'-liked', null);
+                                } else {
+                                    $.cookie('post-id-'+out.post_id+'-liked', true);
+                                    thisLikesEl.addClass('liked');
+                                }
+                                thisLikesEl.find('span').html(out.html);
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+            $('.blogPageWrapper .social .like').each(function(){
+                let thisLikesEl = $(this),
+                    thisLikePostId = parseInt(thisLikesEl.data('id'));
+
+                if($.cookie('post-id-'+thisLikePostId+'-liked')){
+                    thisLikesEl.addClass('liked');
+                }
+            });
+        }
+
+        /** Share icons */
+        if($(".share .icon").length){
+            $(".share .icon").click(function(){
+                let thisEl = $(this),
+                    loc = window.location.href,
+                    title = $('.postTitle').text();
+                if(thisEl.hasClass("tw")){
+                    window.open('http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                } else if(thisEl.hasClass("fb")){
+                    window.open('https://www.facebook.com/sharer/sharer.php?u=' + loc, 'facebookwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                } else if(thisEl.hasClass("ld")){
+                    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + loc + '&summary=' + title, 'linkedinwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                } else if(thisEl.hasClass("pi")){
+                    window.open('http://pinterest.com/pin/create/link/?url=' + loc + '&subject=' + title, 'okwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                }
+                return false;
+            });
+        }
+
     });
 })(jQuery);
