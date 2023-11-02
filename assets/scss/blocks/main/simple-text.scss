@@ -1,19 +1,16 @@
-/* columns
+/* simple-text
 -------------------------------------------------------------- */
 
 @import "../../mixins";
 
-.main-columns{
-  .customBlock{
-    display: flex !important;
-    padding: 60px 0;
-    max-width: 1140px;
-    align-items: center;
-    justify-content: center;
+.main-simple-text{
+  background-color: white;
+  color: black;
 
-    .col{
-      width: 50%;
-    }
+  .customBlock{
+    display: block;
+    padding: 60px 0;
+    max-width: 960px;
 
     .title{
       font-weight: 700;
@@ -50,18 +47,6 @@
       }
     }
 
-    picture{
-      font-size: 0;
-
-      img{
-        max-width: 100%;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        border-radius: 8px;
-      }
-    }
-
     .buttons{
       display: flex;
       align-items: center;
@@ -75,43 +60,5 @@
         }
       }
     }
-  }
-
-  &.scheme-it{
-    .customBlock{
-      flex-direction: row;
-
-      .col{
-        &:first-child{
-          padding-right: 30px;
-        }
-        &:last-child{
-          padding-left: 30px;
-        }
-      }
-    }
-  }
-  &.scheme-ti{
-    .customBlock{
-      flex-direction: row-reverse;
-
-      .col{
-        &:first-child{
-          padding-left: 30px;
-        }
-        &:last-child{
-          padding-right: 30px;
-        }
-      }
-    }
-  }
-
-  &.theme-wh{
-    background-color: white;
-    color: black;
-  }
-  &.theme-gr{
-    background-color: #224A30;
-    color: #fff;
   }
 }

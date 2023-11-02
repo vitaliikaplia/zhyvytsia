@@ -4,8 +4,8 @@
 (function ($) {
     $(window).on("load scroll resize", function () {
 
-        if(footerEl && !$('body').hasClass('profile') && !$('body').hasClass('checkout') && !$('body').hasClass('order') && window.scrollY != 0){
-            if (isInViewport(footerEl)) {
+        if(footerEl && !$('body').hasClass('profile') && !$('body').hasClass('checkout') && !$('body').hasClass('order')){
+            if (isInViewport(footerEl) && window.scrollY != 0) {
                 if (!bodyEl.classList.contains('footer-in-viewport')) {
                     bodyEl.classList.add('footer-in-viewport');
                 }

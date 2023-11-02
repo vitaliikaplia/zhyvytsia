@@ -73,6 +73,13 @@ $blocks = array(
         "category" => "main",
         'icon' => 'URL',
         'defaults' => ''
+    ),
+    array(
+        "name" => "simple-text",
+        "label" => __( "Simple text", TEXTDOMAIN ),
+        "category" => "main",
+        'icon' => 'URL',
+        'defaults' => ''
     )
 );
 
@@ -228,5 +235,3 @@ function add_blocks_styles() {
     }
 }
 add_action( 'wp_head', 'add_blocks_styles' );
-
-

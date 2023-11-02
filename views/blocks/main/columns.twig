@@ -25,11 +25,6 @@
                     <p class="overallButton {{ val.type }} inline scroll-show">
                         <a href="{{ val.button.url }}" target="{{ val.button.target }}">
                             <span>{{ val.button.title }}</span>
-                            {% if val.icon %}
-                            <svg class="icon-{{ val.icon }}">
-                                <use href="{{ svg_sprite }}#buttonIcon-{{ val.icon }}"></use>
-                            </svg>
-                            {% endif %}
                         </a>
                     </p>
                 {% endif %}
