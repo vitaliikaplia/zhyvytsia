@@ -2306,6 +2306,11 @@ footer{
 				align-items: stretch;
 			}
 
+			&.busy{
+				@include opacity(.5);
+				pointer-events: none;
+			}
+
 			& > .col{
 
 				& > div{

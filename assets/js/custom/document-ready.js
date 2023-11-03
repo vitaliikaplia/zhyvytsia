@@ -702,6 +702,8 @@ window.addEventListener("DOMContentLoaded", function (){
                 $('.checkout .orderWidget .notify').addClass('error show');
                 $('.checkout .orderWidget .notify').html(errorMessage);
                 return false;
+            } else {
+                thisForm.addClass('busy');
             }
         });
 
