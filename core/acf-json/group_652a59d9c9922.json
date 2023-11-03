@@ -864,7 +864,7 @@
                             "name": "payment_status_text_admin",
                             "aria-label": "",
                             "type": "wysiwyg",
-                            "instructions": "Доступні шорткоди: [order_id], [payment_status], [amount], [created_date], [modified_date], [button], [session]",
+                            "instructions": "Доступні шорткоди: [order_id], [payment_status], [amount], [created_date], [modified_date], [button]",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -994,5 +994,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698998838
+    "modified": 1699000540
 }

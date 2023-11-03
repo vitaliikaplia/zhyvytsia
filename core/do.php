@@ -149,8 +149,7 @@ function custom_system_do_page_callback() {
                                     '[amount]',
                                     '[created_date]',
                                     '[modified_date]',
-                                    '[button]',
-                                    '[session]'
+                                    '[button]'
                                 );
                                 $replace = array(
                                     get_post_meta( $payment_id, 'order_id', true ),
@@ -161,8 +160,7 @@ function custom_system_do_page_callback() {
                                     get_email_part('button', array(
                                         'link' => BLOGINFO_URL . '/wp-admin/post.php?post='.$payment_id.'&action=edit',
                                         'title' => __('Check payment information', TEXTDOMAIN)
-                                    )),
-                                    get_session_info(getUserIP())
+                                    ))
                                 );
                                 $content = Timber::compile( 'email/email.twig', array(
                                     'TEXTDOMAIN' => TEXTDOMAIN,
