@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 00:05+0200\n"
+"POT-Creation-Date: 2023-11-03 10:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
 
-#: core/ajax/feedback_form_submit.php:57
+#: core/ajax/feedback_form_submit.php:69
 msgid "Check new review"
 msgstr "Переглянути новий відгук"
 
@@ -77,6 +77,10 @@ msgstr "Вашу електронну адресу успішно підтвер
 #: core/do.php:97
 msgid "Your link is out of date or invalid"
 msgstr "Ваше посилання застаріле або недійсне"
+
+#: core/do.php:163
+msgid "Check payment information"
+msgstr "Перевірити інформацію про платіж"
 
 #: core/forms-logic.php:25 core/forms-logic.php:116 core/forms-logic.php:232
 #: core/forms-logic.php:429 core/forms-logic.php:516 core/forms-logic.php:609
@@ -316,7 +320,7 @@ msgstr "Назва відділення Нової Пошти"
 msgid "Nova Poshta office number"
 msgstr "Номер відділення Нової Пошти"
 
-#: core/forms-logic.php:889 views/checkout.twig:260
+#: core/forms-logic.php:889 views/checkout.twig:261
 #: views/dashboard/user.twig:92
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
@@ -330,7 +334,8 @@ msgid "Error while creating new user"
 msgstr "Помилка під час створення нового користувача"
 
 #: core/forms-logic.php:1092 core/includes/back/custom-post-types.php:68
-#: core/pages.php:208 core/pages.php:320 core/pages.php:357 views/order.twig:12
+#: core/pages.php:208 core/pages.php:320 core/pages.php:357
+#: views/dashboard/payment-information.twig:105 views/order.twig:12
 #: views/profile/order.twig:8 views/profile/orders.twig:11
 msgid "Order"
 msgstr "Замовлення"
@@ -1353,43 +1358,43 @@ msgstr "Місто або селище"
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:258
+#: views/checkout.twig:259
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
 
-#: views/checkout.twig:273
+#: views/checkout.twig:274
 msgid "Working hours"
 msgstr "Робочі години"
 
-#: views/checkout.twig:274
+#: views/checkout.twig:275
 msgid "From"
 msgstr "З"
 
-#: views/checkout.twig:274
+#: views/checkout.twig:275
 msgid "to"
 msgstr "по"
 
-#: views/checkout.twig:277
+#: views/checkout.twig:278
 msgid "Working days"
 msgstr "Робочі дні"
 
-#: views/checkout.twig:281
+#: views/checkout.twig:282
 msgid "Address"
 msgstr "Адреса"
 
-#: views/checkout.twig:294
+#: views/checkout.twig:295
 msgid "Your order"
 msgstr "Ваше замовлення"
 
-#: views/checkout.twig:301
+#: views/checkout.twig:302
 msgid "Process to checkout"
 msgstr "Оформити замовлення"
 
-#: views/checkout.twig:307
+#: views/checkout.twig:308
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:311
+#: views/checkout.twig:312
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 

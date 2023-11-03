@@ -98,3 +98,14 @@
     </div>
 </div>
 {% endif %}
+{% if payment.order_id %}
+{% set order_post = Post(payment.order_id) %}
+<div class="line">
+    <div class="col">
+        <p>{{ __('Order', TEXTDOMAIN) }}</p>
+    </div>
+    <div class="col">
+        <a href="/wp-admin/post.php?post={{ payment.order_id }}&action=edit">{{ order_post.title }}</a>
+    </div>
+</div>
+{% endif %}

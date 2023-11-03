@@ -432,7 +432,7 @@
                 },
                 {
                     "key": "field_653f31b995f98",
-                    "label": "Отримувачі Email про нові замовлення",
+                    "label": "Отримувачі Email про нові замовлення та зміну статусу оплати",
                     "name": "new_order_email_recipients",
                     "aria-label": "",
                     "type": "repeater",
@@ -473,6 +473,26 @@
                             "parent_repeater": "field_653f31b995f98"
                         }
                     ]
+                },
+                {
+                    "key": "field_6544ad64f5872",
+                    "label": "Активувати emali інформування про зміни статусів оплат",
+                    "name": "activate_email_notification_about_payment_status",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
                 },
                 {
                     "key": "field_653f448ef343d",
@@ -1266,5 +1286,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698963770
+    "modified": 1698999787
 }

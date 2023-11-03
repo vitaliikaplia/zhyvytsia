@@ -123,6 +123,7 @@ function custom_system_do_page_callback() {
                     $post_data = file_get_contents("php://input");
                     $data_array = json_decode($post_data, true);
                     if($data_array['invoiceId'] == get_post_meta( $payment_id, 'invoiceId', true )){
+
                         update_post_meta( $payment_id, 'paymentStatus', $data_array['status'] );
                         update_post_meta( $payment_id, 'payMethod', $data_array['payMethod'] );
                         update_post_meta( $payment_id, 'amount', $data_array['amount'] );
@@ -131,6 +132,51 @@ function custom_system_do_page_callback() {
                         update_post_meta( $payment_id, 'createdDate', $data_array['createdDate'] );
                         update_post_meta( $payment_id, 'modifiedDate', $data_array['modifiedDate'] );
                         update_post_meta( $payment_id, 'reference', $data_array['reference'] );
+
+                        /** sending email to admins */
+                        if(!empty($general_fields['shop']['new_order_email_recipients']) && $general_fields['shop']['activate_email_notification_about_payment_status']){
+
+                            $amount_for_email = intval($data_array['amount']) / 100;
+                            $amount_for_email = (float)str_replace(",",".",$amount_for_email);
+                            $amount_for_email = $amount_for_email . " грн";
+
+                            foreach ($general_fields['shop']['new_order_email_recipients'] as $recipient){
+
+                                /** preparing email content */
+                                $search = array(
+                                    '[order_id]',
+                                    '[payment_status]',
+                                    '[amount]',
+                                    '[created_date]',
+                                    '[modified_date]',
+                                    '[button]',
+                                    '[session]'
+                                );
+                                $replace = array(
+                                    get_post_meta( $payment_id, 'order_id', true ),
+                                    $data_array['status'],
+                                    $amount_for_email,
+                                    $data_array['createdDate'],
+                                    $data_array['modifiedDate'],
+                                    get_email_part('button', array(
+                                        'link' => BLOGINFO_URL . '/wp-admin/post.php?post='.$payment_id.'&action=edit',
+                                        'title' => __('Check payment information', TEXTDOMAIN)
+                                    )),
+                                    get_session_info(getUserIP())
+                                );
+                                $content = Timber::compile( 'email/email.twig', array(
+                                    'TEXTDOMAIN' => TEXTDOMAIN,
+                                    'BLOGINFO_NAME' => BLOGINFO_NAME,
+                                    'BLOGINFO_URL' => BLOGINFO_URL,
+                                    'subject' => str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_subject_admin']),
+                                    'text' => str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_text_admin'])
+                                ));
+
+                                /** sending email */
+                                send_email($recipient['email'], str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_subject_admin']), $content);
+
+                            }
+                        }
                     }
                 }
                 break;

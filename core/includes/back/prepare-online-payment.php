@@ -101,6 +101,7 @@ function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $i
     /** оновлюємо мета інформацію про створений платіж */
     update_post_meta( $payment_id, 'invoiceId', $invoice['invoiceId'] );
     update_post_meta( $payment_id, 'pageUrl', $invoice['pageUrl'] );
+    update_post_meta( $payment_id, 'order_id', $order_id );
 
     return $invoice['pageUrl'];
 

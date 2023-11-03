@@ -819,6 +819,64 @@
                             "toolbar": "full",
                             "media_upload": 0,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_6544a40b17b3c",
+                            "label": "Зміна статусу оплати (повідомлення адмінам)",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "accordion",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "open": 0,
+                            "multi_expand": 0,
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_6544a42217b3d",
+                            "label": "Тема листа",
+                            "name": "payment_status_subject_admin",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Доступні шорткоди: [order_id]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6544a44217b3e",
+                            "label": "Текст листа",
+                            "name": "payment_status_text_admin",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Доступні шорткоди: [order_id], [payment_status], [amount], [created_date], [modified_date], [button], [session]",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "visual",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         }
                     ]
                 },
@@ -936,5 +994,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698962633
+    "modified": 1698998838
 }
