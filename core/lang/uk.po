@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 10:25+0200\n"
+"POT-Creation-Date: 2023-11-05 09:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -52,7 +52,7 @@ msgid "Your phone number verified successfully, thanks!"
 msgstr "Ваш номер телефону підтверджено, дякуємо!"
 
 #: core/ajax/profile_resend_verification_code_to_email.php:44
-#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:990
+#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:993
 msgid "Confirm my Email"
 msgstr "Підтвердити мій Email"
 
@@ -62,7 +62,7 @@ msgid "New code sent..."
 msgstr "Новий код надіслано…"
 
 #: core/ajax/profile_resend_verification_code_to_sms.php:24
-#: core/forms-logic.php:488 core/forms-logic.php:1027
+#: core/forms-logic.php:488 core/forms-logic.php:1030
 msgid "Your verification code:"
 msgstr "Ваш код підтвердження:"
 
@@ -78,7 +78,7 @@ msgstr "Вашу електронну адресу успішно підтвер
 msgid "Your link is out of date or invalid"
 msgstr "Ваше посилання застаріле або недійсне"
 
-#: core/do.php:163
+#: core/do.php:162
 msgid "Check payment information"
 msgstr "Перевірити інформацію про платіж"
 
@@ -111,7 +111,7 @@ msgstr "Пароль задовгий"
 msgid "Email address/password do not match."
 msgstr "Адреса електронної пошти/пароль не збігаються."
 
-#: core/forms-logic.php:150 core/forms-logic.php:938
+#: core/forms-logic.php:150 core/forms-logic.php:941
 msgid "This email address is already taken"
 msgstr "Ця електронна адреса вже зайнята"
 
@@ -192,7 +192,7 @@ msgstr "Прізвище видалено"
 msgid "User phone updated"
 msgstr "Телефон користувача оновлено"
 
-#: core/forms-logic.php:492 core/forms-logic.php:930
+#: core/forms-logic.php:492 core/forms-logic.php:933
 msgid "This phone number is already taken"
 msgstr "Цей номер телефону вже зайнятий"
 
@@ -325,66 +325,86 @@ msgstr "Номер відділення Нової Пошти"
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
-#: core/forms-logic.php:1035
+#: core/forms-logic.php:890 views/checkout.twig:282
+msgid "Address"
+msgstr "Адреса"
+
+#: core/forms-logic.php:891 views/checkout.twig:278
+msgid "Working days"
+msgstr "Робочі дні"
+
+#: core/forms-logic.php:892 views/checkout.twig:274
+msgid "Working hours"
+msgstr "Робочі години"
+
+#: core/forms-logic.php:892 views/checkout.twig:275
+msgid "From"
+msgstr "З"
+
+#: core/forms-logic.php:892 views/checkout.twig:275
+msgid "to"
+msgstr "по"
+
+#: core/forms-logic.php:1038
 msgid "Congratulations! Your new account has been created!"
 msgstr "Вітаємо! Ваш новий обліковий запис створено!"
 
-#: core/forms-logic.php:1039
+#: core/forms-logic.php:1042
 msgid "Error while creating new user"
 msgstr "Помилка під час створення нового користувача"
 
-#: core/forms-logic.php:1092 core/includes/back/custom-post-types.php:68
+#: core/forms-logic.php:1095 core/includes/back/custom-post-types.php:68
 #: core/pages.php:208 core/pages.php:320 core/pages.php:357
 #: views/dashboard/payment-information.twig:105 views/order.twig:12
 #: views/profile/order.twig:8 views/profile/orders.twig:11
 msgid "Order"
 msgstr "Замовлення"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1142
-#: core/forms-logic.php:1184 views/dashboard/user.twig:37
+#: core/forms-logic.php:1114 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/dashboard/user.twig:37
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1142
-#: core/forms-logic.php:1184 views/dashboard/user.twig:38
+#: core/forms-logic.php:1114 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/dashboard/user.twig:38
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: core/forms-logic.php:1111 core/forms-logic.php:1142
-#: core/forms-logic.php:1184 views/checkout.twig:162
+#: core/forms-logic.php:1114 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:162
 #: views/dashboard/user.twig:39
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/dashboard/user.twig:26
+#: core/forms-logic.php:1115 core/forms-logic.php:1144
+#: core/forms-logic.php:1186 views/dashboard/user.twig:26
 msgid "Online payment"
 msgstr "Онлайн оплата"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/checkout.twig:182
+#: core/forms-logic.php:1115 core/forms-logic.php:1144
+#: core/forms-logic.php:1186 views/checkout.twig:182
 #: views/dashboard/user.twig:27
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/checkout.twig:190
+#: core/forms-logic.php:1115 core/forms-logic.php:1144
+#: core/forms-logic.php:1186 views/checkout.twig:190
 #: views/dashboard/user.twig:28
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
-#: core/forms-logic.php:1112 core/forms-logic.php:1141
-#: core/forms-logic.php:1183 views/checkout.twig:198
+#: core/forms-logic.php:1115 core/forms-logic.php:1144
+#: core/forms-logic.php:1186 views/checkout.twig:198
 #: views/dashboard/user.twig:29
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
-#: core/forms-logic.php:1141 core/forms-logic.php:1142
-#: core/forms-logic.php:1183 core/forms-logic.php:1184
+#: core/forms-logic.php:1144 core/forms-logic.php:1145
+#: core/forms-logic.php:1186 core/forms-logic.php:1187
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: core/forms-logic.php:1207
+#: core/forms-logic.php:1210
 msgid "New order has been placed"
 msgstr "Нове замовлення розміщено"
 
@@ -1361,26 +1381,6 @@ msgstr "Номер поштового відділення"
 #: views/checkout.twig:259
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
-
-#: views/checkout.twig:274
-msgid "Working hours"
-msgstr "Робочі години"
-
-#: views/checkout.twig:275
-msgid "From"
-msgstr "З"
-
-#: views/checkout.twig:275
-msgid "to"
-msgstr "по"
-
-#: views/checkout.twig:278
-msgid "Working days"
-msgstr "Робочі дні"
-
-#: views/checkout.twig:282
-msgid "Address"
-msgstr "Адреса"
 
 #: views/checkout.twig:295
 msgid "Your order"

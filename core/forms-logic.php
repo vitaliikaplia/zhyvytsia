@@ -886,7 +886,10 @@ function custom_system_forms_logic_callback() {
             } elseif ($delivery_type == "pu"){
 
                 $point_id = intval(str_replace('point-','',$user_pickup_point))-1;
-                $delivery_information = "<p>".__('Pickup point', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['name'] . "</b></p>";
+                $delivery_information = "<p>".__('Pickup point', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['name'] . "</b><br>";
+                $delivery_information .= __('Address', TEXTDOMAIN).": <b>" . $general_fields['shop']['self_pickup_points'][$point_id]['address']['address'] . "</b><br>";
+                $delivery_information .= __('Working days', TEXTDOMAIN).": <b>" . render_working_days($general_fields['shop']['self_pickup_points'][$point_id]['days']) . "</b><br>";
+                $delivery_information .= __('Working hours', TEXTDOMAIN).": <b>" . __('From', TEXTDOMAIN) . " " . $general_fields['shop']['self_pickup_points'][$point_id]['from_time'] . "</b> " . __('to', TEXTDOMAIN) . " <b>".$general_fields['shop']['self_pickup_points'][$point_id]['to_time'] . "</b></p>";
 
             }
 
