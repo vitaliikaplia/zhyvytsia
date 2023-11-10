@@ -3354,9 +3354,11 @@ footer{
 						}
 
 						.explain{
+							text-align: left;
 							font-size: 14px;
 							line-height: 1.4;
 							padding-top: 10px;
+							margin-bottom: 0;
 						}
 					}
 				}
@@ -4363,6 +4365,7 @@ footer{
 				margin: 0;
 				font-family: inherit;
 				height: 27px;
+				border-radius: 0 !important;
 
 				@media (max-width: 680px){
 					width: 28px;

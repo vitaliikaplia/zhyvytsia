@@ -568,6 +568,26 @@
                     ]
                 },
                 {
+                    "key": "field_654e1d92af22f",
+                    "label": "Підказка про реєстрацію під час створення замовлення",
+                    "name": "new_order_registration_message",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
                     "key": "field_653dba144e9da",
                     "label": "Методи доставки",
                     "name": "",
@@ -1286,5 +1306,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698999787
+    "modified": 1699618417
 }

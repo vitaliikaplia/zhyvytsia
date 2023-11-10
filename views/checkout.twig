@@ -134,7 +134,9 @@
                             <p class="label">{{ __('Create an account', TEXTDOMAIN) }}</p>
                             <input type="checkbox" name="create_an_account" value="1"{% if create_an_account %} checked="checked"{% endif %}>
                             <span class="indicator"></span>
-                            <p class="explain">{{ __('After creating an account, we will send you a login and password, which will allow you to view your order history in the future and make subsequent purchases much faster with discounts and other pleasant bonuses!', TEXTDOMAIN) }}</p>
+                            {% if general_fields.shop.new_order_registration_message %}
+                            <div class="explain typo">{{ general_fields.shop.new_order_registration_message }}</div>
+                            {% endif %}
                         </label>
                         {% endif %}
                     </div>
