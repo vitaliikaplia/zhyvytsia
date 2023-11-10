@@ -17,7 +17,7 @@
     {% for order in orders %}
     <a href="{{ orders_link_prefix }}/{{ order.id }}/" class="order">
         <div class="col">#{{ order.id }}</div>
-        <div class="col">{{ order.ids_arr_count }}</div>
+        <div class="col">{{ fn('plural_form', order.ids_arr_count, ['товар','товари','товарів'] )}}</div>
         <div class="col">{{ order.post_date|date('F d Y') }}</div>
         <div class="col">{{ order.total_price }}</div>
         <div class="col">{{ custom_order_statuses[order.order_status] }}</div>

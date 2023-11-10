@@ -1,6 +1,14 @@
 /* extended styles
 -------------------------------------------------------------- */
 
+.preload *{
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
 .typo{
 	img{
 		max-width:100%;
@@ -242,14 +250,6 @@
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.preload *{
-	-webkit-transition: none !important;
-	-moz-transition: none !important;
-	-ms-transition: none !important;
-	-o-transition: none !important;
-	transition: none !important;
-}
-
 .customBlockWrapper{
 	padding: 0 40px;
 	display: block;
@@ -257,6 +257,10 @@
 	width: 100%;
 	z-index: 8;
 	@include transform(translateZ(8px));
+
+	@media (max-width: 1024px){
+		padding: 0 20px;
+	}
 
 	.customBlock{
 		display: block;
@@ -282,7 +286,7 @@
 		cursor: pointer;
 		-webkit-appearance: none;
 		-moz-appearance: none;
-		@include transition(all, .2s);
+		transition: all, .2s;
 		text-decoration: none;
 		font-size: 17px;
 		font-weight: 600;
@@ -290,6 +294,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		@media (max-width: 1024px){
+			padding: 11px 22px;
+			font-size: 15px;
+		}
 
 		span{
 			line-height: 1.2;

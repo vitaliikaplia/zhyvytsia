@@ -11,9 +11,80 @@ add_role(
 
 //remove_role( 'client' );
 
-/** allow editors edit menus */
+/** allow editors to do some */
 $role_object = get_role( 'editor' );
 $role_object->add_cap( 'edit_theme_options' );
+$role_object->add_cap( 'list_users' );
+$role_object->add_cap( 'edit_users' );
+
+/** disallow editors to edit admins */
+global $pagenow;
+if(is_admin() && current_user_can('editor') && $pagenow == 'user-edit.php' && isset($_GET['user_id']) && $_GET['user_id']){
+
+    $user_data = get_userdata( intval($_GET['user_id']) );
+
+    $user_roles = $user_data->roles;
+
+    if (in_array('administrator', $user_roles)) {
+
+        // Hook at the beginning of the user profile edit form.
+        add_action('wp_after_admin_bar_render', 'start_ob_capture');
+        function start_ob_capture() {
+            ob_start('modify_user_profile_fields');
+        }
+
+        // Hook at the end of the user profile edit form.
+        add_action('admin_footer', 'end_ob_capture');
+        function end_ob_capture() {
+            ob_end_flush();
+        }
+
+        // Callback function to modify the form fields.
+        function modify_user_profile_fields($buffer) {
+            // Use a DOM parser to manipulate the fields.
+            //$dom = new DOMDocument();
+            // Suppress errors due to any malformed HTML.
+            //@$dom->loadHTML(mb_convert_encoding($buffer, 'HTML-ENTITIES', 'UTF-8'));
+
+            $dom = new DOMDocument();
+            // Use internal errors to avoid warnings with HTML5 elements or other DOM issues
+            libxml_use_internal_errors(true);
+            $dom->loadHTML(mb_convert_encoding($buffer, 'HTML-ENTITIES', 'UTF-8'));
+            libxml_clear_errors();
+
+            $inputs = $dom->getElementsByTagName('input');
+            foreach ($inputs as $input) {
+                // Set the fields to 'readonly' and 'disabled'.
+                $input->setAttribute('readonly', 'readonly');
+                $input->setAttribute('disabled', 'disabled');
+            }
+
+            $selects = $dom->getElementsByTagName('select');
+            foreach ($selects as $select) {
+                // Set the fields to 'readonly' and 'disabled'.
+                $select->setAttribute('readonly', 'readonly');
+                $select->setAttribute('disabled', 'disabled');
+            }
+
+            $textareas = $dom->getElementsByTagName('textarea');
+            foreach ($textareas as $textarea) {
+                // Set the fields to 'readonly' and 'disabled'.
+                $textarea->setAttribute('readonly', 'readonly');
+                $textarea->setAttribute('disabled', 'disabled');
+            }
+
+            $buttons = $dom->getElementsByTagName('button');
+            foreach ($buttons as $button) {
+                // Set the fields to 'readonly' and 'disabled'.
+                $button->setAttribute('readonly', 'readonly');
+                $button->setAttribute('disabled', 'disabled');
+            }
+
+            return $dom->saveHTML();
+        }
+
+    }
+}
 
 /** disable wp dashboard for clients */
 if(is_admin() && current_user_can('client') && empty($_SERVER['HTTP_X_REQUESTED_WITH']) && !strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
@@ -24,7 +95,6 @@ if(is_admin() && current_user_can('client') && empty($_SERVER['HTTP_X_REQUESTED_
 /** disable default WordPress login */
 function custom_login_page() {
     global $pagenow;
-    pr($pagenow);
     if( 'wp-login.php' == $pagenow && !isset($_REQUEST['usewplogin']) ) {
         wp_redirect(BLOGINFO_URL);
         exit;
@@ -54,20 +124,24 @@ function save_extra_user_profile_fields( $user_id ) {
         return false;
     }
 
-//    update_user_meta( $user_id, 'user_email_confirmed', htmlspecialchars($_POST['user_email_confirmed'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_phone', fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')));
-//    update_user_meta( $user_id, 'user_phone_confirmed', htmlspecialchars($_POST['user_phone_confirmed'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'payment_type', htmlspecialchars($_POST['payment_type'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'delivery_type', htmlspecialchars($_POST['delivery_type'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_region', htmlspecialchars($_POST['user_region'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_city', htmlspecialchars($_POST['user_city'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_zip', htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_address', htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_np_city_ref', htmlspecialchars($_POST['user_np_city_ref'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_np_city_name', htmlspecialchars($_POST['user_np_city_name'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_np_office_number', htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_np_office_name', htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8') );
-//    update_user_meta( $user_id, 'user_pickup_point', htmlspecialchars($_POST['user_pickup_point'], ENT_QUOTES, 'UTF-8') );
+    if( current_user_can('administrator') ){
+
+        update_user_meta( $user_id, 'user_email_confirmed', htmlspecialchars($_POST['user_email_confirmed'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_phone', fix_phone_format(htmlspecialchars($_POST['user_phone'], ENT_QUOTES, 'UTF-8')));
+        update_user_meta( $user_id, 'user_phone_confirmed', htmlspecialchars($_POST['user_phone_confirmed'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'payment_type', htmlspecialchars($_POST['payment_type'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'delivery_type', htmlspecialchars($_POST['delivery_type'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_region', htmlspecialchars($_POST['user_region'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_city', htmlspecialchars($_POST['user_city'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_zip', htmlspecialchars($_POST['user_zip'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_address', htmlspecialchars($_POST['user_address'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_np_city_ref', htmlspecialchars($_POST['user_np_city_ref'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_np_city_name', htmlspecialchars($_POST['user_np_city_name'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_np_office_number', htmlspecialchars($_POST['user_np_office_number'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_np_office_name', htmlspecialchars($_POST['user_np_office_name'], ENT_QUOTES, 'UTF-8') );
+        update_user_meta( $user_id, 'user_pickup_point', htmlspecialchars($_POST['user_pickup_point'], ENT_QUOTES, 'UTF-8') );
+
+    }
 
 }
 

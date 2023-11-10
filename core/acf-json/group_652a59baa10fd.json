@@ -37,6 +37,51 @@
                     "allow_null": 1
                 },
                 {
+                    "key": "field_654c3193273f7",
+                    "label": "Телефони",
+                    "name": "phones",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Додати рядок",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_654c3193273f8",
+                            "label": "Телефон",
+                            "name": "phone",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_654c3193273f7"
+                        }
+                    ]
+                },
+                {
                     "key": "field_65043bd6bda36",
                     "label": "Соціальні мережі",
                     "name": "socials",
@@ -128,5 +173,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697275097
+    "modified": 1699492275
 }

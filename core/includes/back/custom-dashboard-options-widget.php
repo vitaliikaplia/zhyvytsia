@@ -109,6 +109,11 @@ if( current_user_can('edit_dashboard') ) {
                 'description'   => __("SMTP username", TEXTDOMAIN)
             ),
             array (
+                'type'          => 'title',
+                'label'          => 'smtp_from',
+                'description'   => __("SMTP from email", TEXTDOMAIN)
+            ),
+            array (
                 'type'          => 'password',
                 'label'          => 'smtp_password',
                 'description'   => __("SMTP password", TEXTDOMAIN)

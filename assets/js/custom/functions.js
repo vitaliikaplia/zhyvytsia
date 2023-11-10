@@ -29,15 +29,33 @@ function run_feedback_slider(element){
     }
     let swiperSlider = new Swiper(element, {
         direction: 'horizontal',
-        slidesPerView: 4,
-        spaceBetween: 40,
         loop: true,
+        slidesPerView: 1,
+        spaceBetween: 40,
         autoplay,
+        autoHeight: true,
         pagination: {
             el: ".feedback-swiper-pagination",
             clickable: true
         },
-        grabCursor: true
+        grabCursor: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1080: {
+                slidesPerView: 4,
+            },
+            1380: {
+                slidesPerView: 5,
+            },
+            1640: {
+                slidesPerView: 6,
+            },
+        },
     });
 }
 
@@ -45,12 +63,28 @@ function run_feedback_slider(element){
 function run_about_slider(element){
     let swiperSlider = new Swiper(element, {
         direction: 'horizontal',
-        slidesPerView: 8,
+        slidesPerView: 2,
         spaceBetween: 0,
         loop: true,
-        grabCursor: true
+        grabCursor: true,
+        breakpoints: {
+            480: {
+                slidesPerView: 3,
+            },
+            640: {
+                slidesPerView: 4,
+            },
+            768: {
+                slidesPerView: 5,
+            },
+            1024: {
+                slidesPerView: 6,
+            },
+            1280: {
+                slidesPerView: 8,
+            },
+        },
     });
-
 }
 
 /** custom form submit */

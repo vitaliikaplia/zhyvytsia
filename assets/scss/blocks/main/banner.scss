@@ -10,6 +10,14 @@
   .customBlock{
     padding: 30px 120px;
 
+    @media (max-width: 1024px){
+      padding: 20px 80px;
+    }
+
+    @media (max-width: 640px){
+      padding: 64px 0;
+    }
+
     .typo{
       text-align: center;
       max-width: 1140px;
@@ -19,6 +27,14 @@
       font-weight: 700;
       letter-spacing: 1px;
       filter: drop-shadow(0px 1px 0px rgba(white,.5));
+
+      @media (max-width: 1024px){
+        font-size: 24px;
+      }
+
+      @media (max-width: 640px){
+        font-size: 18px;
+      }
 
       @include transition(all,1s);
       @include opacity(0);
@@ -39,14 +55,45 @@
     filter: drop-shadow(0px 1px 0px rgba(white,.5));
     @include transition(all,1s);
     @include opacity(0);
+
+    @media (max-width: 1024px){
+      font-size: 48px;
+    }
   }
   &:before{
     @include transform(translateX(100px) translateZ(2px));
     right: 40px;
+
+    @media (max-width: 1024px){
+      right: 20px;
+    }
+
+    @media (max-width: 640px){
+      right: auto;
+      left: 50%;
+      margin-left: -16px;
+      font-size: 32px;
+      top: 20px;
+      margin-top: 0;
+    }
   }
   &:after{
     @include transform(translateX(-100px) translateZ(2px));
     left: 40px;
+
+    @media (max-width: 1024px){
+      left: 20px;
+    }
+
+    @media (max-width: 640px){
+      right: auto;
+      left: 50%;
+      margin-left: -16px;
+      font-size: 32px;
+      top: auto;
+      margin-top: 0;
+      bottom: 20px;
+    }
   }
 
   &.show,

@@ -1,28 +1,33 @@
 <br>
 <h2>{{ __('Extra profile data', TEXTDOMAIN) }}</h2>
+{% if fn('current_user_can', 'administrator') %}
+    {% set additional_params = '' %}
+{% else %}
+    {% set additional_params = 'disabled readonly' %}
+{% endif %}
 <table class="form-table">
     <tr>
         <th><label for="user_email_confirmed">{{ __('Confirmed Email?', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="checkbox" name="user_email_confirmed" id="user_email_confirmed" value="1"{% if user.user_email_confirmed %} checked="checked" {% endif%} /><br />
+            <input {{ additional_params }} type="checkbox" name="user_email_confirmed" id="user_email_confirmed" value="1"{% if user.user_email_confirmed %} checked="checked" {% endif%} /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_phone">{{ __('Phone', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_phone" id="user_phone" placeholder="+380..." class="regular-text" value="{{ user.user_phone }}" /><br />
+            <input {{ additional_params }} type="text" name="user_phone" id="user_phone" placeholder="+380..." class="regular-text" value="{{ user.user_phone }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_phone_confirmed">{{ __('Confirmed phone?', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="checkbox" name="user_phone_confirmed" id="user_phone_confirmed" value="1"{% if user.user_phone_confirmed %} checked="checked" {% endif%} /><br />
+            <input {{ additional_params }} type="checkbox" name="user_phone_confirmed" id="user_phone_confirmed" value="1"{% if user.user_phone_confirmed %} checked="checked" {% endif%} /><br />
         </td>
     </tr>
     <tr>
         <th><label for="payment_type">{{ __('Payment type', TEXTDOMAIN) }}</label></th>
         <td>
-            <select disabled readonly name="payment_type">
+            <select {{ additional_params }} name="payment_type">
                 <option value="online_payment"{% if user.payment_type == "online_payment" %} selected="selected"{% endif%}>{{ __('Online payment', TEXTDOMAIN) }}</option>
                 <option value="cod_payment"{% if user.payment_type == "cod_payment" %} selected="selected"{% endif%}>{{ __('COD Payment', TEXTDOMAIN) }}</option>
                 <option value="payment_upon_receipt"{% if user.payment_type == "payment_upon_receipt" %} selected="selected"{% endif%}>{{ __('Payment upon receipt', TEXTDOMAIN) }}</option>
@@ -33,7 +38,7 @@
     <tr>
         <th><label for="delivery_type">{{ __('Delivery type', TEXTDOMAIN) }}</label></th>
         <td>
-            <select disabled readonly name="delivery_type">
+            <select {{ additional_params }} name="delivery_type">
                 <option value="up"{% if user.delivery_type == "up" %} selected="selected"{% endif%}>{{ __('UkrPoshta', TEXTDOMAIN) }}</option>
                 <option value="np"{% if user.delivery_type == "np" %} selected="selected"{% endif%}>{{ __('Nova Poshta', TEXTDOMAIN) }}</option>
                 <option value="pu"{% if user.delivery_type == "pu" %} selected="selected"{% endif%}>{{ __('Pickup', TEXTDOMAIN) }}</option>
@@ -43,55 +48,55 @@
     <tr>
         <th><label for="user_region">{{ __('Region (for example, Kyivska, Lvivska, etc.)', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_region" id="user_region" class="regular-text" value="{{ user.user_region }}" /><br />
+            <input {{ additional_params }} type="text" name="user_region" id="user_region" class="regular-text" value="{{ user.user_region }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_city">{{ __('City (or settlement)', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_city" id="user_city" class="regular-text" value="{{ user.user_city }}" /><br />
+            <input {{ additional_params }} type="text" name="user_city" id="user_city" class="regular-text" value="{{ user.user_city }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_zip">{{ __('ZIP Code', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_zip" id="user_zip" class="regular-text" value="{{ user.user_zip }}" /><br />
+            <input {{ additional_params }} type="text" name="user_zip" id="user_zip" class="regular-text" value="{{ user.user_zip }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_address">{{ __('Address (street, house, apartment)', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_address" id="user_address" class="regular-text" value="{{ user.user_address }}" /><br />
+            <input {{ additional_params }} type="text" name="user_address" id="user_address" class="regular-text" value="{{ user.user_address }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_np_city_ref">{{ __('Nova Poshta city ref', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_np_city_ref" id="user_np_city_ref" class="regular-text" value="{{ user.user_np_city_ref }}" /><br />
+            <input {{ additional_params }} type="text" name="user_np_city_ref" id="user_np_city_ref" class="regular-text" value="{{ user.user_np_city_ref }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_np_city_name">{{ __('Nova Poshta city name', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_np_city_name" id="user_np_city_name" class="regular-text" value="{{ user.user_np_city_name }}" /><br />
+            <input {{ additional_params }} type="text" name="user_np_city_name" id="user_np_city_name" class="regular-text" value="{{ user.user_np_city_name }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_np_office_number">{{ __('Nova Poshta office number', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_np_office_number" id="user_np_office_number" class="regular-text" value="{{ user.user_np_office_number }}" /><br />
+            <input {{ additional_params }} type="text" name="user_np_office_number" id="user_np_office_number" class="regular-text" value="{{ user.user_np_office_number }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_np_office_name">{{ __('Nova Poshta office name', TEXTDOMAIN) }}</label></th>
         <td>
-            <input disabled readonly type="text" name="user_np_office_name" id="user_np_office_name" class="regular-text" value="{{ user.user_np_office_name }}" /><br />
+            <input {{ additional_params }} type="text" name="user_np_office_name" id="user_np_office_name" class="regular-text" value="{{ user.user_np_office_name }}" /><br />
         </td>
     </tr>
     <tr>
         <th><label for="user_pickup_point">{{ __('Pickup point', TEXTDOMAIN) }}</label></th>
         <td>
-            <select disabled readonly name="user_pickup_point">
+            <select {{ additional_params }} name="user_pickup_point">
                 <option></option>
                 {% if general_fields.shop.self_pickup_points is iterable %}
                 {% for key,val in general_fields.shop.self_pickup_points %}

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-05 09:31+0200\n"
+"POT-Creation-Date: 2023-11-10 00:18+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -289,39 +289,39 @@ msgid "Self pickup point is not specified"
 msgstr "Пункт самовивозу не вказано"
 
 #: core/forms-logic.php:875 views/checkout.twig:210
-#: views/dashboard/user.twig:44
+#: views/dashboard/user.twig:49
 msgid "Region (for example, Kyivska, Lvivska, etc.)"
 msgstr "Область (наприклад, Київська, Львівська тощо)"
 
 #: core/forms-logic.php:876 views/checkout.twig:214
-#: views/dashboard/user.twig:50
+#: views/dashboard/user.twig:55
 msgid "City (or settlement)"
 msgstr "Місто (або населений пункт)"
 
 #: core/forms-logic.php:877 views/checkout.twig:218
-#: views/dashboard/user.twig:56
+#: views/dashboard/user.twig:61
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
 #: core/forms-logic.php:878 views/checkout.twig:222
-#: views/dashboard/user.twig:62
+#: views/dashboard/user.twig:67
 msgid "Address (street, house, apartment)"
 msgstr "Адреса (вулиця, будинок, квартира)"
 
-#: core/forms-logic.php:882 views/dashboard/user.twig:74
+#: core/forms-logic.php:882 views/dashboard/user.twig:79
 msgid "Nova Poshta city name"
 msgstr "Назва міста відділення Нової Пошти"
 
-#: core/forms-logic.php:883 views/dashboard/user.twig:86
+#: core/forms-logic.php:883 views/dashboard/user.twig:91
 msgid "Nova Poshta office name"
 msgstr "Назва відділення Нової Пошти"
 
-#: core/forms-logic.php:884 views/dashboard/user.twig:80
+#: core/forms-logic.php:884 views/dashboard/user.twig:85
 msgid "Nova Poshta office number"
 msgstr "Номер відділення Нової Пошти"
 
 #: core/forms-logic.php:889 views/checkout.twig:261
-#: views/dashboard/user.twig:92
+#: views/dashboard/user.twig:97
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
@@ -361,41 +361,41 @@ msgid "Order"
 msgstr "Замовлення"
 
 #: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/dashboard/user.twig:37
+#: core/forms-logic.php:1187 views/dashboard/user.twig:42
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
 #: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/dashboard/user.twig:38
+#: core/forms-logic.php:1187 views/dashboard/user.twig:43
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
 #: core/forms-logic.php:1114 core/forms-logic.php:1145
 #: core/forms-logic.php:1187 views/checkout.twig:162
-#: views/dashboard/user.twig:39
+#: views/dashboard/user.twig:44
 msgid "Pickup"
 msgstr "Самовивіз"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/dashboard/user.twig:26
+#: core/forms-logic.php:1186 views/dashboard/user.twig:31
 msgid "Online payment"
 msgstr "Онлайн оплата"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
 #: core/forms-logic.php:1186 views/checkout.twig:182
-#: views/dashboard/user.twig:27
+#: views/dashboard/user.twig:32
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
 #: core/forms-logic.php:1186 views/checkout.twig:190
-#: views/dashboard/user.twig:28
+#: views/dashboard/user.twig:33
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
 #: core/forms-logic.php:1186 views/checkout.twig:198
-#: views/dashboard/user.twig:29
+#: views/dashboard/user.twig:34
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
@@ -553,147 +553,151 @@ msgid "SMTP username"
 msgstr "SMTP користувач"
 
 #: core/includes/back/custom-dashboard-options-widget.php:114
+msgid "SMTP from email"
+msgstr "SMTP відправник"
+
+#: core/includes/back/custom-dashboard-options-widget.php:119
 msgid "SMTP password"
 msgstr "SMTP пароль"
 
-#: core/includes/back/custom-dashboard-options-widget.php:119
+#: core/includes/back/custom-dashboard-options-widget.php:124
 msgid "SMTP from name"
 msgstr "SMTP імʼя користувача"
 
-#: core/includes/back/custom-dashboard-options-widget.php:124
+#: core/includes/back/custom-dashboard-options-widget.php:129
 msgid "Secure SMTP connection"
 msgstr "Безпечне з’єднання SMTP"
 
-#: core/includes/back/custom-dashboard-options-widget.php:134
+#: core/includes/back/custom-dashboard-options-widget.php:139
 msgid "SMS options"
 msgstr "SMS налаштування"
 
-#: core/includes/back/custom-dashboard-options-widget.php:139
+#: core/includes/back/custom-dashboard-options-widget.php:144
 msgid "SMS username"
 msgstr "SMS користувач"
 
-#: core/includes/back/custom-dashboard-options-widget.php:144
+#: core/includes/back/custom-dashboard-options-widget.php:149
 msgid "SMS password"
 msgstr "SMS пароль"
 
-#: core/includes/back/custom-dashboard-options-widget.php:149
+#: core/includes/back/custom-dashboard-options-widget.php:154
 msgid "SMS alpha name"
 msgstr "SMS альфа-ім’я"
 
-#: core/includes/back/custom-dashboard-options-widget.php:159
+#: core/includes/back/custom-dashboard-options-widget.php:164
 #: core/includes/front/custom-localization.php:40
 msgid "Custom code"
 msgstr "Власний код"
 
-#: core/includes/back/custom-dashboard-options-widget.php:164
+#: core/includes/back/custom-dashboard-options-widget.php:169
 #: core/includes/front/custom-localization.php:41
 msgid "Header custom code"
 msgstr "Код в шапку"
 
-#: core/includes/back/custom-dashboard-options-widget.php:169
+#: core/includes/back/custom-dashboard-options-widget.php:174
 #: core/includes/front/custom-localization.php:42
 msgid "Footer custom code"
 msgstr "Код в підвал"
 
-#: core/includes/back/custom-dashboard-options-widget.php:179
+#: core/includes/back/custom-dashboard-options-widget.php:184
 msgid "Other options"
 msgstr "Інші параметри"
 
-#: core/includes/back/custom-dashboard-options-widget.php:184
+#: core/includes/back/custom-dashboard-options-widget.php:189
 #: core/includes/front/custom-localization.php:33
 msgid "Google maps API key"
 msgstr "Ключ Google maps API"
 
-#: core/includes/back/custom-dashboard-options-widget.php:189
+#: core/includes/back/custom-dashboard-options-widget.php:194
 #: core/includes/front/custom-localization.php:15
 msgid "Disable all updates"
 msgstr "Вимкнути всі оновлення"
 
-#: core/includes/back/custom-dashboard-options-widget.php:194
+#: core/includes/back/custom-dashboard-options-widget.php:199
 #: core/includes/front/custom-localization.php:16
 msgid "Disable customizer"
 msgstr "Вимкнути кастомайзер"
 
-#: core/includes/back/custom-dashboard-options-widget.php:199
+#: core/includes/back/custom-dashboard-options-widget.php:204
 #: core/includes/front/custom-localization.php:17
 msgid "Disable src set"
 msgstr "Вимкнути src set"
 
-#: core/includes/back/custom-dashboard-options-widget.php:204
+#: core/includes/back/custom-dashboard-options-widget.php:209
 #: core/includes/front/custom-localization.php:18
 msgid "Remove default image sizes"
 msgstr "Вимкнути стандартні розміри зображень"
 
-#: core/includes/back/custom-dashboard-options-widget.php:209
+#: core/includes/back/custom-dashboard-options-widget.php:214
 #: core/includes/front/custom-localization.php:19
 msgid "Disable core privacy tools"
 msgstr "Вимкнути інструменти конфіденціальності"
 
-#: core/includes/back/custom-dashboard-options-widget.php:214
+#: core/includes/back/custom-dashboard-options-widget.php:219
 #: core/includes/front/custom-localization.php:20
 msgid "Enable CYR3LAT"
 msgstr "Активувати CYR3LAT"
 
-#: core/includes/back/custom-dashboard-options-widget.php:219
+#: core/includes/back/custom-dashboard-options-widget.php:224
 #: core/includes/front/custom-localization.php:21
 msgid "Disable DNS prefetch"
 msgstr "Приховати DNS prefetch"
 
-#: core/includes/back/custom-dashboard-options-widget.php:224
+#: core/includes/back/custom-dashboard-options-widget.php:229
 msgid "Disable Rest API for anonymous users"
 msgstr "Вимкнути Rest API для анонімних користувачів"
 
-#: core/includes/back/custom-dashboard-options-widget.php:229
+#: core/includes/back/custom-dashboard-options-widget.php:234
 #: core/includes/front/custom-localization.php:23
 msgid "Disable Emojis"
 msgstr "Вимкнути Emoji"
 
-#: core/includes/back/custom-dashboard-options-widget.php:234
+#: core/includes/back/custom-dashboard-options-widget.php:239
 #: core/includes/front/custom-localization.php:24
 msgid "Disable Embeds"
 msgstr "Вимкнути Embeds"
 
-#: core/includes/back/custom-dashboard-options-widget.php:239
+#: core/includes/back/custom-dashboard-options-widget.php:244
 #: core/includes/front/custom-localization.php:25
 msgid "Disable dashboard widgets"
 msgstr "Приховати системні віджети консолі"
 
-#: core/includes/back/custom-dashboard-options-widget.php:244
+#: core/includes/back/custom-dashboard-options-widget.php:249
 #: core/includes/front/custom-localization.php:26
 msgid "Hide admin top bar"
 msgstr "Вимкнути панель адміністратора"
 
-#: core/includes/back/custom-dashboard-options-widget.php:249
+#: core/includes/back/custom-dashboard-options-widget.php:254
 #: core/includes/front/custom-localization.php:27
 msgid "Disable admin email verification"
 msgstr "Вимкнути E-mail верифікацію для адмінів"
 
-#: core/includes/back/custom-dashboard-options-widget.php:254
+#: core/includes/back/custom-dashboard-options-widget.php:259
 #: core/includes/front/custom-localization.php:28
 msgid "Disable comments"
 msgstr "Вимкнути коментарі"
 
-#: core/includes/back/custom-dashboard-options-widget.php:259
+#: core/includes/back/custom-dashboard-options-widget.php:264
 #: core/includes/front/custom-localization.php:29
 msgid "Delete child media"
 msgstr "Видаляти вкладення"
 
-#: core/includes/back/custom-dashboard-options-widget.php:264
+#: core/includes/back/custom-dashboard-options-widget.php:269
 #: core/includes/front/custom-localization.php:30
 msgid "Enable HTML cache"
 msgstr "Увімкнути HTML кешування"
 
-#: core/includes/back/custom-dashboard-options-widget.php:269
+#: core/includes/back/custom-dashboard-options-widget.php:274
 #: core/includes/front/custom-localization.php:31
 msgid "Enable minify"
 msgstr "Увімкнути мініфікацію"
 
-#: core/includes/back/custom-dashboard-options-widget.php:274
+#: core/includes/back/custom-dashboard-options-widget.php:279
 #: core/includes/front/custom-localization.php:32
 msgid "Inline scripts and styles"
 msgstr "Інлайнові скрипти та стилі"
 
-#: core/includes/back/custom-dashboard-options-widget.php:279
+#: core/includes/back/custom-dashboard-options-widget.php:284
 msgid "Hide ACF"
 msgstr "Приховати ACF"
 
@@ -995,11 +999,11 @@ msgstr "Мініатюра"
 msgid "Client"
 msgstr "Клієнт"
 
-#: core/includes/back/system-users.php:79
+#: core/includes/back/system-users.php:153
 msgid "Phone Number"
 msgstr "Номер телефону"
 
-#: core/includes/back/system-users.php:98
+#: core/includes/back/system-users.php:172
 msgid "You have successfully logged out"
 msgstr "Ви успішно вийшли"
 
@@ -1334,7 +1338,7 @@ msgstr "Ім’я"
 msgid "Last Name"
 msgstr "Фамілія"
 
-#: views/checkout.twig:125 views/dashboard/user.twig:11
+#: views/checkout.twig:125 views/dashboard/user.twig:16
 #: views/profile/edit.twig:18
 msgid "Phone"
 msgstr "Телефон"
@@ -1447,43 +1451,43 @@ msgstr "URL Переадресації"
 msgid "Extra profile data"
 msgstr "Додаткові дані профілю"
 
-#: views/dashboard/user.twig:5
+#: views/dashboard/user.twig:10
 msgid "Confirmed Email?"
 msgstr "Підтверджена електронна адреса?"
 
-#: views/dashboard/user.twig:17
+#: views/dashboard/user.twig:22
 msgid "Confirmed phone?"
 msgstr "Підтверджений телефон?"
 
-#: views/dashboard/user.twig:23
+#: views/dashboard/user.twig:28
 msgid "Payment type"
 msgstr "Тип оплати"
 
-#: views/dashboard/user.twig:34
+#: views/dashboard/user.twig:39
 msgid "Delivery type"
 msgstr "Тип доставки"
 
-#: views/dashboard/user.twig:68
+#: views/dashboard/user.twig:73
 msgid "Nova Poshta city ref"
 msgstr "Нова Пошта REF міста"
 
-#: views/dashboard/user.twig:107
+#: views/dashboard/user.twig:112
 msgid "Technical data"
 msgstr "Технічна інформація"
 
-#: views/dashboard/user.twig:110
+#: views/dashboard/user.twig:115
 msgid "User email verification code for link"
 msgstr "Код підтвердження електронної пошти користувача для посилання"
 
-#: views/dashboard/user.twig:116
+#: views/dashboard/user.twig:121
 msgid "User email verification code"
 msgstr "Код підтвердження електронної пошти користувача"
 
-#: views/dashboard/user.twig:122
+#: views/dashboard/user.twig:127
 msgid "Password recovery code for link"
 msgstr "Код відновлення пароля для посилання"
 
-#: views/dashboard/user.twig:128
+#: views/dashboard/user.twig:133
 msgid "User sms verification code"
 msgstr "Код підтвердження SMS"
 

@@ -67,6 +67,47 @@
                     <use href="{{ svg_sprite }}#iconAccount"></use>
                 </svg>
             </a>
+            {% if general_fields.mobile.menu.html %}
+            <button class="burger">
+                <span></span>
+            </button>
+            {% endif %}
         </div>
     </div>
 </header>
+{% if general_fields.mobile.menu.html %}
+<section class="mobileMenu">
+    <div class="menuWrapper">
+        <ul class="menu">
+            {{ general_fields.mobile.menu.html }}
+        </ul>
+    </div>
+    {% if general_fields.mobile.phones is iterable %}
+    <ul class="phones">
+        {% for key,val in general_fields.mobile.phones %}
+        <li>
+            <a href="tel:{{ val.phone | fix_phone }}">
+                <svg>
+                    <use href="{{ svg_sprite }}#iconCall"></use>
+                </svg>
+                <span>{{ val.phone | nice_phone }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if general_fields.mobile.socials is iterable %}
+    <ul class="socials">
+        {% for key,val in general_fields.mobile.socials %}
+            <li class="{{ val.type }}">
+                <a href="{{ val.link }}" target="_blank">
+                    <svg>
+                        <use href="{{ svg_sprite }}#iconSoc-{{ val.type }}"></use>
+                    </svg>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+{% endif %}

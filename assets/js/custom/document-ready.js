@@ -17,6 +17,27 @@ window.addEventListener("DOMContentLoaded", function (){
             }
         });
 
+        /** mobile menu */
+        $('.burger').click(function(){
+            if(!$('body').hasClass('mobile-menu-opened')){
+                $('body').addClass('mobile-menu-opened');
+                $('.mobileMenu > .menuWrapper > .menu > li').first().addClass('show');
+                $('.mobileMenu > .menuWrapper > .menu > li').first().find('.sub-menu').show();
+            } else {
+                $('body').removeClass('mobile-menu-opened');
+            }
+        });
+        $('.mobileMenu > .menuWrapper > .menu > li > a').click(function(){
+            if($(this).parent().hasClass('show')){
+                $(this).parent().removeClass('show');
+                $(this).parent().find('.sub-menu').slideUp();
+            } else {
+                $(this).parent().addClass('show')
+                $(this).parent().find('.sub-menu').slideDown();
+            }
+            return false;
+        });
+
         /** вітання */
         const allGreetings = document.querySelectorAll('.main-hero .suffix');
         allGreetings.forEach(function (greetings) {

@@ -11,12 +11,25 @@
     padding: 60px 0;
     max-width: 1140px;
 
+    @media (max-width: 1024px){
+      padding: 30px 0;
+    }
+
     & > .title{
       font-size: 38px;
       font-weight: 700;
       text-align: center;
       line-height: 1.2;
       margin-bottom: 28px;
+
+      @media (max-width: 1024px){
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 640px){
+        font-size: 26px;
+      }
 
       @include transition(all,.35s);
       @include opacity(0);
@@ -35,6 +48,10 @@
       max-width: 520px;
       margin: 0 auto 32px;
       line-height: 1.6;
+
+      @media (max-width: 1024px){
+        margin-bottom: 20px;
+      }
 
       @include transition(all,.35s);
       @include opacity(0);
@@ -60,6 +77,10 @@
 
       .fields{
         margin-bottom: 32px;
+
+        @media (max-width: 1024px){
+          margin-bottom: 20px;
+        }
 
         label{
           display: block;
@@ -152,6 +173,11 @@
           display: flex;
           align-items: center;
           justify-content: center;
+
+          @media (max-width: 640px){
+            padding: 10px 20px;
+            font-size: 14px;
+          }
 
           span{
             display: inline-block;

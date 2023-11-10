@@ -15,6 +15,10 @@
     text-align: center;
     padding-bottom: 100px;
 
+    @media (max-width: 480px){
+      padding: 40px 0;
+    }
+
     .title{
       font-weight: 900;
       font-size: 48px;
@@ -23,6 +27,20 @@
       filter: drop-shadow(0px 2px 0px rgba(black,.5));
       min-height: 116px;
       max-width: 680px;
+
+      @media (max-width: 1024px){
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 860px){
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 480px){
+        margin-bottom: 0;
+      }
 
       @include transition(all,.35s);
       @include opacity(0);
@@ -41,6 +59,14 @@
 
       .suffix{
         font-size: 42px;
+
+        @media (max-width: 1024px){
+          font-size: 36px;
+        }
+
+        @media (max-width: 860px){
+          font-size: 26px;
+        }
       }
     }
 
@@ -48,6 +74,15 @@
       font-size: 18px;
       margin-bottom: 48px;
       filter: drop-shadow(0px 2px 0px rgba(black,.15));
+
+      @media (max-width: 1024px){
+        margin-bottom: 32px;
+        font-size: 17px;
+      }
+
+      @media (max-width: 860px){
+        font-size: 16px;
+      }
 
       @include transition(all,.35s);
       @include opacity(0);
@@ -66,6 +101,10 @@
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 480px){
+        flex-direction: column;
+      }
+
       .overallButton{
         margin-right: 20px;
 
@@ -80,8 +119,22 @@
           @include transform(translateY(0px));
         }
 
+        @media (max-width: 480px){
+          margin-right: auto;
+          margin-left: auto;
+
+          &:first-child{
+            margin-bottom: 14px;
+          }
+        }
+
         &:last-child{
           margin-right: 0;
+
+          @media (max-width: 480px){
+            margin-right: auto;
+            margin-left: auto;
+          }
         }
       }
     }
@@ -121,6 +174,10 @@
     height: 42px;
     width: 28px;
     margin-left: -14px;
+
+    @media (max-width: 480px){
+      display: none;
+    }
 
     &:before {
       content: '';

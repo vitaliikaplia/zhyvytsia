@@ -10,6 +10,7 @@ function smtp_fix_phpmailer_init( $phpmailer ) {
         ( get_option('smtp_host') ) &&
         ( get_option('smtp_port') ) &&
         ( get_option('smtp_username') ) &&
+        ( get_option('smtp_from') ) &&
         ( get_option('smtp_password') ) &&
         ( get_option('smtp_from_name') )
     ){
@@ -18,7 +19,7 @@ function smtp_fix_phpmailer_init( $phpmailer ) {
         $phpmailer->Username = get_option('smtp_username');
         $phpmailer->Password = get_option('smtp_password');
         $phpmailer->SMTPAuth = true;
-        $phpmailer->From     = get_option('smtp_username');
+        $phpmailer->From     = get_option('smtp_from');
         $phpmailer->FromName = get_option('smtp_from_name');
         if(get_option('smtp_secure')){
             $phpmailer->SMTPSecure = 'ssl';
