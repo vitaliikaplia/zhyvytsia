@@ -52,7 +52,7 @@ function run_feedback_slider(element){
             1380: {
                 slidesPerView: 5,
             },
-            1640: {
+            1700: {
                 slidesPerView: 6,
             },
         },
