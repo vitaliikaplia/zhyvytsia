@@ -2,12 +2,12 @@
     <div class="inner">
         <div class="left">
             {% if general_fields.overall.logo_label %}
-            <p class="logo">
+            <p class="logo{% if fn('is_front_page') %} scroll-top{% endif %}">
                 {% if not fn('is_front_page') %}
                 <a href="{{ site.url }}">
-                    {% endif %}
+                {% endif %}
                     {{ general_fields.overall.logo_label }}
-                    {% if not fn('is_front_page') %}
+                {% if not fn('is_front_page') %}
                 </a>
                 {% endif %}
             </p>

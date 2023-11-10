@@ -17,6 +17,12 @@ window.addEventListener("DOMContentLoaded", function (){
             }
         });
 
+        /** header logo scroll top */
+        $('.logo.scroll-top').click(function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            return false;
+        });
+
         /** mobile menu */
         $('.burger').click(function(){
             if(!$('body').hasClass('mobile-menu-opened')){
