@@ -8,7 +8,7 @@ function change_widget_option_action(){
 
         $label = stripslashes($_POST['label']);
         $type = stripslashes($_POST['type']);
-        $val = $_POST['val'];
+        $val = stripslashes($_POST['val']);
 
         $toJson['label'] = $label;
         $toJson['val'] = $val;
