@@ -627,3 +627,12 @@ td.note.column-note{
 		font-family: inherit;
 	}
 }
+
+.get_qr{
+	font-size: 0;
+	svg{
+		width: 64px;
+		height: 64px;
+		cursor: pointer;
+	}
+}

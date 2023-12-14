@@ -129,6 +129,38 @@
             });
         });
 
+        /** qr columns */
+        if($('.get_qr').length){
+            $('.get_qr').each(function(){
+                const thisEl = $(this);
+                const thisLink = thisEl.attr('data-link');
+                const thisTitle = thisEl.attr('data-title');
+                const qr = new QRCode({
+                    msg   :  thisLink,
+                    dim   :   256,
+                    pad   :   0,
+                    mtx   :  -1,
+                    ecl   :  "L",
+                    ecb   :   1,
+                    pal   : ["#000", "#fff"],
+                    vrb   :   0
+                });
+                thisEl.html(qr);
+                const qrEl = thisEl.find('svg');
+                qrEl.click(function(){
+                    const svgString = new XMLSerializer().serializeToString(qrEl[0]);
+                    const svgBlob = new Blob([svgString], {type: 'image/svg+xml'});
+                    const svgUrl = URL.createObjectURL(svgBlob);
+                    const tempLink = $('<a>', {
+                        href: svgUrl,
+                        download: thisTitle + '.svg'
+                    });
+                    tempLink.appendTo('body').get(0).click();
+                    tempLink.remove();
+                });
+            });
+        }
+
     });
 })(jQuery);
 
