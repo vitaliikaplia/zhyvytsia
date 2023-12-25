@@ -3,7 +3,7 @@
 if(!defined('ABSPATH')){exit;}
 
 /** fixing timezone */
-date_default_timezone_set( wp_timezone_string() );
+//date_default_timezone_set( wp_timezone_string() );
 
 /** constants */
 define( 'TEXTDOMAIN', 'zhyvytsia' );
