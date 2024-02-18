@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="customBlockWrapper main-catalog">
+        <div class="customBlock">
+            <p class="title scroll-show">{{ title }}</p>
+            <div class="typo scroll-show">
+                {{ description }}
+            </div>
+            {% if posts is iterable %}
+            <div class="goods columns-4">
+                {% for key,val in posts %}
+                    {% include 'overall/catalog-item.twig' %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

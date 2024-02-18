@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-10 00:18+0200\n"
+"POT-Creation-Date: 2024-02-18 07:06+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SearchPath-0: core/lang\n"
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
@@ -288,22 +288,22 @@ msgstr "Місто та відділення Нової Пошти не вказ
 msgid "Self pickup point is not specified"
 msgstr "Пункт самовивозу не вказано"
 
-#: core/forms-logic.php:875 views/checkout.twig:210
+#: core/forms-logic.php:875 views/checkout.twig:212
 #: views/dashboard/user.twig:49
 msgid "Region (for example, Kyivska, Lvivska, etc.)"
 msgstr "Область (наприклад, Київська, Львівська тощо)"
 
-#: core/forms-logic.php:876 views/checkout.twig:214
+#: core/forms-logic.php:876 views/checkout.twig:216
 #: views/dashboard/user.twig:55
 msgid "City (or settlement)"
 msgstr "Місто (або населений пункт)"
 
-#: core/forms-logic.php:877 views/checkout.twig:218
+#: core/forms-logic.php:877 views/checkout.twig:220
 #: views/dashboard/user.twig:61
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
-#: core/forms-logic.php:878 views/checkout.twig:222
+#: core/forms-logic.php:878 views/checkout.twig:224
 #: views/dashboard/user.twig:67
 msgid "Address (street, house, apartment)"
 msgstr "Адреса (вулиця, будинок, квартира)"
@@ -320,28 +320,28 @@ msgstr "Назва відділення Нової Пошти"
 msgid "Nova Poshta office number"
 msgstr "Номер відділення Нової Пошти"
 
-#: core/forms-logic.php:889 views/checkout.twig:261
+#: core/forms-logic.php:889 views/checkout.twig:263
 #: views/dashboard/user.twig:97
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
-#: core/forms-logic.php:890 views/checkout.twig:282
+#: core/forms-logic.php:890 views/checkout.twig:284
 msgid "Address"
 msgstr "Адреса"
 
-#: core/forms-logic.php:891 views/checkout.twig:278
+#: core/forms-logic.php:891 views/checkout.twig:280
 msgid "Working days"
 msgstr "Робочі дні"
 
-#: core/forms-logic.php:892 views/checkout.twig:274
+#: core/forms-logic.php:892 views/checkout.twig:276
 msgid "Working hours"
 msgstr "Робочі години"
 
-#: core/forms-logic.php:892 views/checkout.twig:275
+#: core/forms-logic.php:892 views/checkout.twig:277
 msgid "From"
 msgstr "З"
 
-#: core/forms-logic.php:892 views/checkout.twig:275
+#: core/forms-logic.php:892 views/checkout.twig:277
 msgid "to"
 msgstr "по"
 
@@ -371,7 +371,7 @@ msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
 #: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/checkout.twig:162
+#: core/forms-logic.php:1187 views/checkout.twig:164
 #: views/dashboard/user.twig:44
 msgid "Pickup"
 msgstr "Самовивіз"
@@ -382,19 +382,19 @@ msgid "Online payment"
 msgstr "Онлайн оплата"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:182
+#: core/forms-logic.php:1186 views/checkout.twig:184
 #: views/dashboard/user.twig:32
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:190
+#: core/forms-logic.php:1186 views/checkout.twig:192
 #: views/dashboard/user.twig:33
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
 #: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:198
+#: core/forms-logic.php:1186 views/checkout.twig:200
 #: views/dashboard/user.twig:34
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
@@ -733,6 +733,7 @@ msgstr "Додати нову позицію"
 #: core/includes/back/custom-post-types.php:152
 #: core/includes/back/custom-post-types.php:194
 #: core/includes/back/custom-post-types.php:195
+#: core/includes/back/custom-taxonomies.php:25
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -788,6 +789,7 @@ msgstr "Замовлення"
 #: core/includes/back/custom-post-types.php:113
 #: core/includes/back/custom-post-types.php:192
 #: core/includes/back/custom-post-types.php:193
+#: core/includes/back/custom-taxonomies.php:27
 msgid "Add"
 msgstr "Додати"
 
@@ -812,6 +814,7 @@ msgstr "Замовлення не знайдені"
 #: core/includes/back/custom-post-types.php:80
 #: core/includes/back/custom-post-types.php:122
 #: core/includes/back/custom-post-types.php:202
+#: core/includes/back/custom-taxonomies.php:23
 msgid "Parent"
 msgstr "Батьківське"
 
@@ -892,6 +895,41 @@ msgstr "Надслань не знайдено"
 msgid "No mail logs found in trash"
 msgstr "Надслань не знайдено"
 
+#: core/includes/back/custom-taxonomies.php:14
+#: core/includes/back/custom-taxonomies.php:20
+msgid "Catalog categories"
+msgstr "Категорії каталогу"
+
+#: core/includes/back/custom-taxonomies.php:21
+#: core/includes/back/custom-taxonomies.php:31
+msgid "Popular"
+msgstr "Популярні"
+
+#: core/includes/back/custom-taxonomies.php:22
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
+msgid "All"
+msgstr "Усі"
+
+#: core/includes/back/custom-taxonomies.php:24
+msgid "Categories"
+msgstr "Категорії"
+
+#: core/includes/back/custom-taxonomies.php:26
+msgid "Update"
+msgstr "Оновити"
+
+#: core/includes/back/custom-taxonomies.php:28
+msgid "New category"
+msgstr "New category"
+
+#: core/includes/back/custom-taxonomies.php:29
+msgid "Separate by commas"
+msgstr "Виділіть комами"
+
+#: core/includes/back/custom-taxonomies.php:30
+msgid "Add or remove"
+msgstr "Додати або видалити"
+
 #: core/includes/back/dashboard-columns-catalog.php:9
 #: core/includes/back/dashboard-columns-feedback.php:9
 msgid "Photo"
@@ -914,10 +952,14 @@ msgstr "Ідентифікатор"
 msgid "Status"
 msgstr "Статус"
 
-#: core/includes/back/dashboard-columns-catalog.php:33
-#: core/includes/back/dashboard-columns-catalog.php:40
-#: core/includes/back/dashboard-columns-catalog.php:54
-#: core/includes/back/dashboard-columns-catalog.php:73
+#: core/includes/back/dashboard-columns-catalog.php:14
+msgid "QR"
+msgstr "QR"
+
+#: core/includes/back/dashboard-columns-catalog.php:35
+#: core/includes/back/dashboard-columns-catalog.php:42
+#: core/includes/back/dashboard-columns-catalog.php:56
+#: core/includes/back/dashboard-columns-catalog.php:75
 #: core/includes/back/dashboard-columns-feedback.php:29
 #: core/includes/back/dashboard-columns-feedback.php:40
 #: core/includes/back/dashboard-columns-feedback.php:47
@@ -1150,10 +1192,6 @@ msgstr "Ні"
 msgid "Specify the returned value on front end"
 msgstr "Вкажіть значення, що повертається"
 
-#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
-msgid "All"
-msgstr "Усі"
-
 #: core/libs/acf-nav-menu-field/nav-menu-v5.php:134
 msgid "Choose one"
 msgstr "Виберіть"
@@ -1228,17 +1266,17 @@ msgstr "Головна сторінка"
 msgid "Password Reset"
 msgstr "Скинути пароль"
 
-#: core/pages.php:228 core/pages.php:348 views/base-profile.twig:31
+#: core/pages.php:228 core/pages.php:348 views/base-profile.twig:32
 #: views/profile/edit.twig:5
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: core/pages.php:235 core/pages.php:350 views/base-profile.twig:32
+#: core/pages.php:235 core/pages.php:350 views/base-profile.twig:33
 #: views/profile/change-email.twig:5
 msgid "Change email"
 msgstr "Змінити Email"
 
-#: core/pages.php:242 core/pages.php:352 views/base-profile.twig:33
+#: core/pages.php:242 core/pages.php:352 views/base-profile.twig:34
 #: views/profile/change-password.twig:5
 msgid "Change password"
 msgstr "Змінити пароль"
@@ -1302,19 +1340,19 @@ msgstr "Показати"
 msgid "Log in"
 msgstr "Увійти"
 
-#: views/base-profile.twig:13 views/base-profile.twig:15
+#: views/base-profile.twig:14 views/base-profile.twig:16
 msgid "Hello"
 msgstr "Вітаємо"
 
-#: views/base-profile.twig:19 views/base-profile.twig:34
+#: views/base-profile.twig:20 views/base-profile.twig:35
 msgid "Are you sure you want to log out?"
 msgstr "Ви впевнені, що бажаєте вийти?"
 
-#: views/base-profile.twig:20 views/base-profile.twig:34
+#: views/base-profile.twig:21 views/base-profile.twig:35
 msgid "Log Out"
 msgstr "Вийти"
 
-#: views/base-profile.twig:30 views/profile/orders.twig:5
+#: views/base-profile.twig:31 views/profile/orders.twig:5
 msgid "My orders"
 msgstr "Мої замовлення"
 
@@ -1347,58 +1385,47 @@ msgstr "Телефон"
 msgid "Create an account"
 msgstr "Створити акаунт"
 
-#: views/checkout.twig:137
-msgid ""
-"After creating an account, we will send you a login and password, which will "
-"allow you to view your order history in the future and make subsequent "
-"purchases much faster with discounts and other pleasant bonuses!"
-msgstr ""
-"Після створення облікового запису, ми надішлемо вам логін та пароль, що "
-"надасть можливість у майбутньому переглядати історію ваших замовлень і "
-"значно швидше робити наступні покупки зі знижками та іншими приємними "
-"бонусами!"
-
-#: views/checkout.twig:143
+#: views/checkout.twig:145
 msgid "Choose the type of delivery"
 msgstr "Оберіть тип доставки"
 
-#: views/checkout.twig:170
+#: views/checkout.twig:172
 msgid "Select the payment type"
 msgstr "Оберіть тип оплати"
 
-#: views/checkout.twig:207
+#: views/checkout.twig:209
 msgid "Enter your address"
 msgstr "Введіть свою адресу"
 
-#: views/checkout.twig:230
+#: views/checkout.twig:232
 msgid "Select the Nova Poshta office"
 msgstr "Оберіть відділення Нової Пошти"
 
-#: views/checkout.twig:233
+#: views/checkout.twig:235
 msgid "City or settlement"
 msgstr "Місто або селище"
 
-#: views/checkout.twig:242
+#: views/checkout.twig:244
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:259
+#: views/checkout.twig:261
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
 
-#: views/checkout.twig:295
+#: views/checkout.twig:297
 msgid "Your order"
 msgstr "Ваше замовлення"
 
-#: views/checkout.twig:302
+#: views/checkout.twig:304
 msgid "Process to checkout"
 msgstr "Оформити замовлення"
 
-#: views/checkout.twig:308
+#: views/checkout.twig:310
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:312
+#: views/checkout.twig:314
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 
@@ -1568,6 +1595,17 @@ msgstr "Поділитися"
 msgid "Related Posts"
 msgstr "Схожі записи"
 
+#~ msgid ""
+#~ "After creating an account, we will send you a login and password, which "
+#~ "will allow you to view your order history in the future and make "
+#~ "subsequent purchases much faster with discounts and other pleasant "
+#~ "bonuses!"
+#~ msgstr ""
+#~ "Після створення облікового запису, ми надішлемо вам логін та пароль, що "
+#~ "надасть можливість у майбутньому переглядати історію ваших замовлень і "
+#~ "значно швидше робити наступні покупки зі знижками та іншими приємними "
+#~ "бонусами!"
+
 #~ msgid "Enter your comment"
 #~ msgstr "Залиште свій коментар"
 
@@ -1642,9 +1680,6 @@ msgstr "Схожі записи"
 
 #~ msgid "Main options"
 #~ msgstr "Налаштування сайту"
-
-#~ msgid "Update"
-#~ msgstr "Оновити"
 
 #~ msgid "Settings updated"
 #~ msgstr "Налаштування оновлено"

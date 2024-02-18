@@ -1066,7 +1066,8 @@ function custom_system_forms_logic_callback() {
                 'total_price' => $total_price,
                 'total_price_raw' => $total_price_raw,
                 'discount' => $discount,
-                'ids_arr_count_values_prices' => $ids_arr_count_values_prices
+                'ids_arr_count_values_prices' => $ids_arr_count_values_prices,
+                'filtered_ids_arr_count' => $filtered_ids_arr_count,
             ] = prepare_positions();
             $context = Timber::context();
             $context['items'] = $items;
@@ -1216,7 +1217,7 @@ function custom_system_forms_logic_callback() {
         /** preparing redirect url */
         if($payment_type == "online_payment"){
             /** creating new payment and redirection url to bank payment system */
-            $redirect_url = prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count);
+            $redirect_url = prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count);
         } else {
             /** preparing new order url, notify message and removing cookie cart */
             add_notify('success', $general_fields['shop']['successful_order_message']);

@@ -236,6 +236,26 @@
             "placeholder": ""
         },
         {
+            "key": "field_65d1a947191f8",
+            "label": "Давати знижку на товар",
+            "name": "allow_discount",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_653ad43427391",
             "label": "Характеристики",
             "name": "",
@@ -337,5 +357,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698546678
+    "modified": 1708239219
 }

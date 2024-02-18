@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){exit;}
 
 use \MonoPay;
 
-function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count){
+function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count){
 
     /** отримуємо налаштування */
     $general_fields = cache_general_fields();
@@ -58,7 +58,7 @@ function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $i
             $item['name'] = get_the_title();
             $qty = $ids_arr_count_values[get_the_ID()];
             $item['qty'] = $qty;
-            if( $general_fields['shop']['enable_wholesale_discounts'] && $ids_arr_count >= intval($general_fields['shop']['minimum_quantity_of_products_in_the_cart_for_wholesale_discount']) ){
+            if( get_field('allow_discount') && $general_fields['shop']['enable_wholesale_discounts'] && $filtered_ids_arr_count >= intval($general_fields['shop']['minimum_quantity_of_products_in_the_cart_for_wholesale_discount']) ){
                 $price = get_field('price');
                 $price = $price * 100;
                 $item['sum'] = ( $price / 100 ) * ( 100 - intval($general_fields['shop']['wholesale_discount_percentage']) );

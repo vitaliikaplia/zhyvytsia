@@ -11,7 +11,14 @@ function render_price($id, $count, $count_all){
 
 	$price = intval(get_field('price',$id));
 
-    if( $general_fields['shop']['enable_wholesale_discounts'] && $count_all >= intval($general_fields['shop']['minimum_quantity_of_products_in_the_cart_for_wholesale_discount']) ){
+    $ids_arr = array_filter(explode(".", wp_unslash(stripslashes($_COOKIE['cart']))));
+    $filtered_ids = array_filter($ids_arr, function($page_id) {
+        $allow_discount = get_field('allow_discount', $page_id);
+        return $allow_discount === true;
+    });
+    $ids_arr_count = count($filtered_ids);
+
+    if( get_field('allow_discount', $id) && $general_fields['shop']['enable_wholesale_discounts'] && $ids_arr_count >= intval($general_fields['shop']['minimum_quantity_of_products_in_the_cart_for_wholesale_discount']) ){
         $price = ( $price / 100 ) * ( 100 - intval($general_fields['shop']['wholesale_discount_percentage']) );
     }
 

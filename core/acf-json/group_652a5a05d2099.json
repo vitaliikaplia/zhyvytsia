@@ -294,6 +294,34 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_65d193f6ccf4b",
+                    "label": "Інформування про оптові знижки",
+                    "name": "wholesale_discounts_information",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_652e7b8848772",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
                     "key": "field_652e7c4048773",
                     "label": "Мінімальна кількість товарів у кошику для оптової знижки",
                     "name": "minimum_quantity_of_products_in_the_cart_for_wholesale_discount",
@@ -1306,5 +1334,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699618417
+    "modified": 1708233796
 }

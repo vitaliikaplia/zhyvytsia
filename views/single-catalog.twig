@@ -4,7 +4,7 @@
 
 {% set rating = fn('get_catalog_item_rating', post.id) %}
 {% set feedback = fn('get_catalog_item_feedback', post.id) %}
-{% set goods = fn('get_catalog_item_goods', post.id) %}
+{% set related = fn('get_related_catalog_items', post.id, fn('get_the_terms', post.id, 'catalog_categories')) %}
 
 <div class="singleCatalogItemWrapper">
     <div class="singleCatalogItem">
@@ -111,11 +111,11 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% if goods and goods is iterable %}
+                {% if related and related is iterable %}
                 <div class="otherItemsWrapper">
                     <h2 class="otherItemsTitle">Інші смаки</h2>
                     <div class="goods">
-                        {% for key,val in goods %}
+                        {% for key,val in related %}
                         {% include 'overall/catalog-item-simple.twig' %}
                         {% endfor %}
                     </div>
