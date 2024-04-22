@@ -42,5 +42,9 @@ function custom_dashboard_assets(){
     wp_register_script( 'custom-dashboard', TEMPLATE_DIRECTORY_URL . 'assets/js/dashboard.min.js', '', ASSETS_VERSION, true);
     wp_enqueue_script( 'custom-dashboard' );
 
+    /** qrcode */
+    wp_register_script( 'qrcode', TEMPLATE_DIRECTORY_URL . 'assets/js/plugins/qrcode.min.js', '', ASSETS_VERSION, true);
+    wp_enqueue_script( 'qrcode' );
+
 }
 add_action( 'admin_enqueue_scripts', 'custom_dashboard_assets' );
