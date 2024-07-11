@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'LiqPay' => $vendorDir . '/liqpay/liqpay/LiqPay.php',
 );

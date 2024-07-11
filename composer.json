@@ -13,7 +13,8 @@
     "require": {
         "plakidan/monobank-pay": "^0.1.0",
         "geoip2/geoip2": "~2.0",
-        "lis-dev/nova-poshta-api-2": "^0.1.6"
+        "lis-dev/nova-poshta-api-2": "^0.1.6",
+        "liqpay/liqpay": "^1.2"
     },
     "config": {
         "vendor-dir": "vendor",

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 06:40+0300\n"
+"POT-Creation-Date: 2024-07-11 22:09+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -15,225 +15,704 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-SearchPath-0: core/lang\n"
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SearchPathExcluded-0: core/libs/timber\n"
+
+#: core/ajax/feedback_form_submit.php:69
+msgid "Check new review"
+msgstr ""
+
+#: core/ajax/profile_confirm_email_content.php:7
+#: core/ajax/profile_enter_code_from_email.php:58
+msgid "Email confirmation"
+msgstr ""
+
+#: core/ajax/profile_confirm_phone_number_content.php:7
+#: core/ajax/profile_enter_code_from_sms.php:54
+msgid "Phone number confirmation"
+msgstr ""
+
+#: core/ajax/profile_enter_code_from_email.php:43 core/do.php:59
+msgid "Go to my profile"
+msgstr ""
+
+#: core/ajax/profile_enter_code_from_email.php:60
+#: core/ajax/profile_enter_code_from_sms.php:56
+#: views/profile/change-email.twig:16 views/profile/edit.twig:21
+#: views/profile/edit.twig:27
+msgid "Confirmed"
+msgstr ""
+
+#: core/ajax/profile_enter_code_from_sms.php:50
+#: views/ajax/profile-confirm-phone-number-content-confirmed.twig:2
+msgid "Your phone number verified successfully, thanks!"
+msgstr ""
+
+#: core/ajax/profile_resend_verification_code_to_email.php:44
+#: core/forms-logic.php:204 core/forms-logic.php:587 core/forms-logic.php:993
+msgid "Confirm my Email"
+msgstr ""
+
+#: core/ajax/profile_resend_verification_code_to_email.php:60
+#: core/ajax/profile_resend_verification_code_to_sms.php:29
+msgid "New code sent..."
+msgstr ""
+
+#: core/ajax/profile_resend_verification_code_to_sms.php:24
+#: core/forms-logic.php:488 core/forms-logic.php:1030
+msgid "Your verification code:"
+msgstr ""
+
+#: core/ajax/show_cart.php:20 core/ajax/update_checkout_positions.php:20
+msgid "Cart"
+msgstr ""
+
+#: core/do.php:71 views/ajax/profile-confirm-email-content-confirmed.twig:2
+msgid "Your email verified successfully, thanks!"
+msgstr ""
+
+#: core/do.php:97
+msgid "Your link is out of date or invalid"
+msgstr ""
+
+#: core/do.php:162
+msgid "Check payment information"
+msgstr ""
+
+#: core/forms-logic.php:25 core/forms-logic.php:116 core/forms-logic.php:232
+#: core/forms-logic.php:429 core/forms-logic.php:516 core/forms-logic.php:609
+#: core/forms-logic.php:699
+msgid "Nonce is wrong"
+msgstr ""
+
+#: core/forms-logic.php:35 core/forms-logic.php:126 core/forms-logic.php:242
+#: core/forms-logic.php:342 core/forms-logic.php:547 core/forms-logic.php:709
+msgid "Email is to long"
+msgstr ""
+
+#: core/forms-logic.php:42 core/forms-logic.php:133 core/forms-logic.php:249
+#: core/forms-logic.php:349 core/forms-logic.php:717
+msgid "Email is wrong"
+msgstr ""
+
+#: core/forms-logic.php:59
+msgid "No user found for this email"
+msgstr ""
+
+#: core/forms-logic.php:69 core/forms-logic.php:160 core/forms-logic.php:380
+#: core/forms-logic.php:533
+msgid "Password is to long"
+msgstr ""
+
+#: core/forms-logic.php:76
+msgid "Email address/password do not match."
+msgstr ""
+
+#: core/forms-logic.php:150 core/forms-logic.php:941
+msgid "This email address is already taken"
+msgstr ""
+
+#: core/forms-logic.php:221
+msgid ""
+"Congratulations! Your new account has been created! Check your Email for "
+"confirmation."
+msgstr ""
+
+#: core/forms-logic.php:266
+msgid "No account found for this email"
+msgstr ""
+
+#: core/forms-logic.php:290 views/auth/password-reset.twig:28
+#: views/profile/change-password.twig:25
+msgid "Change my password"
+msgstr ""
+
+#: core/forms-logic.php:302
+msgid "Verification code sent"
+msgstr ""
+
+#: core/forms-logic.php:318
+msgid "Hacker?"
+msgstr ""
+
+#: core/forms-logic.php:325
+msgid "Nonce 'password-reset' is wrong"
+msgstr ""
+
+#: core/forms-logic.php:332
+msgid "Nonce 'request-redirect' is wrong"
+msgstr ""
+
+#: core/forms-logic.php:359
+msgid "Hm, no user found"
+msgstr ""
+
+#: core/forms-logic.php:370
+msgid "Wrong recovery code"
+msgstr ""
+
+#: core/forms-logic.php:397
+msgid "Looks like the new password is the same"
+msgstr ""
+
+#: core/forms-logic.php:419 core/forms-logic.php:689
+msgid "The password has been changed"
+msgstr ""
+
+#: core/forms-logic.php:444
+msgid "First name updated"
+msgstr ""
+
+#: core/forms-logic.php:446 core/forms-logic.php:453
+msgid "First name not updated"
+msgstr ""
+
+#: core/forms-logic.php:451
+msgid "First name removed"
+msgstr ""
+
+#: core/forms-logic.php:461
+msgid "Last name updated"
+msgstr ""
+
+#: core/forms-logic.php:463 core/forms-logic.php:470
+msgid "Last name not updated"
+msgstr ""
+
+#: core/forms-logic.php:468
+msgid "Last name removed"
+msgstr ""
+
+#: core/forms-logic.php:490
+msgid "User phone updated"
+msgstr ""
+
+#: core/forms-logic.php:492 core/forms-logic.php:933
+msgid "This phone number is already taken"
+msgstr ""
+
+#: core/forms-logic.php:495
+msgid "User phone not updated"
+msgstr ""
+
+#: core/forms-logic.php:498
+msgid "Enter valid phone number"
+msgstr ""
+
+#: core/forms-logic.php:503
+msgid "Phone number removed"
+msgstr ""
+
+#: core/forms-logic.php:540
+msgid "Wrong password"
+msgstr ""
+
+#: core/forms-logic.php:554
+msgid "New Email is the same"
+msgstr ""
+
+#: core/forms-logic.php:566
+msgid "Email successfully changed"
+msgstr ""
+
+#: core/forms-logic.php:624
+msgid "Old password: To long"
+msgstr ""
+
+#: core/forms-logic.php:634
+msgid "Old password"
+msgstr ""
+
+#: core/forms-logic.php:641
+msgid "New password: To long"
+msgstr ""
+
+#: core/forms-logic.php:651 views/auth/password-reset.twig:8
+msgid "New password"
+msgstr ""
+
+#: core/forms-logic.php:658
+msgid "Wrong old password"
+msgstr ""
+
+#: core/forms-logic.php:665
+msgid "New password should be different"
+msgstr ""
+
+#: core/forms-logic.php:725
+msgid "First name is not specified"
+msgstr ""
+
+#: core/forms-logic.php:734
+msgid "Your first name is to long"
+msgstr ""
+
+#: core/forms-logic.php:742
+msgid "Last name is not specified"
+msgstr ""
+
+#: core/forms-logic.php:751
+msgid "Your last name is to long"
+msgstr ""
+
+#: core/forms-logic.php:759
+msgid "Phone number is not specified"
+msgstr ""
+
+#: core/forms-logic.php:767
+msgid "Phone number is not valid"
+msgstr ""
+
+#: core/forms-logic.php:778
+msgid "Delivery type is not specified"
+msgstr ""
+
+#: core/forms-logic.php:789 core/forms-logic.php:800
+msgid "Payment type is not specified"
+msgstr ""
+
+#: core/forms-logic.php:819
+msgid "Address is not specified"
+msgstr ""
+
+#: core/forms-logic.php:837
+msgid "Nova Poshta city and office is not specified"
+msgstr ""
+
+#: core/forms-logic.php:847
+msgid "Self pickup point is not specified"
+msgstr ""
+
+#: core/forms-logic.php:875 views/checkout.twig:212
+#: views/dashboard/user.twig:49
+msgid "Region (for example, Kyivska, Lvivska, etc.)"
+msgstr ""
+
+#: core/forms-logic.php:876 views/checkout.twig:216
+#: views/dashboard/user.twig:55
+msgid "City (or settlement)"
+msgstr ""
+
+#: core/forms-logic.php:877 views/checkout.twig:220
+#: views/dashboard/user.twig:61
+msgid "ZIP Code"
+msgstr ""
+
+#: core/forms-logic.php:878 views/checkout.twig:224
+#: views/dashboard/user.twig:67
+msgid "Address (street, house, apartment)"
+msgstr ""
+
+#: core/forms-logic.php:882 views/dashboard/user.twig:79
+msgid "Nova Poshta city name"
+msgstr ""
+
+#: core/forms-logic.php:883 views/dashboard/user.twig:91
+msgid "Nova Poshta office name"
+msgstr ""
+
+#: core/forms-logic.php:884 views/dashboard/user.twig:85
+msgid "Nova Poshta office number"
+msgstr ""
+
+#: core/forms-logic.php:889 views/checkout.twig:263
+#: views/dashboard/user.twig:97
+msgid "Pickup point"
+msgstr ""
+
+#: core/forms-logic.php:890 views/checkout.twig:284
+msgid "Address"
+msgstr ""
+
+#: core/forms-logic.php:891 views/checkout.twig:280
+msgid "Working days"
+msgstr ""
+
+#: core/forms-logic.php:892 views/checkout.twig:276
+msgid "Working hours"
+msgstr ""
+
+#: core/forms-logic.php:892 views/checkout.twig:277
+msgid "From"
+msgstr ""
+
+#: core/forms-logic.php:892 views/checkout.twig:277
+msgid "to"
+msgstr ""
+
+#: core/forms-logic.php:1038
+msgid "Congratulations! Your new account has been created!"
+msgstr ""
+
+#: core/forms-logic.php:1042
+msgid "Error while creating new user"
+msgstr ""
+
+#: core/forms-logic.php:1096 core/includes/back/custom-post-types.php:68
+#: core/pages.php:208 core/pages.php:320 core/pages.php:357
+#: views/dashboard/payment-information.twig:105 views/order.twig:12
+#: views/profile/order.twig:8 views/profile/orders.twig:11
+msgid "Order"
+msgstr ""
+
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/dashboard/user.twig:42
+msgid "UkrPoshta"
+msgstr ""
+
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/dashboard/user.twig:43
+msgid "Nova Poshta"
+msgstr ""
+
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/checkout.twig:164
+#: views/dashboard/user.twig:44
+msgid "Pickup"
+msgstr ""
+
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/dashboard/user.twig:31
+msgid "Online payment (MonoBank)"
+msgstr ""
+
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:184
+#: views/dashboard/user.twig:32
+msgid "COD Payment"
+msgstr ""
+
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:192
+#: views/dashboard/user.twig:33
+msgid "Payment upon receipt"
+msgstr ""
+
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:200
+#: views/dashboard/user.twig:34
+msgid "Payment by details"
+msgstr ""
+
+#: core/forms-logic.php:1145 core/forms-logic.php:1146
+#: core/forms-logic.php:1187 core/forms-logic.php:1188
+msgid "Unknown"
+msgstr ""
+
+#: core/forms-logic.php:1211
+msgid "New order has been placed"
+msgstr ""
 
 #: core/gutenberg.php:12
 msgid "Main"
 msgstr ""
 
 #: core/gutenberg.php:23
-msgid "First screen"
+msgid "Hero"
 msgstr ""
 
 #: core/gutenberg.php:30
-msgid "Second screen"
+msgid "Banner"
 msgstr ""
 
-#: core/includes/back/custom-dashboard-options-widget.php:7
-msgid "System tweaks"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:17
-#: core/includes/front/custom-localization.php:12
-msgid "Maintenance mode"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:22
-#: core/includes/front/custom-localization.php:13
-msgid "Enable maintenance mode for anonymous users"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:27
-msgid "Maintenance mode title"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:32
-msgid "Maintenance mode text"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:42
-#: core/includes/front/custom-localization.php:34
-msgid "Resize at upload"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:47
-msgid "Enable resizing media while upload"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:58
-msgid "Resize at upload formats"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:64
-msgid "Resize upload width"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:70
-msgid "Resize upload height"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:76
-msgid "Resize upload quality"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:87
-msgid "SMTP options"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:92
-msgid "Enable custom SMTP server"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:97
-msgid "SMTP host"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:102
-msgid "SMTP port"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:107
-msgid "SMTP username"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:112
-msgid "SMTP password"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:117
-msgid "SMTP from name"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:122
-msgid "Secure SMTP connection"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:132
-#: core/includes/front/custom-localization.php:40
-msgid "Custom code"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:137
-#: core/includes/front/custom-localization.php:41
-msgid "Header custom code"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:142
-#: core/includes/front/custom-localization.php:42
-msgid "Footer custom code"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:152
-msgid "Other options"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:157
-#: core/includes/front/custom-localization.php:33
-msgid "Google maps API key"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:162
-#: core/includes/front/custom-localization.php:15
-msgid "Disable all updates"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:167
-#: core/includes/front/custom-localization.php:16
-msgid "Disable customizer"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:172
-#: core/includes/front/custom-localization.php:17
-msgid "Disable src set"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:177
-#: core/includes/front/custom-localization.php:18
-msgid "Remove default image sizes"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:182
-#: core/includes/front/custom-localization.php:19
-msgid "Disable core privacy tools"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:187
-#: core/includes/front/custom-localization.php:20
-msgid "Enable CYR3LAT"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:192
-#: core/includes/front/custom-localization.php:21
-msgid "Disable DNS prefetch"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:197
-msgid "Disable Rest API for anonymous users"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:202
-#: core/includes/front/custom-localization.php:23
-msgid "Disable Emojis"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:207
-#: core/includes/front/custom-localization.php:24
-msgid "Disable Embeds"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:212
-#: core/includes/front/custom-localization.php:25
-msgid "Disable dashboard widgets"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:217
-#: core/includes/front/custom-localization.php:26
-msgid "Hide admin top bar"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:222
-#: core/includes/front/custom-localization.php:27
-msgid "Disable admin email verification"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:227
-#: core/includes/front/custom-localization.php:28
-msgid "Disable comments"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:232
-#: core/includes/front/custom-localization.php:29
-msgid "Delete child media"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:237
-#: core/includes/front/custom-localization.php:30
-msgid "Enable HTML cache"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:242
-#: core/includes/front/custom-localization.php:31
-msgid "Enable minify"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:247
-#: core/includes/front/custom-localization.php:32
-msgid "Inline scripts and styles"
-msgstr ""
-
-#: core/includes/back/custom-dashboard-options-widget.php:252
-msgid "Hide ACF"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:9
+#: core/gutenberg.php:37 core/includes/back/custom-post-types.php:9
 #: core/includes/back/custom-post-types.php:25
 #: core/includes/back/custom-post-types.php:26
 #: core/includes/back/custom-post-types.php:27
 msgid "Catalog"
+msgstr ""
+
+#: core/gutenberg.php:44
+msgid "Columns"
+msgstr ""
+
+#: core/gutenberg.php:51
+msgid "About"
+msgstr ""
+
+#: core/gutenberg.php:58 core/includes/back/custom-post-types.php:131
+#: core/includes/back/custom-post-types.php:147
+#: core/includes/back/custom-post-types.php:148
+#: core/includes/back/custom-post-types.php:149
+msgid "Feedback"
+msgstr ""
+
+#: core/gutenberg.php:65
+msgid "Form"
+msgstr ""
+
+#: core/gutenberg.php:72 core/includes/back/dashboard-menu.php:51
+#: core/includes/back/dashboard-menu.php:52
+msgid "Blog"
+msgstr ""
+
+#: core/gutenberg.php:79
+msgid "Simple text"
+msgstr ""
+
+#: core/includes/back/check-password-strength.php:15
+#: views/auth/password-reset.twig:12 views/auth/sign-up.twig:16
+#: views/profile/change-password.twig:18
+msgid "Password should be at least 8 characters long."
+msgstr ""
+
+#: core/includes/back/check-password-strength.php:20
+#: views/auth/password-reset.twig:13 views/auth/sign-up.twig:17
+#: views/profile/change-password.twig:19
+msgid "Password should contain at least one lowercase letter."
+msgstr ""
+
+#: core/includes/back/check-password-strength.php:25
+#: views/auth/password-reset.twig:14 views/auth/sign-up.twig:18
+#: views/profile/change-password.twig:20
+msgid "Password should contain at least one uppercase letter."
+msgstr ""
+
+#: core/includes/back/check-password-strength.php:31
+#: views/auth/password-reset.twig:15 views/auth/sign-up.twig:19
+#: views/profile/change-password.twig:21
+msgid "Password should contain at least one digit."
+msgstr ""
+
+#: core/includes/back/check-password-strength.php:37
+#: views/auth/password-reset.twig:16 views/auth/sign-up.twig:20
+#: views/profile/change-password.twig:22
+msgid "Password should contain at least one special character."
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:9
+msgid "System tweaks"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:20
+#: core/includes/front/custom-localization.php:12
+msgid "Maintenance mode"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:25
+#: core/includes/front/custom-localization.php:13
+msgid "Enable maintenance mode for anonymous users"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:30
+msgid "Maintenance mode title"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:35
+msgid "Maintenance mode text"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:45
+#: core/includes/front/custom-localization.php:34
+msgid "Resize at upload"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:50
+msgid "Enable resizing media while upload"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:61
+msgid "Resize at upload formats"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:66
+msgid "Resize upload width"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:72
+msgid "Resize upload height"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:78
+msgid "Resize upload quality"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:89
+msgid "SMTP options"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:94
+msgid "Enable custom SMTP server"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:99
+msgid "SMTP host"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:104
+msgid "SMTP port"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:109
+msgid "SMTP username"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:114
+msgid "SMTP from email"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:119
+msgid "SMTP password"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:124
+msgid "SMTP from name"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:129
+msgid "Secure SMTP connection"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:139
+msgid "SMS options"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:144
+msgid "SMS username"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:149
+msgid "SMS password"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:154
+msgid "SMS alpha name"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:164
+#: core/includes/front/custom-localization.php:40
+msgid "Custom code"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:169
+#: core/includes/front/custom-localization.php:41
+msgid "Header custom code"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:174
+#: core/includes/front/custom-localization.php:42
+msgid "Footer custom code"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:184
+msgid "Other options"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:189
+#: core/includes/front/custom-localization.php:33
+msgid "Google maps API key"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:194
+#: core/includes/front/custom-localization.php:15
+msgid "Disable all updates"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:199
+#: core/includes/front/custom-localization.php:16
+msgid "Disable customizer"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:204
+#: core/includes/front/custom-localization.php:17
+msgid "Disable src set"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:209
+#: core/includes/front/custom-localization.php:18
+msgid "Remove default image sizes"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:214
+#: core/includes/front/custom-localization.php:19
+msgid "Disable core privacy tools"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:219
+#: core/includes/front/custom-localization.php:20
+msgid "Enable CYR3LAT"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:224
+#: core/includes/front/custom-localization.php:21
+msgid "Disable DNS prefetch"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:229
+msgid "Disable Rest API for anonymous users"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:234
+#: core/includes/front/custom-localization.php:23
+msgid "Disable Emojis"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:239
+#: core/includes/front/custom-localization.php:24
+msgid "Disable Embeds"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:244
+#: core/includes/front/custom-localization.php:25
+msgid "Disable dashboard widgets"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:249
+#: core/includes/front/custom-localization.php:26
+msgid "Hide admin top bar"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:254
+#: core/includes/front/custom-localization.php:27
+msgid "Disable admin email verification"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:259
+#: core/includes/front/custom-localization.php:28
+msgid "Disable comments"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:264
+#: core/includes/front/custom-localization.php:29
+msgid "Delete child media"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:269
+#: core/includes/front/custom-localization.php:30
+msgid "Enable HTML cache"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:274
+#: core/includes/front/custom-localization.php:31
+msgid "Enable minify"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:279
+#: core/includes/front/custom-localization.php:32
+msgid "Inline scripts and styles"
+msgstr ""
+
+#: core/includes/back/custom-dashboard-options-widget.php:284
+msgid "Hide ACF"
+msgstr ""
+
+#: core/includes/back/custom-post-type-change-title-text.php:8
+msgid "Enter post name here"
+msgstr ""
+
+#: core/includes/back/custom-post-type-change-title-text.php:11
+msgid "Enter page name here"
+msgstr ""
+
+#: core/includes/back/custom-post-type-change-title-text.php:14
+msgid "Enter catalog item name here"
+msgstr ""
+
+#: core/includes/back/custom-post-type-change-title-text.php:17
+msgid "Enter first and second name here"
 msgstr ""
 
 #: core/includes/back/custom-post-types.php:28
@@ -245,9 +724,14 @@ msgid "Add new item"
 msgstr ""
 
 #: core/includes/back/custom-post-types.php:30
-#: core/includes/back/custom-post-types.php:68
-#: core/includes/back/custom-post-types.php:110
-#: core/includes/back/custom-post-types.php:111
+#: core/includes/back/custom-post-types.php:72
+#: core/includes/back/custom-post-types.php:73
+#: core/includes/back/custom-post-types.php:114
+#: core/includes/back/custom-post-types.php:115
+#: core/includes/back/custom-post-types.php:152
+#: core/includes/back/custom-post-types.php:194
+#: core/includes/back/custom-post-types.php:195
+#: core/includes/back/custom-taxonomies.php:25
 msgid "Edit"
 msgstr ""
 
@@ -260,9 +744,13 @@ msgid "New item"
 msgstr ""
 
 #: core/includes/back/custom-post-types.php:33
-#: core/includes/back/custom-post-types.php:71
-#: core/includes/back/custom-post-types.php:113
-#: core/includes/back/custom-post-types.php:114
+#: core/includes/back/custom-post-types.php:75
+#: core/includes/back/custom-post-types.php:76
+#: core/includes/back/custom-post-types.php:117
+#: core/includes/back/custom-post-types.php:118
+#: core/includes/back/custom-post-types.php:155
+#: core/includes/back/custom-post-types.php:197
+#: core/includes/back/custom-post-types.php:198
 msgid "View"
 msgstr ""
 
@@ -287,126 +775,276 @@ msgid "Parent item"
 msgstr ""
 
 #: core/includes/back/custom-post-types.php:47
-#: core/includes/back/custom-post-types.php:63
-#: core/includes/back/custom-post-types.php:64
-#: core/includes/back/custom-post-types.php:65
-msgid "Feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:66
-msgid "Add feedback"
-msgstr ""
-
 #: core/includes/back/custom-post-types.php:67
-msgid "Add new feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:69
-msgid "Edit feedback"
+#: core/includes/back/custom-post-types.php:69 core/pages.php:164
+#: core/pages.php:346
+msgid "Orders"
 msgstr ""
 
 #: core/includes/back/custom-post-types.php:70
-msgid "New feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:72
-msgid "View feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:73
-msgid "Search for feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:74
-msgid "No feedback found"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:75
-msgid "No feedback found in trash"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:76
-msgid "Parent feedback"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:85
-#: core/includes/back/custom-post-types.php:105
-#: core/includes/back/custom-post-types.php:106
-#: core/includes/back/custom-post-types.php:107
-msgid "Mail log"
-msgstr ""
-
-#: core/includes/back/custom-post-types.php:108
-#: core/includes/back/custom-post-types.php:109
+#: core/includes/back/custom-post-types.php:71
+#: core/includes/back/custom-post-types.php:112
+#: core/includes/back/custom-post-types.php:113
+#: core/includes/back/custom-post-types.php:192
+#: core/includes/back/custom-post-types.php:193
+#: core/includes/back/custom-taxonomies.php:27
 msgid "Add"
 msgstr ""
 
-#: core/includes/back/custom-post-types.php:112
+#: core/includes/back/custom-post-types.php:74
+#: core/includes/back/custom-post-types.php:116
+#: core/includes/back/custom-post-types.php:196
 msgid "New"
 msgstr ""
 
-#: core/includes/back/custom-post-types.php:115
+#: core/includes/back/custom-post-types.php:77
+msgid "Search for orders"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:78
+msgid "No orders found"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:79
+msgid "No orders found in trash"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:80
+#: core/includes/back/custom-post-types.php:122
+#: core/includes/back/custom-post-types.php:202
+#: core/includes/back/custom-taxonomies.php:23
+msgid "Parent"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:89
+#: core/includes/back/custom-post-types.php:109
+#: core/includes/back/custom-post-types.php:111
+msgid "Payments"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:110
+msgid "Payment"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:119
+msgid "Search for payments"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:120
+msgid "No payments found"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:121
+msgid "No payments found in trash"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:150
+msgid "Add feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:151
+msgid "Add new feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:153
+msgid "Edit feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:154
+msgid "New feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:156
+msgid "View feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:157
+msgid "Search for feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:158
+msgid "No feedback found"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:159
+msgid "No feedback found in trash"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:160
+msgid "Parent feedback"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:169
+#: core/includes/back/custom-post-types.php:189
+#: core/includes/back/custom-post-types.php:190
+#: core/includes/back/custom-post-types.php:191
+msgid "Mail log"
+msgstr ""
+
+#: core/includes/back/custom-post-types.php:199
 msgid "Search for mail logs"
 msgstr ""
 
-#: core/includes/back/custom-post-types.php:116
+#: core/includes/back/custom-post-types.php:200
 msgid "No mail logs found"
 msgstr ""
 
-#: core/includes/back/custom-post-types.php:117
+#: core/includes/back/custom-post-types.php:201
 msgid "No mail logs found in trash"
 msgstr ""
 
-#: core/includes/back/custom-post-types.php:118
-msgid "Parent"
+#: core/includes/back/custom-taxonomies.php:14
+#: core/includes/back/custom-taxonomies.php:20
+msgid "Catalog categories"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:21
+#: core/includes/back/custom-taxonomies.php:31
+msgid "Popular"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:22
+#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
+msgid "All"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:24
+msgid "Categories"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:26
+msgid "Update"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:28
+msgid "New category"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:29
+msgid "Separate by commas"
+msgstr ""
+
+#: core/includes/back/custom-taxonomies.php:30
+msgid "Add or remove"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:9
+#: core/includes/back/dashboard-columns-feedback.php:9
+msgid "Photo"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:10
+msgid "Price"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:11
+msgid "Rating"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:12
+msgid "SKU"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:13
+#: views/profile/orders.twig:15
+msgid "Status"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-catalog.php:33
+#: core/includes/back/dashboard-columns-catalog.php:40
+#: core/includes/back/dashboard-columns-catalog.php:54
+#: core/includes/back/dashboard-columns-catalog.php:73
+#: core/includes/back/dashboard-columns-feedback.php:29
+#: core/includes/back/dashboard-columns-feedback.php:40
+#: core/includes/back/dashboard-columns-feedback.php:47
+#: core/includes/back/system-thumbnails.php:30
+msgid "None"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-feedback.php:10
+msgid "Rate"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-feedback.php:11
+msgid "Catalog item"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-orders-log.php:9
+#: views/dashboard/order-information.twig:18
+msgid "Ordered items"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-orders-log.php:10
+#: views/dashboard/order-information.twig:28 views/overall/positions.twig:37
+#: views/overall/total.twig:10
+msgid "Total amount"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-orders-log.php:11
+#: views/dashboard/order-information.twig:48 views/order.twig:51
+#: views/profile/order.twig:50
+msgid "Order user first name"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-orders-log.php:12
+#: views/dashboard/order-information.twig:68 views/order.twig:71
+#: views/profile/order.twig:70
+msgid "Order user phone"
+msgstr ""
+
+#: core/includes/back/dashboard-columns-orders-log.php:13
+#: views/dashboard/order-information.twig:3
+msgid "Order status"
 msgstr ""
 
 #: core/includes/back/dashboard-footer.php:12
 msgid "Powered by"
 msgstr ""
 
+#: core/includes/back/dashboard-mail-log-meta.php:8
+msgid "Form fields"
+msgstr ""
+
+#: core/includes/back/dashboard-menu.php:53
+msgid "Add new post"
+msgstr ""
+
+#: core/includes/back/dashboard-orders-log-meta.php:8
+#: core/includes/back/dashboard-payments-log-meta.php:8 views/order.twig:36
+#: views/profile/order.twig:34
+msgid "Order information"
+msgstr ""
+
+#: core/includes/back/dashboard-qr-columns.php:8
+msgid "QR"
+msgstr ""
+
 #: core/includes/back/dashboard-update-assets-version.php:16
 msgid "Update theme version"
+msgstr ""
+
+#: core/includes/back/prepare-online-payment.php:15
+msgid "Payment for order"
 msgstr ""
 
 #: core/includes/back/system-disable-customizer.php:109
 msgid "The Customizer is currently disabled."
 msgstr ""
 
-#: core/includes/back/system-static-pages.php:8
-msgid "Sign up"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:12
-msgid "Login"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:16
-msgid "Email verify"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:20
-msgid "Forgot password page"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:24
-msgid "Profile page"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:28
-msgid "Reset your password page"
-msgstr ""
-
-#: core/includes/back/system-static-pages.php:83
-msgid "Select"
-msgstr ""
-
-#: core/includes/back/system-thumbnails.php:13
+#: core/includes/back/system-thumbnails.php:15
 msgid "Thumbnail"
 msgstr ""
 
-#: core/includes/back/system-thumbnails.php:27
-msgid "None"
+#: core/includes/back/system-users.php:8
+msgid "Client"
+msgstr ""
+
+#: core/includes/back/system-users.php:153
+msgid "Phone Number"
+msgstr ""
+
+#: core/includes/back/system-users.php:172
+msgid "You have successfully logged out"
 msgstr ""
 
 #: core/includes/front/custom-localization.php:8
@@ -414,6 +1052,7 @@ msgid "Your Email"
 msgstr ""
 
 #: core/includes/front/custom-localization.php:9
+#: views/profile/change-email.twig:10
 msgid "Your password"
 msgstr ""
 
@@ -469,7 +1108,8 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: core/includes/front/custom-localization.php:47
+#: core/includes/front/custom-localization.php:47 views/auth/login.twig:12
+#: views/auth/sign-up.twig:12
 msgid "Password"
 msgstr ""
 
@@ -481,17 +1121,13 @@ msgstr ""
 msgid "Secure"
 msgstr ""
 
-#: core/init.php:56
+#: core/init.php:57
 msgid "Website under Maintenance"
 msgstr ""
 
-#: core/init.php:57
+#: core/init.php:58
 msgid ""
 "We are performing scheduled maintenance. We will be back online shortly."
-msgstr ""
-
-#: core/init.php:197
-msgid "Please, install Advanced Custom Fields PRO version"
 msgstr ""
 
 #: core/libs/acf-nav-menu-field/nav-menu-v4.php:25
@@ -552,34 +1188,403 @@ msgstr ""
 msgid "Specify the returned value on front end"
 msgstr ""
 
-#: core/libs/acf-nav-menu-field/nav-menu-v5.php:53
-msgid "All"
-msgstr ""
-
 #: core/libs/acf-nav-menu-field/nav-menu-v5.php:134
 msgid "Choose one"
 msgstr ""
 
-#: page-login.php.php:50
-msgid "Your secret 2FA code"
+#: core/libs/libraries.php:30 core/libs/libraries.php:37
+#: core/libs/libraries.php:38
+msgid "Options"
 msgstr ""
 
-#: page-login.php.php:56 page-login.php.php:60
-msgid "2FA Code"
+#: core/libs/libraries.php:42 core/libs/libraries.php:43
+msgid "Overall"
 msgstr ""
 
-#: page-login.php.php:107 page-login.php.php:115
-msgid "Email address/password do not match."
+#: core/libs/libraries.php:48 core/libs/libraries.php:49
+msgid "Header"
 msgstr ""
 
-#: page-login.php.php:111
-msgid "Password is not valid!"
+#: core/libs/libraries.php:54 core/libs/libraries.php:55
+msgid "Footer"
 msgstr ""
 
-#: page-login.php.php:119
-msgid "Email is not valid!"
+#: core/libs/libraries.php:60 core/libs/libraries.php:61
+msgid "Mobile"
 msgstr ""
 
-#: page-login.php.php:123
-msgid "Hacker?"
+#: core/libs/libraries.php:66 core/libs/libraries.php:67
+msgid "Emails"
+msgstr ""
+
+#: core/libs/libraries.php:72 core/libs/libraries.php:73
+msgid "Auth"
+msgstr ""
+
+#: core/libs/libraries.php:78 core/libs/libraries.php:79
+msgid "Shop"
+msgstr ""
+
+#: core/libs/libraries.php:84 core/libs/libraries.php:85
+msgid "Profile"
+msgstr ""
+
+#: core/libs/libraries.php:90 core/libs/libraries.php:91
+msgid "Cookie Popup"
+msgstr ""
+
+#: core/libs/libraries.php:96 core/libs/libraries.php:97
+msgid "Page 404"
+msgstr ""
+
+#: core/libs/libraries.php:102 core/libs/libraries.php:103
+msgid "Redirects"
+msgstr ""
+
+#: core/pages.php:65 core/pages.php:109 core/pages.php:337
+msgid "Login"
+msgstr ""
+
+#: core/pages.php:69 core/pages.php:119 core/pages.php:339
+#: views/auth/sign-up.twig:30
+msgid "Sign Up"
+msgstr ""
+
+#: core/pages.php:73 core/pages.php:129 core/pages.php:341
+msgid "Forgot Password"
+msgstr ""
+
+#: core/pages.php:77
+msgid "Home page"
+msgstr ""
+
+#: core/pages.php:151 core/pages.php:343
+msgid "Password Reset"
+msgstr ""
+
+#: core/pages.php:228 core/pages.php:348 views/base-profile.twig:32
+#: views/profile/edit.twig:5
+msgid "Edit profile"
+msgstr ""
+
+#: core/pages.php:235 core/pages.php:350 views/base-profile.twig:33
+#: views/profile/change-email.twig:5
+msgid "Change email"
+msgstr ""
+
+#: core/pages.php:242 core/pages.php:352 views/base-profile.twig:34
+#: views/profile/change-password.twig:5
+msgid "Change password"
+msgstr ""
+
+#: core/pages.php:271
+msgid "Checkout"
+msgstr ""
+
+#: core/pages.php:355
+msgid "Checkout page"
+msgstr ""
+
+#: views/ajax/cart.twig:6
+msgid "Go to checkout page"
+msgstr ""
+
+#: views/ajax/profile-confirm-email-content.twig:3
+msgid "Enter verification code from Email"
+msgstr ""
+
+#: views/ajax/profile-confirm-email-content.twig:12
+msgid "Resend verification Email"
+msgstr ""
+
+#: views/ajax/profile-confirm-email-content.twig:15
+msgid ""
+"Alternatively, you can confirm your email address by clicking the "
+"confirmation button in the email"
+msgstr ""
+
+#: views/ajax/profile-confirm-phone-number-content.twig:3
+msgid "Enter verification code from SMS"
+msgstr ""
+
+#: views/ajax/profile-confirm-phone-number-content.twig:12
+msgid "Resend verification SMS"
+msgstr ""
+
+#: views/auth/forgot-password.twig:8 views/auth/login.twig:8
+#: views/auth/sign-up.twig:8 views/checkout.twig:129 views/profile/edit.twig:25
+msgid "Email"
+msgstr ""
+
+#: views/auth/forgot-password.twig:18
+msgid "Submit"
+msgstr ""
+
+#: views/auth/login.twig:13 views/auth/password-reset.twig:9
+#: views/auth/sign-up.twig:13
+msgid "Hide"
+msgstr ""
+
+#: views/auth/login.twig:13 views/auth/password-reset.twig:9
+#: views/auth/sign-up.twig:13
+msgid "Show"
+msgstr ""
+
+#: views/auth/login.twig:23
+msgid "Log in"
+msgstr ""
+
+#: views/base-profile.twig:14 views/base-profile.twig:16
+msgid "Hello"
+msgstr ""
+
+#: views/base-profile.twig:20 views/base-profile.twig:35
+msgid "Are you sure you want to log out?"
+msgstr ""
+
+#: views/base-profile.twig:21 views/base-profile.twig:35
+msgid "Log Out"
+msgstr ""
+
+#: views/base-profile.twig:31 views/profile/orders.twig:5
+msgid "My orders"
+msgstr ""
+
+#: views/blog/regular.twig:28
+msgid "Read more"
+msgstr ""
+
+#: views/checkout.twig:107
+msgid "Check your cart"
+msgstr ""
+
+#: views/checkout.twig:114
+msgid "Enter your information"
+msgstr ""
+
+#: views/checkout.twig:117 views/profile/edit.twig:10
+msgid "First Name"
+msgstr ""
+
+#: views/checkout.twig:121 views/profile/edit.twig:14
+msgid "Last Name"
+msgstr ""
+
+#: views/checkout.twig:125 views/dashboard/user.twig:16
+#: views/profile/edit.twig:18
+msgid "Phone"
+msgstr ""
+
+#: views/checkout.twig:134
+msgid "Create an account"
+msgstr ""
+
+#: views/checkout.twig:145
+msgid "Choose the type of delivery"
+msgstr ""
+
+#: views/checkout.twig:172
+msgid "Select the payment type"
+msgstr ""
+
+#: views/checkout.twig:209
+msgid "Enter your address"
+msgstr ""
+
+#: views/checkout.twig:232
+msgid "Select the Nova Poshta office"
+msgstr ""
+
+#: views/checkout.twig:235
+msgid "City or settlement"
+msgstr ""
+
+#: views/checkout.twig:244
+msgid "Post office number"
+msgstr ""
+
+#: views/checkout.twig:261
+msgid "Select pickup office"
+msgstr ""
+
+#: views/checkout.twig:297
+msgid "Your order"
+msgstr ""
+
+#: views/checkout.twig:304
+msgid "Process to checkout"
+msgstr ""
+
+#: views/checkout.twig:310
+msgid "Your cart is empty"
+msgstr ""
+
+#: views/checkout.twig:314
+msgid "Back to home page"
+msgstr ""
+
+#: views/dashboard/order-information.twig:38 views/order.twig:41
+#: views/profile/order.twig:40
+msgid "Order user email"
+msgstr ""
+
+#: views/dashboard/order-information.twig:58 views/order.twig:61
+#: views/profile/order.twig:60
+msgid "Order user last name"
+msgstr ""
+
+#: views/dashboard/order-information.twig:78 views/order.twig:81
+#: views/profile/order.twig:80
+msgid "Order user payment type"
+msgstr ""
+
+#: views/dashboard/order-information.twig:88 views/order.twig:91
+#: views/profile/order.twig:90
+msgid "Order user delivery type"
+msgstr ""
+
+#: views/dashboard/order-information.twig:98 views/order.twig:101
+#: views/profile/order.twig:100
+msgid "Order user delivery information"
+msgstr ""
+
+#: views/dashboard/order-information.twig:108
+msgid "Order user session information"
+msgstr ""
+
+#: views/dashboard/order-information.twig:118
+msgid "Registered Order user"
+msgstr ""
+
+#: views/dashboard/order-information.twig:126
+msgid "Order note"
+msgstr ""
+
+#: views/dashboard/payment-information.twig:4
+msgid "Invoice ID"
+msgstr ""
+
+#: views/dashboard/payment-information.twig:14
+msgid "Redirect URL"
+msgstr ""
+
+#: views/dashboard/user.twig:2
+msgid "Extra profile data"
+msgstr ""
+
+#: views/dashboard/user.twig:10
+msgid "Confirmed Email?"
+msgstr ""
+
+#: views/dashboard/user.twig:22
+msgid "Confirmed phone?"
+msgstr ""
+
+#: views/dashboard/user.twig:28
+msgid "Payment type"
+msgstr ""
+
+#: views/dashboard/user.twig:39
+msgid "Delivery type"
+msgstr ""
+
+#: views/dashboard/user.twig:73
+msgid "Nova Poshta city ref"
+msgstr ""
+
+#: views/dashboard/user.twig:112
+msgid "Technical data"
+msgstr ""
+
+#: views/dashboard/user.twig:115
+msgid "User email verification code for link"
+msgstr ""
+
+#: views/dashboard/user.twig:121
+msgid "User email verification code"
+msgstr ""
+
+#: views/dashboard/user.twig:127
+msgid "Password recovery code for link"
+msgstr ""
+
+#: views/dashboard/user.twig:133
+msgid "User sms verification code"
+msgstr ""
+
+#: views/email/base.twig:403
+msgid "Made with love"
+msgstr ""
+
+#: views/order.twig:13 views/profile/order.twig:9 views/profile/orders.twig:14
+msgid "Sum"
+msgstr ""
+
+#: views/profile/change-email.twig:14
+msgid "Your email"
+msgstr ""
+
+#: views/profile/change-email.twig:16 views/profile/edit.twig:27
+msgid "Email not confirmed"
+msgstr ""
+
+#: views/profile/change-email.twig:16 views/profile/edit.twig:21
+#: views/profile/edit.twig:27
+msgid "confirm"
+msgstr ""
+
+#: views/profile/change-email.twig:19
+msgid "Change my email"
+msgstr ""
+
+#: views/profile/change-password.twig:10
+msgid "Your old password"
+msgstr ""
+
+#: views/profile/change-password.twig:14
+msgid "Your new password"
+msgstr ""
+
+#: views/profile/edit.twig:21
+msgid "Phone not confirmed"
+msgstr ""
+
+#: views/profile/edit.twig:30
+msgid "Save"
+msgstr ""
+
+#: views/profile/orders.twig:12
+msgid "Amount of goods"
+msgstr ""
+
+#: views/profile/orders.twig:13
+msgid "Date"
+msgstr ""
+
+#: views/single-catalog.twig:125
+msgid "Your reviews"
+msgstr ""
+
+#: views/single-catalog.twig:136
+msgid "There are no reviews yet, but yours could be the first!"
+msgstr ""
+
+#: views/single-catalog.twig:143
+msgid "Rate us"
+msgstr ""
+
+#: views/single-catalog.twig:187
+msgid "Enter your review"
+msgstr ""
+
+#: views/single-catalog.twig:190 views/single-catalog.twig:197
+msgid "Leave review"
+msgstr ""
+
+#: views/single.twig:20 views/single.twig:55
+msgid "Share"
+msgstr ""
+
+#: views/single.twig:73
+msgid "Related Posts"
 msgstr ""

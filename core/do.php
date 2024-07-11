@@ -118,10 +118,11 @@ function custom_system_do_page_callback() {
                     wp_redirect(BLOGINFO_URL);
                 }
                 break;
-            case "update_payment_information":
+            case "update_payment_information_mono":
                 if( $payment_id = intval(stripslashes($arr_data['payment_id'])) ){
                     $post_data = file_get_contents("php://input");
                     $data_array = json_decode($post_data, true);
+
                     if($data_array['invoiceId'] == get_post_meta( $payment_id, 'invoiceId', true )){
 
                         update_post_meta( $payment_id, 'paymentStatus', $data_array['status'] );
@@ -175,6 +176,106 @@ function custom_system_do_page_callback() {
 
                             }
                         }
+                    }
+                }
+                break;
+            case "update_payment_information_liqpay":
+                if ($payment_id = intval(stripslashes($arr_data['payment_id']))) {
+                    $post_data = file_get_contents("php://input");
+                    $data_array = array();
+                    parse_str($post_data, $data_array);
+
+                    if (isset($data_array['data']) && isset($data_array['signature'])) {
+                        // Перевірка підпису
+                        $signature = base64_encode(sha1($general_fields['shop']['liqpay_private_key'] . $data_array['data'] . $general_fields['shop']['liqpay_private_key'], true));
+                        if ($signature !== $data_array['signature']) {
+                            //error_log('Invalid LiqPay signature: ' . $signature);
+                            // Невірний підпис
+                            exit;
+                        }
+
+                        $data_decoded = json_decode(base64_decode($data_array['data']), true);
+
+                        update_post_meta($payment_id, 'payment_id', $data_decoded['payment_id']);
+                        update_post_meta($payment_id, 'action', $data_decoded['action']);
+                        update_post_meta($payment_id, 'status', $data_decoded['status']);
+                        update_post_meta($payment_id, 'version', $data_decoded['version']);
+                        update_post_meta($payment_id, 'type', $data_decoded['type']);
+                        update_post_meta($payment_id, 'paytype', $data_decoded['paytype']);
+                        update_post_meta($payment_id, 'public_key', $data_decoded['public_key']);
+                        update_post_meta($payment_id, 'acq_id', $data_decoded['acq_id']);
+                        update_post_meta($payment_id, 'order_id', $data_decoded['order_id']);
+                        update_post_meta($payment_id, 'liqpay_order_id', $data_decoded['liqpay_order_id']);
+                        update_post_meta($payment_id, 'description', $data_decoded['description']);
+                        update_post_meta($payment_id, 'sender_phone', $data_decoded['sender_phone']);
+                        update_post_meta($payment_id, 'sender_first_name', $data_decoded['sender_first_name']);
+                        update_post_meta($payment_id, 'sender_last_name', $data_decoded['sender_last_name']);
+                        update_post_meta($payment_id, 'sender_card_mask2', $data_decoded['sender_card_mask2']);
+                        update_post_meta($payment_id, 'sender_card_bank', $data_decoded['sender_card_bank']);
+                        update_post_meta($payment_id, 'sender_card_type', $data_decoded['sender_card_type']);
+                        update_post_meta($payment_id, 'sender_card_country', $data_decoded['sender_card_country']);
+                        update_post_meta($payment_id, 'amount', $data_decoded['amount']);
+                        update_post_meta($payment_id, 'currency', $data_decoded['currency']);
+                        update_post_meta($payment_id, 'sender_commission', $data_decoded['sender_commission']);
+                        update_post_meta($payment_id, 'receiver_commission', $data_decoded['receiver_commission']);
+                        update_post_meta($payment_id, 'agent_commission', $data_decoded['agent_commission']);
+                        update_post_meta($payment_id, 'amount_debit', $data_decoded['amount_debit']);
+                        update_post_meta($payment_id, 'amount_credit', $data_decoded['amount_credit']);
+                        update_post_meta($payment_id, 'commission_debit', $data_decoded['commission_debit']);
+                        update_post_meta($payment_id, 'commission_credit', $data_decoded['commission_credit']);
+                        update_post_meta($payment_id, 'currency_debit', $data_decoded['currency_debit']);
+                        update_post_meta($payment_id, 'currency_credit', $data_decoded['currency_credit']);
+                        update_post_meta($payment_id, 'sender_bonus', $data_decoded['sender_bonus']);
+                        update_post_meta($payment_id, 'amount_bonus', $data_decoded['amount_bonus']);
+                        update_post_meta($payment_id, 'mpi_eci', $data_decoded['mpi_eci']);
+                        update_post_meta($payment_id, 'is_3ds', $data_decoded['is_3ds']);
+                        update_post_meta($payment_id, 'language', $data_decoded['language']);
+                        update_post_meta($payment_id, 'create_date', $data_decoded['create_date']);
+                        update_post_meta($payment_id, 'end_date', $data_decoded['end_date']);
+                        update_post_meta($payment_id, 'confirm_phone', $data_decoded['confirm_phone']);
+                        update_post_meta($payment_id, 'transaction_id', $data_decoded['transaction_id']);
+
+                        /** sending email to admins */
+                        if (!empty($general_fields['shop']['new_order_email_recipients']) && $general_fields['shop']['activate_email_notification_about_payment_status']) {
+                            $amount_for_email = intval($data_decoded['amount']) / 100;
+                            $amount_for_email = (float)str_replace(",", ".", $amount_for_email);
+                            $amount_for_email = $amount_for_email . " грн";
+
+                            foreach ($general_fields['shop']['new_order_email_recipients'] as $recipient) {
+                                /** preparing email content */
+                                $search = array(
+                                    '[order_id]',
+                                    '[payment_status]',
+                                    '[amount]',
+                                    '[created_date]',
+                                    '[modified_date]',
+                                    '[button]'
+                                );
+                                $replace = array(
+                                    get_post_meta($payment_id, 'order_id', true),
+                                    $data_decoded['status'],
+                                    $amount_for_email,
+                                    date('Y-m-d H:i:s', $data_decoded['create_date']),
+                                    date('Y-m-d H:i:s', $data_decoded['end_date']),
+                                    get_email_part('button', array(
+                                        'link' => BLOGINFO_URL . '/wp-admin/post.php?post=' . $payment_id . '&action=edit',
+                                        'title' => __('Check payment information', TEXTDOMAIN)
+                                    ))
+                                );
+                                $content = Timber::compile('email/email.twig', array(
+                                    'TEXTDOMAIN' => TEXTDOMAIN,
+                                    'BLOGINFO_NAME' => BLOGINFO_NAME,
+                                    'BLOGINFO_URL' => BLOGINFO_URL,
+                                    'subject' => str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_subject_admin']),
+                                    'text' => str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_text_admin'])
+                                ));
+
+                                /** sending email */
+                                send_email($recipient['email'], str_replace($search, $replace, $general_fields['emails']['checkout']['payment_status_subject_admin']), $content);
+                            }
+                        }
+                    } else {
+                        //error_log('LiqPay data or signature missing: ' . print_r($data_array, true));
                     }
                 }
                 break;

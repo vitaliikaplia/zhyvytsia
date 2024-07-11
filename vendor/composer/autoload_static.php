@@ -97,6 +97,7 @@ class ComposerStaticInitde0ff582c1761f9f2dff155987d08086
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'LiqPay' => __DIR__ . '/..' . '/liqpay/liqpay/LiqPay.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -171,10 +171,17 @@
                 <div class="paymentTypeWidget">
                     <p class="title">💵 {{ __('Select the payment type', TEXTDOMAIN) }}</p>
                     <div class="inner">
-                        {% if general_fields.shop.enable_online_payment %}
+                        {% if general_fields.shop.enable_online_mono_payment %}
                         <label>
-                            {{ general_fields.shop.online_payment_logo | picture }}
-                            <input type="radio" name="payment_type" value="online_payment"{% if payment_type == 'online_payment' %} checked{% endif %}>
+                            {{ general_fields.shop.online_payment_mono_logo | picture }}
+                            <input type="radio" name="payment_type" value="online_payment_mono"{% if payment_type == 'online_payment_mono' %} checked{% endif %}>
+                            <span class="checked"></span>
+                        </label>
+                        {% endif %}
+                        {% if general_fields.shop.enable_online_liqpay_payment %}
+                        <label>
+                            {{ general_fields.shop.online_payment_liqpay_logo | picture }}
+                            <input type="radio" name="payment_type" value="online_payment_liqpay"{% if payment_type == 'online_payment_liqpay' %} checked{% endif %}>
                             <span class="checked"></span>
                         </label>
                         {% endif %}

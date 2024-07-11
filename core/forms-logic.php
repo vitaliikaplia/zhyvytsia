@@ -796,7 +796,7 @@ function custom_system_forms_logic_callback() {
         $payment_type = htmlspecialchars($_POST['payment_type'], ENT_QUOTES, 'UTF-8');
 
         /** check if payment type specified */
-        if( ! ( $payment_type == "online_payment" || $payment_type == "cod_payment" || $payment_type == "payment_upon_receipt" || $payment_type == "payment_by_details" ) ){
+        if( ! ( $payment_type == "online_payment_mono" || $payment_type == "online_payment_liqpay" || $payment_type == "cod_payment" || $payment_type == "payment_upon_receipt" || $payment_type == "payment_by_details" ) ){
             add_notify('error', __('Payment type is not specified', TEXTDOMAIN));
             setcookie( 'checkout-data', custom_encrypt_decrypt('encrypt', json_encode($_POST)), time() + 1 * DAY_IN_SECONDS, '/' );
             wp_redirect( $checkout_url );
@@ -1113,7 +1113,7 @@ function custom_system_forms_logic_callback() {
             update_post_meta( $order_id, 'order_user_last_name', $last_name ?? false );
             update_post_meta( $order_id, 'order_user_phone', nice_phone_format($user_phone) ?? false );
             update_post_meta( $order_id, 'order_user_delivery_type', ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? false );
-            update_post_meta( $order_id, 'order_user_payment_type', ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
+            update_post_meta( $order_id, 'order_user_payment_type', ['online_payment_mono' => __('Online payment (MonoBank)', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? false );
             update_post_meta( $order_id, 'order_user_delivery_information', $delivery_information );
             update_post_meta( $order_id, 'order_user_session_information', get_session_info(getUserIP()) );
         }
@@ -1142,7 +1142,7 @@ function custom_system_forms_logic_callback() {
                 $last_name,
                 nice_phone_format($user_phone),
                 $user_email_secure,
-                ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
+                ['online_payment_mono' => __('Online payment (MonoBank)', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
                 ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
                 $delivery_information,
                 $general_fields['shop']['details_for_payment'],
@@ -1184,7 +1184,7 @@ function custom_system_forms_logic_callback() {
                     $last_name,
                     nice_phone_format($user_phone),
                     $user_email_secure,
-                    ['online_payment' => __('Online payment', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
+                    ['online_payment_mono' => __('Online payment (MonoBank)', TEXTDOMAIN), 'cod_payment' => __('COD Payment', TEXTDOMAIN), 'payment_upon_receipt' => __('Payment upon receipt', TEXTDOMAIN), 'payment_by_details' => __('Payment by details', TEXTDOMAIN)][$payment_type] ?? __('Unknown', TEXTDOMAIN),
                     ['up' => __('UkrPoshta', TEXTDOMAIN), 'np' => __('Nova Poshta', TEXTDOMAIN), 'pu' => __('Pickup', TEXTDOMAIN)][$delivery_type] ?? __('Unknown', TEXTDOMAIN),
                     $delivery_information,
                     get_session_info(getUserIP())
@@ -1215,9 +1215,12 @@ function custom_system_forms_logic_callback() {
         }
 
         /** preparing redirect url */
-        if($payment_type == "online_payment"){
-            /** creating new payment and redirection url to bank payment system */
-            $redirect_url = prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count);
+        if($payment_type == "online_payment_mono"){
+            /** creating new payment and redirection url to MonoBank payment system */
+            $redirect_url = prepare_online_payment_mono($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count);
+        } elseif ($payment_type == "online_payment_liqpay") {
+            /** creating new payment and redirection url to PrivatBank payment system */
+            $form = prepare_online_payment_liqpay($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count);
         } else {
             /** preparing new order url, notify message and removing cookie cart */
             add_notify('success', $general_fields['shop']['successful_order_message']);
@@ -1231,7 +1234,24 @@ function custom_system_forms_logic_callback() {
         }
 
         /** redirecting */
-        wp_redirect($redirect_url);
+        if($payment_type != "online_payment_liqpay"){
+            wp_redirect($redirect_url);
+        } else {
+            $html = '
+            <div style="display: flex; min-height: 100svh; width: 100%; align-items: center; justify-content: center; text-align: center;">
+            <p>'.__('Please wait, redirecting...', TEXTDOMAIN).'</p>
+            </div>
+            <div style="opacity: 0;">'.$form.'</div>
+            <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.forms[0].submit();
+            }, 1000);
+            });
+            </script>
+            ';
+            echo $html;
+        }
         exit;
 
     }

@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){exit;}
 
 use \MonoPay;
 
-function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count){
+function prepare_online_payment_mono($order_id, $total_price_raw, $ids_arr_unique, $ids_arr_count_values, $ids_arr_count, $filtered_ids_arr_count){
 
     /** отримуємо налаштування */
     $general_fields = cache_general_fields();
@@ -34,7 +34,7 @@ function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $i
 
     /** готуємо лінк для веб-хуку (оновлення інформації про оплату) */
     $arr_for_webhook_link = array(
-        'action' => 'update_payment_information',
+        'action' => 'update_payment_information_mono',
         'payment_id' => $payment_id
     );
     $json_for_webhook_link = json_encode($arr_for_webhook_link);
@@ -102,6 +102,7 @@ function prepare_online_payment($order_id, $total_price_raw, $ids_arr_unique, $i
     update_post_meta( $payment_id, 'invoiceId', $invoice['invoiceId'] );
     update_post_meta( $payment_id, 'pageUrl', $invoice['pageUrl'] );
     update_post_meta( $payment_id, 'order_id', $order_id );
+    update_post_meta( $payment_id, 'paytype', 'mono' );
 
     return $invoice['pageUrl'];
 

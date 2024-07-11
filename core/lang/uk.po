@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zhyvytsia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 07:06+0200\n"
+"POT-Creation-Date: 2024-07-11 23:18+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
 "Language-Team: Vitalii Kaplia <vitalii.kaplia@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-SearchPath-0: core/lang\n"
 "X-Poedit-SearchPath-1: core\n"
 "X-Poedit-SearchPath-2: .\n"
@@ -288,60 +288,60 @@ msgstr "Місто та відділення Нової Пошти не вказ
 msgid "Self pickup point is not specified"
 msgstr "Пункт самовивозу не вказано"
 
-#: core/forms-logic.php:875 views/checkout.twig:212
-#: views/dashboard/user.twig:49
+#: core/forms-logic.php:875 views/checkout.twig:219
+#: views/dashboard/user.twig:50
 msgid "Region (for example, Kyivska, Lvivska, etc.)"
 msgstr "Область (наприклад, Київська, Львівська тощо)"
 
-#: core/forms-logic.php:876 views/checkout.twig:216
-#: views/dashboard/user.twig:55
+#: core/forms-logic.php:876 views/checkout.twig:223
+#: views/dashboard/user.twig:56
 msgid "City (or settlement)"
 msgstr "Місто (або населений пункт)"
 
-#: core/forms-logic.php:877 views/checkout.twig:220
-#: views/dashboard/user.twig:61
+#: core/forms-logic.php:877 views/checkout.twig:227
+#: views/dashboard/user.twig:62
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
-#: core/forms-logic.php:878 views/checkout.twig:224
-#: views/dashboard/user.twig:67
+#: core/forms-logic.php:878 views/checkout.twig:231
+#: views/dashboard/user.twig:68
 msgid "Address (street, house, apartment)"
 msgstr "Адреса (вулиця, будинок, квартира)"
 
-#: core/forms-logic.php:882 views/dashboard/user.twig:79
+#: core/forms-logic.php:882 views/dashboard/user.twig:80
 msgid "Nova Poshta city name"
 msgstr "Назва міста відділення Нової Пошти"
 
-#: core/forms-logic.php:883 views/dashboard/user.twig:91
+#: core/forms-logic.php:883 views/dashboard/user.twig:92
 msgid "Nova Poshta office name"
 msgstr "Назва відділення Нової Пошти"
 
-#: core/forms-logic.php:884 views/dashboard/user.twig:85
+#: core/forms-logic.php:884 views/dashboard/user.twig:86
 msgid "Nova Poshta office number"
 msgstr "Номер відділення Нової Пошти"
 
-#: core/forms-logic.php:889 views/checkout.twig:263
-#: views/dashboard/user.twig:97
+#: core/forms-logic.php:889 views/checkout.twig:270
+#: views/dashboard/user.twig:98
 msgid "Pickup point"
 msgstr "Пункт самовивозу"
 
-#: core/forms-logic.php:890 views/checkout.twig:284
+#: core/forms-logic.php:890 views/checkout.twig:291
 msgid "Address"
 msgstr "Адреса"
 
-#: core/forms-logic.php:891 views/checkout.twig:280
+#: core/forms-logic.php:891 views/checkout.twig:287
 msgid "Working days"
 msgstr "Робочі дні"
 
-#: core/forms-logic.php:892 views/checkout.twig:276
+#: core/forms-logic.php:892 views/checkout.twig:283
 msgid "Working hours"
 msgstr "Робочі години"
 
-#: core/forms-logic.php:892 views/checkout.twig:277
+#: core/forms-logic.php:892 views/checkout.twig:284
 msgid "From"
 msgstr "З"
 
-#: core/forms-logic.php:892 views/checkout.twig:277
+#: core/forms-logic.php:892 views/checkout.twig:284
 msgid "to"
 msgstr "по"
 
@@ -353,60 +353,64 @@ msgstr "Вітаємо! Ваш новий обліковий запис ство
 msgid "Error while creating new user"
 msgstr "Помилка під час створення нового користувача"
 
-#: core/forms-logic.php:1095 core/includes/back/custom-post-types.php:68
+#: core/forms-logic.php:1096 core/includes/back/custom-post-types.php:68
 #: core/pages.php:208 core/pages.php:320 core/pages.php:357
 #: views/dashboard/payment-information.twig:105 views/order.twig:12
 #: views/profile/order.twig:8 views/profile/orders.twig:11
 msgid "Order"
 msgstr "Замовлення"
 
-#: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/dashboard/user.twig:42
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/dashboard/user.twig:43
 msgid "UkrPoshta"
 msgstr "УкрПошта"
 
-#: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/dashboard/user.twig:43
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/dashboard/user.twig:44
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: core/forms-logic.php:1114 core/forms-logic.php:1145
-#: core/forms-logic.php:1187 views/checkout.twig:164
-#: views/dashboard/user.twig:44
+#: core/forms-logic.php:1115 core/forms-logic.php:1146
+#: core/forms-logic.php:1188 views/checkout.twig:164
+#: views/dashboard/user.twig:45
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/dashboard/user.twig:31
-msgid "Online payment"
-msgstr "Онлайн оплата"
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/dashboard/user.twig:31
+msgid "Online payment (MonoBank)"
+msgstr "Онлайн оплата (МоноБанк)"
 
-#: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:184
-#: views/dashboard/user.twig:32
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:191
+#: views/dashboard/user.twig:33
 msgid "COD Payment"
 msgstr "Накладений платіж"
 
-#: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:192
-#: views/dashboard/user.twig:33
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:199
+#: views/dashboard/user.twig:34
 msgid "Payment upon receipt"
 msgstr "Оплата при отриманні"
 
-#: core/forms-logic.php:1115 core/forms-logic.php:1144
-#: core/forms-logic.php:1186 views/checkout.twig:200
-#: views/dashboard/user.twig:34
+#: core/forms-logic.php:1116 core/forms-logic.php:1145
+#: core/forms-logic.php:1187 views/checkout.twig:207
+#: views/dashboard/user.twig:35
 msgid "Payment by details"
 msgstr "Оплата за реквізитами"
 
-#: core/forms-logic.php:1144 core/forms-logic.php:1145
-#: core/forms-logic.php:1186 core/forms-logic.php:1187
+#: core/forms-logic.php:1145 core/forms-logic.php:1146
+#: core/forms-logic.php:1187 core/forms-logic.php:1188
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: core/forms-logic.php:1210
+#: core/forms-logic.php:1211
 msgid "New order has been placed"
 msgstr "Нове замовлення розміщено"
+
+#: core/forms-logic.php:1242
+msgid "Please wait, redirecting..."
+msgstr "Зачекайте, відбувається переадресація…"
 
 #: core/gutenberg.php:12
 msgid "Main"
@@ -952,14 +956,10 @@ msgstr "Ідентифікатор"
 msgid "Status"
 msgstr "Статус"
 
-#: core/includes/back/dashboard-columns-catalog.php:14
-msgid "QR"
-msgstr "QR"
-
-#: core/includes/back/dashboard-columns-catalog.php:35
-#: core/includes/back/dashboard-columns-catalog.php:42
-#: core/includes/back/dashboard-columns-catalog.php:56
-#: core/includes/back/dashboard-columns-catalog.php:75
+#: core/includes/back/dashboard-columns-catalog.php:33
+#: core/includes/back/dashboard-columns-catalog.php:40
+#: core/includes/back/dashboard-columns-catalog.php:54
+#: core/includes/back/dashboard-columns-catalog.php:73
 #: core/includes/back/dashboard-columns-feedback.php:29
 #: core/includes/back/dashboard-columns-feedback.php:40
 #: core/includes/back/dashboard-columns-feedback.php:47
@@ -981,8 +981,8 @@ msgid "Ordered items"
 msgstr "Замовлені товари"
 
 #: core/includes/back/dashboard-columns-orders-log.php:10
-#: views/dashboard/order-information.twig:28 views/overall/positions.twig:35
-#: views/overall/total.twig:8
+#: views/dashboard/order-information.twig:28 views/overall/positions.twig:37
+#: views/overall/total.twig:10
 msgid "Total amount"
 msgstr "Загальна сума"
 
@@ -1021,11 +1021,16 @@ msgstr "Додати новий пост"
 msgid "Order information"
 msgstr "Інформація про замовлення"
 
+#: core/includes/back/dashboard-qr-columns.php:8
+msgid "QR"
+msgstr "QR"
+
 #: core/includes/back/dashboard-update-assets-version.php:16
 msgid "Update theme version"
 msgstr "Оновити версію теми"
 
-#: core/includes/back/prepare-online-payment.php:15
+#: core/includes/back/prepare-online-payment-liqpay.php:16
+#: core/includes/back/prepare-online-payment-mono.php:15
 msgid "Payment for order"
 msgstr "Оплата для замовлення"
 
@@ -1393,39 +1398,39 @@ msgstr "Оберіть тип доставки"
 msgid "Select the payment type"
 msgstr "Оберіть тип оплати"
 
-#: views/checkout.twig:209
+#: views/checkout.twig:216
 msgid "Enter your address"
 msgstr "Введіть свою адресу"
 
-#: views/checkout.twig:232
+#: views/checkout.twig:239
 msgid "Select the Nova Poshta office"
 msgstr "Оберіть відділення Нової Пошти"
 
-#: views/checkout.twig:235
+#: views/checkout.twig:242
 msgid "City or settlement"
 msgstr "Місто або селище"
 
-#: views/checkout.twig:244
+#: views/checkout.twig:251
 msgid "Post office number"
 msgstr "Номер поштового відділення"
 
-#: views/checkout.twig:261
+#: views/checkout.twig:268
 msgid "Select pickup office"
 msgstr "Оберіть пункт самовивозу"
 
-#: views/checkout.twig:297
+#: views/checkout.twig:304
 msgid "Your order"
 msgstr "Ваше замовлення"
 
-#: views/checkout.twig:304
+#: views/checkout.twig:311
 msgid "Process to checkout"
 msgstr "Оформити замовлення"
 
-#: views/checkout.twig:310
+#: views/checkout.twig:317
 msgid "Your cart is empty"
 msgstr "Ваш кошик порожній"
 
-#: views/checkout.twig:314
+#: views/checkout.twig:321
 msgid "Back to home page"
 msgstr "Повернутися на головну сторінку"
 
@@ -1490,31 +1495,35 @@ msgstr "Підтверджений телефон?"
 msgid "Payment type"
 msgstr "Тип оплати"
 
-#: views/dashboard/user.twig:39
+#: views/dashboard/user.twig:32
+msgid "Online payment (Liqpay)"
+msgstr "Онлайн оплата (Liqpay)"
+
+#: views/dashboard/user.twig:40
 msgid "Delivery type"
 msgstr "Тип доставки"
 
-#: views/dashboard/user.twig:73
+#: views/dashboard/user.twig:74
 msgid "Nova Poshta city ref"
 msgstr "Нова Пошта REF міста"
 
-#: views/dashboard/user.twig:112
+#: views/dashboard/user.twig:113
 msgid "Technical data"
 msgstr "Технічна інформація"
 
-#: views/dashboard/user.twig:115
+#: views/dashboard/user.twig:116
 msgid "User email verification code for link"
 msgstr "Код підтвердження електронної пошти користувача для посилання"
 
-#: views/dashboard/user.twig:121
+#: views/dashboard/user.twig:122
 msgid "User email verification code"
 msgstr "Код підтвердження електронної пошти користувача"
 
-#: views/dashboard/user.twig:127
+#: views/dashboard/user.twig:128
 msgid "Password recovery code for link"
 msgstr "Код відновлення пароля для посилання"
 
-#: views/dashboard/user.twig:133
+#: views/dashboard/user.twig:134
 msgid "User sms verification code"
 msgstr "Код підтвердження SMS"
 

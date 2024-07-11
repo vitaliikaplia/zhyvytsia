@@ -964,8 +964,8 @@
                 },
                 {
                     "key": "field_653dba3b4e9dc",
-                    "label": "Увімкнути можливість онлайн оплати",
-                    "name": "enable_online_payment",
+                    "label": "Увімкнути можливість онлайн оплати (МоноБанк)",
+                    "name": "enable_online_mono_payment",
                     "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
@@ -991,8 +991,8 @@
                 },
                 {
                     "key": "field_653ddd081c0ba",
-                    "label": "Логотип онлайн оплати",
-                    "name": "online_payment_logo",
+                    "label": "Логотип онлайн оплати (МоноБанк)",
+                    "name": "online_payment_mono_logo",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -1005,6 +1005,78 @@
                             },
                             {
                                 "field": "field_653dba3b4e9dc",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_6690312e0b9c4",
+                    "label": "Увімкнути можливість онлайн оплати (Liqpay)",
+                    "name": "enable_online_liqpay_payment",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_669037571fce9",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_6690378f1fcea",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_6690314e0b9c5",
+                    "label": "Логотип онлайн оплати (Liqpay)",
+                    "name": "online_payment_liqpay_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_669037571fce9",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_6690378f1fcea",
+                                "operator": "!=empty"
+                            },
+                            {
+                                "field": "field_6690312e0b9c4",
                                 "operator": "==",
                                 "value": "1"
                             }
@@ -1312,6 +1384,42 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_669037571fce9",
+                    "label": "Liqpay публічний ключ",
+                    "name": "liqpay_public_key",
+                    "aria-label": "",
+                    "type": "password",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6690378f1fcea",
+                    "label": "Liqpay приватний ключ",
+                    "name": "liqpay_private_key",
+                    "aria-label": "",
+                    "type": "password",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         }
@@ -1334,5 +1442,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708233796
+    "modified": 1720727501
 }

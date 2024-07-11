@@ -98,6 +98,348 @@
     </div>
 </div>
 {% endif %}
+
+{% if payment.payment_id %}
+<div class="line">
+    <div class="col">
+        <p>payment_id</p>
+    </div>
+    <div class="col">
+        {{ payment.payment_id }}
+    </div>
+</div>
+{% endif %}
+{% if payment.action %}
+<div class="line">
+    <div class="col">
+        <p>action</p>
+    </div>
+    <div class="col">
+        {{ payment.action }}
+    </div>
+</div>
+{% endif %}
+{% if payment.version %}
+<div class="line">
+    <div class="col">
+        <p>version</p>
+    </div>
+    <div class="col">
+        {{ payment.version }}
+    </div>
+</div>
+{% endif %}
+{% if payment.type %}
+<div class="line">
+    <div class="col">
+        <p>type</p>
+    </div>
+    <div class="col">
+        {{ payment.type }}
+    </div>
+</div>
+{% endif %}
+{% if payment.paytype %}
+<div class="line">
+    <div class="col">
+        <p>paytype</p>
+    </div>
+    <div class="col">
+        {{ payment.paytype }}
+    </div>
+</div>
+{% endif %}
+{% if payment.public_key %}
+<div class="line">
+    <div class="col">
+        <p>public_key</p>
+    </div>
+    <div class="col">
+        {{ payment.public_key }}
+    </div>
+</div>
+{% endif %}
+{% if payment.acq_id %}
+<div class="line">
+    <div class="col">
+        <p>acq_id</p>
+    </div>
+    <div class="col">
+        {{ payment.acq_id }}
+    </div>
+</div>
+{% endif %}
+{% if payment.liqpay_order_id %}
+<div class="line">
+    <div class="col">
+        <p>liqpay_order_id</p>
+    </div>
+    <div class="col">
+        {{ payment.liqpay_order_id }}
+    </div>
+</div>
+{% endif %}
+{% if payment.description %}
+<div class="line">
+    <div class="col">
+        <p>description</p>
+    </div>
+    <div class="col">
+        {{ payment.description }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_phone %}
+<div class="line">
+    <div class="col">
+        <p>sender_phone</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_phone }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_first_name %}
+<div class="line">
+    <div class="col">
+        <p>sender_first_name</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_first_name }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_last_name %}
+<div class="line">
+    <div class="col">
+        <p>sender_last_name</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_last_name }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_card_mask2 %}
+<div class="line">
+    <div class="col">
+        <p>sender_card_mask2</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_card_mask2 }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_card_bank %}
+<div class="line">
+    <div class="col">
+        <p>sender_card_bank</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_card_bank }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_card_type %}
+<div class="line">
+    <div class="col">
+        <p>sender_card_type</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_card_type }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_card_country %}
+<div class="line">
+    <div class="col">
+        <p>sender_card_country</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_card_country }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_commission %}
+<div class="line">
+    <div class="col">
+        <p>sender_commission</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_commission }}
+    </div>
+</div>
+{% endif %}
+{% if payment.receiver_commission %}
+<div class="line">
+    <div class="col">
+        <p>receiver_commission</p>
+    </div>
+    <div class="col">
+        {{ payment.receiver_commission }}
+    </div>
+</div>
+{% endif %}
+{% if payment.agent_commission %}
+<div class="line">
+    <div class="col">
+        <p>agent_commission</p>
+    </div>
+    <div class="col">
+        {{ payment.agent_commission }}
+    </div>
+</div>
+{% endif %}
+{% if payment.amount_debit %}
+<div class="line">
+    <div class="col">
+        <p>amount_debit</p>
+    </div>
+    <div class="col">
+        {{ payment.amount_debit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.amount_credit %}
+<div class="line">
+    <div class="col">
+        <p>amount_credit</p>
+    </div>
+    <div class="col">
+        {{ payment.amount_credit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.commission_debit %}
+<div class="line">
+    <div class="col">
+        <p>commission_debit</p>
+    </div>
+    <div class="col">
+        {{ payment.commission_debit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.commission_credit %}
+<div class="line">
+    <div class="col">
+        <p>commission_credit</p>
+    </div>
+    <div class="col">
+        {{ payment.commission_credit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.currency_debit %}
+<div class="line">
+    <div class="col">
+        <p>currency_debit</p>
+    </div>
+    <div class="col">
+        {{ payment.currency_debit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.currency_credit %}
+<div class="line">
+    <div class="col">
+        <p>currency_credit</p>
+    </div>
+    <div class="col">
+        {{ payment.currency_credit }}
+    </div>
+</div>
+{% endif %}
+{% if payment.sender_bonus %}
+<div class="line">
+    <div class="col">
+        <p>sender_bonus</p>
+    </div>
+    <div class="col">
+        {{ payment.sender_bonus }}
+    </div>
+</div>
+{% endif %}
+{% if payment.amount_bonus %}
+<div class="line">
+    <div class="col">
+        <p>amount_bonus</p>
+    </div>
+    <div class="col">
+        {{ payment.amount_bonus }}
+    </div>
+</div>
+{% endif %}
+{% if payment.mpi_eci %}
+<div class="line">
+    <div class="col">
+        <p>mpi_eci</p>
+    </div>
+    <div class="col">
+        {{ payment.mpi_eci }}
+    </div>
+</div>
+{% endif %}
+{% if payment.is_3ds %}
+<div class="line">
+    <div class="col">
+        <p>is_3ds</p>
+    </div>
+    <div class="col">
+        {{ payment.is_3ds }}
+    </div>
+</div>
+{% endif %}
+{% if payment.language %}
+<div class="line">
+    <div class="col">
+        <p>language</p>
+    </div>
+    <div class="col">
+        {{ payment.language }}
+    </div>
+</div>
+{% endif %}
+{% if payment.create_date %}
+<div class="line">
+    <div class="col">
+        <p>create_date</p>
+    </div>
+    <div class="col">
+        {{ payment.create_date }}
+    </div>
+</div>
+{% endif %}
+{% if payment.end_date %}
+<div class="line">
+    <div class="col">
+        <p>end_date</p>
+    </div>
+    <div class="col">
+        {{ payment.end_date }}
+    </div>
+</div>
+{% endif %}
+{% if payment.confirm_phone %}
+<div class="line">
+    <div class="col">
+        <p>confirm_phone</p>
+    </div>
+    <div class="col">
+        {{ payment.confirm_phone }}
+    </div>
+</div>
+{% endif %}
+{% if payment.transaction_id %}
+<div class="line">
+    <div class="col">
+        <p>transaction_id</p>
+    </div>
+    <div class="col">
+        {{ payment.transaction_id }}
+    </div>
+</div>
+{% endif %}
+
 {% if payment.order_id %}
 {% set order_post = Post(payment.order_id) %}
 <div class="line">
