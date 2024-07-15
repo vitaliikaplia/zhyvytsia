@@ -447,7 +447,7 @@
         <p>{{ __('Order', TEXTDOMAIN) }}</p>
     </div>
     <div class="col">
-        <a href="/wp-admin/post.php?post={{ payment.order_id }}&action=edit">{{ order_post.title }}</a>
+        <a href="/wp-admin/post.php?post={{ payment.order_id|replace({'zhyvytsia_order_': ''}) }}&action=edit">{{ order_post.title }}</a>
     </div>
 </div>
 {% endif %}

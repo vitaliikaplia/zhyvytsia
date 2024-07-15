@@ -87,7 +87,7 @@ function prepare_online_payment_liqpay($order_id, $total_price_raw, $ids_arr_uni
         'description'    => 'Оплата за замовлення #'.$order_id,
         'order_id'       => 'zhyvytsia_order_'.$order_id,
         'version'        => '3',
-        'sandbox'        => '1', // If sandbox mode is enabled
+        'sandbox'        => false, // If sandbox mode is enabled
         'server_url'     => $webHookUrl,
         'result_url'     => $redirectUrl
     );
