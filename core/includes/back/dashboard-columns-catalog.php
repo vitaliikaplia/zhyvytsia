@@ -11,6 +11,7 @@ function add_catalog_columns($cols) {
         $cols['catalog_rating'] = __('Rating', TEXTDOMAIN);
         $cols['catalog_sku'] = __('SKU', TEXTDOMAIN);
         $cols['catalog_status'] = __('Status', TEXTDOMAIN);
+        $cols['qr'] = __('QR', TEXTDOMAIN);
         $cols = [
             'cb' => $cols['cb'],
             'title' => $cols['title'],
@@ -21,6 +22,7 @@ function add_catalog_columns($cols) {
             'date' => $cols['date'],
             'catalog_photo' => $cols['catalog_photo'],
             'catalog_status' => $cols['catalog_status'],
+            'qr' => $cols['qr']
         ];
     }
     return $cols;
