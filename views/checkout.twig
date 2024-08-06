@@ -26,11 +26,11 @@
     {% set user_email = user.user_email %}
 {% endif %}
 
-{% if decoded.create_an_account %}
-    {% set create_an_account = decoded.create_an_account %}
-{% else %}
-    {% set create_an_account = true %}
-{% endif %}
+{#{% if decoded.create_an_account %}#}
+{#    {% set create_an_account = decoded.create_an_account %}#}
+{#{% else %}#}
+{#    {% set create_an_account = true %}#}
+{#{% endif %}#}
 
 {% if decoded.user_region %}
     {% set user_region = decoded.user_region %}
@@ -132,7 +132,8 @@
                         {% if not user %}
                         <label>
                             <p class="label">{{ __('Create an account', TEXTDOMAIN) }}</p>
-                            <input type="checkbox" name="create_an_account" value="1"{% if create_an_account %} checked="checked"{% endif %}>
+{#                            <input type="checkbox" name="create_an_account" value="1"{% if create_an_account %} checked="checked"{% endif %}>#}
+                            <input type="checkbox" name="create_an_account" value="1">
                             <span class="indicator"></span>
                             {% if general_fields.shop.new_order_registration_message %}
                             <div class="explain typo">{{ general_fields.shop.new_order_registration_message }}</div>
