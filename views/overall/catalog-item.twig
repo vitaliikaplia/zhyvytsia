@@ -1,11 +1,15 @@
-{% set post = Post(val) %}
-{% set rating = fn('get_catalog_item_rating', val) %}
+{% if type == 'gutenberg' %}
+    {% set post = Post(val) %}
+{% elseif type == 'taxonomy' %}
+    {% set post = val %}
+{% endif %}
+{% set rating = fn('get_catalog_item_rating', post.ID) %}
 {% set price = post.meta('price') %}
 {% set status = post.meta('status') %}
 <div class="item scroll-show">
     <span class="status {{ status.value }}">{{ status.label }}</span>
     <a href="{{ post.link }}" class="thumbnail">
-    {{ post.meta('photo') | picture }}
+        {{ post.meta('photo') | picture }}
     </a>
     <p class="title">
         <a href="{{ post.link }}">
@@ -13,7 +17,7 @@
         </a>
     </p>
     {% if general_fields.shop.show_rating %}
-    {% include 'overall/rating.twig' %}
+        {% include 'overall/rating.twig' %}
     {% endif %}
     <div class="columns">
         <div class="col">
@@ -24,12 +28,12 @@
         </div>
         <div class="col">
             {% if status.value == "in_stock" %}
-            <button data-id="{{ post.id }}" class="add_to_cart">
-                <svg>
-                    <use href="{{ svg_sprite }}#iconCart"></use>
-                </svg>
-                <span>Купити</span>
-            </button>
+                <button data-id="{{ post.id }}" class="add_to_cart">
+                    <svg>
+                        <use href="{{ svg_sprite }}#iconCart"></use>
+                    </svg>
+                    <span>Купити</span>
+                </button>
             {% endif %}
         </div>
     </div>

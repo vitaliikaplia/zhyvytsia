@@ -9,11 +9,11 @@
                 {{ description }}
             </div>
             {% if posts is iterable %}
-            <div class="goods columns-4">
-                {% for key,val in posts %}
-                    {% include 'overall/catalog-item.twig' %}
-                {% endfor %}
-            </div>
+                <div class="goods columns-4">
+                    {% for key,val in posts %}
+                        {% include 'overall/catalog-item.twig' with {'type': 'taxonomy'} %}
+                    {% endfor %}
+                </div>
             {% endif %}
         </div>
     </div>

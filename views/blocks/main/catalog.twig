@@ -2,24 +2,24 @@
 
 {% block content %}
 
-<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}"{% if fields.anchor %} data-anchor="{{ fields.anchor }}"{% endif %}>
-    <div class="customBlock">
-        {% if fields.title %}
-        <p class="title scroll-show">{{ fields.title }}</p>
-        {% endif %}
-        {% if fields.short_catalog_desc %}
-        <div class="typo scroll-show">
-            {{ fields.short_catalog_desc }}
+    <div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}"{% if fields.anchor %} data-anchor="{{ fields.anchor }}"{% endif %}>
+        <div class="customBlock">
+            {% if fields.title %}
+                <p class="title scroll-show">{{ fields.title }}</p>
+            {% endif %}
+            {% if fields.short_catalog_desc %}
+                <div class="typo scroll-show">
+                    {{ fields.short_catalog_desc }}
+                </div>
+            {% endif %}
+            {% if fields.goods is iterable %}
+                <div class="goods columns-{{ fields.columns }}">
+                    {% for key,val in fields.goods %}
+                        {% include 'overall/catalog-item.twig' with {'type': 'gutenberg'} %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-        {% endif %}
-        {% if fields.goods is iterable %}
-        <div class="goods columns-{{ fields.columns }}">
-            {% for key,val in fields.goods %}
-            {% include 'overall/catalog-item.twig' %}
-            {% endfor %}
-        </div>
-        {% endif %}
     </div>
-</div>
 
 {% endblock %}
