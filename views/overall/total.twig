@@ -1,11 +1,11 @@
 {#{% if general_fields.shop.enable_wholesale_discounts and ids_arr_count < general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount %}#}
 {#{% set difference = general_fields.shop.minimum_quantity_of_products_in_the_cart_for_wholesale_discount - ids_arr_count %}#}
-{% if fn('is_show_discount_notify') %}
-<div class="positionsReminder typo">
+{#{% if fn('is_show_discount_notify') %}#}
+{#<div class="positionsReminder typo">#}
 {#    <p>Додайте ще {{ fn('plural_form', difference, ['товар','товари','товарів'] )}} в кошик і отримайте знижку {{ general_fields.shop.wholesale_discount_percentage }}% 🎉</p>#}
-    {{ fn('get_option', 'options_shop_wholesale_discounts_information') | shortcodes }}
-</div>
-{% endif %}
+{#    {{ fn('get_option', 'options_shop_wholesale_discounts_information') | shortcodes }}#}
+{#</div>#}
+{#{% endif %}#}
 <div class="totalBox">
     <span class="totalTitle">{{ __('Total amount', TEXTDOMAIN) }}: </span>
     <span class="totalPrice">{{ total_price }}</span>
